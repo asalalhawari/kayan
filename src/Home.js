@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, IconButton, Container, useMediaQuery, Stack, useTheme, Dialog, DialogTitle, DialogContent, Button, capitalize } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import kayanLogo from './img/KayanLogo2.svg'; 
+import kayanLogo from './img/kayanLogo.png'; 
 
 
 

@@ -10,12 +10,13 @@ import Demo from './Demo'
 import ProviderSolutions from './ProviderSolutions';
 import PayerSolutions from './PayerSolutions';
 import Footer from './Footer';
+import FullPageCarousel from './components/FullPageCarousel';
 function App() {
   return (
     <Router>
     <Navbar />
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={ <FullPageCarousel />} />
       <Route path="/about" element={<About />} />
       <Route path="/solution" element={<Solution />} />
       <Route path="/demo" element={<Demo />} />
