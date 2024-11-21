@@ -40,7 +40,7 @@ const Footer = () => {
       <Box sx={{  marginBottom: { xs: '10px', md: '0' } }}>
         <Typography variant="h6" sx={{ fontSize: { xs: '10px', sm: '13px' } }}>Main Office</Typography>
         <Typography sx={{ fontSize: { xs: '7px', sm: '12px' } }}>
-          <LocationOnIcon sx={{ fontSize: { xs: '7px', sm: '14px' },padding:'5px' }} /> 
+          <LocationOnIcon sx={{ fontSize: { xs: '7px', sm: '25px' },padding:'5px' }} /> 
            REALOGICS STAR REAL ESTATE L.L.C Y Z BUILDING, Off 323, 3 rd floor floor, Alquoz 3 
         </Typography>
         <Typography sx={{ fontSize: { xs: '7px', sm: '12px' } }}>

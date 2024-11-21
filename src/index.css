@@ -72,3 +72,18 @@ code {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-animation {
+  animation: fadeInUp 5s ease-in-out;
+}

@@ -4,7 +4,8 @@ import { Typography, Box } from '@mui/material';
 
 const ContactUs = () => {
   return (
-    <Box sx={{ padding: '50px', textAlign: 'center' }}>
+    <div id="ContactUs">
+       <Box  sx={{ padding: '50px', textAlign: 'center' }}>
       <Typography variant="h4" gutterBottom>
       ContactUs
       </Typography>
@@ -12,6 +13,8 @@ const ContactUs = () => {
         This is the page for ContactUs
       </Typography>
     </Box>
+    </div>
+   
   );
 };
 

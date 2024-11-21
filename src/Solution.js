@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Solution = () => {
-  return <h1>Solution</h1>;
+  return (
+    <div id="soluotion">
+        <h1>Solution</h1>
+
+      </div>
+  );
 };
 
 export default Solution;
