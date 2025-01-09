@@ -10,6 +10,10 @@ root.render(
     <App />
   </React.StrictMode>
 );
+const link = document.createElement('link');
+link.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap';
+link.rel = 'stylesheet';
+document.head.appendChild(link);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

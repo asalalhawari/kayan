@@ -15,8 +15,8 @@ const Footer = () => {
         //  position: 'fixed',
         bottom: 0,
         width: '100%',
-        backgroundColor: 'rgba(29,55,81,0.85)',
-        color: 'white',
+        // backgroundColor: 'rgba(29,55,81,0.85)',
+        color: 'black',
         padding: { xs: '10px', sm: '20px' }, 
         boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.2)',
         display: 'flex',
@@ -62,7 +62,7 @@ const Footer = () => {
           href="https://www.linkedin.com/company/kayan-healthcare-technologies/mycompany/"
           target="_blank" rel="noopener"
         >
-          <IconButton sx={{ color:'#1565c0' }}>
+          <IconButton sx={{ color:'#4CAF50' }}>
             <LinkedInIcon sx={{ fontSize: { xs: '15px', sm: '27px' } }} />
           </IconButton>
         </Link>

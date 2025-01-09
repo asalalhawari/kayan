@@ -63,19 +63,20 @@ function App() {
         <section id="about">
           <About />
         </section>
-        <section id="solution">
+        {/* <section id="solution">
           <Solution />
-        </section>
-        <section id="demo">
-          <Demo />
-        </section>
+        </section> */}
         <section id="provider-solutions">
           <ProviderSolutions />
         </section>
         <section id="payer-solutions">
           <PayerSolutions />
         </section>
-        <section id="contact-us">
+        <section id="demo">
+          <Demo />
+        </section>
+        
+        <section id="contactUs">
           <ContactUs />
         </section>
       </div>
