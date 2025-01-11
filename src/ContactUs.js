@@ -12,7 +12,7 @@ const managementTeam = [
     contact: "+971561207460",
     position: "General Manager",
     description: `Islam Hijawi is the Owner and Managing Director. An effective leader with excellent management skills that promote productivity towards achieving project and organizational goals. Islam is holding a High Diploma in Management, master’s degree in public health and Strategic Planning, and Bachelor of Physiotherapy. Finally, Islam speaks Arabic and English.`,
-    image: "path-to-islam-image.jpg", // Replace with the correct image path
+    image: "", 
   },
   {
     name: "Kareem Khaleel",
@@ -20,7 +20,7 @@ const managementTeam = [
     contact: "+970599879418",
     position: "IT Director",
     description: `I’m a computer systems engineer with a master’s degree in computer science. I’m in the field of IT for about 10 years. I have worked in many positions starting from development, testing and now I’m in the management roles. I have worked as a business analyst for some time and learned the Gulf market experience in the previous years. Since Kayan Healthcare Technologies started, I was always there. And we will continue the journey till we reach our ambitious goals.`,
-    image: "path-to-kareem-image.jpg", // Replace with the correct image path
+    image: "", 
   },
 ];
 const ContactUs = () => {

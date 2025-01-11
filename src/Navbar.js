@@ -104,28 +104,6 @@ const Navbar = () => {
                /> 
                </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexGrow: 0.5, justifyContent: 'space-around',width:'70%' }}>
-            
-             
-               {/* <Typography
-              sx={{
-                width: { xs: '60px', sm: '300px' },
-                height: { xs: '50px', sm: '16px' },
-                filter: 'grayscale(50%)',
-                transition: 'opacity 0.3s ease-in-out, transform 0.3s',
-                // cursor: 'pointer',
-                fontSize: '1rem',
-                fontWeight: 'bold',
-                transform:  'scale(1.1)',
-                transition: 'all 0.3s',
-                textTransform: 'capitalize',
-                textShadow:  '0 0 20px #00bfff',
-                opacity:' 0.2px',
-              }}
-              >
-            :::Kayan Healthcare Technologies:::
-            </Typography> */}
-            
-           
            
             <Button
               onClick={() => scrollToSection('home')} 

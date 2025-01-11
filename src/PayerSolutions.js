@@ -46,31 +46,8 @@ const PayerSolutions = () => {
    
 
   ];
-  // const headerTexts = {
-  //  'Amaan Connector': 'AMAAN - Integration Layer',
-  //   Sayan: 'Sayan - Medical Scrubber',
-  //   'Kareem Benefits': 'KAREEM Benefits - Benefit Scrubber',
-  //   Leen: 'Leen - Revenue Cycle Management',
-  // };
   
   const currentpayer = payers.find((p) => p.alt === selectedpayer);
-
-  // const handleNext = () => {
-  //   if (currentpayer) {
-  //     setDescriptionIndex((prevIndex) =>
-  //       (prevIndex + 1) % currentpayer.descriptions.length
-  //     );
-  //   }
-  // };
-  
-  // const handlePrev = () => {
-  //   if (currentpayer) {
-  //     setDescriptionIndex((prevIndex) =>
-  //       (prevIndex - 1 + currentpayer.descriptions.length) % currentpayer.descriptions.length
-  //     );
-  //   }
-  // };
-  
 
   return (
     <div id="payer-solutions">

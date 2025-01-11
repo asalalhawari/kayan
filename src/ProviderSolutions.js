@@ -53,30 +53,6 @@ const ProviderSolutions = () => {
    
 
   ];
-  // const headerTexts = {
-  //  'Amaan Integration': 'AMAAN - Integration Layer',
-  //   Bayan: 'BAYAN - Medical Scrubber',
-  //   'Kareem Benefits': 'KAREEM Benefits - Benefit Scrubber',
-  //   Sama: 'SAMA - Revenue Cycle Management',
-  // };
-  
-  // const currentProvider = providers.find((p) => p.alt === selectedProvider);
-
-  // const handleNext = () => {
-  //   if (currentProvider) {
-  //     setDescriptionIndex((prevIndex) =>
-  //       (prevIndex + 1) % currentProvider.descriptions.length
-  //     );
-  //   }
-  // };
-  
-  // const handlePrev = () => {
-  //   if (currentProvider) {
-  //     setDescriptionIndex((prevIndex) =>
-  //       (prevIndex - 1 + currentProvider.descriptions.length) % currentProvider.descriptions.length
-  //     );
-  //   }
-  // };
   
 
   return (
@@ -295,12 +271,7 @@ const ProviderSolutions = () => {
     ))}
   </Box>
 </Box>
-
-    
       </Box>
-    
-
-     
     </div>
   );
 };
