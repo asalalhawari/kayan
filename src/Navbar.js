@@ -9,8 +9,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import {Box,Typography} from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
-import kayanlogo from './img/kayanlogo_without.png'; 
+import kayanlogo from './img/kayanlogo55.png'; 
 import Solution from './Solution';
+import ContactUs from './ContactUs';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +84,7 @@ const Navbar = () => {
            backgroundColor: scrolled ? 'white' : 'rgba(108,143,153,0)',
           // transition: 'background-color 0.3s',
           paddingLeft: { md: '3%', xs: 'none' },
-          paddingTop:scrolled ?'1%':'3%'
+          paddingTop:scrolled ?'1%':'2%'
           // paddingRight: { md: '0%', xs: 'none' },
           // paddingTop: '1%',
           // boxShadow: scrolled ? '0px 4px 10px rgba(0, 191, 255, 0.5)' : 'none',
@@ -95,26 +98,24 @@ const Navbar = () => {
                  src={kayanlogo}
                  alt="Kayan Healthcare Logo"
                  sx={{ 
-                   width: { xs: '60px', sm: '90px' },
-                   height: { xs: '50px', sm: '65px' },
+                   width: { xs: '100px', sm: '162px' },
+                   height: { xs: '50px', sm: '78px' },
                    filter: 'grayscale(50%)',
                   //  transition: 'opacity 0.3s ease-in-out, transform 0.3s',
                    cursor: 'pointer',
                  }}
                /> 
                </Box>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexGrow: 0.5, justifyContent: 'space-around',width:'70%' }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' },
+           flexGrow: 0.5, justifyContent: 'space-around',width:'632.01px',height:'48px',gap:'21px' }}>
            
             <Button
-              onClick={() => scrollToSection('home')} 
+               onClick={() => scrollToSection('home')} 
               sx={{
                 color: scrolled ?'black':'white',
-                fontSize: activeSection === 'home' ? '1.6rem' : '1.3rem',
-                // fontSize: scrollScreen === 'home' ? '1.6rem' : '1.3rem',
-                //  fontWeight: scrollScreen === 'home'? 'bold' : 'normal',
-                //  transform:scrollScreen === 'home'?'scale(1.1)' : 'scale(1)',
+                fontSize: activeSection === 'home' ? '16px' : '20px',
                 fontWeight: activeSection === 'home' ? 'bold' : 'normal',
-                transform: activeSection === 'home' ? 'scale(1.2)' : 'scale(1)',
+                transform: activeSection === 'home' ? 'scale(1.3)' : 'scale(1)',
                 transition: 'all 0.3s',
                 textTransform: 'capitalize',
                 // textShadow: activeSection === 'home' ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
@@ -125,30 +126,46 @@ const Navbar = () => {
             <Button
               onClick={() => scrollToSection('about')} 
               sx={{
-                color: scrolled ?'black':'white',
+                color: scrolled ?'black':'#FFFFFF',
                 textTransform: 'capitalize',
-                fontSize: activeSection === 'about' ? '1.6rem' : '1.3rem',
+                fontSize: activeSection === 'about' ?  '16px' : '20px',
                 fontWeight: activeSection === 'about' ? 'bold' : 'normal',
                 transform: activeSection === 'about' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
                 // textShadow: activeSection === 'about' ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
               }}
             >
-              About
+              Why Kayan
             </Button>
             <Button
               onClick={handleSolutionMenuOpen}
               sx={{
-                color: scrolled ?'black':'white',
+                color: scrolled ?'black':'#FFFFFF',
                 textTransform: 'capitalize',
-                fontSize: isActive(['provider-solutions', 'payer-solutions']) ? '1.6rem' : '1.3rem',
+                fontSize: isActive(['provider-solutions', 'payer-solutions']) ? '16px' : '20px',
                 fontWeight: isActive(['provider-solutions', 'payer-solutions']) ? 'bold' : 'normal',
                 transform: isActive(['provider-solutions', 'payer-solutions']) ? 'scale(1.2)' : 'scale(1)',
                 // textShadow: isActive(['provider-solutions', 'payer-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
                 transition: 'all 0.3s',
               }}
             >
-            Solutions
+              
+            Company
+            <ArrowDropDownIcon />
+            </Button>
+            <Button
+              onClick={handleSolutionMenuOpen}
+              sx={{
+                color: scrolled ?'black':'#FFFFFF',
+                textTransform: 'capitalize',
+                fontSize: isActive(['provider-solutions', 'payer-solutions']) ?  '16px' : '20px',
+                fontWeight: isActive(['provider-solutions', 'payer-solutions']) ? 'bold' : 'normal',
+                transform: isActive(['provider-solutions', 'payer-solutions']) ? 'scale(1.2)' : 'scale(1)',
+                // textShadow: isActive(['provider-solutions', 'payer-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
+                transition: 'all 0.3s',
+              }}
+            >
+            Our Solutions<ArrowDropDownIcon />
             </Button>
 
             <Menu
@@ -157,15 +174,15 @@ const Navbar = () => {
               onClose={handleSolutionMenuClose}
               sx={{
                 '& .MuiPaper-root': {
-                  backgroundColor: scrolled ? 'white' : 'rgba(108,143,153,0.48)',
-                  color: scrolled ?'rgb(0, 0, 0 ,0.7)':'white',
+                  backgroundColor: scrolled ? 'white' : 'rgba(147, 194, 207, 0.48)',
+                  color: scrolled ?'rgb(0, 0, 0 ,0.7)':'#FFFFFF',
                 },
               }}
             >
               <MenuItem
                 onClick={() => scrollToSection('provider-solutions')}
                 sx={{
-                  fontSize: isActive(['provider-solutions']) ? '1.3rem' : '1.15rem',
+                  fontSize: isActive(['provider-solutions']) ?  '16px' : '20px',
                   fontWeight: isActive(['provider-solutions']) ? 'bold' : 'normal',
                   transform: isActive(['provider-solutions']) ? 'scale(1.1)' : 'scale(1)',
                   textShadow: isActive(['provider-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
@@ -180,7 +197,7 @@ const Navbar = () => {
               <MenuItem
                 onClick={() => scrollToSection('payer-solutions')}
                 sx={{
-                  fontSize: isActive(['payer-solutions']) ? '1.6rem' : '1.3rem',
+                  fontSize: isActive(['payer-solutions']) ?  '16px' : '20px',
                   fontWeight: isActive(['payer-solutions']) ? 'bold' : 'normal',
                   transform: isActive(['payer-solutions']) ? 'scale(1.1)' : 'scale(1)',
                   // textShadow: isActive(['payer-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
@@ -194,19 +211,58 @@ const Navbar = () => {
               </MenuItem>
             </Menu>
             <Button
+              // variant="contained"
+              onClick={() => scrollToSection('contactUs')} 
+              sx={{
+          // position: 'fixed',
+          // bottom: { xs: 80, sm: 20 },
+          // right: { xs: '20px', sm: '10px' },
+          // backgroundColor: '#4CAF50',
+          // color: 'white',
+          // borderRadius: '20px',
+          // padding: { xs: '15px 25px', sm: '14px 35px' },
+          // boxShadow: '2px 2px 10px 7px #1565c0',
+          // zIndex: 1000,
+          // fontSize: { xs: '0.8rem', sm: '1rem' },
+          // transition: 'all 0.3s',
+          // '&:hover': {
+          //   backgroundColor: '#979a9c',
+          //   boxShadow: '2px 2px 10px 7px #979a9c',
+          // },
+              color: scrolled ?'black':'#FFFFFF',
+              textTransform: 'capitalize',
+              fontSize: activeSection === 'about' ?  '16px' : '20px',
+              fontWeight: activeSection === 'about' ? 'bold' : 'normal',
+              transform: activeSection === 'about' ? 'scale(1.2)' : 'scale(1)',
+              transition: 'all 0.3s',
+                
+          }}
+      >
+        Contact Us
+      </Button>
+            <Button
+            variant="contained"
               onClick={() => scrollToSection('demo')}
               sx={{
-                color: scrolled ?'black':'white',
-                fontSize: activeSection === 'demo' ? '1.6rem' : '1.3rem',
+                color:" #2091F9",
+                fontSize: activeSection === 'demo' ?  '16px' : '20px',
                 fontWeight: activeSection === 'demo' ? 'bold' : 'normal',
                 transform: activeSection === 'demo' ? 'scale(1.1)' : 'scale(1)',
                 transition: 'all 0.3s',
                 textTransform: 'capitalize',
+                backgroundColor: "#FFFFFF",
+                padding: "10px 20px",
+                textTransform: "capitalize",
+                "&:hover": {
+                  backgroundColor: "rgba(214,222,231,0.5)",
+                },
+                // fontFamily:'Montserrat'
                 // textShadow: activeSection === 'demo' ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
               }}
             >
-              Demo
+              Request a Demo
             </Button>
+         
           </Box>
           <IconButton
             sx={{ display: { xs: 'block', sm: 'none' }, color: scrolled ? 'black' : '#eaeaea' }}
@@ -216,7 +272,7 @@ const Navbar = () => {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Button
+      {/* <Button
         variant="contained"
         onClick={() => scrollToSection('contactUs')} 
         sx={{
@@ -238,17 +294,21 @@ const Navbar = () => {
         }}
       >
         <PhoneIcon />
-      </Button>
+      </Button> */}
 
       {/* Mobile Menu */}
       <Menu anchorEl={anchorElMain} open={isMenuOpen} onClose={handleMainMenuClose}>
         <MenuItem onClick={() => scrollToSection('home')}>Home</MenuItem>
-        <MenuItem onClick={() => scrollToSection('about')}>About</MenuItem>
-         <MenuItem onClick={() => scrollToSection('provider-solutions')}>Provider Solutions</MenuItem>
-        <MenuItem onClick={() => scrollToSection('payer-solutions')}>Payer Solutions</MenuItem> 
+        <MenuItem onClick={() => scrollToSection('about')}>Why Kayan</MenuItem>
+        <MenuItem onClick={() => scrollToSection('about')}>Company</MenuItem>
+        <MenuItem onClick={() => scrollToSection('about')}>Solution</MenuItem>
+        <MenuItem onClick={() => scrollToSection('about')}>Contact Us</MenuItem>
+
+        {/* <MenuItem onClick={() => scrollToSection('provider-solutions')}>Provider Solutions</MenuItem>
+        <MenuItem onClick={() => scrollToSection('payer-solutions')}>Payer Solutions</MenuItem>  */}
                 {/* <MenuItem onClick={() => scrollToSection('solution')}>Solution</MenuItem> */}
 
-        <MenuItem onClick={() => scrollToSection('demo')}>Demo</MenuItem>
+        <MenuItem onClick={() => scrollToSection('demo')}>Request a Demo</MenuItem>
       </Menu>
     </>
   );
