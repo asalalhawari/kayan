@@ -72,7 +72,7 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(id);
-      handleSolutionMenuClose(); // إغلاق القائمة عند الضغط على خيار منها
+      handleSolutionMenuClose(); 
     }
   };
 
