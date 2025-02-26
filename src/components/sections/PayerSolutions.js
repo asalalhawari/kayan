@@ -2,13 +2,13 @@
   
 import React, { useState, useEffect } from 'react';
 import { Box, Typography,Button,IconButton, Gridو, useMediaQuery } from '@mui/material';
-import  payer from './img/payer.png';
-import AmaanConnector from './img/AmaanConnector.png';
-import Sayan from './img/Sayan.png';
-import Leen from './img/Leen.png'
+import  payer from '../../img/payer.png';
+import AmaanConnector from '../../img/AmaanConnector.png';
+import Sayan from '../../img/Sayan.png';
+import Leen from '../../img/Leen.png'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import  solution from './img/solution2.png';
+import  solution from '../../img/solution2.png';
 
 const PayerSolutions = () => {
   const [selectedpayer, setSelectedpayer] = useState('');

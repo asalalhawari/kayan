@@ -362,7 +362,7 @@
 
 import React from "react";
 import { Box, Typography, Button } from "@mui/material";
-import screen from "./img/screen1.jpeg";
+import screen from "../../img/screen1.jpeg";
 
 const Home = () => {
   const scrollToSection = (sectionId) => {
@@ -377,7 +377,7 @@ const Home = () => {
       <Box
         sx={{
           width: "100%",
-          height: "100vh",
+          height: "90vh",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -428,27 +428,30 @@ const Home = () => {
             alignItems: "flex-start",
             justifyContent: "center",
             padding: "20px",
+            marginTop:"10%"
           }}
         >
           <Typography
             variant="h2"
             sx={{
               fontSize: "2.5rem",
-              fontWeight: "bold",
-              // fontFamily: "Orbitron, sans-serif",
+              fontWeight: "700",
+               fontFamily: "monospace",
               color: " #FFFFFF",
+              letterSpacing: "-3px", 
+              lineHeight: "1", 
             }}
           >
             Your Partner in Innovation.
           </Typography>
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{
               fontSize: "2rem",
-              fontWeight: "bold",
-              // fontFamily: "Orbitron, sans-serif",
+              fontWeight: "700",
+              fontFamily: "monospace",
               color: "#FFFFFF",
-              marginTop: "10px",
+              marginTop: "10px", lineHeight: "1.1", 
             }}
           >
             Kayan’s AI
@@ -460,17 +463,20 @@ const Home = () => {
               color: "#FFFFFF",
               marginTop: "10px",
               fontWeight: "400",
+              lineHeight: "1.6", 
             }}
           >
-            We offer you the most efficient management team with proven
-            healthcare experience.
+            We offer you the most efficient  <br />
+            management team with <br />
+            proven healthcare experience.
           </Typography>
+
 
           <Button
             variant="contained"
             sx={{
-              marginTop: "20px",
-              fontSize: "1.2rem",
+              marginTop: "25px",
+              fontSize: "0.8rem",
               fontWeight: "bold",
               backgroundColor: "#FFFFFF",
               color: "#2091F9",

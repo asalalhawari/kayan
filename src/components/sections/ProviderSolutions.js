@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Box, Typography,IconButton, Gridو, useMediaQuery,Button } from '@mui/material';
-import  solution from './img/solution4.png';
-import Sama from './img/Sama.png';
-import Bayan from './img/Bayan.png';
-import KareemBenefits from './img/KareemBenefits.png'
-import AmaanIntegration from './img/AmaanIntegration.png'
+import  solution from '../../img/solution4.png';
+import Sama from '../../img/Sama.png';
+import Bayan from '../../img/Bayan.png';
+import KareemBenefits from '../../img/KareemBenefits.png'
+import AmaanIntegration from '../../img//AmaanIntegration.png'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Solution from './Solution';
+import Solution from '../../img/solution.png';
 const ProviderSolutions = () => {
   const [selectedProvider, setSelectedProvider] = useState('');
   const [descriptionIndex, setDescriptionIndex] = useState(0); 

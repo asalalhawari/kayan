@@ -41,15 +41,15 @@
 import React from 'react';
 import { CssBaseline, Container } from '@mui/material';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from './Navbar';
-import Home from './Home';
-import About from './About';
-import Solution from './Solution';
-import Demo from './Demo';
-import ProviderSolutions from './ProviderSolutions';
-import PayerSolutions from './PayerSolutions';
-import ContactUs from './ContactUs';
-import Footer from './Footer';
+import Navbar from './components/sections/Navbar';
+import Home from './components/sections/Home';
+import WhyKayan from './components/sections/WhyKayan';
+import Solution from './components/sections/Solution';
+import Demo from './components/sections/Demo';
+import ProviderSolutions from './components/sections/ProviderSolutions';
+import PayerSolutions from './components/sections/PayerSolutions';
+import ContactUs from './components/sections/ContactUs';
+import Footer from './components/sections/Footer';
 
 function App() {
   return (
@@ -60,8 +60,8 @@ function App() {
         <section id="home">
           <Home />
         </section>
-        <section id="about">
-          <About />
+        <section id="whykayan">
+          <WhyKayan />
         </section>
         {/* <section id="solution">
           <Solution />

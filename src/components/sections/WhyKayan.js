@@ -208,164 +208,188 @@
 
 // export default About;
 
-
 import React from 'react';
 import { Box, Typography, Card, CardContent } from '@mui/material';
-import screen from "./img/screen1.jpeg";
+import screen from "../../img/screen1.jpeg";
 
 const cardsData = [
   {
     title: "Creative Design",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   },
   {
     title: "Easy to Use",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   },
   {
     title: "Best User Experience",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit."
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   }
 ];
 
-const About = () => {
-
-
-
+const WhyKayan = () => {
   return (
-    <div id="about">
-      <Box
-              sx={{
-                  width: '100%',
-                  minHeight: '100vh',
-                  display: 'flex',
-                  position: 'relative',
-                  flexDirection: 'column',
-
-              }}
-            >
+    <div id="whykayan">
       <Box
         sx={{
           width: '100%',
-          textAlign: 'center',
-          // padding: '50px',
-          marginTop:"10%",
-          
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: 'bold',
-            color:"#458FF6",
-            fontFamily: 'Orbitron, sans-serif'
-          }}
-        >
-          Why Kayan
-        </Typography>
-
-        <Typography
-          variant="body1"
-          sx={{
-            fontSize: '0.7rem',
-            color: 'black',
-            marginTop: '10px',
-            lineHeight: '1.4',
-            maxWidth: '40%',
-            marginX: 'auto' 
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
-          Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. 
-          Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-        </Typography>
-      </Box>
-
-      <Box
-        sx={{
+          minHeight: '100vh',
           display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          // gap: '2%',
-          padding: '20px',
-          width: '100%',
+          position: 'relative',
+          flexDirection: 'column',
+          backgroundColor: "#FFFFFF", 
         }}
       >
-        
+
         <Box
           sx={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            // marginTop:"9%"
-            flexDirection: "column", 
-
+            position: "absolute",
+            top: "-1px",
+            left: 0,
+            width: "100%",
+            height: "220px",
+            overflow: "hidden",
           }}
         >
-          <img
-            src={screen}
-            alt="Screen"
+          <svg
+            viewBox="0 0 1440 320"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
             style={{
-              width: "70%",
-              maxWidth: "600px",
-              height: "380px",
-              borderRadius: "10px",
-              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
             }}
-          />
-          <Box
-    sx={{
-      width: "90%",
-      maxWidth: "620px",
-      height: "6px", 
-      backgroundColor: "#D8D8D8", 
-      // marginTop: "10px", 
-      borderRadius: "2px", 
-    }}
-  />
+          >
+            <defs>
+              <linearGradient id="waveGradient" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="rgb(24, 93, 179)" />
+                <stop offset="100%" stopColor="rgb(87, 174, 255)" />
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#waveGradient)"
+              d="M0,224L80,202.7C160,181,320,139,480,149.3C640,160,800,224,960,245.3C1120,267,1280,245,1360,234.7L1440,224V0H0Z"
+            />
+          </svg>
         </Box>
-        <Box sx={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-          {cardsData.map((card, index) => (
-            <Card
-              key={index}
-              sx={{
-                backgroundColor: 'white',
-                boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
-                borderRadius: '8px',
-                padding: '10px',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
-                }
+
+        <Box
+          sx={{
+            width: '100%',
+            textAlign: 'center',
+            marginTop: "150px", 
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: '700',
+              color:"#458FF6",
+              fontFamily: 'monospace'
+            }}
+          >
+            Why Kayan
+          </Typography>
+
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: '0.9rem',
+              color: 'black',
+              fontFamily: 'monospace',
+              marginTop: '10px',
+              lineHeight: '1.4',
+              maxWidth: '50%',
+              marginX: 'auto' 
+            }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: '40px',
+            width: '100%',
+          }}
+        >
+          
+          <Box
+            sx={{
+              flex: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column", 
+            }}
+          >
+            <img
+              src={screen}
+              alt="Screen"
+              style={{
+                width: "70%",
+                maxWidth: "600px",
+                height: "380px",
+                borderRadius: "10px",
+                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
               }}
-            >
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontFamily: 'Orbitron, sans-serif',
-                    color: ' #232233',
-                    fontWeight: 'bold',
-                    marginBottom: '7px'
-                  }}
-                >
-                  {card.title}
-                </Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight: '1.3' }}>
-                  {card.description}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
+            />
+            <Box
+              sx={{
+                width: "90%",
+                maxWidth: "620px",
+                height: "6px", 
+                backgroundColor: "#D8D8D8", 
+                borderRadius: "2px", 
+              }}
+            />
+          </Box>
+
+          <Box sx={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            {cardsData.map((card, index) => (
+              <Card
+                key={index}
+                sx={{
+                  backgroundColor: 'white',
+                  boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
+                  borderRadius: '8px',
+                  padding: '10px',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
+                  }
+                }}
+              >
+                <CardContent>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontFamily: 'Orbitron, sans-serif',
+                      color: ' #232233',
+                      fontWeight: 'bold',
+                      marginBottom: '7px'
+                    }}
+                  >
+                    {card.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight: '1.3' }}>
+                    {card.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+
         </Box>
 
       </Box>
-            </Box>
-     
     </div>
   );
 };
 
-export default About;
+export default WhyKayan;
