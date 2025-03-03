@@ -374,6 +374,7 @@ const Home = () => {
 
   return (
     <div id="home">
+      
       <Box
         sx={{
           width: "100%",
@@ -403,7 +404,7 @@ const Home = () => {
             alt="Screen"
             style={{
               width: "100%",
-              maxWidth: "550px",
+              maxWidth: "600px",
               height: "auto",
               borderRadius: "10px",
               boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
@@ -411,8 +412,8 @@ const Home = () => {
           />
            <Box
               sx={{
-                width: "85%", 
-                maxWidth: "600px",
+                width: "95%", 
+                maxWidth: "630px",
                 height: "8px", 
                 backgroundColor: "#D8D8D8", 
                 borderRadius: "2px", 
@@ -432,9 +433,9 @@ const Home = () => {
           }}
         >
           <Typography
-            variant="h2"
+            variant="h"
             sx={{
-              fontSize: "2.5rem",
+              fontSize: "2.8rem",
               fontWeight: "700",
                fontFamily: "monospace",
               color: " #FFFFFF",
@@ -447,7 +448,7 @@ const Home = () => {
           <Typography
             variant="h2"
             sx={{
-              fontSize: "2rem",
+              fontSize: "2.7rem",
               fontWeight: "700",
               fontFamily: "monospace",
               color: "#FFFFFF",
@@ -459,16 +460,16 @@ const Home = () => {
           <Typography
             variant="body1"
             sx={{
-              fontSize: "1.2rem",
+              fontSize: "1.6rem",
               color: "#FFFFFF",
               marginTop: "10px",
               fontWeight: "400",
               lineHeight: "1.6", 
             }}
           >
-            We offer you the most efficient  <br />
-            management team with <br />
-            proven healthcare experience.
+            We offer you the most efficient management <br />
+             team with proven healthcare   experience. <br />
+          
           </Typography>
 
 
@@ -476,11 +477,11 @@ const Home = () => {
             variant="contained"
             sx={{
               marginTop: "25px",
-              fontSize: "0.8rem",
+              fontSize: "0.9rem",
               fontWeight: "bold",
               backgroundColor: "#FFFFFF",
               color: "#2091F9",
-              padding: "10px 20px",
+              padding: "12px 20px",
               textTransform: "capitalize",
               "&:hover": {
                 backgroundColor: "rgba(214,222,231,0.5)",
@@ -492,6 +493,8 @@ const Home = () => {
           </Button>
         </Box>
       </Box>
+      
+      
     </div>
   );
 };

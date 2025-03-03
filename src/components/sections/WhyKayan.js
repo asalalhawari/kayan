@@ -211,19 +211,21 @@
 import React from 'react';
 import { Box, Typography, Card, CardContent } from '@mui/material';
 import screen from "../../img/screen1.jpeg";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'; 
 
 const cardsData = [
   {
     title: "Creative Design",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
+
   },
   {
     title: "Easy to Use",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
   },
   {
     title: "Best User Experience",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
   }
 ];
 
@@ -247,10 +249,28 @@ const WhyKayan = () => {
             top: "-1px",
             left: 0,
             width: "100%",
-            height: "220px",
+            height: "210px", 
             overflow: "hidden",
           }}
         >
+            <svg
+            viewBox="0 0 1440 320"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: "20px", 
+              // opacity: "0.5", 
+            }}
+          >
+            <path
+              fill="#D8D8D8"
+              d="M0,224L80,202.7C160,181,320,139,480,149.3C640,160,800,224,960,245.3C1120,267,1280,245,1360,234.7L1440,224V0H0Z"
+            />
+          </svg>
+
           <svg
             viewBox="0 0 1440 320"
             xmlns="http://www.w3.org/2000/svg"
@@ -272,13 +292,16 @@ const WhyKayan = () => {
               d="M0,224L80,202.7C160,181,320,139,480,149.3C640,160,800,224,960,245.3C1120,267,1280,245,1360,234.7L1440,224V0H0Z"
             />
           </svg>
+
+        
         </Box>
+
 
         <Box
           sx={{
             width: '100%',
             textAlign: 'center',
-            marginTop: "150px", 
+            marginTop: "170px", 
           }}
         >
           <Typography
@@ -297,7 +320,7 @@ const WhyKayan = () => {
             sx={{
               fontSize: '0.9rem',
               color: 'black',
-              fontFamily: 'monospace',
+              // fontFamily: 'monospace',
               marginTop: '10px',
               lineHeight: '1.4',
               maxWidth: '50%',
@@ -305,6 +328,8 @@ const WhyKayan = () => {
             }}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
+            <br /> ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
+
           </Typography>
         </Box>
 
@@ -327,22 +352,22 @@ const WhyKayan = () => {
               flexDirection: "column", 
             }}
           >
-            <img
-              src={screen}
-              alt="Screen"
-              style={{
-                width: "70%",
-                maxWidth: "600px",
-                height: "380px",
-                borderRadius: "10px",
-                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-              }}
-            />
-            <Box
+        <img
+            src={screen}
+            alt="Screen"
+            style={{
+              width: "100%",
+              maxWidth: "600px",
+              height: "390px",
+              borderRadius: "10px",
+              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+            }}
+          />
+           <Box
               sx={{
-                width: "90%",
-                maxWidth: "620px",
-                height: "6px", 
+                width: "95%", 
+                maxWidth: "630px",
+                height: "10px", 
                 backgroundColor: "#D8D8D8", 
                 borderRadius: "2px", 
               }}
@@ -365,18 +390,24 @@ const WhyKayan = () => {
                   }
                 }}
               >
+
                 <CardContent>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontFamily: 'Orbitron, sans-serif',
-                      color: ' #232233',
-                      fontWeight: 'bold',
-                      marginBottom: '7px'
-                    }}
-                  >
-                    {card.title}
-                  </Typography>
+                  <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <CheckCircleIcon sx={{ color: "#458FF6", fontSize: "20px" }} />
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        color: ' #232233',
+                        fontWeight: "700",
+                        fontFamily: "monospace",
+                        fontSize: '1.1rem',
+                        textTransform: "uppercase", 
+                        letterSpacing: "-1px",
+                      }}
+                    >
+                      {card.title}
+                    </Typography>
+                  </Box>
                   <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight: '1.3' }}>
                     {card.description}
                   </Typography>
