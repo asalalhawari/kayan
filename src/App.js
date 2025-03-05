@@ -50,7 +50,7 @@ import ProviderSolutions from './components/sections/ProviderSolutions';
 import PayerSolutions from './components/sections/PayerSolutions';
 import ContactUs from './components/sections/ContactUs';
 import Footer from './components/sections/Footer';
-
+import HowItWork from './components/sections/HowItWork';
 function App() {
   return (
     <Router>
@@ -62,6 +62,9 @@ function App() {
         </section>
         <section id="whykayan">
           <WhyKayan />
+        </section>
+        <section id="how-it-works">
+          <HowItWork/>
         </section>
         {/* <section id="solution">
           <Solution />
