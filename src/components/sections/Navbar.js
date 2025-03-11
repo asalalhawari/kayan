@@ -55,7 +55,7 @@ const Navbar = () => {
   };
 
   const handleSectionChange = () => {
-    const sections = ['home', 'whykayan', 'provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients'];
+    const sections = ['home', 'whykayan', 'solution','provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients'];
     sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
@@ -97,8 +97,8 @@ const Navbar = () => {
               src={kayanlogo}
               alt="Kayan Healthcare Logo"
               sx={{ 
-                width: { xs: '80px', sm: '162px' }, 
-                height: { xs: '40px', sm: '78px' }, 
+                width: { xs: '80px', sm: '155px' }, 
+                height: { xs: '40px', sm: '70px' }, 
                 filter: 'grayscale(50%)',
                 cursor: 'pointer',
                 ml: { xs: 0 }
@@ -110,7 +110,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('home')} 
               sx={{
                 color: scrolled ? 'black' : 'white',
-                fontSize: activeSection === 'home' ? '18px' : '16px',
+                fontSize: activeSection === 'home' ? '17px' : '15px',
                 fontWeight: activeSection === 'home' ? 'bold' : 'normal',
                 transform: activeSection === 'home' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
@@ -123,7 +123,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('whykayan')} 
               sx={{
                 color: scrolled ? 'black' : 'white',
-                fontSize: activeSection === 'whykayan' ? '18px' : '16px',
+                fontSize: activeSection === 'whykayan' ? '17px' : '15px',
                 fontWeight: activeSection === 'whykayan' ? 'bold' : 'normal',
                 transform: activeSection === 'whykayan' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
@@ -131,8 +131,20 @@ const Navbar = () => {
               }}>
               Why Kayan
             </Button>
-
             <Button 
+             
+             onClick={() => scrollToSection('solution')} 
+              sx={{
+                color: scrolled ? 'black' : 'white',
+                fontSize: isActive(['solution']) ? '17px' : '15px',
+                fontWeight: isActive(['solution']) ? 'bold' : 'normal',
+                transform: isActive(['solution']) ? 'scale(1.2)' : 'scale(1)',
+                transition: 'all 0.3s',
+                textTransform: 'capitalize'
+              }}>
+              Our Solutions 
+            </Button>
+            {/* <Button 
               onClick={handleSolutionMenuOpen} 
               sx={{
                 color: scrolled ? 'black' : 'white',
@@ -143,9 +155,9 @@ const Navbar = () => {
                 textTransform: 'capitalize'
               }}>
               Our Solutions <ArrowDropDownIcon />
-            </Button>
+            </Button> */}
 
-            <Menu anchorEl={anchorElSolution} open={Boolean(anchorElSolution)} onClose={handleSolutionMenuClose}>
+            {/* <Menu anchorEl={anchorElSolution} open={Boolean(anchorElSolution)} onClose={handleSolutionMenuClose}>
             <MenuItem
                 onClick={() => scrollToSection('provider-solutions')}
                 sx={{
@@ -176,14 +188,14 @@ const Navbar = () => {
               >
                 Payer Solutions
               </MenuItem>
-            </Menu>
+            </Menu> */}
 
             <Button onClick={handleCompanyMenuOpen} 
             sx={{ 
               textTransform: 'capitalize', 
               color: scrolled ?'black':'#FFFFFF',
                 textTransform: 'capitalize',
-                fontSize: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? '16px' : '20px',
+                fontSize: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? '17px' : '15px',
                 fontWeight: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? 'bold' : 'normal',
                 transform: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
@@ -202,7 +214,7 @@ const Navbar = () => {
               onClick={() => scrollToSection('contactUs')} 
               sx={{
                 color: scrolled ? 'black' : 'white',
-                fontSize: activeSection === 'ContactUs' ? '18px' : '16px',
+                fontSize: activeSection === 'ContactUs' ? '17px' : '15px',
                 fontWeight: activeSection === 'ContactUs' ? 'bold' : 'normal',
                 transform: activeSection === 'ContactUs' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
@@ -217,7 +229,7 @@ const Navbar = () => {
               sx={{
                 color: "#2091F9",
                 backgroundColor: "#FFFFFF",
-                fontSize: activeSection === 'demo' ? '18px' : '16px',
+                fontSize: activeSection === 'demo' ? '17px' : '15px',
                 fontWeight: activeSection === 'demo' ? 'bold' : 'normal',
                 transform: activeSection === 'demo' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',

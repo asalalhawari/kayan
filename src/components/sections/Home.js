@@ -360,11 +360,155 @@
 // export default Home;
 
 
+// import React from "react";
+// import { Box, Typography, Button } from "@mui/material";
+// import screen from "../../img/screen1.jpeg";
+
+// const Home = () => {
+//   const scrollToSection = (sectionId) => {
+//     const section = document.getElementById(sectionId);
+//     if (section) {
+//       section.scrollIntoView({ behavior: "smooth" });
+//     }
+//   };
+
+//   return (
+//     <div id="home">
+      
+//       <Box
+//         sx={{
+//           width: "100%",
+//           height: "90vh",
+//           display: "flex",
+//           alignItems: "center",
+//           justifyContent: "center",
+//           background: "linear-gradient(to left bottom, #00152E, #2091F9)",
+//           padding: "20px",
+//           gap: "2rem",
+//           position: "relative",
+//         }}
+//       >
+//         <Box
+//           sx={{
+//             flex: 1,
+//             display: "flex",
+//             justifyContent: "center",
+//             alignItems: "center",
+//             marginTop:"10%",
+//             flexDirection: "column", 
+
+//           }}
+//         >
+//           <img
+//             src={screen}
+//             alt="Screen"
+//             style={{
+//               width: "100%",
+//               maxWidth: "600px",
+//               height: "auto",
+//               borderRadius: "10px",
+//               boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+//             }}
+//           />
+//            <Box
+//               sx={{
+//                 width: "95%", 
+//                 maxWidth: "630px",
+//                 height: "8px", 
+//                 backgroundColor: "#D8D8D8", 
+//                 borderRadius: "2px", 
+//               }}
+//             />
+//         </Box>
+
+//         <Box
+//           sx={{
+//             flex: 1,
+//             display: "flex",
+//             flexDirection: "column",
+//             alignItems: "flex-start",
+//             justifyContent: "center",
+//             padding: "20px",
+//             marginTop:"10%"
+//           }}
+//         >
+//           <Typography
+//             variant="h"
+//             sx={{
+//               fontSize: "2.8rem",
+//               fontWeight: "700",
+//                fontFamily: "monospace",
+//               color: " #FFFFFF",
+//               letterSpacing: "-3px", 
+//               lineHeight: "1", 
+//             }}
+//           >
+//             Your Partner in Innovation.
+//           </Typography>
+//           <Typography
+//             variant="h2"
+//             sx={{
+//               fontSize: "2.7rem",
+//               fontWeight: "700",
+//               fontFamily: "monospace",
+//               color: "#FFFFFF",
+//               marginTop: "10px", lineHeight: "1.1", 
+//             }}
+//           >
+//             Kayan’s AI
+//           </Typography>
+//           <Typography
+//             variant="body1"
+//             sx={{
+//               fontSize: "1.6rem",
+//               color: "#FFFFFF",
+//               marginTop: "10px",
+//               fontWeight: "400",
+//               lineHeight: "1.6", 
+//             }}
+//           >
+//             We offer you the most efficient management <br />
+//              team with proven healthcare   experience. <br />
+          
+//           </Typography>
+
+
+//           <Button
+//             variant="contained"
+//             sx={{
+//               marginTop: "25px",
+//               fontSize: "0.9rem",
+//               fontWeight: "bold",
+//               backgroundColor: "#FFFFFF",
+//               color: "#2091F9",
+//               padding: "12px 20px",
+//               textTransform: "capitalize",
+//               "&:hover": {
+//                 backgroundColor: "rgba(214,222,231,0.5)",
+//               },
+//             }}
+//             onClick={() => scrollToSection("demo")}
+//           >
+//             Request a Demo
+//           </Button>
+//         </Box>
+//       </Box>
+      
+      
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, useMediaQuery } from "@mui/material";
 import screen from "../../img/screen1.jpeg";
 
 const Home = () => {
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
+
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -374,29 +518,29 @@ const Home = () => {
 
   return (
     <div id="home">
-      
       <Box
         sx={{
           width: "100%",
-          height: "90vh",
+          height: isSmallScreen ? "auto" : "90vh",
           display: "flex",
+          flexDirection: isSmallScreen ? "column" : "row",
           alignItems: "center",
           justifyContent: "center",
           background: "linear-gradient(to left bottom, #00152E, #2091F9)",
-          padding: "20px",
-          gap: "2rem",
+          padding: isSmallScreen ? "35px 10px" : "55px 45px",
+          gap: isSmallScreen ? "1rem" : "2rem",
           position: "relative",
         }}
       >
+        {/* Image Section */}
         <Box
           sx={{
             flex: 1,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginTop:"10%",
-            flexDirection: "column", 
-
+            marginTop: isSmallScreen ? "20px" : "10%",
+            flexDirection: "column",
           }}
         >
           <img
@@ -404,43 +548,46 @@ const Home = () => {
             alt="Screen"
             style={{
               width: "100%",
-              maxWidth: "600px",
+              maxWidth: isSmallScreen ? "300px":"520px",
               height: "auto",
               borderRadius: "10px",
               boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
             }}
           />
-           <Box
-              sx={{
-                width: "95%", 
-                maxWidth: "630px",
-                height: "8px", 
-                backgroundColor: "#D8D8D8", 
-                borderRadius: "2px", 
-              }}
-            />
+          <Box
+            sx={{
+              width: isSmallScreen ? "100%":"88%",
+              maxWidth: "630px",
+              height: "8px",
+              backgroundColor: "#D8D8D8",
+              borderRadius: "2px",
+              marginTop: "0px",
+            }}
+          />
         </Box>
 
+        {/* Text Section */}
         <Box
           sx={{
             flex: 1,
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: isSmallScreen ? "center" : "flex-start",
             justifyContent: "center",
-            padding: "20px",
-            marginTop:"10%"
+            padding: isSmallScreen ? "0px" : "20px",
+            marginTop: isSmallScreen ? "10px" : "10%",
+            textAlign: isSmallScreen ? "center" : "left",
           }}
         >
           <Typography
-            variant="h"
+            variant="h1"
             sx={{
-              fontSize: "2.8rem",
+              fontSize: isSmallScreen ? "1.8rem" : "2.2rem",
               fontWeight: "700",
-               fontFamily: "monospace",
-              color: " #FFFFFF",
-              letterSpacing: "-3px", 
-              lineHeight: "1", 
+              fontFamily: "monospace",
+              color: "#FFFFFF",
+              letterSpacing:isSmallScreen ?"-2px": "-3px",
+              lineHeight:isSmallScreen ?"0.9": "0.5",
             }}
           >
             Your Partner in Innovation.
@@ -448,11 +595,12 @@ const Home = () => {
           <Typography
             variant="h2"
             sx={{
-              fontSize: "2.7rem",
+              fontSize: isSmallScreen ? "1.7rem" : "2.1rem",
               fontWeight: "700",
               fontFamily: "monospace",
               color: "#FFFFFF",
-              marginTop: "10px", lineHeight: "1.1", 
+              marginTop: "10px",
+              lineHeight: "1.1",
             }}
           >
             Kayan’s AI
@@ -460,24 +608,23 @@ const Home = () => {
           <Typography
             variant="body1"
             sx={{
-              fontSize: "1.6rem",
+              fontSize: isSmallScreen ? "1rem" : "1.2rem",
               color: "#FFFFFF",
-              marginTop: "10px",
+              marginTop: "20px",
               fontWeight: "400",
-              lineHeight: "1.6", 
+              lineHeight: "1.2",
             }}
           >
             We offer you the most efficient management <br />
-             team with proven healthcare   experience. <br />
-          
+            team with proven healthcare experience.
           </Typography>
 
-
+          {/* Button */}
           <Button
             variant="contained"
             sx={{
               marginTop: "25px",
-              fontSize: "0.9rem",
+              fontSize: isSmallScreen ? "0.8rem" : "0.9rem",
               fontWeight: "bold",
               backgroundColor: "#FFFFFF",
               color: "#2091F9",
@@ -493,14 +640,11 @@ const Home = () => {
           </Button>
         </Box>
       </Box>
-      
-      
     </div>
   );
 };
 
 export default Home;
-
   
  
   

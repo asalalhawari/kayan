@@ -208,28 +208,30 @@
 
 // export default About;
 
+
 import React from 'react';
-import { Box, Typography, Card, CardContent } from '@mui/material';
+import { Box, Typography, Card, CardContent, useMediaQuery } from '@mui/material';
 import screen from "../../img/screen1.jpeg";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle'; 
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 const cardsData = [
   {
     title: "Creative Design",
-    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
-
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae."
   },
   {
     title: "Easy to Use",
-    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae."
   },
   {
     title: "Best User Experience",
-    description: " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. "
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae."
   }
 ];
 
 const WhyKayan = () => {
+  const isSmallScreen = useMediaQuery('(max-width:600px)');
+
   return (
     <div id="whykayan">
       <Box
@@ -239,21 +241,20 @@ const WhyKayan = () => {
           display: 'flex',
           position: 'relative',
           flexDirection: 'column',
-          backgroundColor: "#FFFFFF", 
+          backgroundColor: "#FFFFFF",
         }}
       >
-
         <Box
           sx={{
             position: "absolute",
             top: "-1px",
             left: 0,
             width: "100%",
-            height: "210px", 
+            height: isSmallScreen ? "150px" : "210px",
             overflow: "hidden",
           }}
         >
-            <svg
+          <svg
             viewBox="0 0 1440 320"
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -261,8 +262,7 @@ const WhyKayan = () => {
               position: "absolute",
               width: "100%",
               height: "100%",
-              top: "20px", 
-              // opacity: "0.5", 
+              top: "20px",
             }}
           >
             <path
@@ -292,24 +292,23 @@ const WhyKayan = () => {
               d="M0,224L80,202.7C160,181,320,139,480,149.3C640,160,800,224,960,245.3C1120,267,1280,245,1360,234.7L1440,224V0H0Z"
             />
           </svg>
-
-        
         </Box>
-
 
         <Box
           sx={{
             width: '100%',
             textAlign: 'center',
-            marginTop: "170px", 
+            marginTop: isSmallScreen ? "125px" : "170px",
+            justifyContent: "center"
           }}
         >
           <Typography
             variant="h4"
             sx={{
               fontWeight: '700',
-              color:"#458FF6",
-              fontFamily: 'monospace'
+              color: "#458FF6",
+              fontFamily: 'monospace',
+              fontSize: isSmallScreen ? "1.5rem" : "2rem",
             }}
           >
             Why Kayan
@@ -318,63 +317,63 @@ const WhyKayan = () => {
           <Typography
             variant="body1"
             sx={{
-              fontSize: '0.9rem',
+              fontSize: isSmallScreen ? '0.7rem' : '0.8rem',
               color: 'black',
-              // fontFamily: 'monospace',
-              marginTop: '10px',
+              marginTop: isSmallScreen ?'20px':'10px',
               lineHeight: '1.4',
-              maxWidth: '50%',
-              marginX: 'auto' 
+              maxWidth: isSmallScreen ? '90%' : '50%',
+              marginX: 'auto',
             }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
-            <br /> ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. 
-
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
+            <br /> ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
           </Typography>
         </Box>
 
         <Box
           sx={{
             display: 'flex',
+            flexDirection: isSmallScreen ? 'column' : 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '40px',
+            padding: isSmallScreen ? '20px' : '15px',
             width: '100%',
+            gap: isSmallScreen ? '20px' : '40px',
           }}
         >
-          
           <Box
             sx={{
               flex: 1,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "column", 
+              flexDirection: "column",
             }}
           >
-        <img
-            src={screen}
-            alt="Screen"
-            style={{
-              width: "100%",
-              maxWidth: "600px",
-              height: "390px",
-              borderRadius: "10px",
-              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-            }}
-          />
-           <Box
+            <img
+              src={screen}
+              alt="Screen"
+              style={{
+                width: "100%",
+                maxWidth: "570px",
+                height: isSmallScreen ? "200px" : "330px",
+                borderRadius: "10px",
+                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+              }}
+            />
+            <Box
               sx={{
-                width: "95%", 
+                width: "95%",
                 maxWidth: "630px",
-                height: "10px", 
-                backgroundColor: "#D8D8D8", 
-                borderRadius: "2px", 
+                height: "10px",
+                backgroundColor: "#D8D8D8",
+                borderRadius: "2px",
+                marginTop: isSmallScreen ? "10px" : "0",
               }}
             />
           </Box>
 
-          <Box sx={{ width: '40%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <Box sx={{ width: isSmallScreen ? '90%' : '40%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {cardsData.map((card, index) => (
               <Card
                 key={index}
@@ -382,7 +381,7 @@ const WhyKayan = () => {
                   backgroundColor: 'white',
                   boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
                   borderRadius: '8px',
-                  padding: '10px',
+                  padding: '4px',
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   '&:hover': {
                     transform: 'scale(1.05)',
@@ -390,7 +389,6 @@ const WhyKayan = () => {
                   }
                 }}
               >
-
                 <CardContent>
                   <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     <CheckCircleIcon sx={{ color: "#458FF6", fontSize: "20px" }} />
@@ -400,24 +398,22 @@ const WhyKayan = () => {
                         color: ' #232233',
                         fontWeight: "700",
                         fontFamily: "monospace",
-                        fontSize: '1.1rem',
-                        textTransform: "uppercase", 
+                        fontSize: isSmallScreen ? '0.9rem' : '1.1rem',
+                        textTransform: "uppercase",
                         letterSpacing: "-1px",
                       }}
                     >
                       {card.title}
                     </Typography>
                   </Box>
-                  <Typography variant="body2" sx={{ fontSize: '0.8rem', lineHeight: '1.3' }}>
+                  <Typography variant="body2" sx={{ fontSize: isSmallScreen ? '0.7rem' : '0.8rem', lineHeight: '1.3' }}>
                     {card.description}
                   </Typography>
                 </CardContent>
               </Card>
             ))}
           </Box>
-
         </Box>
-
       </Box>
     </div>
   );

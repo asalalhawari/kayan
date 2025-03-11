@@ -44,13 +44,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Navbar from './components/sections/Navbar';
 import Home from './components/sections/Home';
 import WhyKayan from './components/sections/WhyKayan';
-import Solution from './components/sections/Solution';
 import Demo from './components/sections/Demo';
 import ProviderSolutions from './components/sections/ProviderSolutions';
 import PayerSolutions from './components/sections/PayerSolutions';
 import ContactUs from './components/sections/ContactUs';
 import Footer from './components/sections/Footer';
 import HowItWork from './components/sections/HowItWork';
+import Solutions from './components/sections/Solutions';
 function App() {
   return (
     <Router>
@@ -66,18 +66,18 @@ function App() {
         <section id="how-it-works">
           <HowItWork/>
         </section>
-        {/* <section id="solution">
-          <Solution />
-        </section> */}
-        <section id="provider-solutions">
+      <section id="solution">
+          <Solutions />
+        </section> 
+        {/* <section id="provider-solutions">
           <ProviderSolutions />
         </section>
         <section id="payer-solutions">
           <PayerSolutions />
-        </section>
-        <section id="demo">
+        </section> */}
+        {/* <section id="demo">
           <Demo />
-        </section>
+        </section> */}
         
         <section id="contactUs">
           <ContactUs />
