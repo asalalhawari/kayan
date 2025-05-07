@@ -1,73 +1,90 @@
-
-import React from 'react';
-import { Box, Typography, Link,IconButton, Container, useMediaQuery,Stack, useTheme, Card, CardContent } from '@mui/material';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import React from "react";
+import { Grid, Typography, Select, MenuItem, Box, IconButton } from "@mui/material";
+import { Facebook, Twitter, LinkedIn } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
+import kayanlogo from '../../img/kayanlogo55.png'; 
 
 const Footer = () => {
-    const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const { t, i18n } = useTranslation();
 
+  const changeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+  const navigateToHome = () => {
+    window.location.href = "/"; 
+  };
   return (
-    <Box
-      sx={{
-        //  position: 'fixed',
-        bottom: 0,
-        width: '100%',
-        // backgroundColor: 'rgba(29,55,81,0.85)',
-        color: 'black',
-        padding: { xs: '10px', sm: '20px' }, 
-        boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.2)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        zIndex: 1000,
-        overflow: 'hidden'
-      }}
-    >
-          <Container
-        sx={{
-          padding: { xs: '10px', sm: '10px' }, 
-          display: 'flex',
-          maxWidth: '100%', 
-        //   flexDirection: { xs: 'column', md: 'row' },
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        }}
-      >
-      
-      <Box sx={{  marginBottom: { xs: '10px', md: '0' } }}>
-        <Typography variant="h6" sx={{ fontSize: { xs: '10px', sm: '13px' } }}>Main Office</Typography>
-        <Typography sx={{ fontSize: { xs: '7px', sm: '12px' } }}>
-          <LocationOnIcon sx={{ fontSize: { xs: '7px', sm: '25px' },padding:'5px' }} /> 
-           REALOGICS STAR REAL ESTATE L.L.C Y Z BUILDING, Off 323, 3 rd floor floor, Alquoz 3 
-        </Typography>
-        <Typography sx={{ fontSize: { xs: '7px', sm: '12px' } }}>
-          <PhoneIcon sx={{ fontSize: { xs: '10px', sm: '18px' } }}  /> +971561207460
-        </Typography>
-      </Box>
+    <Box sx={{ backgroundColor: "#f8f9fa", p:4, mt: 3,overflowX:"hidden" }}>
+      <Grid container spacing={3} justifyContent="space-between" alignItems="center">
+        <Grid item xs={12} md={3}>
+        <Box
+              component="img"
+              src={kayanlogo}
+              alt="Kayan Healthcare Logo"
+              onClick={navigateToHome} 
+              sx={{ 
+                width: { xs: '80px', sm: '100px' }, 
+                height: { xs: '40px', sm: '50px' }, 
+                filter: 'grayscale(50%)',
+                cursor: 'pointer',
+                ml: { xs: 0 }
+              }}
+            />
+          <Typography variant="body2" color="textSecondary">
+            {t("company")}
+          </Typography>
+          <Typography variant="caption" display="block" color="textSecondary" sx={{ mt: 1 }}>
+            © Kayan Theme 2020
+          </Typography>
+        </Grid>
 
-       <Box sx={{  marginBottom: { xs: '10px', md: '0' } }}>
-       <Typography variant="h6" sx={{ fontSize: { xs: '10px', sm: '13px' } }}>Contact Number</Typography>
+        <Grid item xs={12} md={6} container spacing={3}>
+          <Grid item xs={4}>
+            <Typography variant="subtitle1" color="primary" fontWeight="bold">
+              {t("company")}
+            </Typography>
+            <Typography variant="body2">Donec dignissim</Typography>
+            <Typography variant="body2">Curabitur egestas</Typography>
+            <Typography variant="body2">Nam posuere</Typography>
+            <Typography variant="body2">Aenean facilisis</Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography variant="subtitle1" color="primary" fontWeight="bold">
+              {t("services")}
+            </Typography>
+            <Typography variant="body2">Cras convallis</Typography>
+            <Typography variant="body2">Vestibulum faucibus</Typography>
+            <Typography variant="body2">Quisque lacinia purus</Typography>
+            <Typography variant="body2">Aliquam nec ex</Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography variant="subtitle1" color="primary" fontWeight="bold">
+              {t("resources")}
+            </Typography>
+            <Typography variant="body2">Suspendisse porttitor</Typography>
+            <Typography variant="body2">Nam posuere</Typography>
+            <Typography variant="body2">Curabitur egestas</Typography>
+          </Grid>
+        </Grid>
 
-        <Typography sx={{ fontSize: { xs: '7px', sm: '12px' } }}>
-          <PhoneIcon sx={{ fontSize: { xs: '10px', sm: '18px' } }}  /> +971561207460
-        </Typography>
-      </Box> 
-
-<Box sx={{  marginBottom: { xs: '10px', md: '0' } }}>
-<Typography variant="h6" sx={{ fontSize: { xs: '9px', sm: '13px' } }}>Follow Us</Typography>
-        <Link 
-          href="https://www.linkedin.com/company/kayan-healthcare-technologies/mycompany/"
-          target="_blank" rel="noopener"
-        >
-          <IconButton sx={{ color:'#4CAF50' }}>
-            <LinkedInIcon sx={{ fontSize: { xs: '15px', sm: '27px' } }} />
-          </IconButton>
-        </Link>
-      </Box>
-      </Container>
+        <Grid item xs={12} md={3} textAlign={{ xs: "center", md: "right" }}>
+          <Box>
+            <IconButton color="primary">
+              <Facebook />
+            </IconButton>
+            <IconButton color="primary">
+              <Twitter />
+            </IconButton>
+            <IconButton color="primary">
+              <LinkedIn />
+            </IconButton>
+          </Box>
+          <Select value={i18n.language} onChange={changeLanguage} size="small" sx={{ mt: 2 }}>
+            <MenuItem value="en">English - En</MenuItem>
+            <MenuItem value="ar">العربية - Ar</MenuItem>
+          </Select>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

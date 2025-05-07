@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,14 +10,15 @@ import IconButton from '@mui/material/IconButton';
 import { Box } from '@mui/material';
 import kayanlogo from '../../img/kayanlogo55.png'; 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [anchorElSolution, setAnchorElSolution] = useState(null);
+  const [anchorElCompany, setAnchorElCompany] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
   const [anchorElMain, setAnchorElMain] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [anchorElCompany, setAnchorElCompany] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,11 +36,12 @@ const Navbar = () => {
   const handleSolutionMenuClose = () => {
     setAnchorElSolution(null);
   };
+
   const handleCompanyMenuOpen = (event) => {
     setAnchorElCompany(event.currentTarget);
   };
-  const handleMenuClose = () => {
-    setAnchorElSolution(null);
+
+  const handleCompanyMenuClose = () => {
     setAnchorElCompany(null);
   };
 
@@ -55,7 +56,7 @@ const Navbar = () => {
   };
 
   const handleSectionChange = () => {
-    const sections = ['home', 'whykayan', 'solution','provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients'];
+    const sections = ['home', 'benefits', 'solution', 'our-technology', 'provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'about', 'our-story', 'our-experts', 'our-clients', 'our-feeds'];
     sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
@@ -72,7 +73,9 @@ const Navbar = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(id);
-      handleSolutionMenuClose(); 
+      handleSolutionMenuClose();
+      handleCompanyMenuClose();
+      handleMainMenuClose();
     }
   };
 
@@ -84,162 +87,271 @@ const Navbar = () => {
         position="fixed"
         sx={{
           boxShadow: 'none',
-          backgroundColor: scrolled ? 'white' : 'rgba(108,143,153,0)',
-          paddingLeft: { md: '3%', xs: 'none' },
-          paddingTop: scrolled ? '1%' : '2%'
+          background: 'linear-gradient(to right,#90c4ff, #0d2a95)', 
+          paddingLeft: { md: '0', xs: 'none' }, 
+          paddingRight: { md: '10%', xs: 'none' },
+          marginLeft: '0', 
+          marginRight: '10%',
+          marginTop: '1%',
+          overflowX: "hidden",
+          width: { md: '80%', xs: '100%' }, 
+          borderRadius: '50px', 
         }}
       >
-        <Toolbar sx={{ justifyContent: { md: 'space-around', xs: 'flex-end' } }}>
-          
+        <Toolbar sx={{ 
+          justifyContent: { md: 'flex-start', xs: 'center' },
+          backgroundColor: 'transparent', 
+          borderRadius: '50px',
+        }}>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <Box
-              component="img"
-              src={kayanlogo}
-              alt="Kayan Healthcare Logo"
-              sx={{ 
-                width: { xs: '80px', sm: '155px' }, 
-                height: { xs: '40px', sm: '70px' }, 
-                filter: 'grayscale(50%)',
-                cursor: 'pointer',
-                ml: { xs: 0 }
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                backgroundColor: '#FFFFFF', 
+                borderRadius: '50px', 
+                padding: '5px 15px',
+                margin: '5px 5px 5px 0', 
               }}
-            />
+            >
+              <Box
+                component="img"
+                src={kayanlogo}
+                alt="Kayan Healthcare Logo"
+                sx={{ 
+                  width: { xs: '80px', sm: '130px' }, 
+                  height: { xs: '40px', sm: '50px' }, 
+                  filter: 'grayscale(50%)',
+                  cursor: 'pointer',
+                  ml: 0, // Ensure no left margin for the logo itself
+                  maxWidth: "100%",
+                }}
+              />
+            </Box>
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexGrow: 0.5, justifyContent: 'space-around' }}>
             <Button 
               onClick={() => scrollToSection('home')} 
               sx={{
-                color: scrolled ? 'black' : 'white',
+                color: "#fff",
                 fontSize: activeSection === 'home' ? '17px' : '15px',
                 fontWeight: activeSection === 'home' ? 'bold' : 'normal',
                 transform: activeSection === 'home' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
-                textTransform: 'capitalize'
+                textTransform: 'capitalize', 
+                fontFamily: 'Montserrat',
+                position: 'relative',
+                '&:hover': {
+                  color: 'black',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '100%',
+                    height: '2px',
+                    bottom: '-2px',
+                    left: 0,
+                    backgroundColor: 'black',
+                    transform: 'scaleX(1)',
+                    transformOrigin: 'bottom right',
+                    transition: 'transform 0.3s ease-out',
+                  }
+                },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: '100%',
+                  height: '2px',
+                  bottom: '-2px',
+                  left: 0,
+                  backgroundColor: '#1565C0',
+                  transform: 'scaleX(0)',
+                  transformOrigin: 'bottom right',
+                  transition: 'transform 0.3s ease-out',
+                }
               }}>
               Home
             </Button>
 
             <Button 
-              onClick={() => scrollToSection('whykayan')} 
+              onClick={() => scrollToSection('benefits')} 
               sx={{
-                color: scrolled ? 'black' : 'white',
-                fontSize: activeSection === 'whykayan' ? '17px' : '15px',
-                fontWeight: activeSection === 'whykayan' ? 'bold' : 'normal',
-                transform: activeSection === 'whykayan' ? 'scale(1.2)' : 'scale(1)',
+                color: "#fff",
+                fontSize: activeSection === 'benefits' ? '17px' : '15px',
+                fontWeight: activeSection === 'benefits' ? 'bold' : 'normal',
+                transform: activeSection === 'benefits' ? 'scale(1.2)' : 'scale(1)',
                 transition: 'all 0.3s',
-                textTransform: 'capitalize'
-              }}>
-              Why Kayan
-            </Button>
-            <Button 
-             
-             onClick={() => scrollToSection('solution')} 
-              sx={{
-                color: scrolled ? 'black' : 'white',
-                fontSize: isActive(['solution']) ? '17px' : '15px',
-                fontWeight: isActive(['solution']) ? 'bold' : 'normal',
-                transform: isActive(['solution']) ? 'scale(1.2)' : 'scale(1)',
-                transition: 'all 0.3s',
-                textTransform: 'capitalize'
-              }}>
-              Our Solutions 
-            </Button>
-            {/* <Button 
-              onClick={handleSolutionMenuOpen} 
-              sx={{
-                color: scrolled ? 'black' : 'white',
-                fontSize: isActive(['provider-solutions', 'payer-solutions']) ? '18px' : '16px',
-                fontWeight: isActive(['provider-solutions', 'payer-solutions']) ? 'bold' : 'normal',
-                transform: isActive(['provider-solutions', 'payer-solutions']) ? 'scale(1.2)' : 'scale(1)',
-                transition: 'all 0.3s',
-                textTransform: 'capitalize'
-              }}>
-              Our Solutions <ArrowDropDownIcon />
-            </Button> */}
-
-            {/* <Menu anchorEl={anchorElSolution} open={Boolean(anchorElSolution)} onClose={handleSolutionMenuClose}>
-            <MenuItem
-                onClick={() => scrollToSection('provider-solutions')}
-                sx={{
-                  fontSize: isActive(['provider-solutions']) ?  '16px' : '20px',
-                  fontWeight: isActive(['provider-solutions']) ? 'bold' : 'normal',
-                  transform: isActive(['provider-solutions']) ? 'scale(1.1)' : 'scale(1)',
-                  textShadow: isActive(['provider-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
-                  transition: 'all 0.3s',
-                  '&:hover': {
-                    backgroundColor: '#1565c0', 
-                  },
-                }}
-              >
-                Provider Solutions
-              </MenuItem>
-              <MenuItem
-                onClick={() => scrollToSection('payer-solutions')}
-                sx={{
-                  fontSize: isActive(['payer-solutions']) ?  '16px' : '20px',
-                  fontWeight: isActive(['payer-solutions']) ? 'bold' : 'normal',
-                  transform: isActive(['payer-solutions']) ? 'scale(1.1)' : 'scale(1)',
-                  // textShadow: isActive(['payer-solutions']) ? '0 0 8px #00bfff, 0 0 16px #00bfff' : 'none',
-                  transition: 'all 0.3s',
-                  '&:hover': {
-                    backgroundColor: '#1565c0', 
-                  },
-                }}
-              >
-                Payer Solutions
-              </MenuItem>
-            </Menu> */}
-
-            <Button onClick={handleCompanyMenuOpen} 
-            sx={{ 
-              textTransform: 'capitalize', 
-              color: scrolled ?'black':'#FFFFFF',
-                textTransform: 'capitalize',
-                fontSize: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? '17px' : '15px',
-                fontWeight: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? 'bold' : 'normal',
-                transform: isActive(['how-it-works', 'our-benefits','our-story','our-experts','our-clients']) ? 'scale(1.2)' : 'scale(1)',
-                transition: 'all 0.3s',
-              }}> 
-              Company <ArrowDropDownIcon />
-               </Button>
-
-            <Menu anchorEl={anchorElCompany} open={Boolean(anchorElCompany)} onClose={handleMenuClose}>
-              <MenuItem onClick={() => scrollToSection('how-it-works')}>How It Works</MenuItem>
-              <MenuItem onClick={() => scrollToSection('our-benefits')}>Our Benefits</MenuItem>
-              <MenuItem onClick={() => scrollToSection('our-story')}>Our Story</MenuItem>
-              <MenuItem onClick={() => scrollToSection('our-experts')}>Our Experts</MenuItem>
-              <MenuItem onClick={() => scrollToSection('our-clients')}>Our Clients</MenuItem>
-            </Menu>
-            <Button 
-              onClick={() => scrollToSection('contactUs')} 
-              sx={{
-                color: scrolled ? 'black' : 'white',
-                fontSize: activeSection === 'ContactUs' ? '17px' : '15px',
-                fontWeight: activeSection === 'ContactUs' ? 'bold' : 'normal',
-                transform: activeSection === 'ContactUs' ? 'scale(1.2)' : 'scale(1)',
-                transition: 'all 0.3s',
-                textTransform: 'capitalize'
-              }}>
-              Contact Us
-            </Button>
-
-            <Button 
-              variant="contained"
-              onClick={() => scrollToSection('demo')} 
-              sx={{
-                color: "#2091F9",
-                backgroundColor: "#FFFFFF",
-                fontSize: activeSection === 'demo' ? '17px' : '15px',
-                fontWeight: activeSection === 'demo' ? 'bold' : 'normal',
-                transform: activeSection === 'demo' ? 'scale(1.2)' : 'scale(1)',
-                transition: 'all 0.3s',
-                textTransform: 'capitalize',
-                "&:hover": {
-                  backgroundColor: "rgba(214,222,231,0.5)"
+                textTransform: 'capitalize', 
+                fontFamily: 'Montserrat',
+                position: 'relative',
+                '&:hover': {
+                  color: 'black',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '100%',
+                    height: '2px',
+                    bottom: '-2px',
+                    left: 0,
+                    backgroundColor: 'black',
+                    transform: 'scaleX(1)',
+                    transformOrigin: 'bottom right',
+                    transition: 'transform 0.3s ease-out',
+                  }
+                },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: '100%',
+                  height: '2px',
+                  bottom: '-2px',
+                  left: 0,
+                  backgroundColor: '#1565C0',
+                  transform: 'scaleX(0)',
+                  transformOrigin: 'bottom right',
+                  transition: 'transform 0.3s ease-out',
                 }
               }}>
-              Request a Demo
+              Benefits
             </Button>
+
+            {/* Solutions Button with Dropdown on Click */}
+            <Button
+              onClick={handleSolutionMenuOpen}
+              sx={{
+                color: "#fff",
+                fontSize: isActive(['solution', 'our-technology']) ? '17px' : '15px',
+                fontWeight: isActive(['solution', 'our-technology']) ? 'bold' : 'normal',
+                transform: isActive(['solution', 'our-technology']) ? 'scale(1.2)' : 'scale(1)',
+                transition: 'all 0.3s',
+                textTransform: 'capitalize',
+                fontFamily: 'Montserrat',
+                position: 'relative',
+                '&:hover': {
+                  color: 'black',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '100%',
+                    height: '2px',
+                    bottom: '-2px',
+                    left: 0,
+                    backgroundColor: 'black',
+                    transform: 'scaleX(1)',
+                    transformOrigin: 'bottom right',
+                    transition: 'transform 0.3s ease-out',
+                  }
+                },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: '100%',
+                  height: '2px',
+                  bottom: '-2px',
+                  left: 0,
+                  backgroundColor: '#1565C0',
+                  transform: 'scaleX(0)',
+                  transformOrigin: 'bottom right',
+                  transition: 'transform 0.3s ease-out',
+                }
+              }}
+            >
+              Solutions
+            </Button>
+            <Menu
+              anchorEl={anchorElSolution}
+              open={Boolean(anchorElSolution)}
+              onClose={handleSolutionMenuClose}
+              PaperProps={{
+                sx: {
+                  backgroundColor: 'rgba(32, 145, 249, 0.2)',
+                  color: 'white',
+                  mt: 1,
+                  '& .MuiMenuItem-root': {
+                    fontFamily: 'Montserrat',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: 'rgba(21, 101, 192, 0.8)',
+                      textDecoration: 'underline',
+                    }
+                  }
+                }
+              }}
+            >
+              <MenuItem onClick={() => scrollToSection('solution')}>Our Solutions</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-technology')}>Our Technology</MenuItem>
+            </Menu>
+
+            {/* Company Button with Dropdown on Click */}
+            <Button
+              onClick={handleCompanyMenuOpen}
+              sx={{
+                color: "#fff",
+                fontSize: isActive(['how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients', 'our-feeds', 'about']) ? '17px' : '15px',
+                fontWeight: isActive(['how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients', 'our-feeds', 'about']) ? 'bold' : 'normal',
+                transform: isActive(['how-it-works', 'our-benefits', 'our-story', 'our-experts', 'our-clients', 'our-feeds', 'about']) ? 'scale(1.2)' : 'scale(1)',
+                transition: 'all 0.3s',
+                textTransform: 'capitalize',
+                fontFamily: 'Montserrat',
+                position: 'relative',
+                '&:hover': {
+                  color: 'black',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    width: '100%',
+                    height: '2px',
+                    bottom: '-2px',
+                    left: 0,
+                    backgroundColor: 'black',
+                    transform: 'scaleX(1)',
+                    transformOrigin: 'bottom right',
+                    transition: 'transform 0.3s ease-out',
+                  }
+                },
+                '&::after': {
+                  content: '""',
+                  position: 'absolute',
+                  width: '100%',
+                  height: '2px',
+                  bottom: '-2px',
+                  left: 0,
+                  backgroundColor: '#1565C0',
+                  transform: 'scaleX(0)',
+                  transformOrigin: 'bottom right',
+                  transition: 'transform 0.3s ease-out',
+                }
+              }}
+            >
+              Company
+            </Button>
+            <Menu
+              anchorEl={anchorElCompany}
+              open={Boolean(anchorElCompany)}
+              onClose={handleCompanyMenuClose}
+              PaperProps={{
+                sx: {
+                  backgroundColor: 'rgba(32, 145, 249, 0.2)',
+                  color: 'white',
+                  mt: 1,
+                  '& .MuiMenuItem-root': {
+                    fontFamily: 'Montserrat',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: 'rgba(21, 101, 192, 0.8)',
+                      textDecoration: 'underline',
+                    }
+                  }
+                }
+              }}
+            >
+              <MenuItem onClick={() => scrollToSection('how-it-works')}>How It Works</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-story')}>Our Story</MenuItem>
+              <MenuItem onClick={() => scrollToSection('about')}>About Us</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-experts')}>Our Experts</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-clients')}>Our Clients</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-benefits')}>Our Benefits</MenuItem>
+              <MenuItem onClick={() => scrollToSection('our-feeds')}>Our Feeds</MenuItem>
+            </Menu>
           </Box>
           <IconButton
             sx={{ display: { xs: 'block', sm: 'none' }, color: scrolled ? 'black' : '#eaeaea', ml: 'auto' }}
@@ -247,22 +359,63 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-
-
         </Toolbar>
       </AppBar>
-      <Menu anchorEl={anchorElMain} open={isMenuOpen} onClose={handleMainMenuClose}>
+      <Menu 
+        anchorEl={anchorElMain} 
+        open={isMenuOpen} 
+        onClose={handleMainMenuClose}
+        PaperProps={{
+          sx: {
+            backgroundColor: 'rgba(32, 145, 249, 0.9)',
+            color: 'white',
+            '& .MuiMenuItem-root': {
+              fontFamily: 'Montserrat',
+              color: 'white',
+              '&:hover': {
+                backgroundColor: 'rgba(21, 101, 192, 0.8)',
+                textDecoration: 'underline',
+              }
+            }
+          }
+        }}
+      >
         <MenuItem onClick={() => scrollToSection('home')}>Home</MenuItem>
-        <MenuItem onClick={() => scrollToSection('whykayan')}>Why Kayan</MenuItem>
+        <MenuItem onClick={() => scrollToSection('benefits')}>Benefits</MenuItem>
         <MenuItem onClick={() => scrollToSection('how-it-works')}>How It Works</MenuItem>
-        <MenuItem onClick={() => scrollToSection('our-benefits')}>Our Benefits</MenuItem>
+        <MenuItem onClick={() => scrollToSection('solution')}>Solutions</MenuItem>
+        <MenuItem onClick={() => scrollToSection('our-technology')}>Our Technology</MenuItem>
         <MenuItem onClick={() => scrollToSection('our-story')}>Our Story</MenuItem>
+        <MenuItem onClick={() => scrollToSection('about')}>About Us</MenuItem>
         <MenuItem onClick={() => scrollToSection('our-experts')}>Our Experts</MenuItem>
         <MenuItem onClick={() => scrollToSection('our-clients')}>Our Clients</MenuItem>
-        <MenuItem onClick={() => scrollToSection('provider-solutions')}>Provider Solutions</MenuItem>
-        <MenuItem onClick={() => scrollToSection('payer-solutions')}>Payer Solutions</MenuItem>
-        <MenuItem onClick={() => scrollToSection('demo')}>Request a Demo</MenuItem>
+        <MenuItem onClick={() => scrollToSection('our-feeds')}>Our Feeds</MenuItem>
       </Menu>
+      <Box
+        onClick={() => scrollToSection('contactUs')}
+        sx={{
+          position: 'fixed',
+          bottom: '10px',
+          right: '10px',
+          backgroundColor: '#1565C0',
+          borderRadius: '50%',
+          width: '58px',
+          height: '58px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          cursor: 'pointer',
+          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+          zIndex: 1000,
+          '&:hover': {
+            backgroundColor: '#0d47a1',
+            transform: 'scale(1.1)',
+            transition: 'all 0.3s ease',
+          },
+        }}
+      >
+        <PhoneIcon sx={{ color: 'white', fontSize: '30px' }} />
+      </Box>
     </>
   );
 };

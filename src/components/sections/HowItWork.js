@@ -3,12 +3,17 @@ import { Box, Typography, Card, CardContent, useMediaQuery } from "@mui/material
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 const steps = [
-  { id: 1, title: "Assemble the right team", description: "We handle all aspects of vetting and choosing the right team that you don’t have the time, expertise, or desire to do." },
-  { id: 2, title: "Sprint planning", description: "Sprint meetings is a collective planning effort. Team members collaborate to clarify items and ensure shared understanding." },
-  { id: 3, title: "Tech architecture", description: "We break monolithic apps into microservices. Decoupling the code allows teams to move faster and more independently." },
-  { id: 4, title: "Standups & weekly demos", description: "Standups, weekly demos, and weekly reviews make sure everyone is on the same page and can raise their concerns." },
-  { id: 5, title: "Code reviews", description: "Code reviews before release help detect issues like memory leaks, file leaks, performance signs, and general bad smells." },
-  { id: 6, title: "Iterative delivery", description: "We divide the implementation process into several checkpoints rather than a single deadline." },
+  { id: 1, title: "POs Claims Transaction:", description: " Seamless connectivity and structured data exchange between healthcare providers and insurers comply with market regulations. "},
+
+  { id: 2, title: "TRACKING & DASHBOARD: ", description: "Track, monitor, and visualize the entire claim lifecycle. " },
+   
+  { id: 3, title: "Medical & Coding Scrubber:", description: " Detect medical and coding denials swiftly for accurate claim validation. "},
+     
+  { id: 4, title: "Control Claim Validation:", description: "Configure relations and optimize your claim validation process to meet specific requirements while maintaining compliance. "},
+
+  { id: 5, title: "Pharmaceutical Claims Management:", description: " Leverage our Built-In Pharmaceutical Edits and Checks Suite to streamline your workflow and reduce denials in medication-related claims. "},
+  
+  { id: 6, title: "AI Module:", description: "Better understand behaviours of all entities and improve data-driven decision-making with trend insights. "    },
 ];
 
 const HowItWork = () => {
@@ -27,38 +32,55 @@ const HowItWork = () => {
         textAlign: "center",
         backgroundColor: "#fff",
         padding: isSmallScreen ? "10px" : "20px",
+        overflowX:"hidden"
       }}
     >
       <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: isSmallScreen ? "60px" : "80px",
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            fontWeight: "700",
-            color: "#458FF6",
-            fontFamily: "monospace",
-            fontSize: isSmallScreen ? "1.5rem" : "2rem",
-          }}
-        >
-          HOW IT WORK
+            sx={{
+                     width: '100%',
+                     display: 'flex',
+                     flexDirection: 'column',
+                     alignItems: 'center',
+                     justifyContent: 'center',
+                     textAlign: 'center',
+                     marginTop: isSmallScreen ? '40px' : '85px',
+                   }}
+                 >
+                   <Typography
+                     variant="h4"
+                     sx={{
+                       fontWeight: '700',
+                       color: '#458FF6',
+                       fontFamily: 'Josefin Sans',
+                       textTransform: 'uppercase',
+                       fontSize: isSmallScreen ? '1.5rem' : '30px',
+                     }}
+                   >
+         Multi-Layer Claim Cycle Solutions 
         </Typography>
+         {/* <Typography
+                    variant="body1"
+                    sx={{
+                      fontSize: isSmallScreen ? '0.7rem' : '0.9rem',
+                      color: 'black',
+                      marginTop: isSmallScreen ? '20px' : '10px',
+                      lineHeight: '1.4',
+                      maxWidth: isSmallScreen ? '90%' : '50%',
+                      marginX: 'auto',
+                    }}
+                  >
+                    Seamlessly Integrate with What Works for You 
+                  </Typography> */}
       </Box>
 
       <Box
         sx={{
-          width: isSmallScreen ? "90%" : "75%",
+          width: isSmallScreen ? "90%" : "90%",
           position: "relative",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: isSmallScreen ? "60px" : "240px",
+          marginTop: isSmallScreen ? "60px" : "200px",
         }}
       >
         {!isSmallScreen && (
@@ -95,8 +117,8 @@ const HowItWork = () => {
             >
               <Card
                 sx={{
-                  width: isSmallScreen ? "100%" : "200px",
-                  minHeight: "100px",
+                  width: isSmallScreen ? "100%" : "250px",
+                  minHeight: "150px",
                   padding: "8px",
                   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
                   borderRadius: "8px",
@@ -132,7 +154,7 @@ const HowItWork = () => {
                     height: "25px",
                     backgroundColor: "#458FF6",
                     left: "50%",
-                    top: index % 2 === 0 ? "170px" : "-42px",
+                    top: index % 2 === 0 ? "172px" : "-44px",
                     transform: "translateX(-50%)",
                   }}
                 ></Box>
@@ -141,11 +163,7 @@ const HowItWork = () => {
           ))}
         </Box>
 
-        {!isSmallScreen && (
-          <Box sx={{ position: "absolute", right: "-20px", top: "50%", transform: "translateY(-50%)" }}>
-            <EmojiEventsIcon sx={{ fontSize: "30px", color: "#FDC830" }} />
-          </Box>
-        )}
+       
       </Box>
     </Box>
   );

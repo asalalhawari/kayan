@@ -1,385 +1,419 @@
+
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Grid, useMediaQuery, Popover } from '@mui/material';
-import AmaanConnector from '../../img/AmaanConnector.png';
-import Sayan from '../../img/Sayan.png';
-import Leen from '../../img/Leen.png';
-import Sama from '../../img/Sama.png';
-import Bayan from '../../img/Bayan.png';
-import KareemBenefits from '../../img/KareemBenefits.png';
-import AmaanIntegration from '../../img/AmaanIntegration.png';
+import { Box, Typography, Container, useMediaQuery, Button } from '@mui/material';
+import Solution from './Solution';
 
 const Solutions = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [popoverContent, setPopoverContent] = useState('');
+  const isMediumScreen = useMediaQuery('(max-width:900px)');
+  const [selectedSolution, setSelectedSolution] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleClick = (event, content) => {
-    setAnchorEl(event.currentTarget);
-    setPopoverContent(content);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
-  const payers = [
+  const petraSolutions = [
     {
-      title: 'Amaan Connector',
-      src: AmaanConnector,
-      alt: 'Amaan Connector',
-      descriptions: [
-        'Our SaaS model facilitates seamless integration across healthcare systems',
-      ],
+      number: '01',
+      title: 'POs Integration & Visualization',
+      description: 'Enables seamless connections between healthcare providers and insurers through POs. Track the entire claims lifecycle and create insightful dashboards.',
     },
     {
-      title: 'Sayan',
-      src: Sayan,
-      alt: 'Sayan',
-      descriptions: [
-        'SAYAN is an advanced system that automates payer claims processing, providing reviews and feedback per medical references and coding guidelines. It incorporates around 25 million edit combinations, with ongoing additions to enhance its capabilities over time',
-      ],
+      number: '02',
+      title: 'Medical and Coding Scrubber',
+      description: 'Built-in Edits and Checks that assist the user in validating the claims in compliance with medical and coding guidelines.',
     },
     {
-      title: 'Leen',
-      src: Leen,
-      alt: 'Leen',
-      descriptions: [
-        'LEEN is a technical business intelligence tool that provides logical references to claims based on various clinical and technical parameters',
-      ],
+      number: '03',
+      title: 'Custom Validations',
+      description: 'An advanced layer enables the user to configure relations based on their needs and enhance claim scrubbing in compliance with TOB.',
+    },
+    {
+      number: '04',
+      title: 'AI Module',
+      description: 'This layer uses historical validation and AI to analyze the database, generating various scenarios and detailed insights that help users understand the behaviors of all entities and improve data-driven decision-making.',
     },
   ];
 
-  const providers = [
+  const qudraSolutions = [
     {
-      title: 'Amaan Integration',
-      src: AmaanIntegration,
-      alt: 'Amaan Integration',
-      descriptions: [
-        'Amaan Integration introduces a cloud-based gateway seamlessly connected to the Post Office. Additionally, it offers a portal connection, enabling users to utilize the system independently for testing, validation, and account management purposes',
-      ],
+      number: '01',
+      title: 'Connection Layer',
+      description: 'Facilitate seamless integration across insurer systems with a robust SaaS model.',
     },
     {
-      title: 'Bayan',
-      src: Bayan,
-      alt: 'Bayan',
-      descriptions: [
-        'Bayan Clinical Rule Engine (CRE) is a provider solution that relies on a massive database of 35 million+ combinations to provide valuable feedback that helps deliver clean claims that adhere to medical and coding guidelines.',
-      ],
+      number: '02',
+      title: 'Automation Layer',
+      description: 'Automate claims processing with advanced systems, improving efficiency and accuracy.',
     },
     {
-      title: 'Kareem Benefits',
-      src: KareemBenefits,
-      alt: 'Kareem Benefits',
-      descriptions: [
-        'Kareem Benefits is a benefit tool that uses a massive database of benefit rule combinations to help create a clean claim that adheres to the benefit rules as per the contractual agreement between the provider and payer.',
-      ],
+      number: '03',
+      title: 'Intelligence Layer',
+      description: 'Provide technical business intelligence tools for logical claim referencing and analysis.',
     },
     {
-      title: 'Sama',
-      src: Sama,
-      alt: 'Sama',
-      descriptions: [
-        'Sama is a multi-level technical business intelligence tool that provides logical references to claims based on various clinical and technical parameters. On top of that, SAMA provides a fully functional RCM solution that helps automate every step of the process.',
-      ],
+      number: '04',
+      title: 'Assistance Layer',
+      description: 'Deliver ongoing support to insurers, ensuring compliance and operational excellence.',
     },
   ];
+
+  const handlePetraClick = () => {
+    setSelectedSolution('PETRA');
+  };
+
+  const handleQudraClick = () => {
+    setSelectedSolution('QUDRA');
+  };
+
+  const handleBackClick = () => {
+    setSelectedSolution(null);
+  };
 
   return (
-    <Box
+    <Container
       id="solution"
+      maxWidth="lg"
       sx={{
         width: '100%',
-        minHeight: '100vh',
+        minHeight: isSmallScreen ? 'auto' : isMediumScreen ? '80vh' : '90vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: isSmallScreen ? '5%' : '2%',
+        padding: isSmallScreen ? '5%' : isMediumScreen ? '3%' : '2%',
+        overflowX: 'hidden',
       }}
     >
-      <Box
-        sx={{
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          marginTop: isSmallScreen ? '40px' : '85px',
-        }}
-      >
-        <Typography
-          variant="h4"
+      {!selectedSolution ? (
+        <Box
           sx={{
-            fontWeight: '700',
-            color: '#458FF6',
-            fontFamily: 'monospace',
-            fontSize: isSmallScreen ? '1.5rem' : '2rem',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            marginTop: isSmallScreen ? '30px' : isMediumScreen ? '30px' : '85px',
           }}
         >
-          OUR SOLUTIONS
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: isSmallScreen ? '0.6rem' : '0.7rem',
-            color: 'black',
-            marginTop: '10px',
-            lineHeight: '1.4',
-            maxWidth: isSmallScreen ? '90%' : '40%',
-            marginX: 'auto',
-          }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-        </Typography>
-      </Box>
-
-      <Grid container spacing={isSmallScreen ? 2 : 3} sx={{ width: '100%', padding: isSmallScreen ? '5%' : '0 7%', marginBottom: '40px' }}>
-        <Grid item xs={12} md={6}>
           <Typography
+            variant="h4"
             sx={{
-              color: '#233876',
-              fontSize: isSmallScreen ? '0.8rem' : '0.9rem',
               fontWeight: '700',
+              color: '#458FF6',
               fontFamily: 'Josefin Sans',
-              textAlign: 'center',
-              marginTop: '15px',
+              textTransform: 'uppercase',
+              fontSize: isSmallScreen ? '0.9rem' : isMediumScreen ? '0.9rem' : '1.5rem',
+              marginBottom: isSmallScreen ? '30px' : isMediumScreen ? '50px' : '70px',
+              lineHeight: isSmallScreen ? 1.3 : 1.5,
+              textAlign: isSmallScreen ? "left" : "center",
             }}
           >
-            Provider Solutions
+            Mastering the full Claim Cycle from seamless transition to robust validation via our Multi-Modal Solutions
           </Typography>
-          <Grid container spacing={isSmallScreen ? 2 : 3}>
-            {providers.map((provider, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <Box
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: isSmallScreen ? 'column' : 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              gap: isSmallScreen ? '40px' : isMediumScreen ? '30px' : '40px',
+            }}
+          >
+            {/* PETRA Section */}
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: isSmallScreen ? '8px' : isMediumScreen ? '15px' : '20px',
+              }}
+            >
+              <Box
+                sx={{
+                  width: isSmallScreen ? '80px' : isMediumScreen ? '150px' : '250px',
+                  height: isSmallScreen ? '80px' : isMediumScreen ? '120px' : '200px',
+                  border: '9px solid #458FF6',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+                onClick={handlePetraClick}
+              >
+                <Typography
                   sx={{
-                    height: isSmallScreen ? 'auto' : '190px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'left',
-                    justifyContent: 'flex-start',
-                    position: 'relative',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    borderRadius: '10px',
+                    color: '#233876',
+                    fontSize: isSmallScreen ? '0.9rem' : isMediumScreen ? '1.5rem' : '2.2rem',
+                    fontWeight: '700',
+                    fontFamily: 'Josefin Sans',
                   }}
                 >
-                  <Box
+                  PETRA
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  width: isSmallScreen ? '40px' : isMediumScreen ? '60px' : '120px',
+                  height: isSmallScreen ? '40px' : isMediumScreen ? '60px' : '120px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M34 24L14 4L9 9L24 24L9 39L14 44L34 24Z"
+                    fill="#1E3A8A"
+                  />
+                </svg>
+              </Box>
+
+              <Typography
+                sx={{
+                  color: '#233876',
+                  fontSize: isSmallScreen ? '0.8rem' : isMediumScreen ? '0.8rem' : '1rem',
+                  fontWeight: '700',
+                  fontFamily: 'Josefin Sans',
+                  textAlign: 'center',
+                  marginLeft: isSmallScreen ? '0' : isMediumScreen ? '-50px' : '-62px',
+                  maxWidth: isSmallScreen ? '150px' : 'none',
+                  lineHeight: 1.2,
+                }}
+              >
+                MULTI-LAYERED HEALTHCARE PROVIDER SOLUTION
+              </Typography>
+            </Box>
+
+            {/* QUDRA Section */}
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: isSmallScreen ? '8px' : isMediumScreen ? '15px' : '20px',
+              }}
+            >
+              <Box
+                sx={{
+                  width: isSmallScreen ? '80px' : isMediumScreen ? '150px' : '250px',
+                  height: isSmallScreen ? '80px' : isMediumScreen ? '120px' : '200px',
+                  border: '9px solid #458FF6',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+                onClick={handleQudraClick}
+              >
+                <Typography
+                  sx={{
+                    color: '#233876',
+                    fontSize: isSmallScreen ? '0.9rem' : isMediumScreen ? '1.5rem' : '2.2rem',
+                    fontWeight: '700',
+                    fontFamily: 'Josefin Sans',
+                  }}
+                >
+                  QUDRA
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  width: isSmallScreen ? '40px' : isMediumScreen ? '60px' : '120px',
+                  height: isSmallScreen ? '40px' : isMediumScreen ? '60px' : '120px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 48 48"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M34 24L14 4L9 9L24 24L9 39L14 44L34 24Z"
+                    fill="#1E3A8A"
+                  />
+                </svg>
+              </Box>
+
+              <Typography
+                sx={{
+                  color: '#233876',
+                  fontSize: isSmallScreen ? '0.8rem' : isMediumScreen ? '0.8rem' : '1rem',
+                  fontWeight: '700',
+                  fontFamily: 'Josefin Sans',
+                  textAlign: 'center',
+                  marginLeft: isSmallScreen ? '0' : isMediumScreen ? '-20px' : '-26px',
+                  maxWidth: isSmallScreen ? '150px' : 'none',
+                  lineHeight: 1.2,
+                }}
+              >
+                MULTI-LAYERED INSURER SOLUTION
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            marginTop: isSmallScreen ? '20px' : isMediumScreen ? '30px' : '45px',
+            paddingBottom: isSmallScreen ? '20px' : isMediumScreen ? '30px' : '40px',
+          }}
+        >
+          <Typography
+            variant="h4"
+            sx={{
+              fontWeight: '700',
+              color: '#458FF6',
+              fontFamily: 'Josefin Sans',
+              textTransform: 'uppercase',
+              fontSize: isSmallScreen ? '1.2rem' : isMediumScreen ? '1.5rem' : '2rem',
+              marginBottom: isSmallScreen ? '20px' : isMediumScreen ? '30px' : '40px',
+            }}
+          >
+            {selectedSolution} SOLUTIONS
+          </Typography>
+
+          {/* Card Container with Shadow */}
+          <Box
+            sx={{
+              width: isSmallScreen ? '100%' : isMediumScreen ? '90%' : '100%',
+              height:"500px",
+              backgroundColor: '#f5f7fa',
+              borderRadius: '15px',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              padding: isSmallScreen ? '15px' : isMediumScreen ? '20px' : '25px',
+              display: 'flex',
+              flexDirection: 'row', // Display cards in a row
+              gap: isSmallScreen ? '10px' : isMediumScreen ? '15px' : '20px',
+              flexWrap: isSmallScreen ? 'wrap' : 'nowrap', // Wrap on small screens if needed
+              justifyContent: 'center',
+            }}
+          >
+            {(selectedSolution === 'PETRA' ? petraSolutions : qudraSolutions).map((solution, index) => (
+              <Box
+                key={index}
+                sx={{
+                  backgroundColor: '#ffffff',
+                  borderRadius: '10px',
+                  width: isSmallScreen ? '45%' : isMediumScreen ? '23%' : '22%', // Narrow width to fit all cards in a row
+                  minHeight: isSmallScreen ? '200px' : isMediumScreen ? '220px' : '150px', // Moderate height
+                  padding: isSmallScreen ? '10px' : '15px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: '#e3f0ff',
+                    minHeight: isSmallScreen ? '220px' : isMediumScreen ? '240px' : '280px', // Increase height on hover
+                    transform: 'translateY(40px)',
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                  },
+                }}
+              >
+                <Box>
+                  <Typography
                     sx={{
-                      width: isSmallScreen ? '50px' : '60px',
-                      height: isSmallScreen ? '50px' : '60px',
-                      backgroundColor: '#1976d2',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'left',
-                      justifyContent: 'left',
-                      overflow: 'hidden',
-                      position: 'absolute',
-                      top: isSmallScreen ? '10px' : '20px',
-                      left: '5px',
-                      zIndex: 2,
-                      cursor: 'pointer',
+                      fontSize: isSmallScreen ? '1.5rem' : isMediumScreen ? '2rem' : '2.5rem',
+                      fontWeight: '700',
+                      color: '#458FF6',
+                      fontFamily: 'Montserrat, sans-serif',
+                      marginBottom: '8px',
                     }}
                   >
-                    <img
-                      src={provider.src}
-                      alt={provider.alt}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                      }}
-                    />
-                  </Box>
+                   #{solution.number}
+                  </Typography>
                   <Typography
                     variant="h6"
                     sx={{
-                      color: '#464343',
-                      marginLeft: isSmallScreen ? '70px' : '80px',
-                      marginTop: isSmallScreen ? '40px' : '50px',
-                      fontSize: isSmallScreen ? '0.8rem' : '0.9rem',
-                      fontWeight: '700',
-                      fontFamily: 'Josefin Sans',
+                      fontWeight: '600',
+                      color: '#458FF6',
+                      fontSize: isSmallScreen ? '0.9rem' : isMediumScreen ? '1rem' : '1.2rem',
+                      fontFamily: 'Montserrat, sans-serif',
+                      marginBottom: '8px',
                     }}
                   >
-                    {provider.title}
+                    {solution.title}
                   </Typography>
-                  <Box
+                  <Typography
+                    variant="body2"
                     sx={{
-                      width: '100%',
-                      height: isSmallScreen ? 'auto' : '275px',
-                      backgroundColor: '#ffffff',
-                      borderRadius: '8px',
-                      padding: isSmallScreen ? '15px' : '25px',
-                      marginTop: '10px',
-                      textAlign: 'center',
+                      fontSize: isSmallScreen ? '0.7rem' : isMediumScreen ? '0.8rem' : '0.9rem',
+                      color: '#666',
+                      fontFamily: 'Montserrat, sans-serif',
+                      lineHeight: 1.4,
+                      textAlign: "left",
+                      marginTop:"20px"
                     }}
                   >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: '#646464',
-                        fontSize: isSmallScreen ? '0.5rem' : '0.6rem',
-                        textAlign: 'justify',
-                      }}
-                    >
-                      {provider.descriptions[0].split(' ').slice(0, 25).join(' ')}
-                      {provider.descriptions[0].split(' ').length > 25 && (
-                        <span
-                          style={{ color: '#1976d2', cursor: 'pointer' }}
-                          onClick={(event) => handleClick(event, provider.descriptions)}
-                        >
-                          ... Read More
-                        </span>
-                      )}
-                    </Typography>
-                  </Box>
+                    {solution.description}
+                  </Typography>
                 </Box>
-              </Grid>
-            ))}
-          </Grid>
-        </Grid>
-
-        <Grid item xs={12} md={6}>
-          <Typography
-            sx={{
-              color: '#233876',
-              fontSize: isSmallScreen ? '0.8rem' : '1rem',
-              fontWeight: '700',
-              fontFamily: 'Josefin Sans',
-              textAlign: 'center',
-              marginTop: '20px',
-              letterSpacing: '2%',
-            }}
-          >
-            Payer Solutions
-          </Typography>
-          <Grid container spacing={isSmallScreen ? 2 : 3} sx={{ marginBottom: '20px' }}>
-            {payers.map((payer, index) => (
-              <Grid item xs={12} sm={6} key={index}>
-                <Box
+                <Button
+                  variant="outlined"
                   sx={{
-                    height: isSmallScreen ? 'auto' : '190px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'left',
-                    justifyContent: 'flex-start',
-                    position: 'relative',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    borderRadius: '10px',
+                    backgroundColor: '#458FF6',
+                      color: '#fff',
+                      borderColor: '#458FF6',
+                    fontWeight: '500',
+                    width:"107px",
+                    fontSize: isSmallScreen ? '0.6rem' : '0.7rem',
+                    textTransform: 'none',
+                    borderRadius: '20px',
+                    padding: '4px 10px',
+                    marginTop: '10px',
+                    '&:hover': {
+                      backgroundColor: '#fff',
+                      color: '#458FF6',
+                      borderColor: '#458FF6',
+                    },
                   }}
                 >
-                  <Box
-                    sx={{
-                      width: isSmallScreen ? '50px' : '60px',
-                      height: isSmallScreen ? '50px' : '60px',
-                      backgroundColor: '#1976d2',
-                      borderRadius: '50%',
-                      display: 'flex',
-                      alignItems: 'left',
-                      justifyContent: 'left',
-                      overflow: 'hidden',
-                      position: 'absolute',
-                      top: isSmallScreen ? '10px' : '20px',
-                      left: '5px',
-                      zIndex: 2,
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <img
-                      src={payer.src}
-                      alt={payer.alt}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        borderRadius: '50%',
-                      }}
-                    />
-                  </Box>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: '#464343',
-                      marginLeft: isSmallScreen ? '70px' : '80px',
-                      marginTop: isSmallScreen ? '40px' : '50px',
-                      fontSize: isSmallScreen ? '0.8rem' : '0.9rem',
-                      fontWeight: '700',
-                      fontFamily: 'Josefin Sans',
-                    }}
-                  >
-                    {payer.title}
-                  </Typography>
-                  <Box
-                    sx={{
-                      width: '100%',
-                      height: isSmallScreen ? 'auto' : '275px',
-                      backgroundColor: '#ffffff',
-                      borderRadius: '8px',
-                      padding: isSmallScreen ? '15px' : '25px',
-                      marginTop: '10px',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: '#646464',
-                        fontSize: isSmallScreen ? '0.5rem' : '0.6rem',
-                        textAlign: 'justify',
-                      }}
-                    >
-                      {payer.descriptions[0].split(' ').slice(0, 25).join(' ')}
-                      {payer.descriptions[0].split(' ').length > 25 && (
-                        <span
-                          style={{ color: '#1976d2', cursor: 'pointer' }}
-                          onClick={(event) => handleClick(event, payer.descriptions)}
-                        >
-                          ... Read More
-                        </span>
-                      )}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
+                  Go To Solution
+                </Button>
+              </Box>
             ))}
-          </Grid>
-        </Grid>
-      </Grid>
+          </Box>
 
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        sx={{
-          '& .MuiPopover-paper': {
-            borderRadius: '8px',
-            padding: '16px',
-            maxWidth: '300px',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-          },
-        }}
-      >
-        <Typography sx={{ p: 2, fontSize: '0.8rem', color: '#333' }}>
-          {popoverContent}
-        </Typography>
-      </Popover>
-    </Box>
+          <Typography
+            sx={{
+              color: '#1976d2',
+              fontSize: isSmallScreen ? '0.7rem' : isMediumScreen ? '0.8rem' : '1rem',
+              fontWeight: '700',
+              fontFamily: 'Josefin Sans',
+              marginTop: isSmallScreen ? '20px' : isMediumScreen ? '30px' : '40px',
+              cursor: 'pointer',
+            }}
+            onClick={handleBackClick}
+          >
+            Back to Solutions
+          </Typography>
+        </Box>
+      )}
+    </Container>
   );
 };
 

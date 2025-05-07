@@ -1,567 +1,437 @@
-import React from "react";
-import { TextField, Button, Typography, Box, Paper } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
 
+import React, { useState } from "react";
+import { Container, TextField, Button, useMediaQuery, Box, Typography, MenuItem, Select, InputLabel, FormControl, IconButton } from "@mui/material";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SmartphoneIcon from "@mui/icons-material/Smartphone";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 
-const managementTeam = [
-  {
-    name: "Islam Hijawi",
-    location: "UAE, Dubai",
-    contact: "+971561207460",
-    position: "General Manager",
-    description: `Islam Hijawi is the Owner and Managing Director. An effective leader with excellent management skills that promote productivity towards achieving project and organizational goals. Islam is holding a High Diploma in Management, master’s degree in public health and Strategic Planning, and Bachelor of Physiotherapy. Finally, Islam speaks Arabic and English.`,
-    image: "", 
-  },
-  {
-    name: "Kareem Khaleel",
-    location: "Palestine, Jenin",
-    contact: "+970599879418",
-    position: "IT Director",
-    description: `I’m a computer systems engineer with a master’s degree in computer science. I’m in the field of IT for about 10 years. I have worked in many positions starting from development, testing and now I’m in the management roles. I have worked as a business analyst for some time and learned the Gulf market experience in the previous years. Since Kayan Healthcare Technologies started, I was always there. And we will continue the journey till we reach our ambitious goals.`,
-    image: "", 
-  },
-];
 const ContactUs = () => {
-  return (
-    <div id="ContactUs">
-{/*   
-    <Box sx={{ padding: "6rem", backgroundColor: "#f9f9f9",
-      position:"relative",width:"100%",height:"100vh",
-      backgroundColor:'#2f2f2f2e'
-    }}>
-      <Box>
-      <Typography variant="h4" align="center" gutterBottom
-      
-      sx={{
-        fontWeight: "bold",
-          fontFamily: "Orbitron, sans-serif",
-          color: '#464646',
-      }}>
-        Contact Us
-      </Typography>
-      </Box>
-     
-      <Box
-        sx={{
-        //  position:"relative",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: "2rem",
-          marginTop: "2rem",
-           width: "100%",
-           height: "calc(100vh - 8rem)",
-           
-        }}
-      >
-        <Box
-          sx={{
-            // position:"absolute",
-            flex: { xs: "1", md: "65%" },
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-           width:"70%"
-            
-          }}
-        >
-          <Paper elevation={3} sx={{ padding: "2rem",
-              // backgroundColor:'#2f2f2f2e'
+    const isSmallScreen = useMediaQuery('(max-width:600px)');
 
-           }}>
-      
-             <Typography
-        variant="h4"
-        sx={{
-          marginBottom: "2rem",
-          textAlign: "center",
-          fontWeight: "bold",
-          fontFamily: "Orbitron, sans-serif",
-          color: '#464646',
-        }}
-      >
-        Management Team
-      </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem", 
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        countryCode: '+970', 
+    });
 
-              }}>
-        {managementTeam.map((member, index) => (
-          <Box
-            key={index}
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    const handleCountryCodeChange = (e) => {
+        setFormData({
+            ...formData,
+            countryCode: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        try {
+            const response = await fetch('http://localhost:5000/api/send-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+    
+            let result;
+            try {
+                result = await response.json();
+            } catch (jsonError) {
+                console.error('Failed to parse JSON response:', jsonError);
+                throw new Error('Invalid JSON response from server.');
+            }
+    
+            if (response.ok) {
+                setErrorMessage('');
+                setFormData({ name: '', email: '', phone: '', message: '', countryCode: '+843' });
+            } else {
+                setErrorMessage(result?.message || 'An error occurred while sending the data.');
+            }
+        } catch (error) {
+            console.error('Request Error:', error);
+            setErrorMessage('Failed to connect to the server. Please try again later.');
+        }
+    };
+    
+    return (
+        <Container
+            id="contactUs"
+            maxWidth="lg"
             sx={{
-              display: "flex",
-              alignItems: "center",
-              position: "relative",
-              gap: "2rem",
-              padding: "1rem 0",
+                width: '100%',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: isSmallScreen ? '5%' : '2%',
+                overflowX:"hidden"
             }}
-          >
-       
+        >
             <Box
-              sx={{
-                width: "3px",
-                height: "100%",
-                backgroundColor: "#4CAF50",
-                position: "absolute",
-                left: "21%",
-                transform: "translateX(-50%)",
-              }}
-            />
-       
-            <Box
-              sx={{
-                flexShrink: 0,
-                width: "150px",
-                height: "150px",
-                backgroundImage: `url(${member.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "50%",
-                border: "4px solid #4CAF50",
-              }}
-            />
-   
-            <Box sx={{ flex: 1 }}>
-              <Typography
-                variant="h5"
-                sx={{ fontWeight: "bold", color: "#464646" }}
-              >
-                {member.name}
-              </Typography>
-              <Typography variant="subtitle1" sx={{ color: "#4CAF50" }}>
-                {member.position}
-              </Typography>
-              <Typography
-                variant="body1"
                 sx={{
-                  marginTop: "1rem",
-                  color: "#606367",
-                  // lineHeight: "1.6",
-                  fontSize:"0.7rem"
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    marginTop: isSmallScreen ? '40px' : '75px',
+                    marginBottom: isSmallScreen ? '30px' : '25px',
                 }}
-              >
-                {member.description}
-              </Typography>
-            </Box>
-          </Box>
-        ))}
-      </Box>
-          </Paper>
-        </Box>
-
-        {/* Contact Information */}
-         {/*
-        <Box
-          sx={{
-            flex: { xs: "1", md: "30%" },
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-          }}
-        >
-          <Paper elevation={3} sx={{ padding: "2rem",
-              // backgroundColor:'#2f2f2f2e'
-
-           }}>
-            <Typography variant="h5" gutterBottom
-             sx={{
-              marginBottom: "2rem",
-              textAlign: "center",
-              fontWeight: "bold",
-              fontFamily: "Orbitron, sans-serif",
-              color: '#464646',
-            }}>
-              Contact Information
-            </Typography>
-            <Box display="flex" alignItems="center" marginBottom="1rem">
-              <LocationOnIcon sx={{ marginRight: "0.5rem", color: "#4CAF50" }} />
-              <Typography
-              style={{
-                 fontSize:"0.8rem"
-              }} 
-              >
-              REALOGICS STAR REAL ESTATE L.L.C Y Z BUILDING, Off 323, 3 rd floor floor, Alquoz 3 
-              </Typography>
-            </Box>
-            <Box display="flex" alignItems="center" marginBottom="1rem">
-              <PhoneIcon sx={{ marginRight: "0.5rem", color: "#4CAF50" }} />
-              <Typography
-              style={{
-                fontSize:"0.8rem"
-             }} 
-              >+971 561207460</Typography>
-            </Box>
-            <Box display="flex" alignItems="center" marginBottom="1rem">
-              <EmailIcon sx={{ marginRight: "0.5rem", color: "#4CAF50" }} />
-              <Typography
-              style={{
-                fontSize:"0.8rem"
-             }} 
-              >contact@ourdomain.com</Typography>
-            </Box>
-          </Paper>
-          <Paper elevation={3} sx={{ padding: "1rem", marginTop: "1rem",
-              // backgroundColor:'#2f2f2f2e'
-
-           }}>
-    <Typography
-      variant="h6"
-      gutterBottom
-      sx={{
-        textAlign: "center",
-        fontWeight: "bold",
-        fontFamily: "Orbitron, sans-serif",
-        color: '#464646',
-      }}
-    >
-      Our Location
-    </Typography>
-    <Box textAlign="center" marginTop="1rem">
-      <a
-        href="https://www.google.com/maps/search/EALOGICS+STAR+REAL+ESTATE+L.L.C+Y+Z+BUILDING/@25.2089173,55.2724983,12z/data=!3m1!4b1?hl=ar&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: "inline-block", textDecoration: "none" }}
-      >
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11587.888832849022!2d55.272498!3d25.208963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434a565324f9%3A0xd6cfbc3e3b62409f!2sAspin%20Commercial%20Tower%20106!5e0!3m2!1sar!2sae!4v1680288315483!5m2!1sar!2sae"
-          width="100%"
-          height="100px"
-          style={{ border: 0, 
-            // pointerEvents: "none" 
-          }}
-          allowFullScreen=""
-          loading="lazy"
-          title="Our Location"
-        ></iframe>
-      </a>
-    </Box>
-
-  </Paper>
-
-          {/* Google Map
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3..."
-            width="100%"
-            height="300"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            title="Our Location"
-          ></iframe>  */}
-        {/* </Box>
-      </Box>
-    </Box> */}
-
-     
-<Box
-  sx={{
-    padding: { xs: "2rem", sm: "4rem", md: "6rem" },
-    backgroundColor: "#f9f9f9",
-    position: "relative",
-    width: "100%",
-    height: { xs: "auto", md: "100vh" },
-    backgroundColor: "#2f2f2f2e",
-  }}
->
-  {/* <Box>
-    <Typography
-      variant="h4"
-      align="center"
-      gutterBottom
-      sx={{
-        fontWeight: "bold",
-        fontFamily: "Orbitron, sans-serif",
-        color: "#464646",
-        fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-      }}
-    >
-      Contact Us
-    </Typography>
-  </Box> */}
-
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: { xs: "column", md: "row" },
-      gap: "2rem",
-      marginTop: "2rem",
-      width: "100%",
-      height: { xs: "auto", md: "calc(100vh - 8rem)" },
-    }}
-  >
-    {/* Contact Form */}
-    <Box
-      sx={{
-        flex: { xs: "1", md: "52%" },
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-        width: { xs: "100%", md: "70%" },
-      }}
-    >
-      <Paper
-        elevation={3}
-        sx={{
-          padding: { xs: "1rem", sm: "2rem" },
-        }}
-      >
-        <Typography
-          variant="h4"
-          sx={{
-            marginBottom: "2rem",
-            textAlign: "center",
-            fontWeight: "bold",
-            fontFamily: "Orbitron, sans-serif",
-            color: "#464646",
-            fontSize: { xs: "1.2rem", sm: "1.5rem" },
-          }}
-        >
-          Management Team
-        </Typography>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-          {managementTeam.map((member, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                position: "relative",
-                gap: "1rem",
-                padding: "1rem 0",
-                flexDirection: { xs: "column", sm: "row" },
-              }}
             >
-              <Box
-                sx={{
-                  width: "3px",
-                  height: "94%",
-                  backgroundColor: "#4CAF50",
-                  position: "absolute",
-                  left: { xs: "3%", sm: "17.5%" },
-                  transform: "translateX(-50%)",
-                }}
-              />
-              <Box
-                sx={{
-                  flexShrink: 0,
-                  width: { xs: "80px", sm: "120px" },
-                  height: { xs: "80px", sm: "120px" },
-                  backgroundImage: `url(${member.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  borderRadius: "50%",
-                  border: "4px solid #4CAF50",
-                }}
-              />
-              <Box sx={{ flex: 1,
-                 maxWidth: { xs: "90%", sm: "70%" },
-                 textAlign: { xs: "center", sm: "left" },
-               }}>
                 <Typography
-                  variant="h5"
-                  sx={{ fontWeight: "bold", color: "#464646",
-                    fontSize: { xs: "0.9rem", sm: "1rem" },
-                    wordWrap: "break-word",
-                   }}
+                    variant="h4"
+                    sx={{
+                        fontWeight: '700',
+                        color: '#458FF6',
+                        fontFamily: 'Josefin Sans',
+                        textTransform: 'uppercase',
+                        fontSize: isSmallScreen ? '1.5rem' : '30px',
+                        lineHeight: 1.2,
+                    }}
                 >
-                  {member.name}
-                </Typography>
-                <Typography variant="subtitle1" sx={{ color: "#4CAF50",
-                  fontSize: { xs: "0.8rem", sm: "0.9rem" }
-                 }}>
-                  {member.position}
+                    Book a free consultation with our experts 
                 </Typography>
                 <Typography
-                  variant="body1"
-                  sx={{
-                    marginTop: "1rem",
-                    color: "#606367",
-                    textAlign: 'justify', 
-                    fontSize: { xs: "0.65rem", sm: "0.8rem" },
-                    wordWrap: "break-word",
-                  }}
+                    sx={{
+                        fontSize: isSmallScreen ? '0.7rem' : '0.9rem',
+                        color: '#666',
+                        marginTop: isSmallScreen ? '20px' : '10px',
+                        lineHeight: '1.4',
+                        maxWidth: isSmallScreen ? '90%' : '50%',
+                        marginX: 'auto',
+                    }}
                 >
-                  {member.description}
+                    get touch to discuss your project needs and explore how our technology services can drive your business forward. contact us now for a free consultation.
                 </Typography>
-              </Box>
             </Box>
-          ))}
-        </Box>
-      </Paper>
-    </Box>
 
-    {/* Contact Information */}
-    <Box
-      sx={{
-        flex: { xs: "1", md: "30%" },
-        display: "flex",
-        flexDirection: "column",
-        gap: "1rem",
-      }}
-    >
-      <Paper
-        elevation={3}
-        sx={{
-          padding: { xs: "1rem", sm: "2rem" },
-        }}
-      >
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{
-            marginBottom: "2rem",
-            textAlign: "center",
-            fontWeight: "bold",
-            fontFamily: "Orbitron, sans-serif",
-            color: "#464646",
-            fontSize: { xs: "1rem", sm: "1.5rem" },
-          }}
-        >
-          Contact Information
-        </Typography>
-        <Box display="flex" alignItems="center" marginBottom="1rem">
-          <LocationOnIcon
-            sx={{ marginRight: "0.5rem", color: "#4CAF50" }}
-          />
-          <Typography style={{ fontSize: { xs: "0.7rem", sm: "0.8rem" } }}>
-            REALOGICS STAR REAL ESTATE L.L.C Y Z BUILDING, Off 323, 3 rd floor,
-            Alquoz 3
-          </Typography>
-        </Box>
-        <Box display="flex" alignItems="center" marginBottom="1rem">
-              <PhoneIcon sx={{ marginRight: "0.5rem", color: "#4CAF50" }} />
-              <Typography
-              style={{
-                fontSize: { xs: "0.7rem", sm: "0.8rem" }
-             }} 
-              >+971 561207460</Typography>
+            <Box
+                sx={{
+                    width: isSmallScreen ? '100%' : '70%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: '#fff',
+                    borderRadius: '15px',
+                    padding: isSmallScreen ? '20px' : '10px',
+                    marginBottom: isSmallScreen ? '30px' : '20px',
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: isSmallScreen ? '1fr' : '1fr 1fr',
+                        gap: '15px',
+                        width: '100%',
+                    }}
+                >
+                    <Box>
+                        <TextField
+                            label="Your Name"
+                            variant="outlined"
+                            fullWidth
+                            sx={{
+                                fontFamily: "Roboto",
+                                fontWeight: "400",
+                                backgroundColor: "rgba(230,230,230,0.5)",
+                                borderRadius: '10px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                },
+                                marginBottom: '10px',
+                            }}
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                        />
+                        <TextField
+                            label="Your Email"
+                            variant="outlined"
+                            fullWidth
+                            sx={{
+                                backgroundColor: "rgba(230,230,230,0.5)",
+                                borderRadius: '10px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                },
+                                marginBottom: '10px',
+                            }}
+                            name="email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                        />
+                        <TextField
+                            label="Your Message"
+                            variant="outlined"
+                            fullWidth
+                            sx={{
+                                backgroundColor: "rgba(230,230,230,0.5)",
+                                borderRadius: '10px',
+                                '& .MuiOutlinedInput-root': {
+                                    '& fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'transparent',
+                                    },
+                                },
+                                marginBottom: '10px',
+                            }}
+                            name="message"
+                            value={formData.message}
+                            onChange={handleInputChange}
+                        />
+                    </Box>
+
+                    <Box>
+                        <Box sx={{ display: 'flex', gap: '15px', width: '100%', marginBottom: '6px' }}>
+                            <FormControl sx={{ width: '30%' }}>
+                                <InputLabel>Code</InputLabel>
+                                <Select
+                                    value={formData.countryCode}
+                                    onChange={handleCountryCodeChange}
+                                    sx={{
+                                        backgroundColor: "rgba(230,230,230,0.5)",
+                                        borderRadius: '10px',
+                                        '& .MuiOutlinedInput-notchedOutline': {
+                                            borderColor: 'transparent',
+                                        },
+                                        '&:hover .MuiOutlinedInput-notchedOutline': {
+                                            borderColor: 'transparent',
+                                        },
+                                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                            borderColor: 'transparent',
+                                        },
+                                    }}
+                                >
+                                    <MenuItem value="+972">+972</MenuItem>
+                                    <MenuItem value="+970">+970</MenuItem>
+                                    <MenuItem value="+44">+44</MenuItem>
+                                    <MenuItem value="+1">+1</MenuItem>
+                                    <MenuItem value="+843">+843</MenuItem>
+                                </Select>
+                            </FormControl>
+                            <TextField
+                                label="Phone Number"
+                                variant="outlined"
+                                fullWidth
+                                sx={{
+                                    backgroundColor: "rgba(230,230,230,0.5)",
+                                    borderRadius: '10px',
+                                    '& .MuiOutlinedInput-root': {
+                                        '& fieldset': {
+                                            borderColor: 'transparent',
+                                        },
+                                        '&:hover fieldset': {
+                                            borderColor: 'transparent',
+                                        },
+                                        '&.Mui-focused fieldset': {
+                                            borderColor: 'transparent',
+                                        },
+                                    },
+                                }}
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleInputChange}
+                            />
+                        </Box>
+                        <FormControl fullWidth sx={{ marginBottom: '10px' }}>
+                            <InputLabel>Select date</InputLabel>
+                            <Select
+                                value={formData.date || ''}
+                                onChange={(e) => handleInputChange({ target: { name: 'date', value: e.target.value } })}
+                                sx={{
+                                    backgroundColor: "rgba(230,230,230,0.5)",
+                                    borderRadius: '10px',
+                                    '& .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                }}
+                            >
+                                <MenuItem value="2025-04-23">2025-04-23</MenuItem>
+                                <MenuItem value="2025-04-24">2025-04-24</MenuItem>
+                                <MenuItem value="2025-04-25">2025-04-25</MenuItem>
+                            </Select>
+                        </FormControl>
+                        <FormControl fullWidth sx={{ marginBottom: '10px' }}>
+                            <InputLabel>Select timeslot</InputLabel>
+                            <Select
+                                value={formData.timeslot || ''}
+                                onChange={(e) => handleInputChange({ target: { name: 'timeslot', value: e.target.value } })}
+                                sx={{
+                                    backgroundColor: "rgba(230,230,230,0.5)",
+                                    borderRadius: '10px',
+                                    '& .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&:hover .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                    '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                        borderColor: 'transparent',
+                                    },
+                                }}
+                            >
+                                <MenuItem value="10:00 AM">10:00 AM</MenuItem>
+                                <MenuItem value="2:00 PM">2:00 PM</MenuItem>
+                                <MenuItem value="4:00 PM">4:00 PM</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                </Box>
+                <Typography sx={{ color: '#666', fontSize: '0.8rem', alignSelf: 'flex-end', marginBottom: '10px' }}>
+                    {formData.message.length}/300
+                </Typography>
+
+                {errorMessage && (
+                    <Typography sx={{ color: 'red', fontSize: '0.9rem', mb: 1 }}>
+                        {errorMessage}
+                    </Typography>
+                )}
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{
+                        backgroundColor: '#458FF6',
+                        borderRadius: '10px',
+                        width: "22%",
+                        textTransform: 'uppercase',
+                        fontWeight: 'bold',
+                        fontSize: '1rem',
+                        padding: '12px',
+                        '&:hover': {
+                            backgroundColor: '#357ABD',
+                        },
+                        marginTop: '5px', 
+                    }}
+                    onClick={handleSubmit}
+                >
+                    Submit Form →
+                </Button>
             </Box>
-            <Box display="flex" alignItems="center" marginBottom="1rem">
-              <EmailIcon sx={{ marginRight: "0.5rem", color: "#4CAF50" }} />
-              <Typography
-              style={{
-                fontSize: { xs: "0.7rem", sm: "0.8rem" }
-             }} 
-              >contact@ourdomain.com</Typography>
+
+            <Box
+                sx={{
+                    width: isSmallScreen ? '100%' : '70%', 
+                    textAlign: 'left',
+                    marginBottom: isSmallScreen ? '20px' : '40px',
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'flex-start', 
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        mb: 4,
+                        gap: '20px',
+                    }}
+                >
+                    <Box display="flex" alignItems="center">
+                        <IconButton sx={{ border: '2px solid #458FF6', borderRadius: '50%', color: '#458FF6', mr: 1 }}>
+                            <LocationOnOutlinedIcon />
+                        </IconButton>
+                        <Typography
+                            sx={{
+                                fontSize: '0.8rem',
+                                color: '#666',
+                                lineHeight: '1.5',
+                                fontWeight: '500',
+                                fontFamily: 'Montserrat',
+                            }}
+                        >
+                            6386 Spring St undefined, Anchorage, <br />Georgia 12473, United States
+                        </Typography>
+                    </Box>
+
+                    <Box display="flex" alignItems="center">
+                        <IconButton
+                            sx={{
+                                border: '2px solid #458FF6',
+                                fontWeight: '500',
+                                fontFamily: 'Montserrat',
+                                borderRadius: '50%',
+                                color: '#458FF6',
+                                mr: 1,
+                            }}
+                        >
+                            <SmartphoneIcon />
+                        </IconButton>
+                        <Typography sx={{ fontSize: '0.8rem', color: '#666' }}>
+                            (843) 555-0130
+                        </Typography>
+                    </Box>
+
+                    <Box display="flex" alignItems="center">
+                        <IconButton sx={{ border: '2px solid #458FF6', borderRadius: '50%', color: '#458FF6', mr: 1 }}>
+                            <EmailOutlinedIcon />
+                        </IconButton>
+                        <Typography
+                            sx={{
+                                fontSize: '0.8rem',
+                                fontWeight: '500',
+                                fontFamily: 'Montserrat',
+                                color: '#666',
+                            }}
+                        >
+                            willie.jennings@exple.com
+                        </Typography>
+                    </Box>
+                </Box>
+
+                <Box sx={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                    <IconButton sx={{ color: '#458FF6' }}>
+                        <FacebookIcon sx={{ fontSize: "2.5rem" }} />
+                    </IconButton>
+                    <IconButton sx={{ color: '#458FF6' }}>
+                        <LinkedInIcon sx={{ fontSize: "2.5rem" }} />
+                    </IconButton>
+                </Box>
             </Box>
-        {/* Other Contact Information */}
-      </Paper>
-      <Paper elevation={3} sx={{ padding: "1rem", marginTop: "1rem",
-              // backgroundColor:'#2f2f2f2e'
-
-           }}>
-    <Typography
-      variant="h6"
-      gutterBottom
-      sx={{
-        textAlign: "center",
-        fontWeight: "bold",
-        fontFamily: "Orbitron, sans-serif",
-        color: '#464646',
-      }}
-    >
-      Our Location
-    </Typography>
-    <Box textAlign="center" marginTop="1rem">
-      <a
-        href="https://www.google.com/maps/search/EALOGICS+STAR+REAL+ESTATE+L.L.C+Y+Z+BUILDING/@25.2089173,55.2724983,12z/data=!3m1!4b1?hl=ar&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: "inline-block", textDecoration: "none" }}
-      >
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11587.888832849022!2d55.272498!3d25.208963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434a565324f9%3A0xd6cfbc3e3b62409f!2sAspin%20Commercial%20Tower%20106!5e0!3m2!1sar!2sae!4v1680288315483!5m2!1sar!2sae"
-          width="100%"
-          height="100px"
-          style={{ border: 0, 
-            // pointerEvents: "none" 
-          }}
-          allowFullScreen=""
-          loading="lazy"
-          title="Our Location"
-        ></iframe>
-      </a>
-      {/* <a
-        href="https://www.google.com/maps/search/EALOGICS+STAR+REAL+ESTATE+L.L.C+Y+Z+BUILDING/@25.2089173,55.2724983,12z/data=!3m1!4b1?hl=ar&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ display: "inline-block", textDecoration: "none" }}
-      >
--        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11587.888832849022!2d55.272498!3d25.208963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434a565324f9%3A0xd6cfbc3e3b62409f!2sAspin%20Commercial%20Tower%20106!5e0!3m2!1sar!2sae!4v1680288315483!5m2!1sar!2sae"
-          width="100%"
-          height="100px"
-          style={{ border: 0, 
-            // pointerEvents: "none" 
-          }}
-          allowFullScreen=""
-          loading="lazy"
-          title="Our Location"
-        ></iframe>
-      </a> */}
-    </Box>
-
-  </Paper>
-    </Box>
-  </Box>
-</Box>
-
-
-
-
-
-        {/* <form>
-              <TextField
-                fullWidth
-                label="Name"
-                variant="outlined"
-                margin="normal"
-                required
-              />
-              <TextField
-                fullWidth
-                label="Email"
-                variant="outlined"
-                margin="normal"
-                type="email"
-                required
-              />
-              <TextField
-                fullWidth
-                label="Subject"
-                variant="outlined"
-                margin="normal"
-              />
-              <TextField
-                fullWidth
-                label="Message"
-                variant="outlined"
-                margin="normal"
-                multiline
-                rows={4}
-                required
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                fullWidth
-                sx={{ marginTop: "1rem",
-                  backgroundColor: "#4CAF50",
-                  width: "fit-content"
-                 }}
-              >
-                Submit
-              </Button>
-            </form> */}
-
-    </div>
-   
-  );
+        </Container>
+    );
 };
-
-
 
 export default ContactUs;
