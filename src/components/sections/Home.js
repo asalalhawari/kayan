@@ -1,9 +1,10 @@
-import React from "react";
-import { Box, Typography, Button, useMediaQuery } from "@mui/material";
-import screen from "../../img/imghom.jpg"; // استخدام WebP لجودة أفضل
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { Box, Button, Card, Typography } from "@mui/material";
+import { motion } from "framer-motion";
+import homeBg from "../../img/home.jpg";
 
 const Home = () => {
-  const isSmallScreen = useMediaQuery('(max-width:600px)')
 
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -12,137 +13,365 @@ const Home = () => {
     }
   };
 
-  return (
-    <div id="home">
-      <Box
-        sx={{
-          width: "100%",
-          height: isSmallScreen ? "auto" : "100vh",
-          display: "flex",
-          flexDirection: isSmallScreen ? "column" : "row",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(to left bottom, #00152E, #2091F9)",
-          padding: isSmallScreen ? "35px 10px" : "0px",
-          gap: isSmallScreen ? "1rem" : "2rem",
-          position: "relative",
-          overflowX:"hidden"
-        }}
-      >
-        {/* Image Section */}
-        <Box
-          sx={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            marginTop: isSmallScreen ? "20px" : "10%",
-            flexDirection: "column",
-          }}
-        >
-          <img
-            src={screen}
-            alt="Screen"
-            loading="lazy" // تحميل متأخر
-            style={{
-              width: "100%",
-              maxWidth: isSmallScreen ? "400px" : "668px",
-              height:  isSmallScreen ? "auto": "460px",
-              borderRadius: "10px",
-              boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-              imageRendering: "auto", // تحسين العرض
-            }}
-          />
-          <Box
-            sx={{
-              width: "100%",
-              maxWidth: "670px",
-              height: "10px",
-              backgroundColor: "#D8D8D8",
-              borderRadius: "2px",
-              marginTop: "0px",
-            }}
-          />
-        </Box>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        staggerChildren: 0.3
+      }
+    }
+  };
 
-        {/* Text Section */}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  return (
+    <Box
+      component={motion.div}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      sx={{
+        minHeight: { xs: "auto", sm: "100vh" },
+        padding: { xs: "60px 0", sm: "80px 0", md: "100px 0" },
+        background: `url(${homeBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.6) 100%)",
+          zIndex: 1,
+        }
+      }}
+    >
+      {/* Animated background elements */}
+      <Box
+        component={motion.div}
+        animate={{
+          rotate: 360,
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+        sx={{
+          position: "absolute",
+          top: "10%",
+          right: "10%",
+          width: "200px",
+          height: "200px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)",
+          zIndex: 1,
+        }}
+      />
+
+      <Box
+        component={motion.div}
+        animate={{
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+        sx={{
+          position: "absolute",
+          bottom: "20%",
+          left: "5%",
+          width: "150px",
+          height: "150px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(66,165,245,0.2) 0%, transparent 70%)",
+          zIndex: 1,
+        }}
+      />
+
+              <Box
+          sx={{
+            width: "100%",
+            maxWidth: "1200px",
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            alignItems: "center",
+            justifyContent: "center",
+            gap: { xs: 3, sm: 4, lg: 8 },
+            px: { xs: 2, sm: 4, lg: 6 },
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+        {/* Left: Chart/Laptop */}
         <Box
+          component={motion.div}
+          variants={itemVariants}
           sx={{
             flex: 1,
             display: "flex",
-            flexDirection: "column",
-            alignItems: isSmallScreen ? "center" : "flex-start",
             justifyContent: "center",
-            padding: isSmallScreen ? "0px" : "20px",
-            marginTop: isSmallScreen ? "10px" : "10%",
-            textAlign: isSmallScreen ? "center" : "left",
+            alignItems: "center",
+            mb: { xs: 4, lg: 0 },
+            order: { xs: 2, lg: 1 },
           }}
         >
-          <Typography
-            variant="h2"
+          <Card
+            component={motion.div}
+            whileHover={{ 
+              scale: 1.05,
+              rotateY: 5,
+            }}
+            transition={{ duration: 0.3 }}
+            elevation={12}
             sx={{
-              fontSize: isSmallScreen ? "1.2rem" : "36px",
-              fontWeight: "700",
-              fontFamily: "Montserrat",
-              marginTop: "10px",
-              color: "#FFFFFF",
-              letterSpacing: isSmallScreen ? "-1px" : "0.26px",
-              lineHeight: isSmallScreen ? "0.9" : "44.91px",
-              textTransform: "capitalize",
+              borderRadius: 4,
+              overflow: "hidden",
+              width: { xs: "100%", sm: "90%", lg: "100%" },
+              maxWidth: "600px",
+              bgcolor: "#23242a",
+              p: 0,
+              position: "relative",
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1,
+              }
             }}
           >
-            Your Reliable Partner in E-Claim Solutions
-          </Typography>
+           
+            
+            {/* Floating action button */}
+            <Box
+              component={motion.div}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+                backgroundColor: "rgba(25,118,210,0.9)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                zIndex: 3,
+                boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+                backdropFilter: "blur(10px)",
+              }}
+            >
+              <PlayArrowIcon sx={{ color: "white", fontSize: "30px" }} />
+            </Box>
+          </Card>
+        </Box>
+
+        {/* Right: Text and Button */}
+        <Box
+          component={motion.div}
+          variants={itemVariants}
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: { xs: "center", lg: "flex-start" },
+            textAlign: { xs: "center", lg: "left" },
+            order: { xs: 1, lg: 2 },
+          }}
+        >
           <Typography
+            component={motion.h1}
+            variants={itemVariants}
+            variant="h1"
+            sx={{
+              fontWeight: 800,
+              color: "#fff",
+              fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem", lg: "3.5rem" },
+              mb: { xs: 2, sm: 3 },
+              lineHeight: 1.1,
+              textShadow: "0 2px 10px rgba(0,0,0,0.3)",
+              background: "linear-gradient(45deg, #fff 30%, #e3f2fd 90%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Your Reliable Partner in
+            <Box component="span" sx={{ 
+              display: "block", 
+              background: "linear-gradient(45deg, #42a5f5 30%, #1976d2 90%)",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}>
+              E-Claim Solutions
+            </Box>
+          </Typography>
+          
+          <Typography
+            component={motion.p}
+            variants={itemVariants}
             variant="body1"
             sx={{
-              fontSize: isSmallScreen ? "0.8rem" : "20px",
-              color: "#FFFFFF",
-              marginTop: "10px",
-              fontWeight: "500",
-              fontFamily: "Montserrat",
-              lineHeight: "24.6px",
-              letterSpacing: isSmallScreen ? "0px" : "0.26px",
+              color: "#e3f2fd",
+              fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" },
+              mb: { xs: 3, sm: 4 },
+              maxWidth: '90%',
+              lineHeight: 1.6,
+              opacity: 0.9,
             }}
           >
-            Transform the way you handle claims with our simplified <br />
-            e-claim multi-layered AI-powered solutions.
+            Transform the way you handle claims with our simplified e-claim 
+            multi-layered AI-powered solutions. Get the most efficient management 
+            team with proven healthcare experience.
           </Typography>
 
-          <Typography
-            variant="body2"
+          <Box
+            component={motion.div}
+            variants={itemVariants}
             sx={{
-              fontSize: isSmallScreen ? "0.7rem" : "17px",
-              color: "#FFFFFF",
-              marginTop: "55px",
-              fontWeight: "500",
-              fontFamily: "Montserrat",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: 2,
+              width: "100%",
+              justifyContent: { xs: "center", lg: "flex-start" },
             }}
           >
-            Streamline Your E-Claim Transition Cycle Today
-          </Typography>
-          <Button
-            variant="contained"
+            <Button
+              component={motion.button}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              variant="contained"
+              endIcon={<ArrowForwardIcon />}
+              sx={{
+                background: "linear-gradient(45deg, #fff 30%, #f5f5f5 90%)",
+                color: "#1976d2",
+                fontWeight: 700,
+                fontSize: "1.1rem",
+                borderRadius: "50px",
+                px: 4,
+                py: 2,
+                boxShadow: "0 8px 25px rgba(0,0,0,0.15)",
+                textTransform: "none",
+                minWidth: "200px",
+                "&:hover": {
+                  background: "linear-gradient(45deg, #f5f5f5 30%, #e0e0e0 90%)",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.2)",
+                },
+              }}
+              onClick={() => scrollToSection("contactUs")}
+            >
+              Request a Demo
+            </Button>
+
+            <Button
+              component={motion.button}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              variant="outlined"
+              sx={{
+                borderColor: "rgba(255,255,255,0.3)",
+                color: "#fff",
+                fontWeight: 600,
+                fontSize: "1rem",
+                borderRadius: "50px",
+                px: 4,
+                py: 2,
+                textTransform: "none",
+                minWidth: "200px",
+                "&:hover": {
+                  borderColor: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.1)",
+                  backdropFilter: "blur(10px)",
+                },
+              }}
+              onClick={() => scrollToSection("benefits")}
+            >
+              Learn More
+            </Button>
+          </Box>
+
+          {/* Stats */}
+          <Box
+            component={motion.div}
+            variants={itemVariants}
             sx={{
-              marginTop: "25px",
-              fontSize: isSmallScreen ? "0.8rem" : "0.9rem",
-              fontWeight: "bold",
-              backgroundColor: "#FFFFFF",
-              color: "#2091F9",
-              padding: "12px 20px",
-              textTransform: "capitalize",
-              borderRadius: "16px",
-              "&:hover": {
-                backgroundColor: "rgba(214,222,231,0.5)",
-              },
+              display: "flex",
+              justifyContent: { xs: "center", lg: "flex-start" },
+              gap: { xs: 2, sm: 4 },
+              mt: { xs: 3, sm: 4 },
+              flexWrap: "wrap",
             }}
-            onClick={() => scrollToSection("contactUs")}
           >
-            Request a Demo
-          </Button>
+            {[
+              { number: "99%", label: "Accuracy Rate" },
+              { number: "24/7", label: "Support" },
+              { number: "50+", label: "Healthcare Partners" },
+            ].map((stat, index) => (
+              <Box
+                key={index}
+                component={motion.div}
+                whileHover={{ scale: 1.05 }}
+                sx={{
+                  textAlign: "center",
+                  color: "#fff",
+                }}
+              >
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { xs: "1.5rem", sm: "2rem" },
+                    color: "#42a5f5",
+                  }}
+                >
+                  {stat.number}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                    opacity: 0.8,
+                  }}
+                >
+                  {stat.label}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
         </Box>
       </Box>
-    </div>
+    </Box>
   );
 };
 

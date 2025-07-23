@@ -1,15 +1,18 @@
-import React from "react";
-import { Box, Typography, Card, CardContent, useMediaQuery } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Box, Card, Grid, Typography, useMediaQuery } from "@mui/material";
 
 const content = [
   {
     title: "Mission",
-     description: "Our mission is to drive efficiency and innovation in the healthcare sector by delivering tailored, intelligent solutions that optimize operations, ensure compliance, and create lasting value for all stakeholders.",
-},
+    description: "Our mission is to drive efficiency and innovation in the healthcare sector by delivering tailored, intelligent solutions that optimize operations, ensure compliance, and create lasting value for all stakeholders.",
+    icon: <FavoriteIcon color="primary" sx={{ fontSize: 40 }} />,
+  },
   {
     title: "Vision",
-   description: "To pioneer cutting-edge, AI-powered solutions that empower payers, providers, and regulators, shaping a smarter, more efficient healthcare ecosystem for the future.",
-},
+    description: "To pioneer cutting-edge, AI-powered solutions that empower payers, providers, and regulators, shaping a smarter, more efficient healthcare ecosystem for the future.",
+    icon: <VisibilityIcon color="primary" sx={{ fontSize: 40 }} />,
+  },
 ];
 
 const OurStory = () => {
@@ -27,165 +30,66 @@ const OurStory = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        backgroundColor: "#fff",
-        padding: isSmallScreen ? "20px" : isMediumScreen ? "30px" : "40px",
+        background: 'linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%)',
+        py: { xs: 6, md: 10 },
+        px: { xs: 2, md: 6 },
         overflowX: "hidden",
       }}
     >
-      {/* First Row: Title and Mission Card */}
-      <Box
+      <Typography
+        variant="h3"
+        fontWeight={700}
+        mb={4}
+        color="primary"
         sx={{
-          width: isSmallScreen ? "100%" : isMediumScreen ? "90%" : "100%",
-          display: "flex",
-          flexDirection: isSmallScreen ? "column" : "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginTop: isSmallScreen ? "20px" : isMediumScreen ? "30px" : "70px",
+          fontSize: { xs: '2rem', md: '2.8rem' },
+          letterSpacing: '-1px',
+          textTransform: 'uppercase',
+          background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
       >
-        {/* Title Section */}
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            textAlign: 'left',
-            width: isSmallScreen ? "100%" : "50%",
-          }}
-        >
-          <Typography
-            // variant="h4"
-            sx={{
-              fontWeight: '700',
-              color: '#000',
-              fontFamily: 'Josefin Sans',
-              textTransform: 'uppercase',
-              fontSize: isSmallScreen ? '1.5rem' : isMediumScreen ? '2rem' : '3.5rem',
-              letterSpacing:"-1px",
-              whiteSpace: 'pre-line', 
-            }}
-          >
-            Our Mission
-            {"\n"}& Vision
-          </Typography>
-          <Box
-            sx={{
-              width: "145px",
-              height: "4px",
-              backgroundColor: "black",
-              marginTop: "8px",
-            }}
-          />
-          <Box
-            sx={{
-              width: "145px",
-              height: "4px",
-              backgroundColor: "#458ff6",
-              marginTop: "5px",
-            }}
-          />
-        </Box>
-
-        {/* Mission Card */}
-        <Card
-          sx={{
-            width: isSmallScreen ? "100%" : isMediumScreen ? "45%" : "50%",
-            minHeight: isSmallScreen ? "150px" : isMediumScreen ? "200px" : "225px",
-            padding: isSmallScreen ? "10px" : "15px",
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            borderRadius: " 104px 0 0 104px ", // Rounded on the left side
-            backgroundColor: "rgba(0,0,0,0.1)",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <CardContent
-            sx={{
-              textAlign: "left",
-              width: "100%",
-            }}
-          >
-            <Typography
-              // variant="h6"
+        Our Mission & Vision
+      </Typography>
+      <Grid container spacing={4} justifyContent="center" alignItems="stretch" sx={{ maxWidth: 1100 }}>
+        {content.map((item, idx) => (
+          <Grid item xs={12} md={6} key={item.title}>
+            <Card
+              elevation={6}
               sx={{
-                fontWeight: "bold",
-                color: "#000",
-                fontSize: isSmallScreen ? "1rem" : isMediumScreen ? "1.2rem" : "2rem",
-
+                borderRadius: 4,
+                p: { xs: 2, md: 4 },
+                background: '#fff',
+                minHeight: 260,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                boxShadow: '0 8px 32px rgba(25,118,210,0.08)',
+                position: 'relative',
+                overflow: 'visible',
+                mt: idx === 1 && !isSmallScreen ? { md: 6 } : 0,
               }}
             >
-              {content[0].title}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: isSmallScreen ? "0.8rem" : isMediumScreen ? "0.9rem" : "1rem",
-                color: "#666",
-                marginTop: "10px",
-                lineHeight: 1.5,
-              }}
-            >
-              {content[0].description}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Box>
-
-      {/* Second Row: Vision Card */}
-      <Box
-        sx={{
-          width: isSmallScreen ? "100%" : isMediumScreen ? "90%" : "100%",
-          display: "flex",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          marginTop:"50px"
-        }}
-      >
-        <Card
-          sx={{
-            width: isSmallScreen ? "100%" : isMediumScreen ? "45%" : "50%",
-            minHeight: isSmallScreen ? "150px" : isMediumScreen ? "200px" : "225px",
-            padding: isSmallScreen ? "10px" : "15px",
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            borderRadius: " 0 104px 104px 0 ", // Rounded on the left side
-            backgroundColor: "rgba(0,0,0,0.1)",
-          display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <CardContent
-            sx={{
-              textAlign: "left",
-              width: "100%",
-            }}
-          >
-            <Typography
-              // variant="h6"
-              sx={{
-                fontWeight: "bold",
-                color: "#000",
-                fontSize: isSmallScreen ? "1rem" : isMediumScreen ? "1.2rem" : "2rem",
-              }}
-            >
-              {content[1].title}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                fontSize: isSmallScreen ? "0.8rem" : isMediumScreen ? "0.9rem" : "1rem",
-                color: "#666",
-                marginTop: "10px",
-                lineHeight: 1.5,
-              }}
-            >
-              {content[1].description}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                {item.icon}
+                <Typography variant="h5" fontWeight={700} sx={{ ml: 2, color: '#1976d2', fontSize: { xs: '1.3rem', md: '1.7rem' } }}>
+                  {item.title}
+                </Typography>
+              </Box>
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ fontSize: { xs: '1rem', md: '1.1rem' }, textAlign: 'left', lineHeight: 1.7 }}
+              >
+                {item.description}
+              </Typography>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };

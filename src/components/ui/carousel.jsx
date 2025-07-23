@@ -1,9 +1,10 @@
-import * as React from "react"
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import * as React from "react";
 
-import { cn } from "src/lib/utils"
-import { Button } from "src/components/ui/button"
+import { Button } from "src/components/ui/button";
+import { cn } from "src/lib/utils";
 
 const CarouselContext = React.createContext(null)
 
@@ -29,10 +30,13 @@ const Carousel = React.forwardRef((
   },
   ref
 ) => {
-  const [carouselRef, api] = useEmblaCarousel({
-    ...opts,
-    axis: orientation === "horizontal" ? "x" : "y",
-  }, plugins)
+  const [carouselRef, api] = useEmblaCarousel(
+    {
+      ...opts,
+      axis: orientation === "horizontal" ? "x" : "y",
+    },
+    plugins
+  )
   const [canScrollPrev, setCanScrollPrev] = React.useState(false)
   const [canScrollNext, setCanScrollNext] = React.useState(false)
 
@@ -64,29 +68,23 @@ const Carousel = React.forwardRef((
   }, [scrollPrev, scrollNext])
 
   React.useEffect(() => {
-    if (!api || !setApi) {
-      return
-    }
-
-    setApi(api)
-  }, [api, setApi])
-
-  React.useEffect(() => {
     if (!api) {
       return
     }
 
+    setApi?.(api)
     onSelect(api)
-    api.on("reInit", onSelect)
     api.on("select", onSelect)
+    api.on("reInit", onSelect)
 
     return () => {
       api?.off("select", onSelect)
-    };
-  }, [api, onSelect])
+      api?.off("reInit", onSelect)
+    }
+  }, [api, onSelect, setApi])
 
   return (
-    (<CarouselContext.Provider
+    <CarouselContext.Provider
       value={{
         carouselRef,
         api: api,
@@ -97,18 +95,20 @@ const Carousel = React.forwardRef((
         scrollNext,
         canScrollPrev,
         canScrollNext,
-      }}>
+      }}
+    >
       <div
         ref={ref}
         onKeyDownCapture={handleKeyDown}
         className={cn("relative", className)}
         role="region"
         aria-roledescription="carousel"
-        {...props}>
+        {...props}
+      >
         {children}
       </div>
-    </CarouselContext.Provider>)
-  );
+    </CarouselContext.Provider>
+  )
 })
 Carousel.displayName = "Carousel"
 
@@ -116,7 +116,7 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    (<div ref={carouselRef} className="overflow-hidden">
+    <div ref={carouselRef} className="overflow-hidden">
       <div
         ref={ref}
         className={cn(
@@ -124,9 +124,10 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
-        {...props} />
-    </div>)
-  );
+        {...props}
+      />
+    </div>
+  )
 })
 CarouselContent.displayName = "CarouselContent"
 
@@ -134,7 +135,7 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 
   return (
-    (<div
+    <div
       ref={ref}
       role="group"
       aria-roledescription="slide"
@@ -143,51 +144,150 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
-      {...props} />)
-  );
+      {...props}
+    />
+  )
 })
 CarouselItem.displayName = "CarouselItem"
 
-const CarouselPrevious = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+const CarouselPrevious = React.forwardRef(({ 
+  className, 
+  variant = "outline", 
+  size = "icon",
+  ...props 
+}, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    (<Button
+    <Button
       ref={ref}
       variant={variant}
       size={size}
-      className={cn("absolute  h-8 w-8 rounded-full", orientation === "horizontal"
-        ? "-left-12 top-1/2 -translate-y-1/2"
-        : "-top-12 left-1/2 -translate-x-1/2 rotate-90", className)}
+      className={cn(
+        "absolute h-8 w-8 rounded-full",
+        orientation === "horizontal"
+          ? "-left-12 top-1/2 -translate-y-1/2"
+          : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+        className
+      )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      {...props}>
-      <ArrowLeft className="h-4 w-4" />
+      {...props}
+    >
+      <ChevronLeft className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
-    </Button>)
-  );
+    </Button>
+  )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
-const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+const CarouselNext = React.forwardRef(({ 
+  className, 
+  variant = "outline", 
+  size = "icon",
+  ...props 
+}, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    (<Button
+    <Button
       ref={ref}
       variant={variant}
       size={size}
-      className={cn("absolute h-8 w-8 rounded-full", orientation === "horizontal"
-        ? "-right-12 top-1/2 -translate-y-1/2"
-        : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90", className)}
+      className={cn(
+        "absolute h-8 w-8 rounded-full",
+        orientation === "horizontal"
+          ? "-right-12 top-1/2 -translate-y-1/2"
+          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+        className
+      )}
       disabled={!canScrollNext}
       onClick={scrollNext}
-      {...props}>
-      <ArrowRight className="h-4 w-4" />
+      {...props}
+    >
+      <ChevronRight className="h-4 w-4" />
       <span className="sr-only">Next slide</span>
-    </Button>)
-  );
+    </Button>
+  )
 })
 CarouselNext.displayName = "CarouselNext"
 
-export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext };
+// Healthcare-specific carousel with enhanced styling
+const HealthcareCarousel = React.forwardRef(({ 
+  children, 
+  className,
+  showArrows = true,
+  showDots = true,
+  autoPlay = false,
+  interval = 5000,
+  ...props 
+}, ref) => {
+  const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [api, setApi] = React.useState()
+
+  React.useEffect(() => {
+    if (!api) return
+
+    api.on("select", () => {
+      setCurrentSlide(api.selectedScrollSnap())
+    })
+  }, [api])
+
+  React.useEffect(() => {
+    if (!autoPlay || !api) return
+
+    const intervalId = setInterval(() => {
+      api.scrollNext()
+    }, interval)
+
+    return () => clearInterval(intervalId)
+  }, [api, autoPlay, interval])
+
+  return (
+    <div className={cn("relative", className)} ref={ref} {...props}>
+      <Carousel setApi={setApi} className="w-full">
+        <CarouselContent>
+          {children}
+        </CarouselContent>
+        
+        {showArrows && (
+          <>
+            <CarouselPrevious 
+              className="left-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200" 
+            />
+            <CarouselNext 
+              className="right-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200" 
+            />
+          </>
+        )}
+      </Carousel>
+
+      {showDots && (
+        <div className="flex justify-center mt-4 space-x-2">
+          {React.Children.map(children, (_, index) => (
+            <motion.button
+              key={index}
+              className={cn(
+                "w-2 h-2 rounded-full transition-all duration-200",
+                currentSlide === index 
+                  ? "bg-blue-600 scale-125" 
+                  : "bg-gray-300 hover:bg-gray-400"
+              )}
+              onClick={() => api?.scrollTo(index)}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+})
+HealthcareCarousel.displayName = "HealthcareCarousel"
+
+export {
+  Carousel,
+  CarouselContent,
+  CarouselItem, CarouselNext, CarouselPrevious, HealthcareCarousel
+};
+
