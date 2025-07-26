@@ -1,7 +1,6 @@
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import SendIcon from '@mui/icons-material/Send';
@@ -219,10 +218,10 @@ const ContactUs = () => {
                     component={motion.div}
                     variants={itemVariants}
                     sx={{
-                        width: { xs: '100%', md: '80%', lg: '70%' },
+                        width: { xs: '100%', md: '100%', lg: '100%' },
                         display: 'flex',
                         flexDirection: { xs: 'column', lg: 'row' },
-                        gap: { xs: 4, lg: 6 },
+                        gap: { xs: 2, lg: 2 },
                         alignItems: 'stretch',
                     }}
                 >
@@ -408,7 +407,7 @@ const ContactUs = () => {
                             flex: 1,
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: 3,
+                            gap: 2,
                         }}
                     >
                         <Box
@@ -452,8 +451,8 @@ const ContactUs = () => {
                                         <Typography variant="body2" color="textSecondary">
                                             Email
                                         </Typography>
-                                        <Typography variant="body1" fontWeight={600}>
-                                            info@kayanhealthcare.com
+                                        <Typography variant="body1" fontWeight={600} width={"100%"} textAlign={"left"} noWrap>
+                                        ihijawi@kayan-healthcare.com
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -478,7 +477,7 @@ const ContactUs = () => {
                                             Phone
                                         </Typography>
                                         <Typography variant="body1" fontWeight={600}>
-                                            +970 59 123 4567
+                                        +971 56 120 7460
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -500,10 +499,10 @@ const ContactUs = () => {
                                     </Box>
                                     <Box>
                                         <Typography variant="body2" color="textSecondary">
-                                            Address
+                                        MAILING ADDRESS
                                         </Typography>
-                                        <Typography variant="body1" fontWeight={600}>
-                                            Ramallah, Palestine
+                                        <Typography variant="body1" fontWeight={600}  >
+                                        Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai,UAE
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -533,20 +532,6 @@ const ContactUs = () => {
                             </Typography>
                             
                             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-                                <IconButton
-                                    sx={{
-                                        width: '50px',
-                                        height: '50px',
-                                        backgroundColor: '#1877f2',
-                                        color: 'white',
-                                        '&:hover': {
-                                            backgroundColor: '#166fe5',
-                                            transform: 'scale(1.1)',
-                                        },
-                                    }}
-                                >
-                                    <FacebookIcon />
-                                </IconButton>
                                 <IconButton
                                     sx={{
                                         width: '50px',

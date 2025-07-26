@@ -1,34 +1,20 @@
 import {
   Email,
-  Facebook,
-  Instagram,
-  LinkedIn,
   LocationOn,
-  Phone,
-  Twitter,
-  YouTube
+  Phone
 } from "@mui/icons-material";
 import {
   Box,
   Container,
   Divider,
   Grid,
-  IconButton,
   Link,
-  MenuItem,
-  Select,
   Typography
 } from "@mui/material";
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import kayanlogo from '../../img/kayanlogo55.png';
 
 const Footer = () => {
-  const { i18n } = useTranslation();
-
-  const changeLanguage = (event) => {
-    i18n.changeLanguage(event.target.value);
-  };
 
   const navigateToHome = () => {
     window.location.href = "/"; 
@@ -46,24 +32,18 @@ const Footer = () => {
       { name: "About Us", action: () => scrollToSection("about") },
       { name: "Our Story", action: () => scrollToSection("our-story") },
       { name: "Our Team", action: () => scrollToSection("our-experts") },
-      { name: "Careers", action: () => {} },
     ],
     services: [
       { name: "E-Claim Solutions", action: () => scrollToSection("solution") },
       { name: "Healthcare Technology", action: () => scrollToSection("our-technology") },
-      { name: "Provider Solutions", action: () => scrollToSection("provider-solutions") },
-      { name: "Payer Solutions", action: () => scrollToSection("payer-solutions") },
     ],
     resources: [
-      { name: "Documentation", action: () => {} },
-      { name: "API Reference", action: () => {} },
       { name: "Support Center", action: () => scrollToSection("contactUs") },
-      { name: "Blog", action: () => {} },
     ],
     contact: [
-      { name: "info@kayanhealthcare.com", icon: Email, action: () => {} },
-      { name: "+970 59 123 4567", icon: Phone, action: () => {} },
-      { name: "Ramallah, Palestine", icon: LocationOn, action: () => {} },
+      { name: "ihijawi@kayan-healthcare.com", icon: Email, action: () => {} },
+      { name: "+971 56 120 7460", icon: Phone, action: () => {} },
+      { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai,UAE", icon: LocationOn, action: () => {} },
     ]
   };
 
@@ -125,38 +105,8 @@ const Footer = () => {
                 fontSize: { xs: '0.9rem', md: '1rem' }
               }}
             >
-              Transforming healthcare through innovative e-claim solutions. 
-              We empower healthcare providers with cutting-edge technology 
-              to streamline operations and improve patient care.
+              Partner with Kayan Healthcare technologies to streamline operations, enhance compliance, and drive efficiency through AI powered automation.
             </Typography>
-
-            <Box sx={{ display: 'flex', gap: 1, mb: 3 }}>
-              {[
-                { icon: Facebook, color: '#1877f2', href: '#' },
-                { icon: Twitter, color: '#1da1f2', href: '#' },
-                { icon: LinkedIn, color: '#0077b5', href: '#' },
-                { icon: Instagram, color: '#e4405f', href: '#' },
-                { icon: YouTube, color: '#ff0000', href: '#' },
-              ].map((social, index) => (
-                <IconButton
-                  key={index}
-                  component={motion.button}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  sx={{
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    color: 'white',
-                    '&:hover': {
-                      backgroundColor: social.color,
-                      transform: 'translateY(-2px)',
-                    },
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <social.icon />
-                </IconButton>
-              ))}
-            </Box>
           </Grid>
 
           {/* Quick Links */}
@@ -335,46 +285,9 @@ const Footer = () => {
               fontSize: { xs: '0.8rem', md: '0.9rem' }
             }}
           >
-            © 2024 Kayan Healthcare. All rights reserved.
+            © 2025 Kayan Healthcare. All rights reserved.
           </Typography>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography 
-              variant="body2" 
-              sx={{ 
-                color: 'rgba(255,255,255,0.7)',
-                fontSize: { xs: '0.8rem', md: '0.9rem' }
-              }}
-            >
-              Language:
-            </Typography>
-            <Select 
-              value={i18n.language} 
-              onChange={changeLanguage} 
-              size="small"
-              sx={{
-                color: 'white',
-                '& .MuiSelect-icon': {
-                  color: 'rgba(255,255,255,0.7)',
-                },
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(255,255,255,0.3)',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'rgba(255,255,255,0.5)',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: '#90caf9',
-                },
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                borderRadius: '8px',
-                minWidth: 120,
-              }}
-            >
-              <MenuItem value="en" sx={{ fontSize: '0.9rem' }}>English - En</MenuItem>
-              <MenuItem value="ar" sx={{ fontSize: '0.9rem' }}>العربية - Ar</MenuItem>
-            </Select>
-          </Box>
         </Box>
       </Container>
     </Box>

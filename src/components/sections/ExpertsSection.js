@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, useMediaQuery, CardContent, Typography, Grid, Box } from "@mui/material";
 import islam from "../../img/Islam.png";
-import ameer from "../../img/Ameer.jpg";
 import kareem from "../../img/Kareem.jpg";
+import kawther from "../../img/kawther.png";
+import randa from "../../img/randa.png";
 
 const experts = [
   {
@@ -22,12 +23,20 @@ const experts = [
     image: kareem,
   },
   {
-    name: "Dr. Amir Sultan",
+    name: "Kawther Ghanem",
+    role: "BOM",
+    description: [
+      "An Economics major with 7 years of experience in business management, bringing expertise in strategic planning and operational efficiency. Adept at driving growth and implementing innovative solutions to achieve company objectives and enhance overall performance.",
+    ],
+    image: kawther,
+  },
+  {
+    name: "Dr. Randa Hanna",
     role: "CMO",
     description: [
-      "E.N.T. physician with 15 years of experience in insurance and claim cycle management. Expertise in managing insurance operations and leading medical teams, focused on optimizing health claim processes. Committed to delivering efficient solutions for health claim scrubbing to enhance healthcare services.",
+      "A pharmacist with over 10 years of experience and a certified AAPC medical coder. Expertise in managing insurance operations and leading medical teams, focused on optimizing health claim processes. Committed to delivering efficient solutions for health claim scrubbing to enhance healthcare services.",
     ],
-    image: ameer,
+    image: randa,
   },
 ];
 
@@ -37,8 +46,8 @@ const ExpertCard = ({ expert }) => {
   return (
     <Box sx={{ width: "100%", textAlign: "center", justifyContent:"center", display:"flex",overflowX:"hidden"
      }}>
-      <Card
-        sx={{
+        <Card
+          sx={{
           width: "100%",
           maxWidth: isSmallScreen ? "100%" : "400px", // Increased card width
           height: isSmallScreen ? "auto" : "530px",
@@ -174,7 +183,7 @@ const ExpertsSection = () => {
             item
             xs={12}
             sm={6}
-            md={4}
+            md={3}
             key={index}
             sx={{
               display: "flex",

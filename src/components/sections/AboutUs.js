@@ -3,6 +3,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Box, Button, Typography, useMediaQuery } from "@mui/material";
 import { motion, useAnimation } from "framer-motion";
 import React from "react";
+import aboutImage from '../../img/about.jpg';
 
 const AboutUs = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
@@ -279,6 +280,7 @@ const AboutUs = () => {
                 borderRadius: "50%",
                 position: "relative",
                 boxShadow: "0 20px 40px rgba(32, 145, 249, 0.3)",
+                overflow: "hidden",
                 "&::before": {
                   content: '""',
                   position: "absolute",
@@ -286,12 +288,27 @@ const AboutUs = () => {
                   left: "10px",
                   right: "10px",
                   bottom: "10px",
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1))",
                   borderRadius: "50%",
-                  backdropFilter: "blur(10px)"
+                  zIndex: 1
                 }
               }}
-            />
+            >
+               <Box
+                 component="img"
+                 src={aboutImage}
+                 alt="About Kayan Healthcare"
+                 sx={{
+                   width: "100%",
+                   height: "100%",
+                   objectFit: "cover",
+                   borderRadius: "50%",
+                   position: "absolute",
+                   top: 0,
+                   left: 0,
+                   zIndex: 0
+                 }}
+               />
+            </Box>
             
             {/* Floating Elements */}
             <Box
