@@ -126,7 +126,7 @@ const TrustSection = () => {
 
             <motion.div variants={itemVariants}>
               <Link
-                href="#contact-us"
+                href="#contactUs"
                 underline="none"
                 sx={{
                   display: "inline-flex",
@@ -149,7 +149,7 @@ const TrustSection = () => {
                   }
                 }}
               >
-                Contact Sales to request a demo →
+                Contact us to request a demo →
               </Link>
             </motion.div>
           </Box>

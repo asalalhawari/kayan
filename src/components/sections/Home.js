@@ -320,55 +320,6 @@ const Home = () => {
               Learn More
             </Button>
           </Box>
-
-          {/* Stats */}
-          <Box
-            component={motion.div}
-            variants={itemVariants}
-            sx={{
-              display: "flex",
-              justifyContent: { xs: "center", lg: "flex-start" },
-              gap: { xs: 2, sm: 4 },
-              mt: { xs: 3, sm: 4 },
-              flexWrap: "wrap",
-            }}
-          >
-            {[
-              { number: "99%", label: "Accuracy Rate" },
-              { number: "24/7", label: "Support" },
-              { number: "50+", label: "Healthcare Partners" },
-            ].map((stat, index) => (
-              <Box
-                key={index}
-                component={motion.div}
-                whileHover={{ scale: 1.05 }}
-                sx={{
-                  textAlign: "center",
-                  color: "#fff",
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: { xs: "1.5rem", sm: "2rem" },
-                    color: "#42a5f5",
-                  }}
-                >
-                  {stat.number}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: { xs: "0.8rem", sm: "0.9rem" },
-                    opacity: 0.8,
-                  }}
-                >
-                  {stat.label}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
         </Box>
       </Box>
     </Box>
