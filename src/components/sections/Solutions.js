@@ -627,28 +627,6 @@ const Solutions = () => {
                         >
                           {solution.description}
                         </Typography>
-
-                        {/* CTA Button */}
-                        <Button
-                          variant="outlined"
-                          size="small"
-                          sx={{
-                            borderColor: solution.color,
-                            color: solution.color,
-                            fontWeight: 600,
-                            fontSize: "0.8rem",
-                            borderRadius: "20px",
-                            px: 2,
-                            py: 0.5,
-                            textTransform: "none",
-                            "&:hover": {
-                              backgroundColor: `${solution.color}10`,
-                              borderColor: solution.color,
-                            },
-                          }}
-                        >
-                          Learn More
-                        </Button>
                       </CardContent>
                     </Card>
                   </motion.div>

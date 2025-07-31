@@ -432,7 +432,7 @@ const ContactUs = () => {
                             </Typography>
                             
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                     <Box
                                         sx={{
                                             width: '50px',
@@ -446,18 +446,18 @@ const ContactUs = () => {
                                         }}
                                     >
                                         <EmailOutlinedIcon />
-                                    </Box>
-                                    <Box>
+                                    </Box> */}
+                                    {/* <Box>
                                         <Typography variant="body2" color="textSecondary">
                                             Email
                                         </Typography>
                                         <Typography variant="body1" fontWeight={600} width={"100%"} textAlign={"left"} noWrap>
                                         ihijawi@kayan-healthcare.com
                                         </Typography>
-                                    </Box>
-                                </Box>
+                                    </Box> */}
+                                {/* </Box> */}
 
-                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                {/* <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                     <Box
                                         sx={{
                                             width: '50px',
@@ -480,7 +480,7 @@ const ContactUs = () => {
                                         +971 56 120 7460
                                         </Typography>
                                     </Box>
-                                </Box>
+                                </Box> */}
 
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                     <Box

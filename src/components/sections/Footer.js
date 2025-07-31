@@ -35,14 +35,13 @@ const Footer = () => {
     ],
     services: [
       { name: "E-Claim Solutions", action: () => scrollToSection("solution") },
-      { name: "Healthcare Technology", action: () => scrollToSection("our-technology") },
     ],
     resources: [
       { name: "Support Center", action: () => scrollToSection("contactUs") },
     ],
     contact: [
-      { name: "ihijawi@kayan-healthcare.com", icon: Email, action: () => {} },
-      { name: "+971 56 120 7460", icon: Phone, action: () => {} },
+      // { name: "ihijawi@kayan-healthcare.com", icon: Email, action: () => {} },
+      // { name: "+971 56 120 7460", icon: Phone, action: () => {} },
       { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai,UAE", icon: LocationOn, action: () => {} },
     ]
   };
@@ -106,6 +105,20 @@ const Footer = () => {
               }}
             >
               Partner with Kayan Healthcare technologies to streamline operations, enhance compliance, and drive efficiency through AI powered automation.
+            </Typography>
+            
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                mb: 2,
+                fontWeight: 500,
+                color: '#90caf9',
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                fontStyle: 'italic',
+                textAlign: 'center'
+              }}
+            >
+              Deep Belief, Strong Commitment, Firmly Work
             </Typography>
           </Grid>
 

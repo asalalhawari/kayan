@@ -234,7 +234,7 @@ const Home = () => {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}>
-              E-Claim Solutions
+              Claim Management Solutions & AI
             </Box>
           </Typography>
           

@@ -6,9 +6,20 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import clients_map from '../../img/clients_map.png';
+import React from "react";
 
 const OurClient = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contactUs');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -172,6 +183,7 @@ const OurClient = () => {
               >
                 <Box
                   component="button"
+                  onClick={scrollToContact}
                   sx={{
                     background: "linear-gradient(45deg, #458FF6, #00D4AA)",
                     color: "white",

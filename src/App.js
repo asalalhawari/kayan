@@ -8,7 +8,6 @@ import HowItWork from './components/sections/HowItWork';
 import Solutions from './components/sections/Solutions';
 import OurStory from './components/sections/ourStory';
 import ExpertsSection from './components/sections/ExpertsSection';
-import TrustKayan from './components/sections/TrustKayan';
 import ContactUs from './components/sections/ContactUs';
 import Footer from './components/sections/Footer';
 import OurClient from './components/sections/OurClient';
@@ -27,7 +26,6 @@ import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css'; 
 import OurFeeds from './components/sections/OurFeeds';
 import AboutUs from './components/sections/AboutUs';
-import OurTechnology from './components/sections/OurTechnology';
 import AnimatedSection from './components/ui/AnimatedSection';
 
 const theme = createTheme({
@@ -215,11 +213,6 @@ const App = () => {
               </Box>
             </AnimatedSection>
             <AnimatedSection>
-              <Box component="section" id="our-technology" sx={{ width: '100%' }}>
-                <OurTechnology />
-              </Box>
-            </AnimatedSection>
-            <AnimatedSection>
               <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
                 <OurFeeds />
               </Box>
@@ -227,11 +220,6 @@ const App = () => {
             <AnimatedSection>
               <Box component="section" id="our-experts" sx={{ width: '100%' }}>
                 <ExpertsSection />
-              </Box>
-            </AnimatedSection>
-            <AnimatedSection>
-              <Box component="section" id="trust-kayan" sx={{ width: '100%' }}>
-                <TrustKayan />
               </Box>
             </AnimatedSection>
             <AnimatedSection>

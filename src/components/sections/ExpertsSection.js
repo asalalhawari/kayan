@@ -3,7 +3,7 @@ import { Card, useMediaQuery, CardContent, Typography, Grid, Box } from "@mui/ma
 import islam from "../../img/Islam.png";
 import kareem from "../../img/Kareem.jpg";
 import kawther from "../../img/kawther.png";
-import randa from "../../img/randa.png";
+import randa from "../../img/randa.jpg";
 
 const experts = [
   {
@@ -162,7 +162,7 @@ const ExpertsSection = () => {
             marginTop: isSmallScreen ? "20px" : "50px", 
           }}
         >
-          Our Experts
+          Our Senior Management Team
         </Typography>
       </Box>
 
