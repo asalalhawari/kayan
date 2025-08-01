@@ -10,8 +10,8 @@ import { motion } from "framer-motion";
 const steps = [
   { 
     id: 1, 
-    title: "POs Claims Transaction", 
-    description: "Seamless connectivity and structured data exchange between healthcare providers and insurers comply with market regulations.",
+    title: "POS Claims Transaction", 
+    description: "Seamless connectivity and structured data exchange between healthcare providers and insurers comply with regulator mandates.",
     icon: AccountTreeIcon,
     color: "#1976d2"
   },
