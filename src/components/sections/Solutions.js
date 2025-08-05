@@ -21,29 +21,29 @@ const Solutions = () => {
   const petraSolutions = [
     {
       number: '01',
-      title: 'POs Integration & Visualization',
-      description: 'Enables seamless connections between healthcare providers and insurers through POs. Track the entire claims lifecycle and create insightful dashboards.',
+      title: 'Post Office Integrator',
+      description: 'Experience seamless connectivity between the Post Office, healthcare providers, and insurers through our Integrator. Track the full claim cycle through streamlined data exchange using HL7 and standardized requests and responses. Ensuring efficient transactions and regulatory compliance.',
       icon: IntegrationInstructionsIcon,
       color: '#1976d2'
     },
     {
       number: '02',
-      title: 'Medical and Coding Scrubber',
-      description: 'Built-in Edits and Checks that assist the user in validating the claims in compliance with medical and coding guidelines.',
+      title: 'Medical & Coding Guidelines Scrubber ',
+      description: 'Scrub your claims effectively and ensure timely reimbursement with our comprehensive medical database, featuring a suite of edits and checks. Benefit from periodic agile updates, real-time responses, and user-friendly messages for a seamless experience. ',
       icon: SecurityIcon,
       color: '#42a5f5'
     },
     {
       number: '03',
-      title: 'Custom Validations',
-      description: 'An advanced layer enables the user to configure relations based on their needs and enhance claim scrubbing in compliance with TOB.',
+      title: 'Rule Management Scrubber',
+      description: 'Tailor your rules using our customizable relations and leverage a robust validation layer to verify the eligibility of every claim. Avoid claim denials and secure your reimbursements with our powerful validation layer, designed to enhance accuracy and optimize your revenue cycle. ',
       icon: AutoFixHighIcon,
       color: '#2196f3'
     },
     {
       number: '04',
-      title: 'AI Module',
-      description: 'This layer uses historical validation and AI to analyze the database, generating various scenarios and detailed insights that help users understand the behaviors of all entities and improve data-driven decision-making.',
+      title: 'AI LAYER ',
+      description: 'Unlock profound insights and a clear understanding of your data with our advanced insightful AI layer, featuring multiple functionalities. Enhance your data-driven decision-making through user-friendly dashboards and visualization tools, making it easier to interpret and act on your data. ',
       icon: PsychologyIcon,
       color: '#4caf50'
     },
@@ -52,31 +52,48 @@ const Solutions = () => {
   const qudraSolutions = [
     {
       number: '01',
-      title: 'Connection Layer',
-      description: 'Facilitate seamless integration across insurer systems with a robust SaaS model.',
+      title: 'Post Office Integrator',
+      description: 'Experience seamless connectivity between the Post Office, healthcare providers, and insurers through our Integrator. Track the full claim cycle through streamlined data exchange using HL7 and standardized requests and responses. Ensuring efficient transactions and regulatory compliance. ',
       icon: IntegrationInstructionsIcon,
       color: '#1976d2'
     },
     {
       number: '02',
-      title: 'Automation Layer',
-      description: 'Automate claims processing with advanced systems, improving efficiency and accuracy.',
+      title: 'Medical & Coding Guidelines Scrubber',
+      description: 'Validate your claims with our robust medical database, featuring a suite of edits and checks. Enjoy periodic agile updates, real-time responses, and user-friendly messages for a seamless experience. ',
       icon: AutoFixHighIcon,
       color: '#42a5f5'
     },
     {
       number: '03',
-      title: 'Intelligence Layer',
-      description: 'Provide technical business intelligence tools for logical claim referencing and analysis.',
+      title: 'Rule Management Scrubber ',
+      description: 'Tailor your rules using our customizable relations and leverage a powerful validation layer to verify the eligibility of every claim. Automate your claims cycle for increased accuracy and efficiency, ensuring that no detail is overlooked. ',
       icon: PsychologyIcon,
       color: '#2196f3'
     },
     {
       number: '04',
-      title: 'Assistance Layer',
-      description: 'Deliver ongoing support to insurers, ensuring compliance and operational excellence.',
+      title: 'AI LAYER',
+      description: 'Unlock profound insights and a clear understanding of your data with our advanced insightful AI layer, featuring multiple functionalities. Enhance your data-driven decision-making through user-friendly dashboards and visualization tools, making it easier to interpret and act on your data. ',
       icon: SupportIcon,
       color: '#4caf50'
+    },
+  ];
+
+  const pharmaceuticalSolutions = [
+    {
+      number: '01',
+      title: 'Pharmaceutical Clinical Checks',
+      description: 'Automatically verify prescriptions against formularies and guidelines to ensure adherence to medical standards through our built-in Edits and Checks Suite. Benefit from real-time validations and regular database updates, empowering you to maintain accuracy and compliance at every step. ',
+      icon: BusinessIcon,
+      color: '#ff9800'
+    },
+    {
+      number: '02',
+      title: 'Pharmaceutical Benefit Checks',
+      description: 'Utilize built-in customizable relations and perform automated benefit verifications and identify potential claim denials. ',
+      icon: SecurityIcon,
+      color: '#ff5722'
     },
   ];
 
@@ -88,8 +105,12 @@ const Solutions = () => {
     setSelectedSolution('QUDRA');
   };
 
+  const handlePharmaceuticalClick = () => {
+    setSelectedSolution('PHARMACEUTICAL');
+  };
+
   useEffect(() => {
-    if (selectedSolution && !['PETRA', 'QUDRA'].includes(selectedSolution)) {
+    if (selectedSolution && !['PETRA', 'QUDRA', 'PHARMACEUTICAL'].includes(selectedSolution)) {
       setSelectedSolution(null);
     }
   }, [selectedSolution]);
@@ -179,7 +200,7 @@ const Solutions = () => {
             color: "#64748b",
             fontSize: { xs: "1rem", md: "1.1rem" },
             fontWeight: 400,
-            maxWidth: "800px",
+            maxWidth: "1000px",
             mx: "auto",
             lineHeight: 1.6,
           }}
@@ -198,14 +219,14 @@ const Solutions = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          style={{ width: '100%', maxWidth: '1200px', minHeight: '400px' }}
+          style={{ width: '100%', maxWidth: '1500px', minHeight: '400px' }}
         >
 
             {/* Solution Cards */}
             <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+                gridTemplateColumns: { xs: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' },
                 gap: { xs: 4, md: 6 },
                 width: '100%',
                 position: "relative",
@@ -489,6 +510,145 @@ const Solutions = () => {
                   </CardContent>
                 </Card>
               </motion.div>
+
+              {/* Pharmaceutical Card */}
+              <motion.div
+                whileHover={{ y: -10, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card
+                  onClick={handlePharmaceuticalClick}
+                  sx={{
+                    height: '100%',
+                    background: 'rgba(255, 255, 255, 0.9)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '24px',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    '&:hover': {
+                      boxShadow: '0 16px 48px rgba(0, 0, 0, 0.15)',
+                      '& .solution-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                      }
+                    },
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '4px',
+                      background: 'linear-gradient(90deg, #ff9800 0%, #ff5722 100%)',
+                    }
+                  }}
+                >
+                  <CardContent
+                    sx={{
+                      padding: { xs: '32px', md: '48px' },
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {/* Icon */}
+                    <Box
+                      className="solution-icon"
+                      sx={{
+                        width: '120px',
+                        height: '120px',
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #ff980020 0%, #ff572210 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mb: 4,
+                        border: '2px solid #ff980030',
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      <BusinessIcon
+                        sx={{
+                          fontSize: '60px',
+                          color: '#ff9800',
+                        }}
+                      />
+                    </Box>
+
+                    {/* Title */}
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        fontWeight: 800,
+                        fontSize: { xs: '2rem', md: '2.5rem' },
+                        color: '#ff9800',
+                        mb: 2,
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                      }}
+                    >
+                      PHARMACEUTICAL
+                    </Typography>
+
+                    {/* Subtitle */}
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        color: '#64748b',
+                        fontSize: { xs: '1rem', md: '1.1rem' },
+                        fontWeight: 600,
+                        mb: 3,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                      }}
+                    >
+                      Pharmaceutical Claims Management 
+                    </Typography>
+
+                    {/* Description */}
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: '#64748b',
+                        fontSize: { xs: '0.9rem', md: '1rem' },
+                        lineHeight: 1.6,
+                        mb: 4,
+                      }}
+                    >
+                      Optimize Your Pharmaceutical Claims, and leverage our comprehensive medical data and rules management for seamless processing and impactful results. 
+                    </Typography>
+
+                    {/* CTA Button */}
+                    <Button
+                      variant="contained"
+                      endIcon={<ArrowForwardIcon />}
+                      sx={{
+                        background: 'linear-gradient(135deg, #ff9800 0%, #ff5722 100%)',
+                        color: 'white',
+                        fontWeight: 600,
+                        fontSize: '1rem',
+                        borderRadius: '50px',
+                        px: 4,
+                        py: 1.5,
+                        textTransform: 'none',
+                        boxShadow: '0 8px 25px rgba(255, 152, 0, 0.3)',
+                        '&:hover': {
+                          background: 'linear-gradient(135deg, #f57c00 0%, #ff9800 100%)',
+                          boxShadow: '0 12px 35px rgba(255, 152, 0, 0.4)',
+                        },
+                      }}
+                    >
+                      Explore PHARMACEUTICAL
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Box>
           </motion.div>
         ) : (
@@ -498,7 +658,7 @@ const Solutions = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            style={{ width: '100%', maxWidth: '1400px', minHeight: '400px' }}
+            style={{ width: '100%', maxWidth: '1500px', minHeight: '400px' }}
           >
 
             {/* Solutions Grid */}
@@ -511,7 +671,7 @@ const Solutions = () => {
                 zIndex: 2,
               }}
             >
-              {(selectedSolution === 'PETRA' ? petraSolutions : qudraSolutions).map((solution, index) => {
+              {(selectedSolution === 'PETRA' ? petraSolutions : selectedSolution === 'QUDRA' ? qudraSolutions : pharmaceuticalSolutions).map((solution, index) => {
                 const IconComponent = solution.icon || BusinessIcon; // Fallback icon
                 return (
                   <motion.div

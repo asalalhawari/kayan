@@ -115,7 +115,7 @@ const Home = () => {
               <Box
           sx={{
             width: "100%",
-            maxWidth: "1200px",
+            maxWidth: "1500px",
             display: "flex",
             flexDirection: { xs: "column", lg: "row" },
             alignItems: "center",
@@ -151,7 +151,7 @@ const Home = () => {
               borderRadius: 4,
               overflow: "hidden",
               width: { xs: "100%", sm: "90%", lg: "100%" },
-              maxWidth: "600px",
+              maxWidth: "700px",
               bgcolor: "#23242a",
               p: 0,
               position: "relative",
@@ -234,7 +234,7 @@ const Home = () => {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}>
-              Claim Management Solutions & AI
+              Claim Management Solutions & AI
             </Box>
           </Typography>
           
@@ -293,34 +293,38 @@ const Home = () => {
             >
               Request a Demo
             </Button>
-
-            <Button
-              component={motion.button}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              variant="outlined"
-              sx={{
-                borderColor: "rgba(255,255,255,0.3)",
-                color: "#fff",
-                fontWeight: 600,
-                fontSize: "1rem",
-                borderRadius: "50px",
-                px: 4,
-                py: 2,
-                textTransform: "none",
-                minWidth: "200px",
-                "&:hover": {
-                  borderColor: "#fff",
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                  backdropFilter: "blur(10px)",
-                },
-              }}
-              onClick={() => scrollToSection("benefits")}
-            >
-              Learn More
-            </Button>
           </Box>
         </Box>
+      </Box>
+
+      {/* Wave Divider */}
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: { xs: "150px", sm: "200px", md: "250px", lg: "300px" },
+          zIndex: 3,
+        }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1200 300"
+          preserveAspectRatio="none"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <path
+            d="M0,0 L0,150 C200,50 400,250 600,150 C800,50 1000,250 1200,150 L1200,300 L0,300 Z"
+            fill="#ffffff"
+            stroke="none"
+          />
+        </svg>
       </Box>
     </Box>
   );

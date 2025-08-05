@@ -2,8 +2,9 @@ import React from "react";
 import { Card, useMediaQuery, CardContent, Typography, Grid, Box } from "@mui/material";
 import islam from "../../img/Islam.png";
 import kareem from "../../img/Kareem.jpg";
-import kawther from "../../img/kawther.png";
+import kawther from "../../img/kawther.jpg";
 import randa from "../../img/randa.jpg";
+import diana from "../../img/diana.jpg";
 
 const experts = [
   {
@@ -38,19 +39,26 @@ const experts = [
     ],
     image: randa,
   },
+  {
+    name: "Diana Dyab",
+    role: "IT Manager",
+    description: [
+      "IT Manager | Software Engineer | Digital Innovator Within my experience in software engineering and IT leadership, I currently serve as the IT Manager at Kayan Healthcare. As a woman leader in technology, I am committed to driving innovation, delivering effective digital solutions, and building inclusive, high-performing teams. My expertise spans full-stack development, project management, and system optimization — all aimed at enhancing service delivery and supporting the organization’s growth. I believe in the power of technology to transform healthcare and in fostering a collaborative environment where talent thrives and ideas turn into impact.",
+    ],
+    image: diana,
+  },
 ];
 
 const ExpertCard = ({ expert }) => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
 
   return (
-    <Box sx={{ width: "100%", textAlign: "center", justifyContent:"center", display:"flex",overflowX:"hidden"
-     }}>
+    <Box sx={{ width: "100%", textAlign: "center", justifyContent:"center", display:"flex" }}>
         <Card
           sx={{
           width: "100%",
-          maxWidth: isSmallScreen ? "100%" : "400px", // Increased card width
-          height: isSmallScreen ? "auto" : "530px",
+          maxWidth: isSmallScreen ? "100%" : "400px",
+          height: "auto", // Changed to auto to accommodate all content
           backgroundColor: "#FFFFFF",
           borderRadius: "15px",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
@@ -67,7 +75,7 @@ const ExpertCard = ({ expert }) => {
             alt={expert.name}
             sx={{
               width:  isSmallScreen ? "50%" :"83%",
-              height: isSmallScreen ? "230px" : "285px", // Kept image size unchanged
+              height: isSmallScreen ? "230px" : "285px",
               borderRadius: "10px 10px 0 0",
               objectFit: "cover",
               marginBottom: "5px",
@@ -112,6 +120,9 @@ const ExpertCard = ({ expert }) => {
               fontSize: isSmallScreen ? "0.6rem" : "0.7rem",
               lineHeight: "1.6",
               textAlign: "left",
+              wordWrap: "break-word", // Ensures long words wrap
+              overflowWrap: "break-word", // Modern browsers
+              whiteSpace: "normal", // Allows text to wrap naturally
             }}
           >
             {expert.description}
@@ -168,11 +179,11 @@ const ExpertsSection = () => {
 
       <Grid
         container
-        spacing={isSmallScreen ? 3 : 4}
+        spacing={isSmallScreen ? 3 : 12/5}
         justifyContent="center"
         sx={{
           width: "100%",
-          maxWidth: "1200px",
+          maxWidth: "1500px",
           padding: isSmallScreen ? "0 10px" : "0 5px",
           marginTop: isSmallScreen ? "-200px" : "-250px", 
           zIndex: 2,
@@ -183,7 +194,7 @@ const ExpertsSection = () => {
             item
             xs={12}
             sm={6}
-            md={3}
+            md={12/5}
             key={index}
             sx={{
               display: "flex",

@@ -177,7 +177,7 @@ const Benefits = () => {
               fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.5rem" },
               mb: 2,
               letterSpacing: "1px",
-              background: "linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)",
+              background: "#ffffff",
               backgroundClip: "text",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -222,7 +222,7 @@ const Benefits = () => {
             spacing={3}
             sx={{
               width: '100%',
-              maxWidth: '1400px',
+              maxWidth: '1500px',
               justifyContent: 'center',
             }}
           >
@@ -369,7 +369,7 @@ const Benefits = () => {
             sx={{
               color: "#666",
               mb: 3,
-              maxWidth: "600px",
+              maxWidth: "800px",
               marginX: "auto",
               fontSize: { xs: "0.9rem", sm: "1rem" },
             }}

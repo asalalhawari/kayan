@@ -113,7 +113,7 @@ const HowItWork = () => {
         sx={{
           textAlign: "center",
           mb: { xs: 4, md: 8 },
-          maxWidth: "800px",
+          maxWidth: "1000px",
           position: "relative",
           zIndex: 2,
         }}
@@ -140,7 +140,7 @@ const HowItWork = () => {
             color: "#64748b",
             fontSize: { xs: "1rem", md: "1.1rem" },
             fontWeight: 400,
-            maxWidth: "600px",
+            maxWidth: "800px",
             mx: "auto",
             lineHeight: 1.6,
           }}
@@ -153,7 +153,7 @@ const HowItWork = () => {
       <Box
         sx={{
           width: "100%",
-          maxWidth: "1400px",
+          maxWidth: "1500px",
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
           gap: { xs: 3, md: 4 },

@@ -25,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   const handleSectionChange = () => {
-    const sections = ['home', 'benefits', 'solution', 'our-technology', 'provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'about', 'our-story', 'our-experts', 'our-clients', 'our-feeds'];
+    const sections = ['home', 'benefits', 'solution', 'our-technology', 'provider-solutions', 'payer-solutions', 'ContactUs', 'demo', 'how-it-works', 'our-benefits', 'about', 'our-story', 'our-experts', 'our-clients', 'gcc-presence', 'our-feeds'];
     sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
@@ -51,6 +51,7 @@ const Navbar = () => {
     { id: 'benefits', label: 'Benefits' },
     { id: 'solution', label: 'Solutions' },
     { id: 'about', label: 'About' },
+    { id: 'gcc-presence', label: 'GCC Presence' },
   ];
 
   const handleDrawerToggle = () => {
@@ -170,54 +171,57 @@ const Navbar = () => {
                     verticalAlign: 'middle',
                   }}
                 >
-                  Kayan Healthcare
+                  Kayan Healthcare Technologies
                 </span>
               </Box>
             </Box>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation and Contact Button - Right Aligned */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
               {navItems.map((item) => (
-                <Button 
+                <Box
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)} 
+                  onClick={() => scrollToSection(item.id)}
                   sx={{
-                    color: theme.palette.text.primary,
+                    color: activeSection === item.id ? theme.palette.primary.main : theme.palette.text.primary,
                     fontSize: activeSection === item.id ? '16px' : '15px',
                     fontWeight: activeSection === item.id ? 700 : 500,
-                    transform: activeSection === item.id ? 'scale(1.05)' : 'scale(1)',
+                    cursor: 'pointer',
+                    padding: '12px 24px',
+                    borderRadius: '8px',
                     transition: 'all 0.3s ease',
-                    textTransform: 'capitalize', 
                     fontFamily: 'Montserrat',
                     position: 'relative',
-                    px: 3,
-                    py: 1.5,
-                    borderRadius: '25px', 
                     '&:hover': {
                       color: theme.palette.primary.main,
                       backgroundColor: 'rgba(25, 118, 210, 0.08)',
-                      transform: 'scale(1.05)',
+                      transform: 'translateY(-1px)',
                     },
                     '&::after': {
                       content: '""',
                       position: 'absolute',
-                      width: activeSection === item.id ? '100%' : '0%',
-                      height: '3px',
-                      bottom: '0px',
+                      bottom: '8px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      backgroundColor: activeSection === item.id ? (theme.palette.primary.main) : 'transparent',
+                      width: activeSection === item.id ? '80%' : '0%',
+                      height: '2px',
+                      backgroundColor: theme.palette.primary.main,
                       transition: 'all 0.3s ease',
-                      borderRadius: '2px',
+                      borderRadius: '1px',
+                    },
+                    '&:hover::after': {
+                      width: '80%',
                     }
-                  }}>
+                  }}
+                >
                   {item.label}
-                </Button>
+                </Box>
               ))}
-            </Box>
-
-            {/* Contact Button */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
+              
+              {/* Spacer between nav items and Contact Us button */}
+              <Box sx={{ width: '24px' }} />
+              
+              {/* Contact Button */}
               <Button
                 variant="contained"
                 startIcon={<PhoneIcon />}

@@ -5,8 +5,8 @@ import {
   useMediaQuery
 } from "@mui/material";
 import { motion } from "framer-motion";
-import clients_map from '../../img/clients_map.png';
 import React from "react";
+import GCCPresenceMap from "./GCCPresenceMap";
 
 const OurClient = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
@@ -43,17 +43,6 @@ const OurClient = () => {
     }
   };
 
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
 
   return (
     <Box
@@ -113,7 +102,7 @@ const OurClient = () => {
                 sx={{
                   fontSize: { xs: "16px", md: "18px" },
                   color: "#666",
-                  maxWidth: "600px",
+                  maxWidth: "800px",
                   mx: "auto",
                   lineHeight: 1.6
                 }}
@@ -124,43 +113,7 @@ const OurClient = () => {
           </motion.div>
 
 
-          {/* Interactive Map Section */}
-          <motion.div variants={imageVariants}>
-            <Box sx={{ textAlign: "center" }}>
-              <Box
-                component={motion.div}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                sx={{
-                  position: "relative",
-                  display: "inline-block",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
-                  background: "rgba(255,255,255,0.9)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  p: 2
-                }}
-              >
-                <Box
-                  component="img"
-                  src={clients_map}
-                  alt="Kayan clients map"
-                  sx={{
-                    width: { xs: '100%', sm: '800px', md: '1000px' },
-                    height: { xs: 'auto', sm: '400px', md: '500px' },
-                    objectFit: "contain",
-                    filter: 'contrast(1.1) saturate(1.2)',
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      filter: 'contrast(1.2) saturate(1.3)'
-                    }
-                  }}
-                />
-              </Box>
-            </Box>
-          </motion.div>
+        <GCCPresenceMap />
 
           {/* Call to Action */}
           <motion.div variants={itemVariants}>
@@ -171,7 +124,7 @@ const OurClient = () => {
                   fontSize: { xs: "16px", md: "18px" },
                   color: "#666",
                   mb: 3,
-                  maxWidth: "600px",
+                  maxWidth: "800px",
                   mx: "auto"
                 }}
               >

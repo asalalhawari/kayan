@@ -148,7 +148,7 @@ const OurBenefits = () => {
           '& .MuiPopover-paper': {
             borderRadius: '8px',
             padding: '16px',
-            maxWidth: '300px',
+            maxWidth: '400px',
             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
           },
         }}
