@@ -1,321 +1,146 @@
-import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import MedicalServicesIcon from "@mui/icons-material/MedicalServices";
-import MedicationIcon from "@mui/icons-material/Medication";
-import PsychologyIcon from "@mui/icons-material/Psychology";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import { Box, Card, CardContent, Typography } from "@mui/material";
-import { motion } from "framer-motion";
+import "./HowItWork.css"
+
+const AccountTreeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M22,11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3H22z M7,9H4V5h3V9z M17,15h3v4h-3V15z M17,5h3v4h-3V5z" />
+  </svg>
+)
+
+const DashboardIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M3,13H11V3H3V13M3,21H11V15H3V21M13,21H21V11H13V21M13,3V9H21V3H13Z" />
+  </svg>
+)
+
+const MedicalServicesIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M19,8H17V6A2,2 0 0,0 15,4H9A2,2 0 0,0 7,6V8H5A3,3 0 0,0 2,11V19A3,3 0 0,0 5,22H19A3,3 0 0,0 22,19V11A3,3 0 0,0 19,8M9,6H15V8H9V6M11,14H9V16H7V14H5V12H7V10H9V12H11V14M18,16H14V14H18V16M18,12H14V10H18V12Z" />
+  </svg>
+)
+
+const VerifiedIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z" />
+  </svg>
+)
+
+const MedicationIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M6,3H18V5H6V3M7,6H17A1,1 0 0,1 18,7V8H6V7A1,1 0 0,1 7,6M2,10V19A1,1 0 0,0 3,20H21A1,1 0 0,0 22,19V10H2M9,12H11V14H13V16H11V18H9V16H7V14H9V12Z" />
+  </svg>
+)
+
+const PsychologyIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+    <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z" />
+  </svg>
+)
 
 const steps = [
-  { 
-    id: 1, 
-    title: "Post Office Claims Transaction", 
-    description: "Seamless connectivity and structured data exchange between healthcare providers and insurers comply with regulator mandates.",
+  {
+    id: 1,
+    title: "Post Office Claims Transaction",
+    description:
+      "Seamless connectivity and structured data exchange between healthcare providers and insurers comply with regulator mandates.",
     icon: AccountTreeIcon,
-    color: "#1976d2"
+    color: "#1976d2",
   },
-  { 
-    id: 2, 
-    title: "Tracking & Dashboard", 
+  {
+    id: 2,
+    title: "Tracking & Dashboard",
     description: "Track, monitor, and visualize the entire claim lifecycle with real-time insights and analytics.",
     icon: DashboardIcon,
-    color: "#42a5f5"
+    color: "#42a5f5",
   },
-  { 
-    id: 3, 
-    title: "Medical & Coding Scrubber", 
+  {
+    id: 3,
+    title: "Medical & Coding Scrubber",
     description: "Detect medical and coding denials swiftly for accurate claim validation and compliance.",
     icon: MedicalServicesIcon,
-    color: "#2196f3"
+    color: "#2196f3",
   },
-  { 
-    id: 4, 
-    title: "Control Claim Validation", 
-    description: "Configure relations and optimize your claim validation process to meet specific requirements while maintaining compliance.",
+  {
+    id: 4,
+    title: "Control Claim Validation",
+    description:
+      "Configure relations and optimize your claim validation process to meet specific requirements while maintaining compliance.",
     icon: VerifiedIcon,
-    color: "#4caf50"
+    color: "#4caf50",
   },
-  { 
-    id: 5, 
-    title: "Pharmaceutical Claims Management", 
-    description: "Leverage our Built-In Pharmaceutical Edits and Checks Suite to streamline your workflow and reduce denials in medication-related claims.",
+  {
+    id: 5,
+    title: "Pharmaceutical Claims Management",
+    description:
+      "Leverage our Built-In Pharmaceutical Edits and Checks Suite to streamline your workflow and reduce denials in medication-related claims.",
     icon: MedicationIcon,
-    color: "#ff9800"
+    color: "#ff9800",
   },
-  { 
-    id: 6, 
-    title: "AI Module", 
-    description: "Better understand behaviours of all entities and improve data-driven decision-making with trend insights.",
+  {
+    id: 6,
+    title: "AI Module",
+    description:
+      "Better understand behaviours of all entities and improve data-driven decision-making with trend insights.",
     icon: PsychologyIcon,
-    color: "#9c27b0"
+    color: "#9c27b0",
   },
-];
+]
 
 const HowItWork = () => {
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
-    <Box
-      component={motion.div}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        background: "linear-gradient(135deg, #f8fafc 0%, #e3f2fd 50%, #f1f5f9 100%)",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: { xs: "60px 20px", md: "100px 40px" },
-        position: "relative",
-        overflow: "hidden",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"rgba(25,118,210,0.05)\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\"/></svg>')",
-          opacity: 0.5,
-        }
-      }}
-    >
+    <div className="how-it-work-container">
+      {/* Background Elements */}
+      <div className="how-it-work-bg-elements">
+        <div className="floating-circle circle-1"></div>
+        <div className="floating-circle circle-2"></div>
+        <div className="floating-circle circle-3"></div>
+        <div className="floating-orb orb-1"></div>
+        <div className="floating-orb orb-2"></div>
+        <div className="floating-orb orb-3"></div>
+      </div>
+
       {/* Header Section */}
-      <Box
-        component={motion.div}
-        variants={itemVariants}
-        sx={{
-          textAlign: "center",
-          mb: { xs: 4, md: 8 },
-          maxWidth: "1000px",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        <Typography
-          variant="h2"
-          sx={{
-            fontWeight: 800,
-            fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
-            background: "linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            mb: 2,
-            textTransform: "uppercase",
-            letterSpacing: "0.5px",
-          }}
-        >
-          Multi-Layer Claim Cycle Solutions
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{
-            color: "#64748b",
-            fontSize: { xs: "1rem", md: "1.1rem" },
-            fontWeight: 400,
-            maxWidth: "800px",
-            mx: "auto",
-            lineHeight: 1.6,
-          }}
-        >
+      <div className="how-it-work-header">
+        <h2 className="how-it-work-title">Multi-Layer Claim Cycle Solutions</h2>
+        <p className="how-it-work-subtitle">
           Streamline your healthcare claims processing with our comprehensive suite of intelligent solutions
-        </Typography>
-      </Box>
+        </p>
+      </div>
 
-      {/* Steps Grid */}
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: "1500px",
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
-          gap: { xs: 3, md: 4 },
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+      {/* Circular Steps Grid */}
+      <div className="circular-steps-grid">
         {steps.map((step, index) => {
-          const IconComponent = step.icon;
+          const IconComponent = step.icon
           return (
-            <motion.div
-              key={step.id}
-              variants={itemVariants}
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card
-                sx={{
-                  height: "100%",
-                  background: "rgba(255, 255, 255, 0.9)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  borderRadius: "20px",
-                  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-                  transition: "all 0.3s ease",
-                  overflow: "hidden",
-                  position: "relative",
-                  "&:hover": {
-                    boxShadow: "0 16px 48px rgba(0, 0, 0, 0.15)",
-                    transform: "translateY(-8px)",
-                  },
-                  "&::before": {
-                    content: '""',
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: "4px",
-                    background: `linear-gradient(90deg, ${step.color} 0%, ${step.color}80 100%)`,
-                  }
-                }}
-              >
-                <CardContent
-                  sx={{
-                    padding: { xs: "24px", md: "32px" },
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  {/* Icon */}
-                  <Box
-                    sx={{
-                      width: "80px",
-                      height: "80px",
-                      borderRadius: "50%",
-                      background: `linear-gradient(135deg, ${step.color}20 0%, ${step.color}10 100%)`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mb: 3,
-                      border: `2px solid ${step.color}30`,
-                    }}
-                  >
-                    <IconComponent
-                      sx={{
-                        fontSize: "40px",
-                        color: step.color,
-                      }}
-                    />
-                  </Box>
+            <div key={step.id} className="circular-step-card" style={{ "--step-color": step.color }}>
+              {/* Circular Icon Container */}
+              <div className="circular-icon-container">
+                <div className="icon-glow"></div>
+                <div className="circular-icon">
+                  <IconComponent />
+                </div>
+              </div>
 
-                  {/* Step Number */}
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "16px",
-                      right: "16px",
-                      width: "32px",
-                      height: "32px",
-                      borderRadius: "50%",
-                      background: `linear-gradient(135deg, ${step.color} 0%, ${step.color}80 100%)`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "white",
-                      fontSize: "14px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {step.id}
-                  </Box>
+              {/* Content */}
+              <div className="step-content">
+                <h3 className="step-title">{step.title}</h3>
+                <p className="step-description">{step.description}</p>
+              </div>
 
-                  {/* Title */}
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: { xs: "1.1rem", md: "1.2rem" },
-                      color: "#1e293b",
-                      mb: 2,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {step.title}
-                  </Typography>
-
-                  {/* Description */}
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "#64748b",
-                      fontSize: { xs: "0.9rem", md: "1rem" },
-                      lineHeight: 1.6,
-                      flex: 1,
-                    }}
-                  >
-                    {step.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </motion.div>
-          );
+              {/* Decorative Elements */}
+              <div className="step-decoration decoration-1"></div>
+              <div className="step-decoration decoration-2"></div>
+            </div>
+          )
         })}
-      </Box>
+      </div>
 
       {/* Bottom CTA */}
-      <Box
-        component={motion.div}
-        variants={itemVariants}
-        sx={{
-          textAlign: "center",
-          mt: { xs: 6, md: 8 },
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        <Typography
-          variant="h6"
-          sx={{
-            color: "#64748b",
-            fontSize: { xs: "1rem", md: "1.1rem" },
-            fontWeight: 500,
-            mb: 2,
-          }}
-        >
-          Ready to transform your claims processing?
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{
-            color: "#94a3b8",
-            fontSize: { xs: "0.9rem", md: "1rem" },
-          }}
-        >
-          Experience the future of healthcare claims management
-        </Typography>
-      </Box>
-    </Box>
-  );
-};
+      <div className="how-it-work-cta">
+        <h3 className="cta-title">Ready to transform your claims processing?</h3>
+        <p className="cta-subtitle">Experience the future of healthcare claims management</p>
+      </div>
+    </div>
+  )
+}
 
-export default HowItWork;
+export default HowItWork

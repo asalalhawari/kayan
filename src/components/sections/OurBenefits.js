@@ -59,7 +59,7 @@ const OurBenefits = () => {
           variant="h4"
           sx={{
             fontWeight: '700',
-            color: '#458FF6',
+            color: '#e20c0cff',
             fontFamily: 'Josefin Sans',
             textTransform: 'uppercase',
             fontSize: isSmallScreen ? '1.5rem' : '2rem',

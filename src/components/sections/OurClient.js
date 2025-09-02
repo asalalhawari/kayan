@@ -11,16 +11,6 @@ import GCCPresenceMap from "./GCCPresenceMap";
 const OurClient = () => {
   const isSmallScreen = useMediaQuery('(max-width:600px)');
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contactUs');
-    if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,7 +32,6 @@ const OurClient = () => {
       }
     }
   };
-
 
   return (
     <Box
@@ -112,53 +101,8 @@ const OurClient = () => {
             </Box>
           </motion.div>
 
+          <GCCPresenceMap />
 
-        <GCCPresenceMap />
-
-          {/* Call to Action */}
-          <motion.div variants={itemVariants}>
-            <Box sx={{ textAlign: "center", mt: 6 }}>
-              <Typography
-                variant="body1"
-                sx={{
-                  fontSize: { xs: "16px", md: "18px" },
-                  color: "#666",
-                  mb: 3,
-                  maxWidth: "800px",
-                  mx: "auto"
-                }}
-              >
-                Join our growing network of healthcare innovators
-              </Typography>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Box
-                  component="button"
-                  onClick={scrollToContact}
-                  sx={{
-                    background: "linear-gradient(45deg, #458FF6, #00D4AA)",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "50px",
-                    padding: "12px 32px",
-                    fontSize: "16px",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    boxShadow: "0 8px 25px rgba(69, 143, 246, 0.3)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      boxShadow: "0 12px 35px rgba(69, 143, 246, 0.4)",
-                      transform: "translateY(-2px)"
-                    }
-                  }}
-                >
-                  Become a Client
-                </Box>
-              </motion.div>
-            </Box>
-          </motion.div>
         </motion.div>
       </Container>
     </Box>
