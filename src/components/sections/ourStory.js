@@ -35,13 +35,13 @@ const OurStory = () => {
         background: "linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%)",
         py: { xs: 6, md: 10 },
         px: { xs: 2, md: 6 },
-        overflowX: "hidden",
+        position: "relative",
       }}
     >
       <Typography
         variant="h3"
         fontWeight={700}
-        mb={4}
+        mb={8}
         color="primary"
         sx={{
           fontSize: { xs: "2rem", md: "2.8rem" },
@@ -56,107 +56,73 @@ const OurStory = () => {
         Our Mission & Vision
       </Typography>
 
-      <Box sx={{ position: "relative", maxWidth: 1100, width: "100%" }}>
-        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
-          {content.map((item, idx) => (
-            <Grid item xs={12} md={6} key={item.title}>
-              <Card
-                elevation={6}
-                sx={{
-                  borderRadius: 4,
-                  p: { xs: 2, md: 4 },
-                  background: "#fff",
-                  minHeight: 260,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  justifyContent: "center",
-                  boxShadow: "0 8px 32px rgba(25,118,210,0.08)",
-                  position: "relative",
-                  overflow: "visible",
-                  mt: idx === 1 && !isSmallScreen ? { md: 6 } : 0,
-                }}
-              >
-                <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  {item.icon}
-                  <Typography
-                    variant="h5"
-                    fontWeight={700}
-                    sx={{ ml: 2, color: "#1976d2", fontSize: { xs: "1.3rem", md: "1.7rem" } }}
-                  >
-                    {item.title}
-                  </Typography>
-                </Box>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{ fontSize: { xs: "1rem", md: "1.1rem" }, textAlign: "left", lineHeight: 1.7 }}
-                >
-                  {item.description}
-                </Typography>
-              </Card>
-            </Grid>
-          ))}
+      <Grid
+        container
+        spacing={4}
+        justifyContent="center"
+        alignItems="center"
+        sx={{ position: "relative", maxWidth: 1100, margin: "0 auto" }}
+      >
+        {/* Mission */}
+        <Grid item xs={12} md={5}>
+          <Card
+            elevation={6}
+            sx={{
+              p: 4,
+              borderRadius: 3,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "0 8px 32px rgba(25,118,210,0.08)",
+            }}
+          >
+            {content[0].icon}
+            <Typography variant="h5" fontWeight={700} mt={2}>
+              {content[0].title}
+            </Typography>
+            <Typography variant="body1" mt={1} sx={{ lineHeight: 1.7 }}>
+              {content[0].description}
+            </Typography>
+          </Card>
         </Grid>
 
-        <Box
-          sx={{
-            position: "absolute",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            display: { xs: "none", md: "flex" },
-            flexDirection: "column",
-            alignItems: "center",
-            zIndex: 10,
-          }}
-        >
-          {/* Decorative circle at top */}
+        {/* Divider Line كبير */}
+        <Grid item xs={12} md={2} sx={{ display: "flex", justifyContent: "center" }}>
           <Box
             sx={{
-              width: 12,
-              height: 12,
-              borderRadius: "50%",
-              background: "linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)",
-              mb: 1,
+              width: "4px",          // عرض الخط
+              height: "100%",        // يغطي ارتفاع الكارتين تقريبًا
+              bgcolor: "#1976d2",   // لون الخط
+              borderRadius: 2,
             }}
           />
+        </Grid>
 
-          {/* Vertical line */}
-          <Box
+        {/* Vision */}
+        <Grid item xs={12} md={5}>
+          <Card
+            elevation={6}
             sx={{
-              width: 2,
-              height: 80,
-              background: "linear-gradient(180deg, #1976d2 0%, #42a5f5 50%, #1976d2 100%)",
-              borderRadius: 1,
-              position: "relative",
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
-                background: "#fff",
-                border: "2px solid #1976d2",
-              },
+              p: 4,
+              borderRadius: 3,
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              boxShadow: "0 8px 32px rgba(25,118,210,0.08)",
             }}
-          />
-
-          {/* Decorative circle at bottom */}
-          <Box
-            sx={{
-              width: 12,
-              height: 12,
-              borderRadius: "50%",
-              background: "linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)",
-              mt: 1,
-            }}
-          />
-        </Box>
-      </Box>
+          >
+            {content[1].icon}
+            <Typography variant="h5" fontWeight={700} mt={2}>
+              {content[1].title}
+            </Typography>
+            <Typography variant="body1" mt={1} sx={{ lineHeight: 1.7 }}>
+              {content[1].description}
+            </Typography>
+          </Card>
+        </Grid>
+      </Grid>
     </Box>
   )
 }

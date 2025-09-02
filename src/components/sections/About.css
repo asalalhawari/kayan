@@ -403,23 +403,9 @@
   transform: translate(-50%, -50%);
 }
 
-.orbit-1 {
-  width: 350px;
-  height: 350px;
-  animation: rotate 15s linear infinite;
-}
 
-.orbit-2 {
-  width: 400px;
-  height: 400px;
-  animation: rotate 20s linear infinite reverse;
-}
 
-.orbit-3 {
-  width: 450px;
-  height: 450px;
-  animation: rotate 25s linear infinite;
-}
+
 
 .orbit-dot {
   position: absolute;
