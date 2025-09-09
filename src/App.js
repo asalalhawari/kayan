@@ -7,6 +7,7 @@ import Benefits from './components/sections/Benefits';
 import HowItWork from './components/sections/HowItWork';
 import Solutions from './components/sections/Solutions';
 import OurStory from './components/sections/ourStory';
+import AnalyticsDashboards from "./components/sections/AnalyticsDashboards";
 import ExpertsSection from './components/sections/ExpertsSection';
 import ContactUs from './components/sections/ContactUs';
 import Footer from './components/sections/Footer';
@@ -167,7 +168,7 @@ const App = () => {
             minHeight: '100vh', 
             width: '100%',
             overflowX: 'hidden',
-            overflowY: 'auto',
+            overflowY: 'hidden',
           }}
         >
           <Navbar />
@@ -212,6 +213,14 @@ const App = () => {
                 <Solutions />
               </Box>
             </AnimatedSection>
+
+            {/* 🔹 Analytics Dashboards Section */}
+            <AnimatedSection>
+              <Box component="section" id="analytics-dashboards" sx={{ width: '100%' }}>
+                <AnalyticsDashboards />
+              </Box>
+            </AnimatedSection>
+
             <AnimatedSection>
               <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
                 <OurFeeds />

@@ -1,3 +1,5 @@
+"use client"
+
 import "./Benefits.css"
 
 const benefitsData = [
@@ -77,15 +79,40 @@ const Benefits = () => {
               "--color": benefit.color,
             }}
           >
-            <div className="benefit-icon-container">
-              <div className="benefit-icon" style={{ backgroundColor: `${benefit.color}20`, color: benefit.color }}>
+            <div
+              className="benefit-icon-container top-left"
+              onClick={(e) => e.currentTarget.classList.toggle("active")}
+            >
+              <div className="icon-glow small" style={{ 
+                backgroundColor: benefit.color,
+                borderRadius: "50%",
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  transform: "translate(-50%, -50%)",
+                 }}></div>
+              <div
+                className="benefit-icon small with-circle"
+                style={{
+                  backgroundColor: `${benefit.color}20`,
+                  color: benefit.color,
+                  border: `2px solid ${benefit.color}30`,
+                  borderRadius: "50%",
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  zIndex: "10",
+                }}
+              >
                 {benefit.icon}
               </div>
-              <div className="icon-glow" style={{ backgroundColor: benefit.color }}></div>
             </div>
 
-            <h3 className="benefit-title">{benefit.title}</h3>
-            <p className="benefit-description">{benefit.description}</p>
+            <div className="benefit-content">
+              <h3 className="benefit-title compact">{benefit.title}</h3>
+              <p className="benefit-description compact">{benefit.description}</p>
+            </div>
 
             <div className="benefit-number">{benefit.id}</div>
           </div>
@@ -93,7 +120,6 @@ const Benefits = () => {
       </div>
 
       {/* Bottom CTA Section */}
-     
     </div>
   )
 }

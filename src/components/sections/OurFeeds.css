@@ -1,0 +1,432 @@
+/* Modern CSS styling with refined glassmorphism and consistent design */
+.our-feeds-container {
+  width: 100%;
+  min-height: 100vh;
+  /* Softer, more elegant gradient background */
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #3b82f6 75%, #496a9f 100%);
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.our-feeds-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* More subtle and refined radial gradients */
+  background: radial-gradient(circle at 20% 80%, rgba(107, 159, 241, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(95, 133, 195, 0.05) 0%, transparent 70%);
+  animation: backgroundShift 25s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-20px) translateY(-20px);
+  }
+}
+
+.feeds-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.feeds-grid-container {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.feeds-grid {
+  display: grid;
+  /* Force exactly 3 cards per row on desktop, then responsive */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feed-card {
+  /* More refined glassmorphism with better transparency */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  /* Added consistent height for all cards */
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.feed-card:hover {
+  /* Enhanced hover effects with consistent blue theme */
+  transform: translateY(-8px);
+  box-shadow: 0 25px 70px rgba(59, 130, 246, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0
+    rgba(255, 255, 255, 0.4);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.card-image-container {
+  position: relative;
+  /* Fixed height for consistent card appearance */
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feed-card:hover .card-image {
+  transform: scale(1.08);
+}
+
+.card-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Refined overlay gradient */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(59, 130, 246, 0.15) 100%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.feed-card:hover .card-gradient-overlay {
+  opacity: 1;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  /* More elegant badge design */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  color: #3b82f6;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  padding: 2rem 1.75rem 1.5rem;
+  /* Added flex-grow to make content area expand */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  /* Improved typography with better contrast and readability */
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.card-description {
+  /* Enhanced text readability with stronger shadows and better contrast */
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.read-more-link {
+  /* Improved visibility with stronger color and shadow */
+  color: #3b82f6;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.read-more-link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.card-footer {
+  padding: 0 1.75rem 2rem;
+  margin-top: auto;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Enhanced navigation button design */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.2);
+}
+
+.nav-button-left {
+  left: -25px;
+}
+
+.nav-button-right {
+  right: -25px;
+}
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #3b82f6;
+  transform: scale(1.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Detail View Styling */
+.feed-detail {
+  /* Enhanced detail view with better glassmorphism */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(35px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 36px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+
+.detail-image-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Updated detail image overlay to white and blue */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(74, 144, 226, 0.2) 100%);
+}
+
+.detail-text-section {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-badge {
+  /* Consistent badge styling */
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  align-self: flex-start;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.detail-title {
+  /* Improved title typography */
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.15;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.03em;
+}
+
+.detail-description {
+  /* Better text styling for readability */
+  color: rgba(255, 255, 255, 0.94);
+  line-height: 1.75;
+  font-size: 1.1rem;
+  margin: 0 0 2.5rem 0;
+  font-weight: 400;
+}
+
+.back-button {
+  /* Consistent button styling */
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e293b 100%);
+  color: white;
+  border: none;
+  padding: 1.1rem 2.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  align-self: flex-start;
+  font-size: 1rem;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+}
+
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 45px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #0f172a 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .feeds-grid {
+    /* Show 2 cards per row on medium screens */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .feeds-wrapper {
+    padding: 1rem;
+  }
+
+  .feeds-grid {
+    /* Single column on mobile */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feed-card {
+    max-width: 100%;
+    min-height: 480px;
+  }
+
+  .nav-button-left {
+    left: 10px;
+  }
+
+  .nav-button-right {
+    right: 10px;
+  }
+
+  .detail-content {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-text-section {
+    padding: 2rem;
+  }
+
+  .detail-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .detail-title {
+    font-size: 1.5rem;
+  }
+
+  .detail-description {
+    font-size: 1rem;
+  }
+}
+.read-more-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.25);
+}
+
+.read-more-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #2563eb 0%, #7595ee 100%);
+}

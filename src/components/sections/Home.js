@@ -1,5 +1,4 @@
 "use client"
-import "./Home.css"
 import { useState, useEffect } from "react"
 import { ArrowRight } from "lucide-react"
 
@@ -34,64 +33,50 @@ const Home = () => {
         }}
       />
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* floating circles, tech rings, data flow lines remain as in original */}
-      </div>
+      {/* Background Image with Blur */}
+      <div
+className="absolute inset-0 bg-cover bg-center filter blur-sm brightness-75 "
+        style={{
+          backgroundImage: "url('/images/pediatrician-doctor-nurse-sitting-desk-medical-office-talking-with-child-healthcare-practitioner-specialist-medicine-providing-professional-radiographic-treatment-hospital-clinic.jpg')",
+        }}
+      />
+
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/70" />
 
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-start min-h-screen px-4 pt-32 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            {/* Left Column - Text */}
-            <div className={`space-y-8 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-              <div className="space-y-6">
-                <h1 className="text-5xl font-bold leading-tight text-gray-900 lg:text-6xl animate-slide-up animation-delay-200">
-                  <span className="block text-balance">Your Trusted Partner in</span>
-                  <span className="block text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text animate-gradient-shift">
-                    Claim Management & AI
-                  </span>
-                </h1>
+      <div className="relative z-10 flex flex-col items-start justify-center min-h-screen px-6 sm:px-12 lg:px-24">
+        <div className={`space-y-6 max-w-3xl ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
+          {/* العنوان الأول */}
+          <h1 className="text-4xl font-bold text-white lg:text-5xl animate-slide-up animation-delay-200 drop-shadow-xl">
+            Your Trusted Partner
+          </h1>
 
-                <p className="max-w-2xl text-xl leading-relaxed text-gray-600 animate-slide-up animation-delay-400">
-                  Simplify your e-claim process with multi-layered AI powered solutions,<br />
-                  Empower your healthcare management with speed, accuracy,<br />
-                  and reliability.
-                </p>
+          {/* العنوان الثاني */}
+          <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text lg:text-4xl animate-slide-up animation-delay-300 drop-shadow-sm">
+            in Claim Management & AI
+          </h2>
 
-                {/* CTA Button */}
-                <div className="mt-8">
-                  <button
-                    onClick={() => scrollToSection("contactUs")}
-                    className="relative px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1 animate-pulse-glow"
-                  >
-                    <span className="flex items-center justify-center">
-                      Request a Demo
-                      <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </button>
-                </div>
-              </div>
-            </div>
+          {/* الفقرة الوصفية */}
+          <p className="text-lg leading-relaxed text-gray-100 animate-slide-up animation-delay-400 drop-shadow-lg">
+            Simplify your e-claim process with multi-layered AI powered solutions, <br />
+            Empower your healthcare management with speed, accuracy and reliability  <br />
+          </p>
 
-            {/* Right Column - Image */}
-            <div className={`relative ${isVisible ? "animate-slide-up animation-delay-800" : "opacity-0"}`}>
-              <div className="relative group">
-                <div className="relative overflow-hidden transition-all duration-500 transform shadow-2xl rounded-2xl group-hover:scale-105">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/medical-banner-with-doctor-wearing-goggles.jpg-xnz8sUtiVTKpDJefJ1Z0lQCbVlKAUp.jpeg"
-                    alt="Healthcare Technology"
-                    className="object-cover w-full h-auto"
-                  />
-                  <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-blue-900/20 via-transparent to-transparent group-hover:opacity-100" />
-                </div>
-              </div>
-            </div>
+          {/* CTA Button */}
+          <div className="mt-6">
+            <button
+              onClick={() => scrollToSection("contactUs")}
+              className="relative px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1 animate-pulse-glow"
+            >
+              <span className="flex items-center justify-center">
+                Request a Demo
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </span>
+            </button>
           </div>
         </div>
       </div>
-
-      {/* Removed Bottom Wave Divider */}
     </div>
   )
 }

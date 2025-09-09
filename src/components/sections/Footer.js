@@ -26,26 +26,23 @@ const Footer = () => {
     services: [{ name: "E-Claim Solutions", action: () => scrollToSection("solution") }],
     resources: [{ name: "Support Center", action: () => scrollToSection("contactUs") }],
     contact: [
-      { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai,UAE", icon: LocationOn, action: () => {} },
+      { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE", icon: LocationOn, action: () => {} },
     ],
   }
 
   return (
     <Box
       component={motion.div}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       sx={{
-        backgroundColor: "#f8fafc",
         background: "linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)",
         color: "#1f2937",
-        pt: 8,
-        pb: 4,
-        overflowX: "hidden",
+        pt: 10,
+        pb: 6,
         position: "relative",
         borderTop: "1px solid #e5e7eb",
-        boxShadow: "0 -4px 6px -1px rgba(0, 0, 0, 0.05)",
         "&::before": {
           content: '""',
           position: "absolute",
@@ -57,11 +54,11 @@ const Footer = () => {
         },
       }}
     >
-      <Container maxWidth="lg" sx={{ px: { xs: 2, md: 4 } }}>
-        <Grid container spacing={4}>
+      <Container maxWidth="lg">
+        <Grid container spacing={6}>
           {/* Company Info */}
           <Grid item xs={12} md={4}>
-            <Box sx={{ mb: 3 }}>
+            <Box sx={{ textAlign: { xs: "center", md: "left" }, mb: 3 }}>
               <Box
                 component="img"
                 src={kayanlogo}
@@ -69,43 +66,26 @@ const Footer = () => {
                 onClick={navigateToHome}
                 sx={{
                   width: { xs: "120px", sm: "150px" },
-                  height: { xs: "60px", sm: "75px" },
                   cursor: "pointer",
                   transition: "all 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    filter: "drop-shadow(0 4px 8px rgba(59, 130, 246, 0.2))",
-                  },
+                  "&:hover": { transform: "scale(1.05)", filter: "drop-shadow(0 4px 10px rgba(59, 130, 246, 0.3))" },
                 }}
               />
             </Box>
-
-            <Typography
-              variant="body1"
-              sx={{
-                mb: 2,
-                lineHeight: 1.6,
-                color: "#6b7280",
-                fontSize: { xs: "0.9rem", md: "1rem" },
-              }}
-            >
-              Partner with Kayan Healthcare technologies to streamline operations, enhance compliance, and drive
-              efficiency through AI powered automation.
+            <Typography sx={{ color: "#6b7280", lineHeight: 1.7, fontSize: { xs: "0.9rem", md: "1rem" }, mb: 2 }}>
+              Partner with Kayan Healthcare technologies to streamline operations, enhance compliance, and drive efficiency through AI powered automation.
             </Typography>
-
             <Typography
-              variant="h6"
               sx={{
-                mb: 2,
                 fontWeight: 600,
                 color: "#3b82f6",
-                fontSize: { xs: "0.9rem", md: "1rem" },
                 fontStyle: "italic",
-                textAlign: "center",
+                textAlign: { xs: "center", md: "left" },
                 backgroundColor: "rgba(59, 130, 246, 0.05)",
                 padding: "8px 16px",
                 borderRadius: "8px",
                 border: "1px solid rgba(59, 130, 246, 0.1)",
+                fontSize: { xs: "0.85rem", md: "0.95rem" },
               }}
             >
               Deep Belief, Strong Commitment, Firmly Work
@@ -115,181 +95,48 @@ const Footer = () => {
           {/* Quick Links */}
           <Grid item xs={12} md={8}>
             <Grid container spacing={4}>
-              <Grid item xs={6} sm={3}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    mb: 2,
-                    color: "#1f2937",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                  }}
-                >
-                  Company
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                  {footerLinks.company.map((link, index) => (
-                    <Link
-                      key={index}
-                      component="button"
-                      onClick={link.action}
-                      sx={{
-                        color: "#6b7280",
-                        textDecoration: "none",
-                        textAlign: "left",
-                        fontSize: { xs: "0.8rem", md: "0.9rem" },
-                        "&:hover": {
-                          color: "#3b82f6",
-                          textDecoration: "underline",
-                        },
-                        transition: "color 0.3s ease",
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} sm={3}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    mb: 2,
-                    color: "#1f2937",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                  }}
-                >
-                  Services
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                  {footerLinks.services.map((link, index) => (
-                    <Link
-                      key={index}
-                      component="button"
-                      onClick={link.action}
-                      sx={{
-                        color: "#6b7280",
-                        textDecoration: "none",
-                        textAlign: "left",
-                        fontSize: { xs: "0.8rem", md: "0.9rem" },
-                        "&:hover": {
-                          color: "#3b82f6",
-                          textDecoration: "underline",
-                        },
-                        transition: "color 0.3s ease",
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} sm={3}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    mb: 2,
-                    color: "#1f2937",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                  }}
-                >
-                  Resources
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                  {footerLinks.resources.map((link, index) => (
-                    <Link
-                      key={index}
-                      component="button"
-                      onClick={link.action}
-                      sx={{
-                        color: "#6b7280",
-                        textDecoration: "none",
-                        textAlign: "left",
-                        fontSize: { xs: "0.8rem", md: "0.9rem" },
-                        "&:hover": {
-                          color: "#3b82f6",
-                          textDecoration: "underline",
-                        },
-                        transition: "color 0.3s ease",
-                      }}
-                    >
-                      {link.name}
-                    </Link>
-                  ))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} sm={3}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 600,
-                    mb: 2,
-                    color: "#1f2937",
-                    fontSize: { xs: "1rem", md: "1.1rem" },
-                  }}
-                >
-                  Contact
-                </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-                  {footerLinks.contact.map((contact, index) => (
-                    <Box
-                      key={index}
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 1,
-                        color: "#6b7280",
-                        fontSize: { xs: "0.8rem", md: "0.9rem" },
-                      }}
-                    >
-                      <contact.icon sx={{ fontSize: "1rem", color: "#3b82f6" }} />
-                      <Typography
-                        component="span"
-                        sx={{
-                          fontSize: "inherit",
-                          "&:hover": {
-                            color: "#3b82f6",
-                          },
-                          transition: "color 0.3s ease",
-                        }}
-                      >
-                        {contact.name}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Grid>
+              {Object.keys(footerLinks).map((section, idx) => (
+                <Grid item xs={6} sm={3} key={idx}>
+                  <Typography sx={{ fontWeight: 600, mb: 2, color: "#1f2937" }}>{section.charAt(0).toUpperCase() + section.slice(1)}</Typography>
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    {footerLinks[section].map((link, i) =>
+                      section === "contact" ? (
+                        <Box key={i} sx={{ display: "flex", alignItems: "center", gap: 1, color: "#6b7280", fontSize: "0.9rem" }}>
+                          <link.icon sx={{ color: "#3b82f6", fontSize: "1rem" }} />
+                          <Typography component="span" sx={{ "&:hover": { color: "#3b82f6" }, transition: "color 0.3s" }}>
+                            {link.name}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        <Link
+                          key={i}
+                          component="button"
+                          onClick={link.action}
+                          sx={{
+                            color: "#6b7280",
+                            textDecoration: "none",
+                            textAlign: "left",
+                            fontSize: "0.85rem",
+                            "&:hover": { color: "#3b82f6", textDecoration: "underline" },
+                            transition: "color 0.3s ease",
+                          }}
+                        >
+                          {link.name}
+                        </Link>
+                      )
+                    )}
+                  </Box>
+                </Grid>
+              ))}
             </Grid>
           </Grid>
         </Grid>
 
-        <Divider sx={{ my: 4, borderColor: "#e5e7eb" }} />
+        <Divider sx={{ my: 5, borderColor: "#e5e7eb" }} />
 
         {/* Bottom Section */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            justifyContent: "space-between",
-            alignItems: { xs: "center", md: "flex-start" },
-            gap: 2,
-          }}
-        >
-          <Typography
-            variant="body2"
-            sx={{
-              color: "#9ca3af",
-              textAlign: { xs: "center", md: "left" },
-              fontSize: { xs: "0.8rem", md: "0.9rem" },
-            }}
-          >
-            © 2025 Kayan Healthcare. All rights reserved.
-          </Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <Typography sx={{ color: "#9ca3af", fontSize: "0.85rem" }}>© 2025 Kayan Healthcare. All rights reserved.</Typography>
         </Box>
       </Container>
     </Box>

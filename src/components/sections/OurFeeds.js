@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, useMediaQuery, Card, CardContent, CardMedia, IconButton } from "@mui/material";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { motion } from 'framer-motion';
-import article from "../../img/article.jpg";
+"use client"
+
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import "./OurFeeds.css"
 
 const feeds = [
   {
@@ -34,443 +33,207 @@ const feeds = [
     title: "Kayan Healthcare Technologies and the Future of E-Prescriptions and Pharmaceutical Benefit Edits",
     description:
       "In today's rapidly evolving healthcare landscape, the integration of e-prescription systems and pharmaceutical benefits is more crucial than ever. This seamless connection streamlines the medication management process. Effective drug claim scrubbing plays a pivotal role in ensuring accuracy and compliance, reducing errors, and optimizing reimbursement. By prioritizing pharmaceutical scrubbers, we can foster a more efficient healthcare ecosystem. In this regard, Kayan Healthcare Technologies is developing a comprehensive and outstanding suite of checks and edits to automate prescription verifications against formularies and guidelines. and establishing a strong Rule Management Scrubber to automate the full process and ensure compliance with the ongoing rapid technologies and endless expectations of the industry.",
-    image: article,
+  image: "https://tmp.kayan-healthcare.com/static/media/article.24228e742dbfaaf4629c.jpg",
   },
-];
+]
 
 const OurFeeds = () => {
-  const isSmallScreen = useMediaQuery('(max-width:600px)');
-  const isMediumScreen = useMediaQuery('(max-width:1024px)');
-  const [selectedFeed, setSelectedFeed] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const cardsPerPage = isSmallScreen ? 1 : isMediumScreen ? 2 : 3;
-  const totalPages = Math.ceil(feeds.length / cardsPerPage);
+  const [selectedFeed, setSelectedFeed] = useState(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const getCardsPerPage = () => {
+    if (window.innerWidth <= 768) return 1
+    if (window.innerWidth <= 1024) return 2
+    return 3
+  }
+
+  const [cardsPerPage, setCardsPerPage] = useState(getCardsPerPage())
+
+  React.useEffect(() => {
+    const handleResize = () => setCardsPerPage(getCardsPerPage())
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  const totalPages = Math.ceil(feeds.length / cardsPerPage)
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
-        staggerChildren: 0.2
-      }
-    }
-  };
+        duration: 0.0,
+        staggerChildren: 0.1,
+      },
+    },
+  }
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
+        ease: "easeOut",
+      },
+    },
+  }
 
   const getShortText = (text) => {
-    const words = text.split(' ');
-    return words.length > 25 ? words.slice(0, 20).join(' ') + '...' : text;
-  };
+    const words = text.split(" ")
+    return words.length > 20 ? words.slice(0, 20).join(" ") + "..." : text
+  }
 
   const handleReadMore = (feed) => {
-    setSelectedFeed(feed);
-  };
+    setSelectedFeed(feed)
+  }
 
   const handleBack = () => {
-    setSelectedFeed(null);
-  };
+    setSelectedFeed(null)
+  }
 
   const nextCards = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
-  };
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages)
+  }
 
   const prevCards = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalPages - 1 : prevIndex - 1));
-  };
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalPages - 1 : prevIndex - 1))
+  }
 
   const goToPage = (index) => {
-    setCurrentIndex(index);
-  };
+    setCurrentIndex(index)
+  }
 
-  const visibleFeeds = feeds.slice(
-    currentIndex * cardsPerPage,
-    (currentIndex + 1) * cardsPerPage
-  );
+  const visibleFeeds = feeds.slice(currentIndex * cardsPerPage, (currentIndex + 1) * cardsPerPage)
 
   return (
-    <div id="our-feeds">
-      <Box
-        component={motion.div}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        sx={{
-          width: "100%",
-          background: "linear-gradient(135deg, #f8fafc 0%, #e3f2fd 50%, #f1f5f9 100%)",
-          padding: isSmallScreen ? "20px 10px" : "40px 20px",
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          position: "relative",
-          overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><defs><pattern id=\"grid\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\"><path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"rgba(25,118,210,0.05)\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"100\" height=\"100\" fill=\"url(%23grid)\"/></svg>')",
-            opacity: 0.5,
-          }
-        }}
-      >
-        {selectedFeed ? (
-          
-          <Box
-            component={motion.div}
-            variants={itemVariants}
-            sx={{
-              width: "100%",
-              maxWidth: "1500px",
-              marginTop: "1%",
-              background: "rgba(255, 255, 255, 0.9)",
-              backdropFilter: "blur(10px)",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              borderRadius: "24px", 
-              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)", 
-              padding: isSmallScreen ? "20px" : "30px", 
-              overflowX:"hidden",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: isSmallScreen ? "column" : "row",
-                alignItems: "center",
-                gap: isSmallScreen ? "1rem" : "2rem",
-              }}
+    <div className="our-feeds-container">
+      <motion.div className="feeds-wrapper" variants={containerVariants} initial="hidden" animate="visible">
+        <AnimatePresence mode="wait">
+          {selectedFeed ? (
+            <motion.div
+              key="detail"
+              className="feed-detail"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4 }}
             >
-              {/* Image Section */}
-              <Box
-                sx={{
-                  flex: 1,
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <img
-                  src={selectedFeed.image}
-                  alt={selectedFeed.title}
-                  style={{
-                    width: isSmallScreen ? "100%" : "500px",
-                    height: isSmallScreen ? "auto" : "400px",
-                    borderRadius: "10px",
-                    boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
-
-              {/* Text Section */}
-              <Box
-                sx={{
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: isSmallScreen ? "center" : "flex-start",
-                  padding: isSmallScreen ? "10px" : "20px",
-                  textAlign: isSmallScreen ? "center" : "left",
-                }}
-              >
-                <Typography
-                  variant="h4"
-                  sx={{
-                    fontSize: isSmallScreen ? "1.5rem" : "2rem",
-                    fontWeight: "800",
-                    fontFamily: "Montserrat",
-                    background: "linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)",
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    marginBottom: "20px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.5px",
-                  }}
-                >
-                  {selectedFeed.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: isSmallScreen ? "0.9rem" : "1.1rem",
-                    color: "#333333",
-                    fontFamily: "Montserrat",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {selectedFeed.description}
-                </Typography>
-                <Button
-                  variant="contained"
-                  sx={{
-                    marginTop: "20px",
-                    fontSize: isSmallScreen ? "0.8rem" : "0.9rem",
-                    fontWeight: "600",
-                    background: "linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)",
-                    color: "#FFFFFF",
-                    padding: "12px 24px",
-                    textTransform: "none",
-                    borderRadius: "50px",
-                    boxShadow: "0 8px 25px rgba(25, 118, 210, 0.3)",
-                    "&:hover": {
-                      background: "linear-gradient(135deg, #1565c0 0%, #1976d2 100%)",
-                      boxShadow: "0 12px 35px rgba(25, 118, 210, 0.4)",
-                    },
-                  }}
-                  onClick={handleBack}
-                >
-                  Back
-                </Button>
-              </Box>
-            </Box>
-          </Box>
-        ) : (
-          // Cards View with Carousel
-          <Box
-            component={motion.div}
-            variants={itemVariants}
-            sx={{
-              width: "100%",
-              maxWidth: "1500px",
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: isSmallScreen ? "column" : "row",
-                gap: { xs: 3, md: 4 },
-                marginTop: isSmallScreen ? "60px" : "90px",
-                justifyContent: "center",
-                alignItems: "stretch",
-                flexWrap: "wrap",
-                padding: { xs: "0 20px", md: "0 80px" },
-                maxWidth: "100%",
-              }}
-            >
-              {visibleFeeds.map((feed, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.3 }}
-                  style={{
-                    width: isSmallScreen ? "100%" : isMediumScreen ? "calc(50% - 16px)" : "300px",
-                    maxWidth: isSmallScreen ? "100%" : isMediumScreen ? "none" : "300px",
-                    minWidth: isSmallScreen ? "100%" : isMediumScreen ? "260px" : "300px",
-                    flex: isSmallScreen ? "none" : isMediumScreen ? "1" : "none",
-                  }}
-                >
-                  <Card
-                    sx={{
-                      height: "100%",
-                      background: "rgba(255, 255, 255, 0.9)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.2)",
-                      borderRadius: "24px",
-                      boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-                      overflow: "hidden",
-                      display: "flex",
-                      flexDirection: "column",
-                      transition: "all 0.3s ease",
-                      position: "relative",
-                      "&:hover": {
-                        boxShadow: "0 16px 48px rgba(0, 0, 0, 0.15)",
-                        "& .feed-image": {
-                          transform: "scale(1.05)",
-                        }
-                      },
-                      "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: "4px",
-                        background: "linear-gradient(90deg, #1976d2 0%, #42a5f5 100%)",
-                        zIndex: 1,
-                      }
-                    }}
-                  >
-                  <CardMedia
-                    component="img"
-                    height={isSmallScreen ? "180" : "200"}
-                    image={feed.image}
-                    alt={feed.title}
-                    className="feed-image"
-                    sx={{ 
-                      objectFit: "cover", 
-                      flexShrink: 0,
-                      minHeight: isSmallScreen ? "180px" : "200px",
-                      maxHeight: isSmallScreen ? "180px" : "200px",
-                      width: "100%",
-                      transition: "transform 0.3s ease"
-                    }}
+              <div className="detail-content">
+                <div className="detail-image-section">
+                  <img
+                    src={selectedFeed.image || "/placeholder.svg"}
+                    alt={selectedFeed.title}
+                    className="detail-image"
                   />
-                  <CardContent
-                    sx={{
-                      padding: isSmallScreen ? "15px" : "20px",
-                      display: "flex",
-                      flexDirection: "column",
-                      flexGrow: 1,
-                      justifyContent: "space-between",
+                  <div className="image-overlay"></div>
+                </div>
+
+                <div className="detail-text-section">
+                  <div className="detail-badge">Healthcare Solution</div>
+                  <h2 className="detail-title">{selectedFeed.title}</h2>
+                  <p className="detail-description">{selectedFeed.description}</p>
+
+                  <button className="back-button" onClick={handleBack}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M19 12H5M12 19l-7-7 7-7"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    Back to Services
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="grid"
+              className="feeds-grid-container"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <div className="feeds-grid">
+                {visibleFeeds.map((feed, index) => (
+                  <motion.div
+                    key={`${currentIndex}-${index}`}
+                    className="feed-card"
+                    variants={cardVariants}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.02,
+                      transition: { duration: 0.3 },
                     }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <Box>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontSize: isSmallScreen ? "1rem" : "1.2rem",
-                          fontWeight: "700",
-                          fontFamily: "Montserrat",
-                          color: "#1e293b",
-                          marginBottom: "10px",
-                          lineHeight: "1.3",
-                        }}
-                      >
-                        {feed.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          fontSize: isSmallScreen ? "0.8rem" : "0.9rem",
-                          color: "#64748b",
-                          fontFamily: "Montserrat",
-                          marginBottom: "15px",
-                          lineHeight: "1.5",
-                        }}
-                      >
-                        {getShortText(feed.description)}
-                        <span
-                          style={{
-                            color: "#64748b",
-                            fontFamily: "Montserrat",
-                          }}
-                        >
-                          ...
-                        </span>
-                        <span
-                          onClick={() => handleReadMore(feed)}
-                          style={{
-                            color: "#1976d2",
-                            fontWeight: "bold",
-                            cursor: "pointer",
-                            marginLeft: "5px",
-                            textDecoration: "none",
-                            fontFamily: "Montserrat",
-                          }}
-                        >
-                          read more
-                        </span>
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Card>
-                </motion.div>
-              ))}
-            </Box>
+                    <div className="card-image-container">
+                      <img src={feed.image || "/placeholder.svg"} alt={feed.title} className="card-image" />
+                      <div className="card-gradient-overlay"></div>
+                      <div className="card-badge">Healthcare</div>
+                    </div>
 
-            {/* Navigation Arrows */}
-            {feeds.length > cardsPerPage && (
-              <>
-                <IconButton
-                  onClick={prevCards}
-                  size="large"
-                  aria-label="Previous cards"
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: isSmallScreen ? "5px" : isMediumScreen ? "-40px" : "-50px",
-                    transform: "translateY(-50%)",
-                    color: "#1976d2",
-                    backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 1)",
-                      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.2)",
-                    },
-                    zIndex: 3,
-                  }}
-                >
-                  <KeyboardArrowLeftIcon fontSize={isSmallScreen ? "medium" : "large"} />
-                </IconButton>
-                <IconButton
-                  onClick={nextCards}
-                  size="large"
-                  aria-label="Next cards"
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    right: isSmallScreen ? "5px" : isMediumScreen ? "-40px" : "-50px",
-                    transform: "translateY(-50%)",
-                    color: "#1976d2",
-                    backgroundColor: "rgba(255, 255, 255, 0.9)",
-                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                    "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 1)",
-                      boxShadow: "0 6px 16px rgba(0, 0, 0, 0.2)",
-                    },
-                    zIndex: 3,
-                  }}
-                >
-                  <KeyboardArrowRightIcon fontSize={isSmallScreen ? "medium" : "large"} />
-                </IconButton>
+                    <div className="card-content">
+                      <h3 className="card-title">{feed.title}</h3>
+                    <p className="card-description">{getShortText(feed.description)}</p>
+<button className="read-more-button" onClick={() => handleReadMore(feed)}>
+  Read More
+</button>
 
-                {/* Navigation Dots */}
-                <Box
-                  sx={{
-                    position: "absolute",
-                    bottom: "-40px",
-                    left: 0,
-                    right: 0, // Changed to center the dots
-                    display: "flex",
-                    justifyContent: "center",
-                    pointerEvents: "none",
-                  }}
-                >
-                  {Array.from({ length: totalPages }).map((_, index) => (
-                    <Box
-                      key={index}
-                      onClick={() => goToPage(index)}
-                      sx={{
-                        width: "10px",
-                        height: "10px",
-                        borderRadius: "50%",
-                        backgroundColor:
-                          index === currentIndex
-                            ? "#2091F9"
-                            : "rgba(32, 145, 249, 0.5)",
-                        margin: "0 5px",
-                        cursor: "pointer",
-                        pointerEvents: "auto",
-                      }}
-                    />
-                  ))}
-                </Box>
-              </>
-            )}
-          </Box>
-        )}
-      </Box>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {feeds.length > cardsPerPage && (
+                <>
+                  <button className="nav-button nav-button-left" onClick={prevCards} aria-label="Previous cards">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M15 18l-6-6 6-6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  <button className="nav-button nav-button-right" onClick={nextCards} aria-label="Next cards">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M9 18l6-6-6-6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+
+                  <div className="pagination-dots">
+                    {Array.from({ length: totalPages }).map((_, index) => (
+                      <button
+                        key={index}
+                        className={`dot ${index === currentIndex ? "active" : ""}`}
+                        onClick={() => goToPage(index)}
+                        aria-label={`Go to page ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default OurFeeds;
+export default OurFeeds

@@ -13,10 +13,10 @@ import { motion } from "framer-motion"
 import React from "react"
 import kayanlogo from "../../img/kayanlogo55.png"
 
-const Navbar = () => {
+   const Navbar = () => {
   const [activeSection, setActiveSection] = React.useState("home")
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [solutionsAnchor, setSolutionsAnchor] = React.useState(null)
+  const [aboutAnchor, setAboutAnchor] = React.useState(null)
 
   const theme = useTheme()
 
@@ -41,11 +41,11 @@ const Navbar = () => {
       "how-it-works",
       "our-benefits",
       "about",
-      "our-story",
-      "our-experts",
-      "our-clients",
-      "gcc-presence",
+      "our-mission",
+      "our-vision",
       "our-feeds",
+      "our-team",
+      "gcc-presence",
     ]
     sections.forEach((section) => {
       const element = document.getElementById(section)
@@ -64,38 +64,48 @@ const Navbar = () => {
       element.scrollIntoView({ behavior: "smooth" })
       setActiveSection(id)
       setMobileOpen(false)
+      setAboutAnchor(null)
+    } else {
+      console.warn(`Section with id "${id}" not found in the DOM`)
     }
   }
 
   const navItems = [
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
-    { id: "our-experts", label: "Our Team" },
+    { id: "solution", label: "Solutions" },
     { id: "benefits", label: "Benefits" },
-    { id: "gcc-presence", label: "Our Presence" },
+    { id: "our-presence", label: "Our Presence" },
   ]
 
-  const solutionsItems = [
-    { id: "petra", label: "PETRA" },
-    { id: "QUDRA", label: "QUDRA" },
-     { id: "PHARMACEUTICAL", label: "PHARMACEUTICAL" },
-  ]
+ const aboutItems = [
+  { id: "our-story", label: "Mission&Vision" },  // Mission
+  { id: "our-feeds", label: "Our Feeds" },
+  { id: "our-experts", label: "Our Team" },  // <-- صح
+]
 
-  const handleSolutionsClick = (event) => {
-    setSolutionsAnchor(event.currentTarget)
+  
+
+  const handleAboutTextClick = () => {
+    scrollToSection("about")
   }
 
-  const handleSolutionsClose = () => {
-    setSolutionsAnchor(null)
+  const handleAboutArrowClick = (event) => {
+    setAboutAnchor(event.currentTarget)
   }
 
-  const handleSolutionSelect = (id) => {
+  const handleAboutClose = () => {
+    setAboutAnchor(null)
+  }
+
+  const handleAboutSelect = (id) => {
     scrollToSection(id)
-    handleSolutionsClose()
+    handleAboutClose()
   }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
+    setAboutAnchor(null) // Close dropdown when toggling drawer
   }
 
   const drawer = (
@@ -126,7 +136,13 @@ const Navbar = () => {
         {navItems.map((item) => (
           <ListItem
             key={item.id}
-            onClick={() => scrollToSection(item.id)}
+            onClick={() => {
+              if (item.id === "about") {
+                scrollToSection("about")
+              } else {
+                scrollToSection(item.id)
+              }
+            }}
             sx={{
               cursor: "pointer",
               "&:hover": {
@@ -143,55 +159,76 @@ const Navbar = () => {
               sx={{
                 "& .MuiListItemText-primary": {
                   fontWeight: activeSection === item.id ? 600 : 400,
-                  color: "white",
+                  color: item.id === "about" && aboutAnchor ? "#3b82f6" : "white",
                   fontSize: "1rem",
                 },
               }}
             />
+            {item.id === "about" && (
+              <IconButton
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setAboutAnchor(aboutAnchor ? null : e.currentTarget)
+                }}
+                sx={{ color: "#3b82f6" }}
+              >
+                <ExpandMoreIcon
+                  sx={{
+                    fontSize: "18px",
+                    transform: aboutAnchor ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
+              </IconButton>
+            )}
           </ListItem>
         ))}
-        <ListItem sx={{ px: 2, py: 1 }}>
-          <ListItemText
-            primary="Solutions"
-            sx={{
-              "& .MuiListItemText-primary": {
-                fontWeight: 600,
-                color: "#3b82f6",
-                fontSize: "0.9rem",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px",
-              },
-            }}
-          />
-        </ListItem>
-        {solutionsItems.map((item) => (
-          <ListItem
-            key={item.id}
-            onClick={() => scrollToSection(item.id)}
-            sx={{
-              cursor: "pointer",
-              pl: 4,
-              "&:hover": {
-                backgroundColor: "rgba(255,255,255,0.1)",
-              },
-              backgroundColor: activeSection === item.id ? "rgba(255,255,255,0.15)" : "transparent",
-              borderRadius: "8px",
-              mx: 1,
-              mb: 0.5,
-            }}
-          >
-            <ListItemText
-              primary={item.label}
-              sx={{
-                "& .MuiListItemText-primary": {
-                  fontWeight: activeSection === item.id ? 600 : 400,
-                  color: activeSection === item.id ? "#3b82f6" : "rgba(255,255,255,0.8)",
-                  fontSize: "0.9rem",
-                },
-              }}
-            />
-          </ListItem>
-        ))}
+        {aboutAnchor && (
+          <>
+            <ListItem sx={{ px: 2, py: 1 }}>
+              <ListItemText
+                primary="About Sections"
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontWeight: 600,
+                    color: "#3b82f6",
+                    fontSize: "0.9rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.5px",
+                  },
+                }}
+              />
+            </ListItem>
+            {aboutItems.map((item) => (
+              <ListItem
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                sx={{
+                  cursor: "pointer",
+                  pl: 4,
+                  "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.1)",
+                  },
+                  backgroundColor: activeSection === item.id ? "rgba(255,255,255,0.15)" : "transparent",
+                  borderRadius: "8px",
+                  mx: 1,
+                  mb: 0.5,
+                }}
+              >
+                <ListItemText
+                  primary={item.label}
+                  sx={{
+                    "& .MuiListItemText-primary": {
+                      fontWeight: activeSection === item.id ? 600 : 400,
+                      color: activeSection === item.id ? "#3b82f6" : "rgba(255,255,255,0.8)",
+                      fontSize: "0.9rem",
+                    },
+                  }}
+                />
+              </ListItem>
+            ))}
+          </>
+        )}
       </List>
     </Box>
   )
@@ -210,6 +247,7 @@ const Navbar = () => {
           backdropFilter: "blur(20px)",
           zIndex: 1200,
           borderBottom: "1px solid rgba(0,0,0,0.05)",
+          borderRadius: "0",
         }}
       >
         <Container maxWidth={false} sx={{ px: { xs: 2, md: 4 } }}>
@@ -247,7 +285,7 @@ const Navbar = () => {
               >
                 <span
                   style={{
-                    color: "#1f2937",
+                    color: "#3b82f6",
                     fontWeight: 700,
                     letterSpacing: 0.5,
                     fontSize: "1.2rem",
@@ -265,8 +303,10 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <Box
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
                   sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.5,
                     color: activeSection === item.id ? "#3b82f6" : "#4b5563",
                     fontSize: "15px",
                     fontWeight: activeSection === item.id ? 600 : 500,
@@ -298,40 +338,28 @@ const Navbar = () => {
                     },
                   }}
                 >
-                  {item.label}
+                  <Box
+                    onClick={() => item.id === "about" ? handleAboutTextClick() : scrollToSection(item.id)}
+                    sx={{ padding: "0 4px" }}
+                  >
+                    {item.label}
+                  </Box>
+                  {item.id === "about" && (
+                    <IconButton
+                      onClick={handleAboutArrowClick}
+                      sx={{ padding: 0, color: activeSection === item.id ? "#3b82f6" : "#4b5563" }}
+                    >
+                      <ExpandMoreIcon
+                        sx={{
+                          fontSize: "18px",
+                          transform: aboutAnchor ? "rotate(180deg)" : "rotate(0deg)",
+                          transition: "transform 0.3s ease",
+                        }}
+                      />
+                    </IconButton>
+                  )}
                 </Box>
               ))}
-
-              <Box
-                onClick={handleSolutionsClick}
-                sx={{
-                  color: solutionsAnchor ? "#3b82f6" : "#4b5563",
-                  fontSize: "15px",
-                  fontWeight: 500,
-                  cursor: "pointer",
-                  padding: "12px 20px",
-                  borderRadius: "12px",
-                  transition: "all 0.3s ease",
-                  fontFamily: "Inter, sans-serif",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0.5,
-                  "&:hover": {
-                    color: "#3b82f6",
-                    backgroundColor: "rgba(59, 130, 246, 0.08)",
-                    transform: "translateY(-1px)",
-                  },
-                }}
-              >
-                Solutions
-                <ExpandMoreIcon
-                  sx={{
-                    fontSize: "18px",
-                    transform: solutionsAnchor ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.3s ease",
-                  }}
-                />
-              </Box>
 
               {/* Spacer between nav items and Contact Us button */}
               <Box sx={{ width: "24px" }} />
@@ -389,9 +417,9 @@ const Navbar = () => {
       </AppBar>
 
       <Menu
-        anchorEl={solutionsAnchor}
-        open={Boolean(solutionsAnchor)}
-        onClose={handleSolutionsClose}
+        anchorEl={aboutAnchor}
+        open={Boolean(aboutAnchor)}
+        onClose={handleAboutClose}
         TransitionComponent={Fade}
         sx={{
           "& .MuiPaper-root": {
@@ -405,10 +433,10 @@ const Navbar = () => {
           },
         }}
       >
-        {solutionsItems.map((item) => (
+        {aboutItems.map((item) => (
           <MenuItem
             key={item.id}
-            onClick={() => handleSolutionSelect(item.id)}
+            onClick={() => handleAboutSelect(item.id)}
             sx={{
               py: 1.5,
               px: 3,
