@@ -5,13 +5,14 @@ import Navbar from './components/sections/Navbar';
 import Home from './components/sections/Home';
 import Benefits from './components/sections/Benefits';
 import HowItWork from './components/sections/HowItWork';
-import Solutions from './components/sections/Solutions';
 import OurStory from './components/sections/ourStory';
-import AnalyticsDashboards from "./components/sections/AnalyticsDashboards";
+import Solutions from './components/sections/Solutions';
+import AnalyticsDashboards from './components/sections/AnalyticsDashboards';
+
+
 import ExpertsSection from './components/sections/ExpertsSection';
 import ContactUs from './components/sections/ContactUs';
 import Footer from './components/sections/Footer';
-import OurClient from './components/sections/OurClient';
 import '@fontsource/montserrat/400.css'; 
 import '@fontsource/montserrat/600.css'; 
 import '@fontsource/montserrat/700.css'; 
@@ -171,7 +172,9 @@ const App = () => {
             overflowY: 'hidden',
           }}
         >
+          {/* 🔹 Navbar */}
           <Navbar />
+
           <Container 
             maxWidth={false} 
             disableGutters 
@@ -183,63 +186,82 @@ const App = () => {
               overflowX: 'hidden',
             }}
           >
+            {/* 🔹 Home */}
             <AnimatedSection>
               <Box component="section" id="home" sx={{ width: '100%' }}>
                 <Home />
               </Box>
             </AnimatedSection>
             <AnimatedSection>
-              <Box component="section" id="benefits" sx={{ width: '100%' }}>
-                <Benefits />
-              </Box>
-            </AnimatedSection>
+  <Box component="section" id="about" sx={{ width: '100%' }}>
+    <AboutUs />
+  </Box>
+</AnimatedSection>
+
+
+    <AnimatedSection>
+  <Box component="section" id="our-story" sx={{ width: '100%' }}>
+    <OurStory />
+  </Box>
+</AnimatedSection>
+
+
+
+
+            {/* 🔹 Our Feeds */}
             <AnimatedSection>
-              <Box component="section" id="how-it-works" sx={{ width: '100%' }}>
-                <HowItWork />
+              <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
+                <OurFeeds />
               </Box>
             </AnimatedSection>
+
+            {/* 🔹 Our Team */}
             <AnimatedSection>
-              <Box component="section" id="our-story" sx={{ width: '100%' }}>
-                <OurStory />
+              <Box component="section" id="our-team" sx={{ width: '100%' }}>
+                <ExpertsSection />
               </Box>
             </AnimatedSection>
-            <AnimatedSection>
-              <Box component="section" id="about" sx={{ width: '100%' }}>
-                <AboutUs />
-              </Box>
-            </AnimatedSection>
+
+            {/* 🔹 Solutions */}
             <AnimatedSection>
               <Box component="section" id="solution" sx={{ width: '100%' }}>
                 <Solutions />
               </Box>
             </AnimatedSection>
 
-            {/* 🔹 Analytics Dashboards Section */}
+            {/* 🔹 Benefits */}
             <AnimatedSection>
-              <Box component="section" id="analytics-dashboards" sx={{ width: '100%' }}>
-                <AnalyticsDashboards />
+              <Box component="section" id="benefits" sx={{ width: '100%' }}>
+                <Benefits />
               </Box>
             </AnimatedSection>
+            <AnimatedSection>
+  <Box component="section" id="howItWork" sx={{ width: '100%' }}>
+    <HowItWork />
+  </Box>
+</AnimatedSection>
 
-            <AnimatedSection>
-              <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
-                <OurFeeds />
-              </Box>
-            </AnimatedSection>
-            <AnimatedSection>
-              <Box component="section" id="our-experts" sx={{ width: '100%' }}>
-                <ExpertsSection />
-              </Box>
-            </AnimatedSection>
-            <AnimatedSection>
-              <Box component="section" id="our-clients" sx={{ width: '100%' }}>
-                <OurClient />
-              </Box>
-            </AnimatedSection>
-            <AnimatedSection>
-              <ContactUs />
-            </AnimatedSection>
+<AnimatedSection>
+  <Box component="section" id="analyticsDashboard" sx={{ width: '100%' }}>
+    <AnalyticsDashboards />
+  </Box>
+</AnimatedSection>
+
+
+
+            {/* 🔹 Our Presence */}
+           
+
+            {/* 🔹 Contact Us */}
+           {/* 🔹 Contact Us */}
+<AnimatedSection>
+  <Box component="section" id="contact" sx={{ width: '100%' }}>
+    <ContactUs />
+  </Box>
+</AnimatedSection>
           </Container>
+
+          {/* 🔹 Footer */}
           <Footer />
         </Box>
       </Router>

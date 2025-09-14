@@ -27,7 +27,7 @@ const OurStory = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCard(prev => (prev === content.length - 1 ? 0 : prev + 1));
-    }, 2500); // كل 2.5 ثانية يتحول للبطاقة التالية
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
@@ -49,7 +49,7 @@ const OurStory = () => {
         position: "relative",
       }}
     >
-      {/* خلفية نبض القلب */}
+      {/* Heartbeat background */}
       <Box
         sx={{
           position: "absolute",
@@ -71,7 +71,7 @@ const OurStory = () => {
         }}
       />
 
-      {/* العنوان */}
+      {/* Section Title */}
       <Typography
         variant="h3"
         fontWeight={700}
@@ -87,6 +87,7 @@ const OurStory = () => {
           WebkitTextFillColor: 'transparent',
         }}
       >
+      
       </Typography>
 
       <Box
@@ -96,14 +97,13 @@ const OurStory = () => {
           maxWidth: 1100,
         }}
       >
-        {/* الخط العمودي */}
+        {/* Vertical gradient line (desktop only) */}
         {!isSmallScreen && (
           <Box
             sx={{
               position: "absolute",
-             
-                 top: "-20%",  
-              bottom: "-20%", 
+              top: "-20%",
+              bottom: "-20%",
               left: "51%",
               width: "3px",
               background: "linear-gradient(180deg, #1976d2 0%, #42a5f5 100%)",
@@ -120,7 +120,7 @@ const OurStory = () => {
           />
         )}
 
-        {/* الكروت */}
+        {/* Cards */}
         <Grid container spacing={4} justifyContent="center" alignItems="stretch">
           {content.map((item, idx) => (
             <Grid item xs={12} md={6} key={item.title}>
@@ -135,15 +135,15 @@ const OurStory = () => {
                   flexDirection: 'column',
                   alignItems: 'flex-start',
                   justifyContent: 'center',
-                  boxShadow: '0 8px 32px rgba(25,118,210,0.08)',
                   position: 'relative',
                   overflow: 'visible',
-                  
                   mt: idx === 0 ? -4 : 6,
                   ml: idx === 1 ? { md: 4 } : 0,
-                  transition: 'box-shadow 0.5s ease-in-out, border 0.5s ease-in-out',
                   border: activeCard === idx ? '2px solid #1976d2' : '2px solid transparent',
-                  boxShadow: activeCard === idx ? '0 0 20px rgba(25,118,210,0.6)' : '0 8px 32px rgba(25,118,210,0.08)',
+                  boxShadow: activeCard === idx
+                    ? '0 0 20px rgba(25,118,210,0.6)'
+                    : '0 8px 32px rgba(25,118,210,0.08)',
+                  transition: 'box-shadow 0.5s ease-in-out, border 0.5s ease-in-out',
                 }}
               >
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>

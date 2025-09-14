@@ -1,25 +1,8 @@
 "use client"
 
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"
-import LinkedInIcon from "@mui/icons-material/LinkedIn"
-import SendIcon from "@mui/icons-material/Send"
-import EmailIcon from "@mui/icons-material/Email" 
-import {
-  Alert,
-  Box,
-  Button,
-  Container,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Snackbar,
-  TextField,
-  Typography,
-  IconButton,
-} from "@mui/material"
-import { motion } from "framer-motion"
 import React from "react"
+import { Mail, MapPin, Linkedin } from "lucide-react"
+import GCCPresenceMap from "./GCCPresenceMap"
 
 const ContactUs = () => {
   const [formData, setFormData] = React.useState({
@@ -73,7 +56,9 @@ const ContactUs = () => {
       }
 
       if (response.ok) {
-        setSuccessMessage("Thank you! Your message has been sent successfully. We will get back to you soon.")
+        setSuccessMessage(
+          "Thank you! Your message has been sent successfully. We will get back to you soon."
+        )
         setFormData({ name: "", email: "", phone: "", message: "", countryCode: "+970" })
       } else {
         setErrorMessage(result?.message || "An error occurred while sending the data.")
@@ -86,201 +71,179 @@ const ContactUs = () => {
     }
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.8, staggerChildren: 0.2 },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  }
-
   return (
-    <Box
-      id="ContactUs"
-      component={motion.div}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        backgroundColor: "#f9fafb",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: { xs: "20px", md: "40px" },
-      }}
-    >
-      <Container maxWidth="lg" sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 4 }}>
-        <Box component={motion.div} variants={itemVariants} sx={{ textAlign: "center", mb: 2 }}>
-          <Typography variant="h2" sx={{ fontWeight: 700, color: "#1f2937", fontSize: { xs: "2rem", md: "2.8rem" } }}>
+<div id="ContactUs" className="px-4 py-16 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900">
             Book a Free Consultation
             <br />
-            <span style={{ color: "#3b82f6" }}>with Our Experts</span>
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#6b7280", mt: 1 }}>
-            Transform your healthcare business with cutting-edge technology solutions. Get personalized insights and strategic guidance from our industry experts.
-          </Typography>
-        </Box>
+            <span className="text-blue-600">with Our Experts</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-600">
+            Transform your healthcare business with cutting-edge technology solutions. Get personalized insights and
+            strategic guidance from our industry experts.
+          </p>
+        </div>
 
-        {/* الكارد - عرضي */}
-        <Box
-          component={motion.div}
-          variants={itemVariants}
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            gap: 4,
-            backgroundColor: "#ffffff",
-            borderRadius: "20px",
-            padding: { xs: 3, md: 5 },
-            boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-            border: "1px solid #e5e7eb",
-          }}
-        >
-          {/* الفورم */}
-          <Box sx={{ flex: 1 }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, color: "#3b82f6", mb: 2 }}>
-              Send us a Message
-            </Typography>
-            <Box component="form" onSubmit={handleSubmit} sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <Box sx={{ display: "flex", gap: 2 }}>
-                <TextField
-                  label="Your Name"
-                  variant="outlined"
-                  fullWidth
-                  required
-                  size="small"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-                <TextField
-                  label="Your Email"
-                  variant="outlined"
-                  fullWidth
-                  required
-                  size="small"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </Box>
-              <Box sx={{ display: "flex", gap: 2 }}>
-                <FormControl size="small" sx={{ minWidth: 120 }}>
-                  <InputLabel>Code</InputLabel>
-                  <Select value={formData.countryCode} onChange={handleCountryCodeChange}>
-                    <MenuItem value="+970">🇵🇸 +970</MenuItem>
-                    <MenuItem value="+971">🇦🇪 +971</MenuItem>
-                    <MenuItem value="+966">🇸🇦 +966</MenuItem>
-                    <MenuItem value="+968">🇴🇲 +968</MenuItem>
-                    <MenuItem value="+973">🇧🇭 +973</MenuItem>
-                    <MenuItem value="+974">🇶🇦 +974</MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  label="Phone Number"
-                  variant="outlined"
-                  fullWidth
-                  size="small"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                />
-              </Box>
-              <TextField
-                label="Your Message"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={4}
-                required
-                size="small"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-              />
-              <Button type="submit" variant="contained" disabled={isSubmitting} endIcon={isSubmitting ? null : <SendIcon />}>
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </Box>
-          </Box>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          {/* Left side - Contact Info */}
+          <div>
+            <h3 className="mb-4 text-2xl font-bold text-blue-600">Send us a Message</h3>
+            <p className="mb-8 text-gray-600">
+              Get in touch with our healthcare technology experts for personalized solutions.
+            </p>
 
-          {/* معلومات الاتصال + لينكدإن + جيميل */}
-          <Box
-            sx={{
-              flex: 0.8,
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-start",
-              gap: 3,
-              mt: 7, // 
-            }}
-          >
-            <Typography variant="h5" sx={{ fontWeight: 700, color: "#3b82f6" }}>
-              Contact Info
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#6b7280" }}>
-              Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE
-            </Typography>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Address */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-20 h-12 bg-blue-900 rounded-lg">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Address</h4>
+                    <p className="text-gray-600">
+                      Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE
+                    </p>
+                  </div>
+                </div>
 
-            <Box sx={{ display: "flex", gap: 2 }}>
-              <IconButton
-                component="a"
-                href="https://www.linkedin.com/company/kayan-healthcare-technologies"
-                target="_blank"
-                sx={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: "#0077b5",
-                  color: "white",
-                  "&:hover": { backgroundColor: "#005885", transform: "scale(1.1)" },
-                  borderRadius: "12px",
-                }}
-              >
-                <LinkedInIcon />
-              </IconButton>
+                {/* Support */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-900 rounded-lg">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Support</h4>
+                    <p className="text-gray-600">support@kayan-healthcare.com</p>
+                  </div>
+                </div>
+              </div>
 
-              <IconButton
-                component="a"
-                href="mailto:example@company.com" // ضع هنا ايميل الشركة الحقيقي
-                sx={{
-                  width: 50,
-                  height: 50,
-                  backgroundColor: "#d93025",
-                  color: "white",
-                  "&:hover": { backgroundColor: "#b1271b", transform: "scale(1.1)" },
-                  borderRadius: "12px",
-                }}
-              >
-                <EmailIcon />
-              </IconButton>
-            </Box>
-          </Box>
-        </Box>
-      </Container>
+              {/* Row 2: Contact + LinkedIn */}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Contact */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-900 rounded-lg">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Contact</h4>
+                    <p className="text-gray-600">contact@kayan-healthcare.com</p>
+                  </div>
+                </div>
 
-      {/* الرسائل */}
-      <Snackbar open={!!successMessage} autoHideDuration={6000} onClose={() => setSuccessMessage("")} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
-        <Alert onClose={() => setSuccessMessage("")} severity="success" icon={<CheckCircleIcon />} sx={{ width: "100%" }}>
-          {successMessage}
-        </Alert>
-      </Snackbar>
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/company/kayan-healthcare-technologies"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 transition-all hover:scale-105"
+                >
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-700 rounded-lg">
+                    <Linkedin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">LinkedIn</h4>
+                    <p className="text-gray-600">Kayan Healthcare Technologies</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
 
-      <Snackbar open={!!errorMessage} autoHideDuration={6000} onClose={() => setErrorMessage("")} anchorOrigin={{ vertical: "top", horizontal: "center" }}>
-        <Alert onClose={() => setErrorMessage("")} severity="error" sx={{ width: "100%" }}>
-          {errorMessage}
-        </Alert>
-      </Snackbar>
-    </Box>
+          {/* Right side - Contact Form */}
+          <div>
+            <div className="p-8 bg-gray-100 border-0 rounded-xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <input
+                      placeholder="Your Name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      placeholder="Your Email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-2">
+                  <select
+                    value={formData.countryCode}
+                    onChange={handleCountryCodeChange}
+                    className="px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="+970">🇵🇸 +970</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+968">🇴🇲 +968</option>
+                    <option value="+973">🇧🇭 +973</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+965">🇰🇼 +965</option>
+                  </select>
+                  <input
+                    placeholder="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="flex-1 px-3 py-2 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <textarea
+                    placeholder="Your Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-3 font-medium text-white transition-colors bg-blue-900 rounded-lg hover:bg-blue-800 disabled:bg-blue-400"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+
+              {successMessage && (
+                <div className="p-4 mt-4 text-green-700 bg-green-100 border border-green-400 rounded-md">
+                  {successMessage}
+                </div>
+              )}
+              {errorMessage && (
+                <div className="p-4 mt-4 text-red-700 bg-red-100 border border-red-400 rounded-md">
+                  {errorMessage}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <GCCPresenceMap />
+        </div>
+      </div>
+    </div>
   )
 }
 

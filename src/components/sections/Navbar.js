@@ -79,7 +79,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
   ]
 
  const aboutItems = [
-  { id: "our-story", label: "Mission&Vision" },  // Mission
+{ id: "our-story", label: "Mission & Vision" },
   { id: "our-feeds", label: "Our Feeds" },
   { id: "our-experts", label: "Our Team" },  // <-- صح
 ]

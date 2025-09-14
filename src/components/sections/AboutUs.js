@@ -119,27 +119,7 @@ const About = () => {
         </motion.div>
 
         {/* Button */}
-        <motion.button
-          variants={childVariants}
-          className="inline-flex items-center gap-3 px-8 py-4 font-semibold text-white transition-all duration-300 rounded-full shadow-xl bg-gradient-to-r from-blue-600 to-blue-900 hover:shadow-2xl"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Request a Demo
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M5 12H19M19 12L12 5M19 12L12 19"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.button>
+      
       </motion.div>
     </section>
   )

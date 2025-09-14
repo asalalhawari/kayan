@@ -1,21 +1,68 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { ArrowRight } from "lucide-react"
 
 const Home = () => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const canvasRef = useRef(null)
 
   useEffect(() => {
-    setIsVisible(true)
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext("2d")
+
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+  
+    const dots = Array.from({ length: 100 }, () => ({
+      x: Math.random() * (canvas.width * 0.4), 
+      y: Math.random() * canvas.height,
+      length: 60 + Math.random() * 100,
+      speed: 0.5 + Math.random() * 1.5,
+      opacity: 0.6 + Math.random() * 0.4,
+      flicker: Math.random() * 0.05,
+    }))
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      dots.forEach((dot) => {
+        dot.opacity += dot.flicker * (Math.random() > 0.5 ? 1 : -1)
+        dot.opacity = Math.min(Math.max(dot.opacity, 0.3), 1)
+
+        ctx.strokeStyle = `rgba(0, 200, 255, ${dot.opacity})`
+        ctx.lineWidth = 1.2
+        ctx.shadowColor = `rgba(0, 200, 255, ${dot.opacity})`
+        ctx.shadowBlur = 10
+
+        ctx.beginPath()
+        ctx.moveTo(dot.x, dot.y)
+        ctx.lineTo(dot.x, dot.y + dot.length)
+        ctx.stroke()
+
+        ctx.beginPath()
+        ctx.arc(dot.x, dot.y + dot.length, 3, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(0, 200, 255, ${dot.opacity})`
+        ctx.fill()
+
+        dot.y += dot.speed
+        if (dot.y > canvas.height) {
+          dot.y = -dot.length
+          dot.x = Math.random() * (canvas.width * 0.4) 
+        }
       })
+
+      requestAnimationFrame(draw)
     }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+
+    draw()
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
   }, [])
 
   const scrollToSection = (sectionId) => {
@@ -24,57 +71,49 @@ const Home = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-blue-50 via-white to-green-50">
-      {/* Dynamic Background */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(25, 118, 210, 0.15) 0%, rgba(21, 128, 61, 0.1) 50%, transparent 70%)`,
-        }}
+    <div className="relative flex min-h-screen overflow-hidden">
+     
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020817] via-[#041E2F] to-black z-0" />
+
+     
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 z-0 pointer-events-none"
       />
 
-      {/* Background Image with Blur */}
-      <div
-className="absolute inset-0 bg-cover bg-center filter blur-sm brightness-75 "
-        style={{
-          backgroundImage: "url('/images/pediatrician-doctor-nurse-sitting-desk-medical-office-talking-with-child-healthcare-practitioner-specialist-medicine-providing-professional-radiographic-treatment-hospital-clinic.jpg')",
-        }}
-      />
+     
+      <div className="absolute top-0 right-0 z-0 w-1/2 h-full">
+        <img
+          src="/images/DeWatermark.ai_1757868786616.jpeg"
+          alt="Eye Tech"
+          className="object-cover w-full h-full [mask-image:linear-gradient(to_left,black_80%,transparent)]"
+        />
+      </div>
 
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/70" />
-
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-start justify-center min-h-screen px-6 sm:px-12 lg:px-24">
-        <div className={`space-y-6 max-w-3xl ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-          {/* العنوان الأول */}
-          <h1 className="text-4xl font-bold text-white lg:text-5xl animate-slide-up animation-delay-200 drop-shadow-xl">
+     
+      <div className="relative z-10 flex flex-col justify-center w-1/2 min-h-screen px-6 sm:px-12 lg:px-24">
+        <div className="relative max-w-2xl p-6 space-y-6">
+          <h1 className="text-5xl font-bold text-white drop-shadow-xl whitespace-nowrap">
             Your Trusted Partner
           </h1>
-
-          {/* العنوان الثاني */}
-          <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text lg:text-4xl animate-slide-up animation-delay-300 drop-shadow-sm">
+          <h2 className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text drop-shadow-sm whitespace-nowrap">
             in Claim Management & AI
           </h2>
-
-          {/* الفقرة الوصفية */}
-          <p className="text-lg leading-relaxed text-gray-100 animate-slide-up animation-delay-400 drop-shadow-lg">
-            Simplify your e-claim process with multi-layered AI powered solutions, <br />
-            Empower your healthcare management with speed, accuracy and reliability  <br />
+          <p className="text-lg leading-relaxed text-gray-100 drop-shadow-lg whitespace-nowrap">
+            Simplify your e-claim process with multi-layered AI <br />
+            powered solutions,  Empower your healthcare  <br />
+            management with speed, accuracy and reliability
           </p>
+        </div>
 
-          {/* CTA Button */}
-          <div className="mt-6">
-            <button
-              onClick={() => scrollToSection("contactUs")}
-              className="relative px-8 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1 animate-pulse-glow"
-            >
-              <span className="flex items-center justify-center">
-                Request a Demo
-                <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-              </span>
-            </button>
-          </div>
+       <div className="relative z-20 mt-6">
+  <button
+    onClick={() => scrollToSection("contactUs")}
+    className="px-8 py-4 ml-6 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1"
+  >
+    Request a Demo
+    <ArrowRight className="inline-block w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+  </button>
         </div>
       </div>
     </div>

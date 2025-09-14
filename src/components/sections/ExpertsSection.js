@@ -52,22 +52,44 @@ const ExpertsSection = () => {
   const [openExpert, setOpenExpert] = useState(null)
 
   return (
-    <Box id="our-experts" sx={{ minHeight: "100vh", backgroundColor: "#f9fafb", py: 6, px: 2 }}>
+    <Box
+      id="our-experts"
+      sx={{
+        minHeight: "100vh",
+        backgroundColor: "#f9fafb",
+        py: 6,
+        px: 2,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       {/* العنوان */}
-      <Box sx={{ maxWidth: "1200px", mx: "auto", textAlign: "center", mb: 5 }}>
+      <Box sx={{ maxWidth: "1200px", textAlign: "center", mb: 15 }}>
         <Typography
           variant="h3"
-          sx={{ fontSize: { xs: "2rem", md: "2.5rem" }, fontWeight: 700, color: "#1f2937", mb: 2 }}
+          sx={{
+            fontSize: { xs: "2rem", md: "2.5rem" },
+            fontWeight: 700,
+            color: "#1f2937",
+            mb: 2,
+          }}
         >
           Our Senior Management Team
         </Typography>
         <Typography
           variant="h6"
-          sx={{ color: "#6b7280", maxWidth: "700px", mx: "auto", fontSize: "1rem", lineHeight: 1.5 }}
+          sx={{
+            color: "#6b7280",
+            maxWidth: "700px",
+            fontSize: "1rem",
+            lineHeight: 1.5,
+            mx: "auto",
+          }}
         >
           Meet the exceptional leaders driving innovation and excellence in healthcare technology
         </Typography>
-       
       </Box>
 
       {/* الصور */}
@@ -75,7 +97,12 @@ const ExpertsSection = () => {
         {experts.map((expert, index) => (
           <Box
             key={index}
-            sx={{ cursor: "pointer", position: "relative", transition: "transform 0.3s" }}
+            sx={{
+              cursor: "pointer",
+              position: "relative",
+              transition: "transform 0.3s",
+              "&:hover": { transform: "scale(1.05)" },
+            }}
             onClick={() => setOpenExpert(expert)}
           >
             <Box
@@ -87,15 +114,19 @@ const ExpertsSection = () => {
                 border: "4px solid #e5e7eb",
                 boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 position: "relative",
-                "&:hover": { transform: "scale(1.05)", borderColor: "#3b82f6" },
-
                 "&:hover .overlay": { opacity: 1 },
               }}
             >
               <img
                 src={expert.image || "/placeholder.svg"}
                 alt={expert.name}
-                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain", // تعديل لتصبح كل الصور متساوية
+                  objectPosition: "center",
+                  transition: "transform 0.3s",
+                }}
               />
 
               {/* overlay مع أيقونة العين */}
@@ -133,14 +164,11 @@ const ExpertsSection = () => {
             <Box sx={{ display: "flex", justifyContent: "center", mt: 0.5 }}>
               <Box
                 sx={{
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: 20,
-                  backgroundColor: "#3b82f6",
-                  color: "white",
-                  fontWeight: 500,
-                  fontSize: "0.75rem",
                   textAlign: "center",
+                  mt: 3,
+                  color: "#3b82f6",
+                  fontWeight: 800,
+                  fontSize: "1rem",
                 }}
               >
                 {expert.role}
@@ -179,8 +207,8 @@ const ExpertsSection = () => {
                     width: "150px",
                     height: "150px",
                     borderRadius: "50%",
-                    objectFit: "contain",
-                    objectPosition: "top",
+                    objectFit: "contain", // تعديل لتصبح متناسقة مع باقي الصور
+                    objectPosition: "center",
                   }}
                 />
               </Box>
