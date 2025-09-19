@@ -1,25 +1,8 @@
 "use client"
 
-import CheckCircleIcon from "@mui/icons-material/CheckCircle"
-import LinkedInIcon from "@mui/icons-material/LinkedIn"
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined"
-import SendIcon from "@mui/icons-material/Send"
-import {
-  Alert,
-  Box,
-  Button,
-  Container,
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-  Snackbar,
-  TextField,
-  Typography,
-} from "@mui/material"
-import { motion } from "framer-motion"
 import React from "react"
+import { Mail, MapPin, Linkedin } from "lucide-react"
+import GCCPresenceMap from "./GCCPresenceMap"
 
 const ContactUs = () => {
   const [formData, setFormData] = React.useState({
@@ -73,7 +56,9 @@ const ContactUs = () => {
       }
 
       if (response.ok) {
-        setSuccessMessage("Thank you! Your message has been sent successfully. We will get back to you soon.")
+        setSuccessMessage(
+          "Thank you! Your message has been sent successfully. We will get back to you soon."
+        )
         setFormData({ name: "", email: "", phone: "", message: "", countryCode: "+970" })
       } else {
         setErrorMessage(result?.message || "An error occurred while sending the data.")
@@ -86,487 +71,179 @@ const ContactUs = () => {
     }
   }
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  }
-
   return (
-    <Box
-      id="contactUs"
-      component={motion.div}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        backgroundColor: "#f9fafb",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: { xs: "20px", md: "40px" },
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <Container
-        maxWidth="xl"
-        sx={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        <Box
-          component={motion.div}
-          variants={itemVariants}
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            textAlign: "center",
-            marginBottom: { xs: 4, md: 6 },
-          }}
-        >
-          <Typography
-            variant="h2"
-            sx={{
-              fontWeight: "700",
-              color: "#1f2937",
-              fontFamily: "Inter, sans-serif",
-              textTransform: "none",
-              fontSize: { xs: "2.2rem", sm: "2.8rem", md: "3.5rem" },
-              lineHeight: 1.1,
-              mb: 3,
-              letterSpacing: "-0.02em",
-            }}
-          >
+<div id="ContactUs" className="px-4 py-16 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900">
             Book a Free Consultation
             <br />
-            <span
-              style={{
-                color: "#3b82f6",
-                fontWeight: "700",
-              }}
-            >
-              with Our Experts
-            </span>
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              fontSize: { xs: "1.1rem", sm: "1.2rem", md: "1.3rem" },
-              color: "#6b7280",
-              lineHeight: "1.7",
-              maxWidth: { xs: "90%", sm: "80%", md: "70%" },
-              marginX: "auto",
-              fontWeight: 400,
-            }}
-          >
+            <span className="text-blue-600">with Our Experts</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-gray-600">
             Transform your healthcare business with cutting-edge technology solutions. Get personalized insights and
             strategic guidance from our industry experts.
-          </Typography>
-        </Box>
+          </p>
+        </div>
 
-        <Box
-          component={motion.div}
-          variants={itemVariants}
-          sx={{
-            width: { xs: "100%", md: "100%", lg: "100%" },
-            display: "flex",
-            flexDirection: { xs: "column", lg: "row" },
-            gap: { xs: 3, lg: 4 },
-            alignItems: "stretch",
-          }}
-        >
-          {/* Contact Form */}
-          <Box
-            sx={{
-              flex: 1,
-              backgroundColor: "#ffffff",
-              borderRadius: "16px",
-              padding: { xs: 4, md: 5 },
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              border: "1px solid #e5e7eb",
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 700,
-                color: "#3b82f6",
-                mb: 4,
-                textAlign: "center",
-                fontSize: { xs: "1.8rem", md: "2.2rem" },
-              }}
-            >
-              Send us a Message
-            </Typography>
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+          {/* Left side - Contact Info */}
+          <div>
+            <h3 className="mb-4 text-2xl font-bold text-blue-600">Send us a Message</h3>
+            <p className="mb-8 text-gray-600">
+              Get in touch with our healthcare technology experts for personalized solutions.
+            </p>
 
-            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
-              <Box
-                sx={{
-                  display: "grid",
-                  gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-                  gap: 3,
-                  mb: 3,
-                }}
-              >
-                <TextField
-                  label="Your Name"
-                  variant="outlined"
-                  fullWidth
-                  required
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      borderRadius: "8px",
-                      backgroundColor: "#f8fafc",
-                      border: "1px solid #e5e7eb",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        backgroundColor: "#f1f5f9",
-                        borderColor: "#3b82f6",
-                      },
-                      "&.Mui-focused": {
-                        backgroundColor: "#ffffff",
-                        borderColor: "#3b82f6",
-                        boxShadow: "0 0 0 3px rgba(59,130,246,0.1)",
-                      },
-                    },
-                    "& .MuiInputLabel-root": {
-                      fontWeight: 500,
-                      color: "#6b7280",
-                    },
-                  }}
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                />
-                <TextField
-                  label="Your Email"
-                  variant="outlined"
-                  fullWidth
-                  required
-                  type="email"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      borderRadius: "8px",
-                      backgroundColor: "#f8fafc",
-                      border: "1px solid #e5e7eb",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        backgroundColor: "#f1f5f9",
-                        borderColor: "#3b82f6",
-                      },
-                      "&.Mui-focused": {
-                        backgroundColor: "#ffffff",
-                        borderColor: "#3b82f6",
-                        boxShadow: "0 0 0 3px rgba(59,130,246,0.1)",
-                      },
-                    },
-                    "& .MuiInputLabel-root": {
-                      fontWeight: 500,
-                      color: "#6b7280",
-                    },
-                  }}
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                />
-              </Box>
-
-              <Box sx={{ mb: 3 }}>
-                <Box sx={{ display: "flex", gap: 2 }}>
-                  <FormControl sx={{ minWidth: 140 }}>
-                    <InputLabel sx={{ fontWeight: 500, color: "#6b7280" }}>Country Code</InputLabel>
-                    <Select
-                      value={formData.countryCode}
-                      label="Country Code"
-                      onChange={handleCountryCodeChange}
-                      sx={{
-                        borderRadius: "8px",
-                        backgroundColor: "#f8fafc",
-                        border: "1px solid #e5e7eb",
-                        "&:hover": {
-                          backgroundColor: "#f1f5f9",
-                        },
-                        "&.Mui-focused": {
-                          backgroundColor: "#ffffff",
-                        },
-                      }}
-                    >
-                      <MenuItem value="+970">🇵🇸 +970</MenuItem>
-                      <MenuItem value="+971">🇦🇪 +971</MenuItem>
-                      <MenuItem value="+966">🇸🇦 +966</MenuItem>
-                      <MenuItem value="+968">🇴🇲 +968</MenuItem>
-                      <MenuItem value="+973">🇧🇭 +973</MenuItem>
-                      <MenuItem value="+974">🇶🇦 +974</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <TextField
-                    label="Phone Number"
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        borderRadius: "8px",
-                        backgroundColor: "#f8fafc",
-                        border: "1px solid #e5e7eb",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          backgroundColor: "#f1f5f9",
-                          borderColor: "#3b82f6",
-                        },
-                        "&.Mui-focused": {
-                          backgroundColor: "#ffffff",
-                          borderColor: "#3b82f6",
-                          boxShadow: "0 0 0 3px rgba(59,130,246,0.1)",
-                        },
-                      },
-                      "& .MuiInputLabel-root": {
-                        fontWeight: 500,
-                        color: "#6b7280",
-                      },
-                    }}
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                  />
-                </Box>
-              </Box>
-
-              <TextField
-                label="Your Message"
-                variant="outlined"
-                fullWidth
-                multiline
-                rows={5}
-                required
-                sx={{
-                  mb: 4,
-                  "& .MuiOutlinedInput-root": {
-                    borderRadius: "8px",
-                    backgroundColor: "#f8fafc",
-                    border: "1px solid #e5e7eb",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#f1f5f9",
-                      borderColor: "#3b82f6",
-                    },
-                    "&.Mui-focused": {
-                      backgroundColor: "#ffffff",
-                      borderColor: "#3b82f6",
-                      boxShadow: "0 0 0 3px rgba(59,130,246,0.1)",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    fontWeight: 500,
-                    color: "#6b7280",
-                  },
-                }}
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-              />
-
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                disabled={isSubmitting}
-                endIcon={isSubmitting ? null : <SendIcon />}
-                sx={{
-                  backgroundColor: "#3b82f6",
-                  borderRadius: "8px",
-                  py: 2,
-                  fontSize: "1.2rem",
-                  fontWeight: 700,
-                  textTransform: "none",
-                  boxShadow: "0 4px 12px rgba(59,130,246,0.3)",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    backgroundColor: "#2563eb",
-                    boxShadow: "0 8px 20px rgba(59,130,246,0.4)",
-                    transform: "translateY(-2px)",
-                  },
-                  "&:disabled": {
-                    backgroundColor: "#e5e7eb",
-                    color: "#9ca3af",
-                    transform: "none",
-                  },
-                }}
-              >
-                {isSubmitting ? "Sending Message..." : "Send Message"}
-              </Button>
-            </Box>
-          </Box>
-
-          {/* Contact Information */}
-          <Box
-            sx={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "column",
-              gap: 3,
-            }}
-          >
-            <Box
-              sx={{
-                backgroundColor: "#ffffff",
-                borderRadius: "16px",
-                padding: { xs: 4, md: 5 },
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                border: "1px solid #e5e7eb",
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  fontWeight: 700,
-                  color: "#3b82f6",
-                  mb: 4,
-                  textAlign: "center",
-                  fontSize: { xs: "1.8rem", md: "2.2rem" },
-                }}
-              >
-                Get in Touch
-              </Typography>
-
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <Box sx={{ display: "flex", alignItems: "flex-start", gap: 3 }}>
-                  <Box
-                    sx={{
-                      width: "60px",
-                      height: "60px",
-                      borderRadius: "12px",
-                      backgroundColor: "#3b82f6",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "white",
-                      boxShadow: "0 4px 12px rgba(59,130,246,0.3)",
-                    }}
-                  >
-                    <LocationOnOutlinedIcon sx={{ fontSize: "1.8rem" }} />
-                  </Box>
-                  <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, color: "#1f2937", mb: 1 }}>
-                      Our Location
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: "#6b7280", lineHeight: 1.6 }}>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Address */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-20 h-12 bg-blue-900 rounded-lg">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Address</h4>
+                    <p className="text-gray-600">
                       Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
+                    </p>
+                  </div>
+                </div>
 
-            {/* Social Media */}
-            <Box
-              sx={{
-                backgroundColor: "#ffffff",
-                borderRadius: "16px",
-                padding: { xs: 4, md: 5 },
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                border: "1px solid #e5e7eb",
-              }}
-            >
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 700,
-                  color: "#3b82f6",
-                  mb: 3,
-                  textAlign: "center",
-                }}
-              >
-                Connect With Us
-              </Typography>
+                {/* Support */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-900 rounded-lg">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Support</h4>
+                    <p className="text-gray-600">support@kayan-healthcare.com</p>
+                  </div>
+                </div>
+              </div>
 
-              <Box sx={{ display: "flex", justifyContent: "center", gap: 3 }}>
-                <IconButton
-                  component="a"
+              {/* Row 2: Contact + LinkedIn */}
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                {/* Contact */}
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-900 rounded-lg">
+                    <Mail className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Contact</h4>
+                    <p className="text-gray-600">contact@kayan-healthcare.com</p>
+                  </div>
+                </div>
+
+                {/* LinkedIn */}
+                <a
                   href="https://www.linkedin.com/company/kayan-healthcare-technologies"
                   target="_blank"
                   rel="noopener noreferrer"
-                  sx={{
-                    width: "70px",
-                    height: "70px",
-                    backgroundColor: "#0077b5",
-                    color: "white",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 12px rgba(0,119,181,0.3)",
-                    transition: "all 0.3s ease",
-                    "&:hover": {
-                      backgroundColor: "#005885",
-                      transform: "translateY(-2px) scale(1.05)",
-                      boxShadow: "0 8px 20px rgba(0,119,181,0.4)",
-                    },
-                  }}
+                  className="flex items-center space-x-4 transition-all hover:scale-105"
                 >
-                  <LinkedInIcon sx={{ fontSize: "2rem" }} />
-                </IconButton>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-      </Container>
+                  <div className="flex items-center justify-center w-12 h-12 bg-blue-700 rounded-lg">
+                    <Linkedin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">LinkedIn</h4>
+                    <p className="text-gray-600">Kayan Healthcare Technologies</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
 
-      {/* Success/Error Messages */}
-      <Snackbar
-        open={!!successMessage}
-        autoHideDuration={6000}
-        onClose={() => setSuccessMessage("")}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert
-          onClose={() => setSuccessMessage("")}
-          severity="success"
-          icon={<CheckCircleIcon />}
-          sx={{ width: "100%" }}
-        >
-          {successMessage}
-        </Alert>
-      </Snackbar>
+          {/* Right side - Contact Form */}
+          <div>
+            <div className="p-8 bg-gray-100 border-0 rounded-xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div>
+                    <input
+                      placeholder="Your Name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <input
+                      placeholder="Your Email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                </div>
 
-      <Snackbar
-        open={!!errorMessage}
-        autoHideDuration={6000}
-        onClose={() => setErrorMessage("")}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={() => setErrorMessage("")} severity="error" sx={{ width: "100%" }}>
-          {errorMessage}
-        </Alert>
-      </Snackbar>
-    </Box>
+                <div className="flex gap-2">
+                  <select
+                    value={formData.countryCode}
+                    onChange={handleCountryCodeChange}
+                    className="px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="+970">🇵🇸 +970</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+968">🇴🇲 +968</option>
+                    <option value="+973">🇧🇭 +973</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+965">🇰🇼 +965</option>
+                  </select>
+                  <input
+                    placeholder="Phone Number"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="flex-1 px-3 py-2 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <textarea
+                    placeholder="Your Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-3 py-2 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-3 font-medium text-white transition-colors bg-blue-900 rounded-lg hover:bg-blue-800 disabled:bg-blue-400"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+
+              {successMessage && (
+                <div className="p-4 mt-4 text-green-700 bg-green-100 border border-green-400 rounded-md">
+                  {successMessage}
+                </div>
+              )}
+              {errorMessage && (
+                <div className="p-4 mt-4 text-red-700 bg-red-100 border border-red-400 rounded-md">
+                  {errorMessage}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <GCCPresenceMap />
+        </div>
+      </div>
+    </div>
   )
 }
 

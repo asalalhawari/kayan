@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   padding: 120px 20px 80px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background: linear-gradient(135deg, #232d3c 0%, #10b981 50%, #081214 100%);
   overflow: hidden;
   opacity: 0;
   transform: translateY(50px);
@@ -93,24 +93,15 @@
   animation: slideUp 0.8s ease-out 0.2s both;
 }
 
-.section-badge {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 24px;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 50px;
-  margin-bottom: 24px;
-  backdrop-filter: blur(10px);
-}
+
 
 .badge-text {
-  color: #3b82f6;
-  font-weight: 600;
+  color: #1e293b; /* Changed from blue to dark slate for better visibility */
+  font-weight: 700; /* Made bolder */
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added shadow for contrast */
 }
 
 .badge-glow {
@@ -133,13 +124,14 @@
 .about-main-title {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
-  color: white;
+  color: #1e293b; /* Changed to dark slate for better contrast */
   line-height: 1.2;
   margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added stronger shadow */
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  background: linear-gradient(135deg, #1a62d5 0%, #017b52 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -176,7 +168,7 @@
   gap: 12px;
   padding: 16px 24px;
   background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(0, 91, 61, 0.3);
   border-radius: 50px;
   margin-bottom: 32px;
   backdrop-filter: blur(10px);
@@ -185,20 +177,22 @@
 .highlight-icon {
   width: 24px;
   height: 24px;
-  color: #10b981;
+  color: #003624;
 }
 
 .highlight-box span {
-  color: #10b981;
+  color: #004730;
   font-weight: 600;
   font-size: 14px;
 }
 
 .about-description {
-  color: #cbd5e1;
+  color: #1e293b; /* Changed from light green to dark slate */
   font-size: 18px;
   line-height: 1.8;
   margin-bottom: 24px;
+  font-weight: 500; /* Added medium weight for better readability */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Added shadow for contrast */
 }
 
 .about-description strong {
@@ -207,8 +201,8 @@
 }
 
 .highlight-text {
-  color: #3b82f6;
-  font-weight: 600;
+  color: #1e40af; /* Changed to darker blue for better contrast */
+  font-weight: 700; /* Made bolder */
 }
 
 /* Stats Grid */
@@ -238,14 +232,16 @@
 .stat-number {
   font-size: 2rem;
   font-weight: 800;
-  color: #3b82f6;
+  color: #1e293b; /* Changed from blue to dark slate for better visibility */
   margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Added strong shadow */
 }
 
 .stat-label {
-  color: #94a3b8;
+  color: #1e293b; /* Changed from light gray to dark slate for better visibility */
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600; /* Made bolder */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added shadow for contrast */
 }
 
 /* CTA Button */
@@ -255,15 +251,17 @@
   align-items: center;
   gap: 12px;
   padding: 18px 36px;
-  background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  background: linear-gradient(135deg, #095ee7 0%, #7aacf1 100%); /* Changed to dark gradient for better contrast */
   color: white;
   border: none;
   border-radius: 50px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700; /* Made bolder */
   cursor: pointer;
   transition: all 0.3s ease;
   overflow: hidden;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added strong shadow */
+  border: 2px solid #1e293b; /* Added border for definition */
 }
 
 .about-cta-button:hover {
@@ -396,41 +394,23 @@
 /* Orbit Rings */
 .orbit-ring {
   position: absolute;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(1, 94, 243, 0.2);
   border-radius: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.orbit-1 {
-  width: 350px;
-  height: 350px;
-  animation: rotate 15s linear infinite;
-}
-
-.orbit-2 {
-  width: 400px;
-  height: 400px;
-  animation: rotate 20s linear infinite reverse;
-}
-
-.orbit-3 {
-  width: 450px;
-  height: 450px;
-  animation: rotate 25s linear infinite;
-}
-
 .orbit-dot {
   position: absolute;
   width: 8px;
   height: 8px;
-  background: #3b82f6;
+  background: #0d2c5e;
   border-radius: 50%;
   top: -4px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 10px rgba(9, 36, 79, 0.5);
 }
 
 /* Animations */

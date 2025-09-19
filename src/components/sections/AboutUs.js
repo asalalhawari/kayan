@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import "./About.css"
+import { motion } from "framer-motion"
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false)
@@ -21,182 +21,106 @@ const About = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut", staggerChildren: 0.2 },
+    },
+  }
+
+  const childVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  }
+
   return (
-    <section id="about" className={`about-section ${isVisible ? "visible" : ""}`}>
-      {/* Background Elements */}
-      <div className="about-bg-elements">
-        <div className="floating-orb orb-1"></div>
-        <div className="floating-orb orb-2"></div>
-        <div className="floating-orb orb-3"></div>
-        <div className="gradient-mesh"></div>
-        <div className="tech-grid"></div>
+    <section
+      id="about"
+      className="relative flex items-center justify-center min-h-screen px-6 py-24 overflow-hidden text-gray-900 md:px-16 bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200"
+    >
+      {/* Subtle Background Decorations */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute w-64 h-64 rounded-full top-20 left-20 bg-blue-300/20 blur-2xl animate-pulse-slow" />
+        <div className="absolute rounded-full w-80 h-80 bottom-20 right-20 bg-white/10 blur-2xl animate-pulse" />
       </div>
 
-      <div className="about-container">
-        {/* Header Section */}
-        <div className="about-header">
-          <div className="section-badge">
-            <span className="badge-text">About Kayan</span>
-            <div className="badge-glow"></div>
-          </div>
-          <h2 className="about-main-title">
-            Revolutionizing Healthcare Through
-            <span className="gradient-text"> Smart Solutions</span>
-          </h2>
-          <div className="title-underline"></div>
-        </div>
+      {/* Main Content */}
+      <motion.div
+        className="relative z-10 max-w-4xl mx-auto text-center"
+        initial="hidden"
+        animate={isVisible ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.h2
+          variants={childVariants}
+          className="mb-8 text-4xl font-bold leading-tight tracking-tight md:text-5xl"
+        >
+          Pioneering{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-900">
+            Healthcare Innovation
+          </span>
+        </motion.h2>
 
-        {/* Content Grid */}
-        <div className="about-content-grid">
-          {/* Left Column - Text Content */}
-          <div className="about-text-column">
-            <div className="text-content">
-              <div className="highlight-box">
-                <div className="highlight-icon">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-                <span>Established 2019</span>
-              </div>
+        <motion.p
+          variants={childVariants}
+          className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl"
+        >
+          <strong className="font-bold text-gray-900">
+            KAYAN Healthcare Technologies
+          </strong>{" "}
+          has been transforming the healthcare landscape since{" "}
+          <span className="font-semibold text-blue-600">2019</span>. Our{" "}
+          <span className="font-semibold text-blue-600">AI-driven</span>{" "}
+          solutions optimize{" "}
+          <span className="font-semibold text-blue-600">
+            claims processing
+          </span>{" "}
+          and enhance{" "}
+          <span className="font-semibold text-blue-600">
+            administrative efficiency
+          </span>{" "}
+          across the GCC, empowering providers and payers.
+        </motion.p>
 
-              <p className="about-description">
-                <strong>KAYAN Healthcare Technologies</strong> is a pioneering force in the healthcare technology
-                sector, dedicated to revolutionizing claims validation and administrative workflows.
-              </p>
+        <motion.p
+          variants={childVariants}
+          className="mb-10 text-lg leading-relaxed text-gray-700 md:text-xl"
+        >
+          We are dedicated to delivering scalable, reliable, and innovative
+          technologies that drive{" "}
+          <span className="font-semibold text-blue-600">growth</span> and
+          elevate{" "}
+          <span className="font-semibold text-blue-600">
+            patient care standards
+          </span>.
+        </motion.p>
 
-              <p className="about-description">
-                Our company leverages <span className="highlight-text">advanced algorithms</span> and
-                <span className="highlight-text"> AI-powered data-driven insights</span> to deliver innovative solutions
-                that empower payers, providers, and regulators across the Gulf Cooperation Council (GCC).
-              </p>
+        {/* Stats */}
+        <motion.div
+          variants={childVariants}
+          className="grid grid-cols-1 gap-6 mb-10 sm:grid-cols-3"
+        >
+          {[
+            { value: "50+", label: "Clients Served" },
+            { value: "99.9%", label: "System Uptime" },
+            { value: "GCC", label: "Regional Coverage" },
+          ].map((stat, index) => (
+            <motion.div
+              key={index}
+              className="p-6 text-center transition-transform duration-300 bg-white/50 rounded-xl backdrop-blur-lg hover:bg-white/70 hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+            >
+              <h3 className="text-3xl font-bold text-gray-900">{stat.value}</h3>
+              <p className="text-sm text-blue-600">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <div className="stat-number">500+</div>
-                  <div className="stat-label">Clients Served</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">99.9%</div>
-                  <div className="stat-label">Uptime</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">GCC</div>
-                  <div className="stat-label">Coverage</div>
-                </div>
-              </div>
-
-              <button className="about-cta-button">
-                <span>Request a Demo</span>
-                <div className="button-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M5 12H19M19 12L12 5M19 12L12 19"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div className="button-glow"></div>
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column - Visual Elements */}
-          <div className="about-visual-column">
-            <div className="visual-container">
-              {/* Main Circle with Image */}
-              <div className="main-visual-circle">
-                <div className="circle-border"></div>
-                <div className="circle-content">
-                 <img
-   src="/images/healthcare-technology-team-working-with-ai-systems.png"
-   alt="Kayan Healthcare Technology"
-   className="about-image"
-   onError={(e) => {
-      e.target.src = "/healthcare-technology-team.png"
-   }}
-/>
-
-                  <div className="image-overlay"></div>
-                </div>
-
-                {/* Floating Tech Elements */}
-                <div className="tech-element tech-1">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 2L2 7L12 12L22 7L12 2Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M2 17L12 22L22 17"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M2 12L12 17L22 12"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-
-                <div className="tech-element tech-2">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M9 12L11 14L15 10"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
-
-                <div className="tech-element tech-3">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M12 2V6M12 18V22M4.93 4.93L7.76 7.76M16.24 16.24L19.07 19.07M2 12H6M18 12H22M4.93 19.07L7.76 16.24M16.24 7.76L19.07 4.93"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Orbiting Elements */}
-              <div className="orbit-ring orbit-1">
-                <div className="orbit-dot"></div>
-              </div>
-              <div className="orbit-ring orbit-2">
-                <div className="orbit-dot"></div>
-              </div>
-              <div className="orbit-ring orbit-3">
-                <div className="orbit-dot"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        {/* Button */}
+      
+      </motion.div>
     </section>
   )
 }
