@@ -36,91 +36,92 @@ const About = () => {
   }
 
   return (
-    <section
-      id="about"
-      className="relative flex items-center justify-center min-h-screen px-6 py-24 overflow-hidden text-gray-900 md:px-16 bg-gradient-to-b from-blue-50 via-blue-100 to-blue-200"
-    >
-      {/* Subtle Background Decorations */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute w-64 h-64 rounded-full top-20 left-20 bg-blue-300/20 blur-2xl animate-pulse-slow" />
-        <div className="absolute rounded-full w-80 h-80 bottom-20 right-20 bg-white/10 blur-2xl animate-pulse" />
-      </div>
+    <section id="about" className="relative flex items-center justify-center min-h-screen px-6 py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Side - Image Layout */}
+          <motion.div
+            className="relative"
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={containerVariants}
+          >
+            {/* Main container with blue rounded background */}
+            <div className="relative bg-blue-500 rounded-[3rem] p-8 overflow-hidden">
+              <motion.div variants={childVariants} className="relative mb-6">
+                <img
+                  src="/professional-team-meeting.png"
+                  alt="KAYAN Healthcare Team"
+                  className="w-full h-64 object-cover rounded-2xl shadow-lg"
+                />
+              </motion.div>
 
-      {/* Main Content */}
-      <motion.div
-        className="relative z-10 max-w-4xl mx-auto text-center"
-        initial="hidden"
-        animate={isVisible ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        <motion.h2
-          variants={childVariants}
-          className="mb-8 text-4xl font-bold leading-tight tracking-tight md:text-5xl"
-        >
-          Pioneering{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-900">
-            Healthcare Innovation
-          </span>
-        </motion.h2>
+              {/* Decorative elements */}
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                </div>
+              </div>
 
-        <motion.p
-          variants={childVariants}
-          className="mb-6 text-lg leading-relaxed text-gray-700 md:text-xl"
-        >
-          <strong className="font-bold text-gray-900">
-            KAYAN Healthcare Technologies
-          </strong>{" "}
-          has been transforming the healthcare landscape since{" "}
-          <span className="font-semibold text-blue-600">2019</span>. Our{" "}
-          <span className="font-semibold text-blue-600">AI-driven</span>{" "}
-          solutions optimize{" "}
-          <span className="font-semibold text-blue-600">
-            claims processing
-          </span>{" "}
-          and enhance{" "}
-          <span className="font-semibold text-blue-600">
-            administrative efficiency
-          </span>{" "}
-          across the GCC, empowering providers and payers.
-        </motion.p>
+              {/* Star decorations */}
+              <div className="absolute top-4 -right-2 text-blue-300">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+              <div className="absolute bottom-8 -left-2 text-blue-300">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+            </div>
+          </motion.div>
 
-        <motion.p
-          variants={childVariants}
-          className="mb-10 text-lg leading-relaxed text-gray-700 md:text-xl"
-        >
-          We are dedicated to delivering scalable, reliable, and innovative
-          technologies that drive{" "}
-          <span className="font-semibold text-blue-600">growth</span> and
-          elevate{" "}
-          <span className="font-semibold text-blue-600">
-            patient care standards
-          </span>.
-        </motion.p>
-
-        {/* Stats */}
-        <motion.div
-          variants={childVariants}
-          className="grid grid-cols-1 gap-6 mb-10 sm:grid-cols-3"
-        >
-          {[
-            { value: "50+", label: "Clients Served" },
-            { value: "99.9%", label: "System Uptime" },
-            { value: "GCC", label: "Regional Coverage" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              className="p-6 text-center transition-transform duration-300 bg-white/50 rounded-xl backdrop-blur-lg hover:bg-white/70 hover:scale-105"
-              whileHover={{ scale: 1.05 }}
-            >
-              <h3 className="text-3xl font-bold text-gray-900">{stat.value}</h3>
-              <p className="text-sm text-blue-600">{stat.label}</p>
+          {/* Right Side - Content */}
+          <motion.div
+            className="space-y-8"
+            initial="hidden"
+            animate={isVisible ? "visible" : "hidden"}
+            variants={containerVariants}
+          >
+            <motion.div variants={childVariants}>
+              <p className="text-blue-500 font-medium mb-2">// About Us</p>
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Transforming <span className="text-blue-500">Healthcare</span>
+                <br />
+                into Digital Reality
+              </h2>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Button */}
-      
-      </motion.div>
+            <motion.p variants={childVariants} className="text-gray-600 text-lg leading-relaxed">
+              <strong className="text-gray-900">KAYAN Healthcare Technologies</strong> has been transforming the
+              healthcare landscape since 2019. Our AI-driven solutions optimize claims processing and enhance
+              administrative efficiency across the GCC & MENA regions.
+            </motion.p>
+
+            {/* Statistics */}
+            <motion.div variants={childVariants} className="grid grid-cols-3 gap-8">
+              <div>
+                <h3 className="text-3xl lg:text-4xl font-bold text-blue-500">200+</h3>
+                <p className="text-gray-600 text-sm">Clients Served</p>
+              </div>
+              <div>
+                <h3 className="text-3xl lg:text-4xl font-bold text-blue-500">99.9%</h3>
+                <p className="text-gray-600 text-sm">System Uptime</p>
+              </div>
+              <div>
+                 <h3 className="text-xl lg:text-2xl font-bold text-blue-500 whitespace-nowrap">
+       &nbsp;MENA
+    </h3>
+    <p className="text-gray-600 text-sm">Regional Coverage</p>
+              </div>
+            </motion.div>
+
+           
+           
+          </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

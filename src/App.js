@@ -205,7 +205,12 @@ const App = () => {
   </Box>
 </AnimatedSection>
 
-
+  {/* 🔹 Solutions */}
+            <AnimatedSection>
+              <Box component="section" id="solution" sx={{ width: '100%' }}>
+                <Solutions />
+              </Box>
+            </AnimatedSection>
 
 
             {/* 🔹 Our Feeds */}
@@ -215,6 +220,13 @@ const App = () => {
               </Box>
             </AnimatedSection>
 
+   {/* 🔹 Benefits */}
+            <AnimatedSection>
+              <Box component="section" id="benefits" sx={{ width: '100%' }}>
+                <Benefits />
+              </Box>
+            </AnimatedSection>
+            <AnimatedSection></AnimatedSection>
             {/* 🔹 Our Team */}
             <AnimatedSection>
               <Box component="section" id="our-team" sx={{ width: '100%' }}>
@@ -222,12 +234,7 @@ const App = () => {
               </Box>
             </AnimatedSection>
 
-            {/* 🔹 Solutions */}
-            <AnimatedSection>
-              <Box component="section" id="solution" sx={{ width: '100%' }}>
-                <Solutions />
-              </Box>
-            </AnimatedSection>
+          
 
             {/* 🔹 Benefits */}
             <AnimatedSection>

@@ -5,7 +5,6 @@ import { Typography, Box, Modal, IconButton } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
 import VisibilityIcon from "@mui/icons-material/Visibility"
 import islam from "../../img/Islam.png"
-import kareem from "../../img/Kareem.jpg"
 import kawther from "../../img/kawther.jpg"
 import randa from "../../img/randa.jpg"
 import diana from "../../img/diana.jpg"
@@ -19,15 +18,15 @@ const experts = [
     image: islam,
   },
   {
-    name: "Kareem Khaleel",
+    name: "Diana Dyab",
     role: "CTO",
     description:
-      "Experienced computer systems engineer with more than ten years of experience in software engineering and AI. Demonstrates strong management capabilities in leading IT teams in startup environments to deliver state-of-the-art solutions. Specializing in healthcare technologies, he is dedicated to delivering innovative healthcare solutions with new AI algorithms while pursuing a PhD in artificial intelligence at UCD, Ireland.",
-    image: kareem,
+      "IT Manager | Software Engineer | Digital Innovator. Currently serving as the IT Manager at Kayan Healthcare. Committed to driving innovation, delivering effective digital solutions, and building inclusive, high-performing teams. Expertise spans full-stack development, project management, and system optimization.",
+    image: diana,
   },
   {
     name: "Kawther Ghanem",
-    role: "BOM",
+    role: "COO",
     description:
       "An Economics major with 7 years of experience in business management, bringing expertise in strategic planning and operational efficiency. Adept at driving growth and implementing innovative solutions to achieve company objectives and enhance overall performance.",
     image: kawther,
@@ -38,13 +37,6 @@ const experts = [
     description:
       "A pharmacist with over 10 years of experience and a certified AAPC medical coder. Expertise in managing insurance operations and leading medical teams, focused on optimizing health claim processes. Committed to delivering efficient solutions for health claim scrubbing to enhance healthcare services.",
     image: randa,
-  },
-  {
-    name: "Diana Dyab",
-    role: "IT Manager",
-    description:
-      "IT Manager | Software Engineer | Digital Innovator. Currently serving as the IT Manager at Kayan Healthcare. Committed to driving innovation, delivering effective digital solutions, and building inclusive, high-performing teams. Expertise spans full-stack development, project management, and system optimization.",
-    image: diana,
   },
 ]
 
@@ -81,7 +73,7 @@ const ExpertsSection = () => {
         <Typography
           variant="h6"
           sx={{
-            color: "#6b7280",
+            color: "#1f2937",
             maxWidth: "700px",
             fontSize: "1rem",
             lineHeight: 1.5,
@@ -101,6 +93,7 @@ const ExpertsSection = () => {
               cursor: "pointer",
               position: "relative",
               transition: "transform 0.3s",
+             
               "&:hover": { transform: "scale(1.05)" },
             }}
             onClick={() => setOpenExpert(expert)}
@@ -123,7 +116,7 @@ const ExpertsSection = () => {
                 style={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "contain", // تعديل لتصبح كل الصور متساوية
+                  objectFit: "contain",
                   objectPosition: "center",
                   transition: "transform 0.3s",
                 }}
@@ -207,7 +200,7 @@ const ExpertsSection = () => {
                     width: "150px",
                     height: "150px",
                     borderRadius: "50%",
-                    objectFit: "contain", // تعديل لتصبح متناسقة مع باقي الصور
+                    objectFit: "contain",
                     objectPosition: "center",
                   }}
                 />

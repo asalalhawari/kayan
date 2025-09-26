@@ -42,54 +42,56 @@ const OurStory = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%)',
         py: { xs: 6, md: 10 },
         px: { xs: 2, md: 6 },
         overflow: "hidden",
         position: "relative",
+        background: "linear-gradient(135deg, #f8fafa, #dbe9fb, #a5c7f3)", // mix colors
       }}
     >
-      {/* Heartbeat background */}
+      {/* Dynamic Background Decorations */}
       <Box
         sx={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          width: 120,
-          height: 120,
-          background: "rgba(255,0,0,0.1)",
-          borderRadius: "50%",
-          transform: "translate(-50%, -50%) scale(1)",
-          animation: "heartbeat 1s infinite",
+          inset: 0,
           zIndex: -1,
-          "@keyframes heartbeat": {
-            "0%, 100%": { transform: "translate(-50%, -50%) scale(1)", opacity: 0.6 },
-            "25%": { transform: "translate(-50%, -50%) scale(1.3)", opacity: 0.8 },
-            "50%": { transform: "translate(-50%, -50%) scale(1.5)", opacity: 1 },
-            "75%": { transform: "translate(-50%, -50%) scale(1.3)", opacity: 0.8 },
+          pointerEvents: "none",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            width: "600px",
+            height: "600px",
+            top: "-100px",
+            left: "-100px",
+            background: "radial-gradient(circle, rgba(255,182,193,0.3), transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(120px)",
+            animation: "float1 12s ease-in-out infinite",
+          },
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            width: "500px",
+            height: "500px",
+            bottom: "-150px",
+            right: "-150px",
+            background: "radial-gradient(circle, rgba(173,216,230,0.25), transparent 70%)",
+            borderRadius: "50%",
+            filter: "blur(100px)",
+            animation: "float2 15s ease-in-out infinite",
+          },
+          "@keyframes float1": {
+            "0%,100%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(30px)" },
+          },
+          "@keyframes float2": {
+            "0%,100%": { transform: "translateY(0px)" },
+            "50%": { transform: "translateY(-40px)" },
           },
         }}
       />
 
-      {/* Section Title */}
-      <Typography
-        variant="h3"
-        fontWeight={700}
-        mb={6}
-        color="primary"
-        sx={{
-          fontSize: { xs: '2rem', md: '2.8rem' },
-          letterSpacing: '-1px',
-          textTransform: 'uppercase',
-          background: 'linear-gradient(45deg, #1976d2 30%, #42a5f5 90%)',
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        }}
-      >
-      
-      </Typography>
-
+      {/* Cards */}
       <Box
         sx={{
           position: "relative",
@@ -97,30 +99,6 @@ const OurStory = () => {
           maxWidth: 1100,
         }}
       >
-        {/* Vertical gradient line (desktop only) */}
-        {!isSmallScreen && (
-          <Box
-            sx={{
-              position: "absolute",
-              top: "-20%",
-              bottom: "-20%",
-              left: "51%",
-              width: "3px",
-              background: "linear-gradient(180deg, #1976d2 0%, #42a5f5 100%)",
-              transform: "skew(-11deg)",
-              zIndex: 0,
-              boxShadow: "0 0 12px rgba(25,118,210,0.7), 0 0 20px rgba(66,165,245,0.6)",
-              animation: "pulseGlow 2s infinite ease-in-out",
-              "@keyframes pulseGlow": {
-                "0%": { boxShadow: "0 0 5px rgba(25,118,210,0.4)" },
-                "50%": { boxShadow: "0 0 18px rgba(25,118,210,0.9), 0 0 30px rgba(66,165,245,0.8)" },
-                "100%": { boxShadow: "0 0 5px rgba(25,118,210,0.4)" },
-              },
-            }}
-          />
-        )}
-
-        {/* Cards */}
         <Grid container spacing={4} justifyContent="center" alignItems="stretch">
           {content.map((item, idx) => (
             <Grid item xs={12} md={6} key={item.title}>

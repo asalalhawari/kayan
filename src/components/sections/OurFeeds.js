@@ -27,13 +27,15 @@ const feeds = [
     title: "Advanced Analytics",
     description:
       "Leverage advanced analytics to gain deeper insights into healthcare trends, optimize operations, and enhance patient outcomes with data-driven decisions.",
-    image: "https://www.kayan-healthcare.com/static/media/service3.32698236.webp",
+    image: "https://www.kayan-healthcare.com/static/media/service2.bf61dbe1.webp",
+
+
   },
   {
     title: "Kayan Healthcare Technologies and the Future of E-Prescriptions and Pharmaceutical Benefit Edits",
     description:
       "In today's rapidly evolving healthcare landscape, the integration of e-prescription systems and pharmaceutical benefits is more crucial than ever. This seamless connection streamlines the medication management process. Effective drug claim scrubbing plays a pivotal role in ensuring accuracy and compliance, reducing errors, and optimizing reimbursement. By prioritizing pharmaceutical scrubbers, we can foster a more efficient healthcare ecosystem. In this regard, Kayan Healthcare Technologies is developing a comprehensive and outstanding suite of checks and edits to automate prescription verifications against formularies and guidelines. and establishing a strong Rule Management Scrubber to automate the full process and ensure compliance with the ongoing rapid technologies and endless expectations of the industry.",
-  image: "https://tmp.kayan-healthcare.com/static/media/article.24228e742dbfaaf4629c.jpg",
+image: "https://www.kayan-healthcare.com/static/media/service1.8c40564f.webp",
   },
 ]
 
@@ -146,7 +148,7 @@ const OurFeeds = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    Back to Services
+                    Back to Feeds
                   </button>
                 </div>
               </div>

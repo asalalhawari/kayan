@@ -39,6 +39,20 @@ const countries = {
     presence: "Regional office in Doha serving Qatar and surrounding areas.",
     location: [25.276987, 51.520008],
   },
+  egypt: {
+    name: "Egypt",
+    flag: "🇪🇬",
+    capital: "Cairo",
+    presence: "Regional office in Cairo serving the entire country.",
+    location: [30.0444, 31.2357],
+  },
+  tunisia: {
+    name: "Tunisia",
+    flag: "🇹🇳",
+    capital: "Tunis",
+    presence: "Regional office in Tunis serving the country and nearby areas.",
+    location: [36.8065, 10.1815],
+  },
 }
 
 const GCCPresenceMap = () => {
