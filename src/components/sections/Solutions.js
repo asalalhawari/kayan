@@ -2,94 +2,97 @@
 
 import { useState } from "react"
 
+const PetraIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+    <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z" />
+  </svg>
+)
+
+const QudraIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+  </svg>
+)
+
+const PharmaIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+    <path d="M19 8h-2V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6z" />
+  </svg>
+)
+
 const Solutions = () => {
   const [activeModal, setActiveModal] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
 
-  // PETRA Solutions
+  // Data remains the same
   const petraSolutions = [
     {
       number: "01",
       title: "Post Office Integrator",
-      description:
-        "Experience seamless connectivity between the Post Office, healthcare providers, and insurers through our Integrator. Track the full claim cycle through streamlined data exchange using HL7 and standardized requests and responses. Ensuring efficient transactions and regulatory compliance.",
+      description: "Seamless connectivity between Post Office, providers, and insurers with full claim cycle tracking.",
     },
     {
       number: "02",
-      title: "Medical & Coding Guidelines Scrubber",
-      description:
-        "Scrub your claims effectively and ensure timely reimbursement with our comprehensive medical database, featuring a suite of edits and checks. Benefit from periodic agile updates, real-time responses, and user-friendly messages for a seamless experience.",
+      title: "Medical & Coding Scrubber",
+      description: "Effectively scrub claims with our comprehensive medical database and agile updates.",
     },
     {
       number: "03",
       title: "Rule Management Scrubber",
-      description:
-        "Tailor your rules using our customizable relations and leverage a robust validation layer to verify the eligibility of every claim. Avoid claim denials and secure your reimbursements with our powerful validation layer, designed to enhance accuracy and optimize your revenue cycle.",
+      description: "Tailor your rules with a robust validation layer to avoid denials and secure reimbursements.",
     },
     {
       number: "04",
       title: "AI LAYER",
-      description:
-        "Unlock profound insights and a clear understanding of your data with our advanced insightful AI layer, featuring multiple functionalities. Enhance your data-driven decision-making through user-friendly dashboards and visualization tools, making it easier to interpret and act on your data.",
+      description: "Unlock profound insights and enhance decision-making with our advanced AI layer.",
     },
   ]
-
-  // QUDRA Solutions
   const qudraSolutions = [
     {
       number: "01",
       title: "Claims Validation Engine",
       description:
-        "Validate claims with multi-layered checks against policy rules, business logic, and coding guidelines, ensuring accuracy and minimizing rejections.",
+        "Validate claims with multi-layered checks against policy rules, business logic, and coding guidelines.",
     },
     {
       number: "02",
       title: "Policy & Benefits Management",
-      description:
-        "Manage benefits and policy rules dynamically to ensure accurate and fair claim settlement, reducing discrepancies and enhancing trust.",
+      description: "Manage benefits and policy rules dynamically to ensure accurate and fair claim settlement.",
     },
     {
       number: "03",
       title: "Fraud, Waste & Abuse Detection",
-      description:
-        "Leverage AI-powered analytics to detect unusual claim patterns, fraud attempts, or excessive billing, safeguarding financial resources.",
+      description: "Leverage AI to detect unusual claim patterns, fraud attempts, or excessive billing.",
     },
     {
       number: "04",
       title: "Analytics & Dashboards",
-      description:
-        "Visualize insurer performance with interactive dashboards and reporting tools, enabling better decision-making and transparency.",
+      description: "Visualize insurer performance with interactive dashboards for better decision-making.",
     },
   ]
-
-  // PHARMACEUTICAL Solutions
   const pharmaceuticalSolutions = [
     {
       number: "01",
       title: "Drug Claim Adjudication",
-      description:
-        "Automate and validate pharmaceutical claims, ensuring accurate pricing, dosage checks, and formulary compliance.",
+      description: "Automate and validate pharmaceutical claims, ensuring accurate pricing and compliance.",
     },
     {
       number: "02",
       title: "Formulary & Price Management",
-      description:
-        "Manage drug formularies and pricing dynamically, supporting real-time updates and compliance with regulatory frameworks.",
+      description: "Manage drug formularies and pricing dynamically with real-time updates.",
     },
     {
       number: "03",
       title: "Inventory & Dispensing Oversight",
-      description:
-        "Ensure accurate claim submission by monitoring inventory levels, dispensing records, and reconciliation with claims.",
+      description: "Ensure accurate claim submission by monitoring inventory levels and dispensing records.",
     },
     {
       number: "04",
       title: "Pharma Data Analytics",
-      description:
-        "Unlock insights on drug utilization, cost patterns, and prescribing behaviors through advanced pharmaceutical data analytics.",
+      description: "Unlock insights on drug utilization and cost patterns through advanced analytics.",
     },
   ]
 
+  // Added 'icon' property to match the new design
   const solutionsMeta = [
     {
       id: "PETRA",
@@ -97,8 +100,8 @@ const Solutions = () => {
       subtitle: "Multi-Layered Healthcare Provider Solution",
       description:
         "Comprehensive healthcare provider solutions to streamline claims, enhance accuracy, and empower data-driven operations.",
-      color: "#60a5fa",
       items: petraSolutions,
+      icon: <PetraIcon />,
     },
     {
       id: "QUDRA",
@@ -106,8 +109,8 @@ const Solutions = () => {
       subtitle: "Multi-Layered Insurer Solution",
       description:
         "Advanced insurer solutions focusing on fraud detection, policy management, and robust claim validations.",
-      color: "#34d399",
       items: qudraSolutions,
+      icon: <QudraIcon />,
     },
     {
       id: "PHARMACEUTICAL",
@@ -115,65 +118,48 @@ const Solutions = () => {
       subtitle: "Pharmaceutical Claims Management",
       description:
         "Optimize your pharmaceutical claims cycle with AI-driven adjudication, formulary management, and analytics.",
-      color: "#f472b6",
       items: pharmaceuticalSolutions,
+      icon: <PharmaIcon />,
     },
   ]
 
-  const cardBackground = `radial-gradient(circle at 20% 80%, rgba(107, 159, 241, 0.15) 0%, transparent 60%), 
-                          radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), 
-                          radial-gradient(circle at 40% 40%, rgba(95, 133, 195, 0.05) 0%, transparent 70%)`
-
-  const handleNext = () => {
-    if (activeModal) {
-      setCurrentIndex((prev) => (prev + 1) % activeModal.items.length)
-    }
-  }
-
-  const handlePrev = () => {
-    if (activeModal) {
-      setCurrentIndex((prev) =>
-        prev === 0 ? activeModal.items.length - 1 : prev - 1
-      )
-    }
-  }
-
   return (
-    <div className="relative min-h-screen px-6 py-20 overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      {/* Title */}
-      <div className="max-w-3xl mx-auto text-center mb-14">
-        <h1 className="text-4xl font-black text-transparent bg-gradient-to-r from-slate-800 to-slate-900 bg-clip-text md:text-5xl">
-          Multi-Modal Solutions
-        </h1>
-        <p className="mt-4 text-lg leading-relaxed text-slate-600">
-          Mastering the full Claim Cycle from seamless transition to robust validation via our comprehensive solutions
-        </p>
-      </div>
+    <div className="min-h-screen px-4 py-16 sm:px-6 lg:px-8 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+       <div className="text-center mt-10 mb-20">
+<h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-800 to-emerald-600 bg-clip-text text-transparent">
+  Multi-Modal Solutions
+</h1>
+  <p className="max-w-3xl mx-auto text-lg leading-relaxed" style={{ color: "#64748b" }}>
+        Mastering the full Claim Cycle from seamless transition to robust validation via our comprehensive solutions
+      </p>
+</div>
 
-      {/* Cards */}
-      <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2 lg:grid-cols-3">
-        {solutionsMeta.map((s) => (
-          <button
-            key={s.id}
-            onClick={() => {
-              setActiveModal(s)
-              setCurrentIndex(0)
-            }}
-            className="relative overflow-hidden text-left transition-all duration-300 transform shadow-lg group rounded-2xl hover:shadow-2xl hover:-translate-y-1 hover:scale-105 p-7"
-            style={{ background: cardBackground }}
-          >
-            <h2 className="text-2xl font-bold text-slate-900">{s.name}</h2>
-            <h3 className="mt-1 text-sm font-medium text-slate-700">{s.subtitle}</h3>
-            <p className="mt-4 line-clamp-4 text-slate-700">{s.description}</p>
 
-            <div className="inline-flex items-center px-4 py-2 mt-6 text-sm font-semibold text-blue-700 transition-all duration-300 bg-white rounded-xl hover:bg-blue-100">
-              Explore {s.name} <span className="ml-2">→</span>
+<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 -mt-8">
+          {solutionsMeta.map((s) => (
+            <div
+              key={s.id}
+              onClick={() => setActiveModal(s)}
+              className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 hover:border-blue-200 overflow-hidden"
+            >
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-blue-500"></div>
+
+              <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white mb-6">
+                {s.icon}
+              </div>
+
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{s.name}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">{s.description}</p>
+
+              <div className="flex items-center text-blue-500 font-medium text-sm">
+                Explore {s.name} <span className="ml-2">→</span>
+              </div>
             </div>
-          </button>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Modal */}
       {activeModal && (
         <div
           role="dialog"
@@ -182,55 +168,49 @@ const Solutions = () => {
           onClick={() => setActiveModal(null)}
         >
           <div
-            className="relative w-full max-w-3xl overflow-hidden bg-white shadow-xl rounded-2xl"
+            className="relative w-full max-w-6xl p-12 bg-gray-50 shadow-2xl rounded-3xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
-            <div
-              className="flex items-center gap-4 p-6 text-white"
-              style={{
-                background: `linear-gradient(135deg, ${activeModal.color} 0%, rgba(255,255,255,0.2) 100%)`,
-              }}
-            >
-              <div>
-                <h2 className="text-2xl font-bold">{activeModal.name}</h2>
-                <p className="text-sm text-white/90">{activeModal.subtitle}</p>
-              </div>
+            <div className="text-center mb-16">
               <button
-                className="p-2 ml-auto rounded-full bg-white/30 hover:bg-white/50"
+                className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-white/50"
                 onClick={() => setActiveModal(null)}
               >
-                ✕
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
             </div>
 
-            {/* Body with one item at a time */}
-            <div className="p-6 text-center">
-              <span className="block text-2xl font-bold text-blue-500 opacity-60">
-                {activeModal.items[currentIndex].number}
-              </span>
-              <h3 className="mt-2 text-xl font-semibold text-slate-900">
-                {activeModal.items[currentIndex].title}
-              </h3>
-              <p className="mt-4 text-slate-700">
-                {activeModal.items[currentIndex].description}
-              </p>
-            </div>
+            <div className="relative">
+              {/* Connecting line */}
+              <div
+                className="absolute top-12 left-0 right-0 h-0.5 bg-gray-300"
+                style={{
+                  left: "calc(12.5% + 32px)",
+                  right: "calc(12.5% + 32px)",
+                }}
+              />
 
-            {/* Navigation */}
-            <div className="flex items-center justify-between px-6 py-4 border-t bg-slate-50">
-              <button
-                onClick={handlePrev}
-                className="px-4 py-2 bg-white rounded-full shadow hover:bg-slate-100"
-              >
-                ← Prev
-              </button>
-              <button
-                onClick={handleNext}
-                className="px-4 py-2 bg-white rounded-full shadow hover:bg-slate-100"
-              >
-                Next →
-              </button>
+              <div className="grid grid-cols-4 gap-8">
+                {activeModal.items.map((item, index) => (
+                  <div key={index} className="text-center">
+                    <div className="relative z-10 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-6 shadow-lg">
+                      {item.number}
+                    </div>
+
+                    <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -39,6 +39,20 @@ const countries = {
     presence: "Regional office in Doha serving Qatar and surrounding areas.",
     location: [25.276987, 51.520008],
   },
+  egypt: {
+    name: "Egypt",
+    flag: "🇪🇬",
+    capital: "Cairo",
+    presence: "Regional office in Cairo serving the entire country.",
+    location: [30.0444, 31.2357],
+  },
+  tunisia: {
+    name: "Tunisia",
+    flag: "🇹🇳",
+    capital: "Tunis",
+    presence: "Regional office in Tunis serving the country and nearby areas.",
+    location: [36.8065, 10.1815],
+  },
 }
 
 const GCCPresenceMap = () => {
@@ -55,10 +69,13 @@ const GCCPresenceMap = () => {
           width: "100%",
         }}
       >
+        {/* Tile Layer بالإنجليزية */}
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
         />
+
+        {/* Markers */}
         {Object.values(countries).map((country, index) => (
           <Marker key={index} icon={pinMB} position={country.location}>
             <Popup>

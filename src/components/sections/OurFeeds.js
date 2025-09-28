@@ -1,237 +1,129 @@
 "use client"
 
-import React, { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import "./OurFeeds.css"
-
-const feeds = [
-  {
-    title: "Payer Solutions",
-    description:
-      "Our solutions help payers in quickly identifying errors in claims and settling them. Our software streamlines the process and ensures faster claim resolutions.",
-    image: "https://www.kayan-healthcare.com/static/media/service1.8c40564f.webp",
-  },
-  {
-    title: "Provider Solutions",
-    description:
-      "Our software provides top-of-the-line improved clinical edit checks, removes vague codes, and comes with claim management features to support providers in their day-to-day operations.",
-    image: "https://www.kayan-healthcare.com/static/media/service2.bf61dbe1.webp",
-  },
-  {
-    title: "Machine Learning Solutions",
-    description:
-      "Our software uses machine learning techniques to show predictions and statistics to doctors, vendors, and payers to reach optimal decisions. It adapts to new data and helps improve healthcare outcomes.",
-    image: "https://www.kayan-healthcare.com/static/media/service3.32698236.webp",
-  },
-  {
-    title: "Advanced Analytics",
-    description:
-      "Leverage advanced analytics to gain deeper insights into healthcare trends, optimize operations, and enhance patient outcomes with data-driven decisions.",
-    image: "https://www.kayan-healthcare.com/static/media/service3.32698236.webp",
-  },
-  {
-    title: "Kayan Healthcare Technologies and the Future of E-Prescriptions and Pharmaceutical Benefit Edits",
-    description:
-      "In today's rapidly evolving healthcare landscape, the integration of e-prescription systems and pharmaceutical benefits is more crucial than ever. This seamless connection streamlines the medication management process. Effective drug claim scrubbing plays a pivotal role in ensuring accuracy and compliance, reducing errors, and optimizing reimbursement. By prioritizing pharmaceutical scrubbers, we can foster a more efficient healthcare ecosystem. In this regard, Kayan Healthcare Technologies is developing a comprehensive and outstanding suite of checks and edits to automate prescription verifications against formularies and guidelines. and establishing a strong Rule Management Scrubber to automate the full process and ensure compliance with the ongoing rapid technologies and endless expectations of the industry.",
-  image: "https://tmp.kayan-healthcare.com/static/media/article.24228e742dbfaaf4629c.jpg",
-  },
-]
+import { useState } from "react"
 
 const OurFeeds = () => {
   const [selectedFeed, setSelectedFeed] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const getCardsPerPage = () => {
-    if (window.innerWidth <= 768) return 1
-    if (window.innerWidth <= 1024) return 2
-    return 3
-  }
-
-  const [cardsPerPage, setCardsPerPage] = useState(getCardsPerPage())
-
-  React.useEffect(() => {
-    const handleResize = () => setCardsPerPage(getCardsPerPage())
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
-  const totalPages = Math.ceil(feeds.length / cardsPerPage)
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.0,
-        staggerChildren: 0.1,
-      },
+  const feeds = [
+    {
+      id: 1,
+      title: "Payer Solutions",
+      short: "Our solutions help payers in quickly identifying errors in claims and settling them.",
+      full: "Our solutions help payers in quickly identifying errors in claims and settling them. Our software streamlines the process and ensures faster claim resolutions.",
+      image: "https://www.kayan-healthcare.com/static/media/service1.8c40564f.webp",
     },
-  }
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
+    {
+      id: 2,
+      title: "Provider Solutions",
+      short: "Our software provides top-of-the-line improved clinical edit checks.",
+      full: "Our software provides top-of-the-line improved clinical edit checks, removes vague codes, and comes with claim management features.",
+      image: "https://www.kayan-healthcare.com/static/media/service2.bf61dbe1.webp",
     },
-  }
-
-  const getShortText = (text) => {
-    const words = text.split(" ")
-    return words.length > 20 ? words.slice(0, 20).join(" ") + "..." : text
-  }
-
-  const handleReadMore = (feed) => {
-    setSelectedFeed(feed)
-  }
-
-  const handleBack = () => {
-    setSelectedFeed(null)
-  }
-
-  const nextCards = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages)
-  }
-
-  const prevCards = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? totalPages - 1 : prevIndex - 1))
-  }
-
-  const goToPage = (index) => {
-    setCurrentIndex(index)
-  }
-
-  const visibleFeeds = feeds.slice(currentIndex * cardsPerPage, (currentIndex + 1) * cardsPerPage)
+    {
+      id: 3,
+      title: "Advanced Analytics",
+      short: "Leverage advanced analytics to gain deeper insights into healthcare trends.",
+      full: "Leverage advanced analytics to gain deeper insights into healthcare trends, optimize operations, and enhance patient outcomes.",
+      image: "https://www.kayan-healthcare.com/static/media/service3.32698236.webp",
+    },
+    {
+      id: 4,
+      title: "E-Prescriptions and Pharmaceutical Edits",
+      short: "Integrating e-prescription systems with pharmaceutical benefits streamlines medication management, reduces errors, and ensures compliance.",
+      full: "In today's rapidly evolving healthcare landscape, the integration of e-prescription systems and pharmaceutical benefits is more crucial than ever. This seamless connection streamlines the medication management process. Effective drug claim scrubbing plays a pivotal role in ensuring accuracy and compliance, reducing errors, and optimizing reimbursement. By prioritizing pharmaceutical scrubbers, we can foster a more efficient healthcare ecosystem. In this regard, Kayan Healthcare Technologies is developing a comprehensive and outstanding suite of checks and edits to automate prescription verifications against formularies and guidelines, and establishing a strong Rule Management Scrubber to automate the full process and ensure compliance with the ongoing rapid technologies and endless expectations of the industry.",
+      image: "https://www.kayan-healthcare.com/static/media/service3.32698236.webp",
+    },
+  ]
 
   return (
-    <div className="our-feeds-container">
-      <motion.div className="feeds-wrapper" variants={containerVariants} initial="hidden" animate="visible">
-        <AnimatePresence mode="wait">
-          {selectedFeed ? (
-            <motion.div
-              key="detail"
-              className="feed-detail"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
+    <div 
+      id="our-feeds-section"
+      className="max-w-7xl mx-auto px-4 pt-32 pb-12 scroll-mt-32"
+    >
+      <h1 className="text-4xl font-bold text-left mb-8 bg-gradient-to-r from-blue-900 to-emerald-500 bg-clip-text text-transparent">
+        Latest Feeds
+      </h1>
+
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* الكارد الكبير الأول */}
+        <div className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col lg:flex-row lg:w-1/2">
+          <img
+            src={feeds[0].image || "/placeholder.svg"}
+            alt={feeds[0].title}
+            className="w-full lg:w-1/2 h-64 lg:h-auto object-cover"
+          />
+          <div className="p-6 flex flex-col justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-4">
+                {feeds[0].title}
+              </h2>
+              <p className="text-gray-600 text-sm">{feeds[0].short}</p>
+            </div>
+            <button
+              onClick={() => setSelectedFeed(feeds[0])}
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-auto self-end"
             >
-              <div className="detail-content">
-                <div className="detail-image-section">
-                  <img
-                    src={selectedFeed.image || "/placeholder.svg"}
-                    alt={selectedFeed.title}
-                    className="detail-image"
-                  />
-                  <div className="image-overlay"></div>
-                </div>
+              Read More
+            </button>
+          </div>
+        </div>
 
-                <div className="detail-text-section">
-                  <div className="detail-badge">Healthcare Solution</div>
-                  <h2 className="detail-title">{selectedFeed.title}</h2>
-                  <p className="detail-description">{selectedFeed.description}</p>
-
-                  <button className="back-button" onClick={handleBack}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M19 12H5M12 19l-7-7 7-7"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    Back to Services
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="grid"
-              className="feeds-grid-container"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+        {/* الكروت الصغيرة */}
+        <div className="flex flex-col gap-4 lg:w-1/2">
+          {feeds.slice(1).map((feed) => (
+            <div
+              key={feed.id}
+              className={`flex bg-white rounded-xl shadow-md overflow-hidden items-start ${
+                feed.id === 4 ? "h-36 lg:h-40" : "h-28 lg:h-32"
+              }`}
             >
-              <div className="feeds-grid">
-                {visibleFeeds.map((feed, index) => (
-                  <motion.div
-                    key={`${currentIndex}-${index}`}
-                    className="feed-card"
-                    variants={cardVariants}
-                    whileHover={{
-                      y: -8,
-                      scale: 1.02,
-                      transition: { duration: 0.3 },
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <div className="card-image-container">
-                      <img src={feed.image || "/placeholder.svg"} alt={feed.title} className="card-image" />
-                      <div className="card-gradient-overlay"></div>
-                      <div className="card-badge">Healthcare</div>
-                    </div>
-
-                    <div className="card-content">
-                      <h3 className="card-title">{feed.title}</h3>
-                    <p className="card-description">{getShortText(feed.description)}</p>
-<button className="read-more-button" onClick={() => handleReadMore(feed)}>
-  Read More
-</button>
-
-                    </div>
-                  </motion.div>
-                ))}
+              <img
+                src={feed.image || "/placeholder.svg"}
+                alt={feed.title}
+                className={`${
+                  feed.id === 4 ? "w-28 h-28 lg:w-32 lg:h-32" : "w-20 h-20 lg:w-24 lg:h-24"
+                } object-cover rounded-md m-3`}
+              />
+              <div className="flex flex-col justify-between p-3 h-full w-full">
+                <div>
+                  <h3 className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-1">
+                    {feed.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 mb-2 line-clamp-3">
+                    {feed.short}
+                  </p>
+                </div>
+                {/* زر Read More على أقصى يمين الكارد لجميع الكروت الصغيرة */}
+                <button
+                  onClick={() => setSelectedFeed(feed)}
+                  className="text-blue-600 hover:text-blue-800 text-xs font-medium mt-auto self-end"
+                >
+                  Read More
+                </button>
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-              {feeds.length > cardsPerPage && (
-                <>
-                  <button className="nav-button nav-button-left" onClick={prevCards} aria-label="Previous cards">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M15 18l-6-6 6-6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-
-                  <button className="nav-button nav-button-right" onClick={nextCards} aria-label="Next cards">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M9 18l6-6-6-6"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-
-                  <div className="pagination-dots">
-                    {Array.from({ length: totalPages }).map((_, index) => (
-                      <button
-                        key={index}
-                        className={`dot ${index === currentIndex ? "active" : ""}`}
-                        onClick={() => goToPage(index)}
-                        aria-label={`Go to page ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      {/* البوب أب */}
+      {selectedFeed && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center px-4">
+          <div className="bg-white max-w-2xl w-full rounded-xl p-6 shadow-xl relative">
+            <button
+              onClick={() => setSelectedFeed(null)}
+              className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-2xl"
+            >
+              ×
+            </button>
+            <h3 className="text-xl font-bold text-gray-800 mb-4 pr-8">
+              {selectedFeed.title}
+            </h3>
+            <p className="text-gray-600 text-sm leading-relaxed">{selectedFeed.full}</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
