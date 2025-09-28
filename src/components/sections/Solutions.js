@@ -127,14 +127,16 @@ const Solutions = () => {
     <div className="min-h-screen px-4 py-16 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
        <div className="text-center mt-10 mb-20">
-  <h1 className="text-4xl font-bold text-gray-900 mb-6">Multi-Modal Solutions</h1>
-  <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-    Mastering the full Claim Cycle from seamless transition to robust validation via our comprehensive solutions
-  </p>
+<h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-800 to-emerald-600 bg-clip-text text-transparent">
+  Multi-Modal Solutions
+</h1>
+  <p className="max-w-3xl mx-auto text-lg leading-relaxed" style={{ color: "#64748b" }}>
+        Mastering the full Claim Cycle from seamless transition to robust validation via our comprehensive solutions
+      </p>
 </div>
 
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 -mt-8">
           {solutionsMeta.map((s) => (
             <div
               key={s.id}

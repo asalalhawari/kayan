@@ -62,8 +62,7 @@ const AnalyticsDashboards = () => {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
         <div className="relative mx-auto max-w-7xl px-6 pt-24 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-800 to-indigo-800 
-            dark:from-white dark:via-blue-200 dark:to-indigo-200 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#1e40af] to-[#059669] bg-clip-text text-transparent mb-4">
             Analytics Dashboards
           </h1>
         </div>
@@ -125,7 +124,7 @@ const AnalyticsDashboards = () => {
 
           {/* Image */}
           <div>
-            <div className="group relative overflow-hidden rounded-2xl">
+            <div className="group relative overflow-hidden rounded-2xl max-h-80">
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={dashboard.image || "/placeholder.svg"}

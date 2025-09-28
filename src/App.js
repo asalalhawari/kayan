@@ -204,6 +204,11 @@ const App = () => {
     <OurStory />
   </Box>
 </AnimatedSection>
+  <AnimatedSection>
+  <Box component="section" id="howItWork" sx={{ width: '100%' }}>
+    <HowItWork />
+  </Box>
+</AnimatedSection>
 
   {/* 🔹 Solutions */}
             <AnimatedSection>
@@ -212,47 +217,40 @@ const App = () => {
               </Box>
             </AnimatedSection>
 
-
-            {/* 🔹 Our Feeds */}
-            <AnimatedSection>
-              <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
-                <OurFeeds />
-              </Box>
-            </AnimatedSection>
-
-   {/* 🔹 Benefits */}
+ {/* 🔹 Benefits */}
             <AnimatedSection>
               <Box component="section" id="benefits" sx={{ width: '100%' }}>
                 <Benefits />
               </Box>
             </AnimatedSection>
             <AnimatedSection></AnimatedSection>
+            <AnimatedSection>
+  <Box component="section" id="analyticsDashboard" sx={{ width: '100%' }}>
+    <AnalyticsDashboards />
+  </Box>
+</AnimatedSection>
+
+           
+
+  
             {/* 🔹 Our Team */}
             <AnimatedSection>
               <Box component="section" id="our-team" sx={{ width: '100%' }}>
                 <ExpertsSection />
               </Box>
             </AnimatedSection>
-
-          
-
-            {/* 🔹 Benefits */}
+ {/* 🔹 Our Feeds */}
             <AnimatedSection>
-              <Box component="section" id="benefits" sx={{ width: '100%' }}>
-                <Benefits />
+              <Box component="section" id="our-feeds" sx={{ width: '100%' }}>
+                <OurFeeds />
               </Box>
             </AnimatedSection>
-            <AnimatedSection>
-  <Box component="section" id="howItWork" sx={{ width: '100%' }}>
-    <HowItWork />
-  </Box>
-</AnimatedSection>
+          
 
-<AnimatedSection>
-  <Box component="section" id="analyticsDashboard" sx={{ width: '100%' }}>
-    <AnalyticsDashboards />
-  </Box>
-</AnimatedSection>
+           
+          
+
+
 
 
 

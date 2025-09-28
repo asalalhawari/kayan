@@ -72,13 +72,24 @@ const ContactUs = () => {
   }
 
   return (
-<div id="ContactUs" className="px-4 py-16 bg-gray-50">
+    <div id="ContactUs" className="px-4 py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto">
+
+        {/* Anchor offset لتعديل مكان ظهور العنوان عند النزول */}
+        <span id="anchor-contactus" style={{ display: "block", height: "150px", marginTop: "-150px" }} />
+
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-gray-900">
+          <h2
+            className="mb-4 text-4xl font-bold"
+            style={{
+              background: "linear-gradient(135deg, #1e40af, #059669)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              display: "inline-block",
+               marginTop: "60px",
+            }}
+          >
             Book a Free Consultation
-            <br />
-            <span className="text-blue-600">with Our Experts</span>
           </h2>
           <p className="max-w-3xl mx-auto text-gray-600">
             Transform your healthcare business with cutting-edge technology solutions. Get personalized insights and
