@@ -38,12 +38,12 @@ const OurFeeds = () => {
 
   return (
     <div 
-    id="our-feeds-section"
-  className="max-w-7xl mx-auto px-4 pt-32 pb-12 scroll-mt-32"
->
-  <h1 className="text-4xl font-bold text-left mb-8 bg-gradient-to-r from-blue-900 to-emerald-500 bg-clip-text text-transparent">
-    Latest Feeds
-  </h1>
+      id="our-feeds-section"
+      className="max-w-7xl mx-auto px-4 pt-32 pb-12 scroll-mt-32"
+    >
+      <h1 className="text-4xl font-bold text-left mb-8 bg-gradient-to-r from-blue-900 to-emerald-500 bg-clip-text text-transparent">
+        Latest Feeds
+      </h1>
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* الكارد الكبير الأول */}
@@ -62,7 +62,7 @@ const OurFeeds = () => {
             </div>
             <button
               onClick={() => setSelectedFeed(feeds[0])}
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-auto"
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-auto self-end"
             >
               Read More
             </button>
@@ -85,16 +85,19 @@ const OurFeeds = () => {
                   feed.id === 4 ? "w-28 h-28 lg:w-32 lg:h-32" : "w-20 h-20 lg:w-24 lg:h-24"
                 } object-cover rounded-md m-3`}
               />
-              <div className="flex flex-col justify-between p-3">
-                <h3 className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-1">
-                  {feed.title}
-                </h3>
-                <p className="text-xs text-gray-600 mb-2 line-clamp-3">
-                  {feed.short}
-                </p>
+              <div className="flex flex-col justify-between p-3 h-full w-full">
+                <div>
+                  <h3 className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-1">
+                    {feed.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 mb-2 line-clamp-3">
+                    {feed.short}
+                  </p>
+                </div>
+                {/* زر Read More على أقصى يمين الكارد لجميع الكروت الصغيرة */}
                 <button
                   onClick={() => setSelectedFeed(feed)}
-                  className="text-blue-600 hover:text-blue-800 text-xs font-medium mt-auto"
+                  className="text-blue-600 hover:text-blue-800 text-xs font-medium mt-auto self-end"
                 >
                   Read More
                 </button>
