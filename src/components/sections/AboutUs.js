@@ -36,7 +36,7 @@ const About = () => {
   }
 
   return (
-    <section id="about" className="relative flex items-center justify-center min-h-screen px-6 py-24 bg-gray-50">
+    <section id="about" className="relative flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-12 py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Image Layout */}
@@ -52,7 +52,7 @@ const About = () => {
                 <img
                   src="/professional-team-meeting.png"
                   alt="KAYAN Healthcare Team"
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg"
+                  className="w-full h-auto max-h-96 object-cover rounded-2xl shadow-lg"
                 />
               </motion.div>
 
@@ -85,8 +85,8 @@ const About = () => {
             variants={containerVariants}
           >
             <motion.div variants={childVariants}>
-              <p className="text-blue-500 font-medium mb-2">// About Us</p>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <p className="text-blue-500 font-medium mb-2">About Us</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Transforming <span className="text-blue-500">Healthcare</span>
                 <br />
                 into Digital Reality
@@ -100,7 +100,7 @@ const About = () => {
             </motion.p>
 
             {/* Statistics */}
-            <motion.div variants={childVariants} className="grid grid-cols-3 gap-8">
+            <motion.div variants={childVariants} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               <div>
                 <h3 className="text-3xl lg:text-4xl font-bold text-blue-500">200+</h3>
                 <p className="text-gray-600 text-sm">Clients Served</p>
@@ -116,9 +116,6 @@ const About = () => {
     <p className="text-gray-600 text-sm">Regional Coverage</p>
               </div>
             </motion.div>
-
-           
-           
           </motion.div>
         </div>
       </div>
