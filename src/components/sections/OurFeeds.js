@@ -75,29 +75,28 @@ const OurFeeds = () => {
             <div
               key={feed.id}
               className={`flex bg-white rounded-xl shadow-md overflow-hidden items-start ${
-                feed.id === 4 ? "h-36 lg:h-40" : "h-28 lg:h-32"
+                feed.id === 4 ? "h-36 sm:h-40 lg:h-40" : "h-28 sm:h-32 lg:h-32"
               }`}
             >
               <img
                 src={feed.image || "/placeholder.svg"}
                 alt={feed.title}
                 className={`${
-                  feed.id === 4 ? "w-28 h-28 lg:w-32 lg:h-32" : "w-20 h-20 lg:w-24 lg:h-24"
-                } object-cover rounded-md m-3`}
+                  feed.id === 4 ? "w-28 h-28 sm:w-32 sm:h-32 lg:w-32 lg:h-32" : "w-20 h-20 sm:w-24 sm:h-24 lg:w-24 lg:h-24"
+                } object-cover rounded-md m-3 flex-shrink-0`}
               />
               <div className="flex flex-col justify-between p-3 h-full w-full">
                 <div>
-                  <h3 className="text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-1">
+                  <h3 className="text-sm sm:text-base font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-emerald-500 mb-1">
                     {feed.title}
                   </h3>
-                  <p className="text-xs text-gray-600 mb-2 line-clamp-3">
+                  <p className="text-xs sm:text-sm text-gray-600 mb-2 line-clamp-3">
                     {feed.short}
                   </p>
                 </div>
-                {/* زر Read More على أقصى يمين الكارد لجميع الكروت الصغيرة */}
                 <button
                   onClick={() => setSelectedFeed(feed)}
-                  className="text-blue-600 hover:text-blue-800 text-xs font-medium mt-auto self-end"
+                  className="text-blue-600 hover:text-blue-800 text-xs sm:text-sm font-medium mt-auto self-end"
                 >
                   Read More
                 </button>
@@ -120,7 +119,7 @@ const OurFeeds = () => {
             <h3 className="text-xl font-bold text-gray-800 mb-4 pr-8">
               {selectedFeed.title}
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">{selectedFeed.full}</p>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{selectedFeed.full}</p>
           </div>
         </div>
       )}

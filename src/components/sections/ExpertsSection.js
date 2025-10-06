@@ -57,39 +57,40 @@ const ExpertsSection = () => {
         alignItems: "center",
       }}
     >
-      {/* Anchor offset لتجنب اختفاء العنوان */}
-<span id="anchor-experts" style={{ display: "block", height: "250px", marginTop: "-200px" }} />
+     
+      <span id="anchor-experts" style={{ display: "block", height: "250px", marginTop: "-200px" }} />
 
-      {/* العنوان */}
+     
       <Box sx={{ maxWidth: "1200px", textAlign: "center", mb: 15 }}>
-  <Typography
-    variant="h3"
-    sx={{
-      fontSize: { xs: "2rem", md: "2.5rem" },
-      fontWeight: 700,
-      mb: 2,
-      background: "linear-gradient(135deg, #1e40af, #059669)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      display: "inline-block",
-    }}
-  >
-    Our Senior Management Team
-  </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: { xs: "2rem", md: "2.5rem" },
+            fontWeight: 700,
+            mb: 2,
+            background: "linear-gradient(135deg, #1e40af, #059669)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            display: "inline-block",
+          }}
+        >
+          Our Senior Management Team
+        </Typography>
 
-  <Typography
-    variant="h6"
-    sx={{
-      color: "#64748b",
-      maxWidth: "700px",
-      fontSize: "1rem",
-      lineHeight: 1.5,
-      mx: "auto",
-    }}
-  >
-    Meet the exceptional leaders driving innovation and excellence in healthcare technology
-  </Typography>
-</Box>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "#64748b",
+            maxWidth: "700px",
+            fontSize: "1rem",
+            lineHeight: 1.5,
+            mx: "auto",
+          }}
+        >
+          Meet the exceptional leaders driving innovation and excellence in healthcare technology
+        </Typography>
+      </Box>
+
       {/* الصور */}
       <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "30px" }}>
         {experts.map((expert, index) => (
@@ -127,7 +128,7 @@ const ExpertsSection = () => {
                 }}
               />
 
-              {/* overlay مع أيقونة العين */}
+              {/* overlay */}
               <Box
                 className="overlay"
                 sx={{
@@ -145,7 +146,7 @@ const ExpertsSection = () => {
               </Box>
             </Box>
 
-            {/* الاسم */}
+            {/* name*/}
             <Typography
               sx={{
                 mt: 2,
@@ -158,7 +159,7 @@ const ExpertsSection = () => {
               {expert.name}
             </Typography>
 
-            {/* البوزيشن تحت الاسم */}
+            {/* Postion name*/}
             <Box sx={{ display: "flex", justifyContent: "center", mt: 0.5 }}>
               <Box
                 sx={{
@@ -176,7 +177,7 @@ const ExpertsSection = () => {
         ))}
       </Box>
 
-      {/* المودال */}
+      {/* modal*/}
       <Modal open={!!openExpert} onClose={() => setOpenExpert(null)}>
         <Box
           sx={{

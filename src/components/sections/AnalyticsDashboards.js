@@ -1,4 +1,5 @@
 "use client"
+
 import { useState } from "react"
 import { BarChart3, Activity, Server, TrendingUp, ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -42,15 +43,11 @@ const AnalyticsDashboards = () => {
   const [current, setCurrent] = useState(0)
 
   const next = () => {
-    if (current < dashboards.length - 1) {
-      setCurrent((prev) => prev + 1)
-    }
+    if (current < dashboards.length - 1) setCurrent((prev) => prev + 1)
   }
 
   const prev = () => {
-    if (current > 0) {
-      setCurrent((prev) => prev - 1)
-    }
+    if (current > 0) setCurrent((prev) => prev - 1)
   }
 
   const dashboard = dashboards[current]
@@ -62,7 +59,10 @@ const AnalyticsDashboards = () => {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
         <div className="relative mx-auto max-w-7xl px-6 pt-24 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#1e40af] to-[#059669] bg-clip-text text-transparent mb-4">
+          <h1
+            className="text-4xl md:text-5xl font-bold bg-gradient-to-br from-[#1e40af] to-[#059669] bg-clip-text text-transparent mb-4"
+            style={{ lineHeight: 1.2, letterSpacing: "0.5px" }}
+          >
             Analytics Dashboards
           </h1>
         </div>
@@ -86,40 +86,34 @@ const AnalyticsDashboards = () => {
               <p className="text-base leading-relaxed text-muted-foreground">{dashboard.description}</p>
             </div>
 
-            {/* Stats */}
-            <div className="flex items-center gap-8">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl font-bold text-foreground">{dashboard.stats.value}</span>
-                  <div className="flex items-center gap-1">
-                    <TrendingUp className="h-4 w-4 text-emerald-500" />
-                    <span className="text-sm font-medium text-emerald-500">{dashboard.stats.trend}</span>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">{dashboard.stats.label}</p>
+            {/* Stats with arrows above (beside value & trend) */}
+            <div className="flex items-center gap-4 pt-2">
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-bold text-foreground">{dashboard.stats.value}</span>
+                <span className="text-sm font-medium text-emerald-500">{dashboard.stats.trend}</span>
+              </div>
+
+              <div className="flex gap-3">
+                {current > 0 && (
+                  <button
+                    onClick={prev}
+                    className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+                  >
+                    <ArrowLeft className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  </button>
+                )}
+                {current < dashboards.length - 1 && (
+                  <button
+                    onClick={next}
+                    className="bg-white/90 dark:bg-gray-800/90 p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+                  >
+                    <ArrowRight className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                  </button>
+                )}
               </div>
             </div>
 
-            {/* Navigation Arrows Positioned Inside Content */}
-            <div className="flex gap-4 pt-8">
-              {current > 0 && (
-                <button
-                  onClick={prev}
-                  className="bg-white/90 dark:bg-gray-800/90 p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
-                >
-                  <ArrowLeft className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                </button>
-              )}
-
-              {current < dashboards.length - 1 && (
-                <button
-                  onClick={next}
-                  className="bg-white/90 dark:bg-gray-800/90 p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
-                >
-                  <ArrowRight className="h-6 w-6 text-gray-700 dark:text-gray-300" />
-                </button>
-              )}
-            </div>
+            <p className="text-sm text-muted-foreground mt-1">{dashboard.stats.label}</p>
           </div>
 
           {/* Image */}
