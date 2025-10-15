@@ -1,42 +1,42 @@
 "use client"
 
 import { useState } from "react"
-import { Typography, Box, Modal, IconButton } from "@mui/material"
+import { Typography, Box, Modal, IconButton, Tooltip } from "@mui/material"
 import CloseIcon from "@mui/icons-material/Close"
-import VisibilityIcon from "@mui/icons-material/Visibility"
-import islam from "../../img/Islam.png"
+
+import islam from "../../img/Islam.png" 
 import kawther from "../../img/kawther.jpg"
 import randa from "../../img/randa.jpg"
 import diana from "../../img/diana.jpg"
+
+const COLOR_DARK = '#414042'
+const COLOR_LIGHT = '#ffffff'
+const CARD_GRADIENT = 'linear-gradient(135deg, #1e40af, #059669)'
 
 const experts = [
   {
     name: "Islam Hijawi",
     role: "CEO",
-    description:
-      "Extensive experience in health provider-payer solutions within the Gulf market, gained through collaborations with various leading organizations. Demonstrates strong leadership skills and a proven track record in driving network associations and fostering strategic partnerships. As CEO, committed to advancing healthcare innovation and delivering effective solutions that enhance operational efficiency.",
     image: islam,
+    description: `Extensive experience in health provider-payer solutions within the Gulf market, gained through collaborations with various leading organizations. Demonstrates strong leadership skills and a proven track record in driving network associations and fostering strategic partnerships. As CEO, committed to advancing healthcare innovation and delivering effective solutions that enhance operational efficiency.`,
   },
   {
     name: "Diana Dyab",
     role: "CTO",
-    description:
-      "IT Manager | Software Engineer | Digital Innovator. Currently serving as the IT Manager at Kayan Healthcare. Committed to driving innovation, delivering effective digital solutions, and building inclusive, high-performing teams. Expertise spans full-stack development, project management, and system optimization.",
     image: diana,
+    description: `IT Manager | Software Engineer | Digital Innovator. Currently serving as the IT Manager at Kayan Healthcare. Committed to driving innovation, delivering effective digital solutions, and building inclusive, high-performing teams. Expertise spans full-stack development, project management, and system optimization.`,
   },
   {
     name: "Kawther Ghanem",
     role: "COO",
-    description:
-      "An Economics major with 7 years of experience in business management, bringing expertise in strategic planning and operational efficiency. Adept at driving growth and implementing innovative solutions to achieve company objectives and enhance overall performance.",
     image: kawther,
+    description: `An Economics major with 7 years of experience in business management, bringing expertise in strategic planning and operational efficiency. Adept at driving growth and implementing innovative solutions to achieve company objectives and enhance overall performance.`,
   },
   {
     name: "Dr. Randa Hanna",
     role: "CMO",
-    description:
-      "A pharmacist with over 10 years of experience and a certified AAPC medical coder. Expertise in managing insurance operations and leading medical teams, focused on optimizing health claim processes. Committed to delivering efficient solutions for health claim scrubbing to enhance healthcare services.",
     image: randa,
+    description: `A pharmacist with over 10 years of experience and a certified AAPC medical coder. Expertise in managing insurance operations and leading medical teams, focused on optimizing health claim processes. Committed to delivering efficient solutions for health claim scrubbing to enhance healthcare services.`,
   },
 ]
 
@@ -47,137 +47,136 @@ const ExpertsSection = () => {
     <Box
       id="our-experts"
       sx={{
-        minHeight: "100vh",
-        backgroundColor: "#f9fafb",
-        py: 6,
+        width: "100%",
+        backgroundColor: COLOR_LIGHT,
         px: 2,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
         alignItems: "center",
+        paddingTop: '120px',
+        paddingBottom: 8,
+        borderTop: "2px solid rgba(4, 12, 49, 0.1)", // ← الخط الخفيف الفاصل
       }}
     >
-     
-      <span id="anchor-experts" style={{ display: "block", height: "250px", marginTop: "-200px" }} />
-
-     
-      <Box sx={{ maxWidth: "1200px", textAlign: "center", mb: 15 }}>
+      {/* --- العنوان --- */}
+      <Box sx={{ textAlign: "center", mb: 4, maxWidth: '800px' }}>
         <Typography
           variant="h3"
           sx={{
-            fontSize: { xs: "2rem", md: "2.5rem" },
             fontWeight: 700,
-            mb: 2,
-            background: "linear-gradient(135deg, #1e40af, #059669)",
+            fontSize: { xs: "2.5rem", md: "3rem" },
+            background: CARD_GRADIENT,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            display: "inline-block",
+            mb: 1,
           }}
         >
           Our Senior Management Team
         </Typography>
 
         <Typography
-          variant="h6"
+          variant="subtitle1"
           sx={{
-            color: "#64748b",
-            maxWidth: "700px",
-            fontSize: "1rem",
-            lineHeight: 1.5,
-            mx: "auto",
+            fontSize: { xs: "1.1rem", md: "1.3rem" },
+            color: COLOR_DARK,
+            opacity: 0.8,
+            mt: 2,
           }}
         >
           Meet the exceptional leaders driving innovation and excellence in healthcare technology
         </Typography>
       </Box>
 
-      {/* الصور */}
-      <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "30px" }}>
+      {/* --- الكروت --- */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr 1fr",
+            md: "1fr 1fr 1fr 1fr",
+          },
+          gap: "20px",
+          maxWidth: "1200px",
+          width: "100%",
+          mt: -2,
+        }}
+      >
         {experts.map((expert, index) => (
-          <Box
-            key={index}
-            sx={{
-              cursor: "pointer",
-              position: "relative",
-              transition: "transform 0.3s",
-              "&:hover": { transform: "scale(1.05)" },
-            }}
-            onClick={() => setOpenExpert(expert)}
-          >
+          <Tooltip key={index} title="Click to view more" arrow>
             <Box
+              onClick={() => setOpenExpert(expert)}
               sx={{
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                overflow: "hidden",
-                border: "4px solid #e5e7eb",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 position: "relative",
-                "&:hover .overlay": { opacity: 1 },
+                height: "400px",
+                cursor: "pointer",
+                overflow: "hidden",
+                borderRadius: "20px",
+                backgroundColor: COLOR_LIGHT,
+                boxShadow: "0px 10px 15px -3px rgba(0,0,0,0.1)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-10px)",
+                  boxShadow: "0px 15px 25px -5px rgba(0,0,0,0.3)",
+                },
               }}
             >
-              <img
-                src={expert.image || "/placeholder.svg"}
+              {/* صورة الشخص */}
+              <Box
+                component="img"
+                src={expert.image}
                 alt={expert.name}
-                style={{
+                sx={{
+                  position: "absolute",
+                  top: 0, 
+                  left: "50%",
+                  transform: "translateX(-50%)",
                   width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  objectPosition: "center",
-                  transition: "transform 0.3s",
+                  zIndex: 1,
+                  ...(expert.name === "Diana Dyab" && {
+                    height: "90%",
+                    objectFit: "contain",
+                  }),
+                  ...(expert.name === "Kawther Ghanem" && {
+                    height: "80%",
+                    objectFit: "contain",
+                  }),
+                  ...(expert.name !== "Diana Dyab" && expert.name !== "Kawther Ghanem" && {
+                    height: "100%",
+                    objectFit: "cover",
+                  }),
                 }}
               />
 
-              {/* overlay */}
+              {/* الجزء السفلي للكارد (الاسم + المنصب) */}
               <Box
-                className="overlay"
                 sx={{
                   position: "absolute",
-                  inset: 0,
-                  backgroundColor: "rgba(0,0,0,0.4)",
+                  bottom: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "25%",
+                  background: CARD_GRADIENT,
+                  zIndex: 2,
                   display: "flex",
-                  alignItems: "center",
+                  flexDirection: "column",
                   justifyContent: "center",
-                  opacity: 0,
-                  transition: "opacity 0.3s",
+                  px: 3,
                 }}
               >
-                <VisibilityIcon sx={{ fontSize: 40, color: "white" }} />
+                <Typography sx={{ fontWeight: 700, fontSize: "1.3rem", color: COLOR_LIGHT }}>
+                  {expert.name}
+                </Typography>
+                <Typography sx={{ fontSize: "1rem", opacity: 0.9, color: COLOR_LIGHT }}>
+                  {expert.role}
+                </Typography>
               </Box>
             </Box>
-
-            {/* name*/}
-            <Typography
-              sx={{
-                mt: 2,
-                fontWeight: 600,
-                color: "#1f2937",
-                textAlign: "center",
-                fontSize: "1.1rem",
-              }}
-            >
-              {expert.name}
-            </Typography>
-
-            {/* Postion name*/}
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 0.5 }}>
-              <Box
-                sx={{
-                  textAlign: "center",
-                  mt: 3,
-                  color: "#3b82f6",
-                  fontWeight: 800,
-                  fontSize: "1rem",
-                }}
-              >
-                {expert.role}
-              </Box>
-            </Box>
-          </Box>
+          </Tooltip>
         ))}
       </Box>
 
-      {/* modal*/}
+      {/* --- Modal --- */}
       <Modal open={!!openExpert} onClose={() => setOpenExpert(null)}>
         <Box
           sx={{
@@ -186,35 +185,42 @@ const ExpertsSection = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: { xs: "90%", md: 600 },
-            bgcolor: "background.paper",
+            bgcolor: COLOR_LIGHT,
             borderRadius: 3,
             boxShadow: 24,
             p: 4,
             outline: "none",
           }}
         >
-          <IconButton onClick={() => setOpenExpert(null)} sx={{ position: "absolute", top: 10, right: 10 }}>
+          <IconButton onClick={() => setOpenExpert(null)} sx={{ position: "absolute", top: 10, right: 10, color: COLOR_DARK }}>
             <CloseIcon />
           </IconButton>
+
           {openExpert && (
             <>
               <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
                 <img
-                  src={openExpert.image || "/placeholder.svg"}
+                  src={openExpert.image}
                   alt={openExpert.name}
                   style={{
                     width: "150px",
                     height: "150px",
                     borderRadius: "50%",
-                    objectFit: "contain",
-                    objectPosition: "center",
+                    objectFit: "cover",
+                    border: "3px solid #1e40af",
                   }}
                 />
               </Box>
-              <Typography variant="h5" sx={{ fontWeight: 700, textAlign: "center", mb: 1 }}>
+
+              <Typography variant="h5" sx={{ fontWeight: 700, textAlign: "center", mb: 1, color: COLOR_DARK }}>
                 {openExpert.name}
               </Typography>
-              <Typography variant="body1" sx={{ color: "#6b7280", lineHeight: 1.6, fontSize: "0.95rem" }}>
+
+              <Typography variant="subtitle1" sx={{ textAlign: "center", fontWeight: 500, color: "#059669", mb: 2 }}>
+                {openExpert.role}
+              </Typography>
+
+              <Typography variant="body1" sx={{ color: COLOR_DARK, opacity: 0.8, lineHeight: 1.6, fontSize: "0.95rem" }}>
                 {openExpert.description}
               </Typography>
             </>
