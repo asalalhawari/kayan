@@ -96,7 +96,7 @@ const Home = () => {
           <h1 className="text-5xl font-bold text-white drop-shadow-xl whitespace-nowrap">
             Your Trusted Partner
           </h1>
-          <h2 className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text drop-shadow-sm whitespace-nowrap">
+          <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text drop-shadow-sm whitespace-nowrap">
             in Claim Management & AI
           </h2>
           <p className="text-lg leading-relaxed text-gray-100 drop-shadow-lg whitespace-nowrap">
@@ -108,7 +108,7 @@ const Home = () => {
 
        <div className="relative z-20 mt-6">
   <button
-    onClick={() => scrollToSection("contactUs")}
+    onClick={() => scrollToSection("ContactUs")}
     className="px-8 py-4 ml-6 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1"
   >
     Request a Demo
