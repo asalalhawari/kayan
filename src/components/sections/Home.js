@@ -71,52 +71,53 @@ const Home = () => {
   }
 
   return (
-    <div className="relative flex min-h-screen overflow-hidden">
-     
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020817] via-[#041E2F] to-black z-0" />
+   <div className="relative flex flex-col md:flex-row min-h-screen overflow-hidden">
+  {/* الخلفية */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#020817] via-[#041E2F] to-black z-0" />
 
-     
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none"
-      />
+  {/* الكانڤاس */}
+  <canvas
+    ref={canvasRef}
+    className="absolute inset-0 z-0 pointer-events-none"
+  />
 
-     
-      <div className="absolute top-0 right-0 z-0 w-1/2 h-full">
-        <img
-          src="/images/DeWatermark.ai_1757868786616.jpeg"
-          alt="Eye Tech"
-          className="object-cover w-full h-full [mask-image:linear-gradient(to_left,black_80%,transparent)]"
-        />
-      </div>
+  {/* الصورة اليمنى */}
+  <div className="absolute top-0 right-0 z-0 w-full md:w-1/2 h-1/3 md:h-full">
+    <img
+      src="/images/DeWatermark.ai_1757868786616.jpeg"
+      alt="Eye Tech"
+      className="object-cover w-full h-full [mask-image:linear-gradient(to_left,black_80%,transparent)]"
+    />
+  </div>
 
-     
-      <div className="relative z-10 flex flex-col justify-center w-1/2 min-h-screen px-6 sm:px-12 lg:px-24">
-        <div className="relative max-w-2xl p-6 space-y-6">
-          <h1 className="text-5xl font-bold text-white drop-shadow-xl whitespace-nowrap">
-            Your Trusted Partner
-          </h1>
-          <h2 className="text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text drop-shadow-sm whitespace-nowrap">
-            in Claim Management & AI
-          </h2>
-          <p className="text-lg leading-relaxed text-gray-100 drop-shadow-lg whitespace-nowrap">
-            Simplify your e-claim process with multi-layered AI <br />
-            powered solutions,  Empower your healthcare  <br />
-            management with speed, accuracy and reliability
-          </p>
-        </div>
+  {/* النصوص والفورم */}
+  <div className="relative z-10 flex flex-col justify-center w-full md:w-1/2 min-h-screen px-6 sm:px-12 lg:px-24 py-12 md:py-0">
+    <div className="relative max-w-2xl mx-auto space-y-6">
+      <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-xl">
+        Your Trusted Partner
+      </h1>
+      <h2 className="text-2xl sm:text-3xl font-bold text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-green-600 bg-clip-text drop-shadow-sm">
+        in Claim Management & AI
+      </h2>
+      <p className="text-base sm:text-lg leading-relaxed text-gray-100 drop-shadow-lg">
+        Simplify your e-claim process with multi-layered AI <br />
+        powered solutions, Empower your healthcare <br />
+        management with speed, accuracy and reliability
+      </p>
 
-       <div className="relative z-20 mt-6">
-  <button
-    onClick={() => scrollToSection("ContactUs")}
-    className="px-8 py-4 ml-6 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1"
-  >
-    Request a Demo
-    <ArrowRight className="inline-block w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-  </button>
-        </div>
+      <div className="mt-6">
+        <button
+          onClick={() => scrollToSection("ContactUs")}
+          className="w-full md:w-auto px-6 py-4 font-semibold text-white transition-all duration-300 transform shadow-lg group bg-gradient-to-r from-blue-600 to-green-600 rounded-xl hover:shadow-xl hover:-translate-y-1"
+        >
+          Request a Demo
+          <ArrowRight className="inline-block w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+        </button>
       </div>
     </div>
+  </div>
+</div>
+
   )
 }
 

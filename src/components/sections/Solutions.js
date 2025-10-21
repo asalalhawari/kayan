@@ -36,7 +36,7 @@ const Solutions = () => {
       mainColor: OLIVE_GREEN,
       icon: <PetraIcon color="white" />,
       subtitle: "Automate, Optimize, and Control the Entire Claim Lifecycle.",
-      description: "Intelligent Claims Automation for Unbeatable Efficiency.\n\nMove beyond manual reviews and legacy systems. PETRA delivers end-to-end automation powered by advanced rules and AI, giving Payer absolute control over the claim lifecycle. Slash administrative costs, dramatically reduce disputes, and transform your claims operation from a cost center into a strategic asset.",
+      description: "Intelligent Claims Automation for Unbeatable Efficiency.\n\nMove beyond manual reviews and legacy systems. PETRA delivers end-to-end automation powered by advanced rules and AI, giving Payer absolute control over the claim lifecycle. Slash administrative costs, dramatically reduce disputes, and transform your claims operation from a cost center into a strategic asset.",
       features: [
         { number: 1, title: "Medical & Coding Scrubber", description: "Leverage a comprehensive database with 55+ edit types to automatically validate claims against ICD, CPT, and CDT standards. Ensure clinical accuracy and compliance while reducing denials from the start." },
         { number: 2, title: "Custom Validation & Policy Engine", description: "Configure and automate your specific Terms of Benefits (TOBs), exclusions, and business rules. Apply validations at the policy, provider, or patient level to ensure every claim aligns perfectly with your internal policies." },
@@ -50,7 +50,7 @@ const Solutions = () => {
       mainColor: "#0b8457",
       icon: <QudraIcon color="white" />,
       subtitle: "Healthcare Analytics & Fraud Detection",
-      description: "Revenue Cycle Confidence, Powered by Precision.\n\nMove beyond billing uncertainties and administrative waste. QUDRA empowers healthcare providers with end-to-end claim precision powered by advanced rules and AI, giving you absolute confidence in every submission. Accelerate reimbursements, dramatically reduce denials, and transform your revenue cycle from a back-office function into a proven strategic advantage.",
+      description: "Revenue Cycle Confidence, Powered by Precision.\n\nMove beyond billing uncertainties and administrative waste. QUDRA empowers healthcare providers with end-to-end claim precision powered by advanced rules and AI, giving you absolute confidence in every submission. Accelerate reimbursements, dramatically reduce denials, and transform your revenue cycle from a back-office function into a proven strategic advantage.",
       features: [
         { number: 1, title: "Medical & Coding Validation", description: "Ensure every claim is clinically and technically sound before submission. Our scrubber checks against global standards and provides real-time alerts for instant correction." },
         { number: 2, title: "Customizable Rules & Benefit Management", description: "Automatically adapt claim checks to specific payer policies and pre-authorization rules. Track patient history and financial limits to ensure accurate billing." },
@@ -76,29 +76,30 @@ const Solutions = () => {
 
   return (
     <section className="min-h-screen bg-gradient-to-r from-blue-50 via-white to-yellow-50 flex items-center justify-center p-4 sm:p-6 md:p-8 font-sans">
-      <div className="w-full max-w-6xl flex items-center justify-between flex-wrap gap-10">
+      <div className="w-full max-w-6xl flex flex-wrap items-center justify-between gap-10">
+
         {/* Text Section */}
         <div className="w-full lg:w-[45%] flex flex-col items-start justify-center text-gray-800 mt-8">
-          <h2 className="text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-blue-800 to-green-500 bg-clip-text text-transparent mb-2">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-blue-800 to-green-500 bg-clip-text text-transparent mb-2">
             Our Innovative Solutions
           </h2>
-          <h3 className="text-xl lg:text-2xl text-gray-600 mb-1">
+          <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-1">
             <span className="font-bold text-blue-600">AI-Powered Intelligence for Healthcare and Pharma </span> Operations
           </h3>
-          <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
-In the complex world of healthcare operations, efficiency and accuracy are paramount. KAYAN delivers tailored, AI-driven solutions that transform critical processes—from claims management to compliance—reducing costs, accelerating revenue, and mitigating risk.
-We go beyond integration, offering multi-layered innovation that combines deep industry expertise with cutting-edge automation and analytics. Our mission is to empower providers and payers to achieve smarter operations, stronger compliance, and ultimately, better outcomes.
+          <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-500 leading-relaxed">
+            In the complex world of healthcare operations, efficiency and accuracy are paramount. KAYAN delivers tailored, AI-driven solutions that transform critical processes—from claims management to compliance—reducing costs, accelerating revenue, and mitigating risk.
+            We go beyond integration, offering multi-layered innovation that combines deep industry expertise with cutting-edge automation and analytics. Our mission is to empower providers and payers to achieve smarter operations, stronger compliance, and ultimately, better outcomes.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="w-full lg:w-[45%] flex flex-col gap-8 justify-center">
+        <div className="w-full lg:w-[45%] flex flex-col gap-6 md:gap-8 justify-center items-center">
           {solutions.map((s) => (
             <motion.div
               key={s.id}
               onClick={() => setSelectedSolution(s)}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-between gap-4 p-4 bg-white rounded-2xl shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl w-full max-w-md"
+              className="flex items-center justify-between gap-4 p-4 bg-white rounded-2xl shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:max-w-sm"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -130,63 +131,61 @@ We go beyond integration, offering multi-layered innovation that combines deep i
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-className="fixed !top-[55%] !left-1/2 !transform !-translate-x-1/2 !-translate-y-1/2 bg-white rounded-3xl shadow-2xl w-[95%] max-w-7xl max-h-[85vh] overflow-hidden z-[101]"
+                className="fixed inset-0 m-auto bg-white rounded-3xl shadow-2xl w-[95%] max-w-4xl md:max-w-6xl lg:max-w-7xl h-auto max-h-[90vh] overflow-hidden z-[101] flex flex-col md:flex-row"
               >
-                <div className="flex flex-col md:flex-row h-full">
-                  {/* Left Section */}
-                  <div
-                    className="w-full md:w-2/5 p-8 flex flex-col justify-between"
-                    style={{ background: `linear-gradient(135deg, ${selectedSolution.mainColor}15 0%, ${selectedSolution.mainColor}30 100%)` }}
-                  >
-                    <div>
-                      <div
-                        className="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
-                        style={{ backgroundColor: selectedSolution.mainColor }}
-                      >
-                        {React.cloneElement(selectedSolution.icon, { className: 'w-14 h-14', color: 'white' })}
-                      </div>
-                      <h3 className="text-3xl font-black text-gray-800 mb-3">{selectedSolution.name}</h3>
-                      <p className="text-base font-semibold mb-4" style={{ color: selectedSolution.mainColor }}>
-                        {selectedSolution.subtitle}
-                      </p>
-                      <p className="text-sm text-gray-600 leading-relaxed">{selectedSolution.description}</p>
+                {/* Left Section */}
+                <div
+                  className="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between"
+                  style={{ background: `linear-gradient(135deg, ${selectedSolution.mainColor}15 0%, ${selectedSolution.mainColor}30 100%)` }}
+                >
+                  <div>
+                    <div
+                      className="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
+                      style={{ backgroundColor: selectedSolution.mainColor }}
+                    >
+                      {React.cloneElement(selectedSolution.icon, { className: 'w-14 h-14', color: 'white' })}
                     </div>
+                    <h3 className="text-3xl font-black text-gray-800 mb-3">{selectedSolution.name}</h3>
+                    <p className="text-base font-semibold mb-4" style={{ color: selectedSolution.mainColor }}>
+                      {selectedSolution.subtitle}
+                    </p>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{selectedSolution.description}</p>
                   </div>
+                </div>
 
-                  {/* Right Section */}
-                  <div className="w-full md:w-3/5 bg-white flex flex-col">
-                    <div className="flex justify-end items-center px-6 py-6 border-b border-gray-100">
-                      <button
-                        onClick={() => setSelectedSolution(null)}
-                        className="text-gray-400 hover:text-gray-700 hover:bg-gray-100 p-3 rounded-xl transition-all"
-                      >
-                        <X size={24} />
-                      </button>
-                    </div>
-                    <div className="flex-1 overflow-y-auto px-8 py-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-[-10px]">
-                        {selectedSolution.features.map((f, index) => (
-                          <motion.div
-                            key={f.number}
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 + index * 0.1 }}
-                            whileHover={{ scale: 1.05 }}
-                            className="flex gap-5 cursor-pointer"
+                {/* Right Section */}
+                <div className="w-full md:w-3/5 bg-white flex flex-col overflow-y-auto">
+                  <div className="flex justify-end items-center px-6 py-6 border-b border-gray-100">
+                    <button
+                      onClick={() => setSelectedSolution(null)}
+                      className="text-gray-400 hover:text-gray-700 hover:bg-gray-100 p-3 rounded-xl transition-all"
+                    >
+                      <X size={24} />
+                    </button>
+                  </div>
+                  <div className="flex-1 overflow-y-auto px-6 md:px-8 py-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-[-10px]">
+                      {selectedSolution.features.map((f, index) => (
+                        <motion.div
+                          key={f.number}
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                          whileHover={{ scale: 1.05 }}
+                          className="flex gap-5 cursor-pointer"
+                        >
+                          <div
+                            className="w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md"
+                            style={{ backgroundColor: selectedSolution.mainColor }}
                           >
-                            <div
-                              className="w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md"
-                              style={{ backgroundColor: selectedSolution.mainColor }}
-                            >
-                              {f.number.toString().padStart(2, '0')}
-                            </div>
-                            <div className="flex-1 pt-1">
-                              <h5 className="font-bold text-gray-800 text-xs sm:text-sm uppercase tracking-wider">{f.title}</h5>
-                              <p className="text-gray-600 text-sm sm:text-base">{f.description}</p>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
+                            {f.number.toString().padStart(2, '0')}
+                          </div>
+                          <div className="flex-1 pt-1">
+                            <h5 className="font-bold text-gray-800 text-xs sm:text-sm uppercase tracking-wider">{f.title}</h5>
+                            <p className="text-gray-600 text-sm sm:text-base">{f.description}</p>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
                 </div>
