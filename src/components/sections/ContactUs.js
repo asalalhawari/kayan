@@ -192,28 +192,29 @@ const ContactUs = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-2">
-                  <select
-                    value={formData.countryCode}
-                    onChange={handleCountryCodeChange}
-                    className="px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="+970">🇵🇸 +970</option>
-                    <option value="+971">🇦🇪 +971</option>
-                    <option value="+966">🇸🇦 +966</option>
-                    <option value="+968">🇴🇲 +968</option>
-                    <option value="+973">🇧🇭 +973</option>
-                    <option value="+974">🇶🇦 +974</option>
-                    <option value="+965">🇰🇼 +965</option>
-                  </select>
-                  <input
-                    placeholder="Phone Number"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="flex-1 px-3 py-2 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
+               <div className="flex flex-col sm:flex-row gap-2 w-full">
+  <select
+    value={formData.countryCode}
+    onChange={handleCountryCodeChange}
+    className="w-full sm:w-1/4 px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <option value="+970">🇵🇸 +970</option>
+    <option value="+971">🇦🇪 +971</option>
+    <option value="+966">🇸🇦 +966</option>
+    <option value="+968">🇴🇲 +968</option>
+    <option value="+973">🇧🇭 +973</option>
+    <option value="+974">🇶🇦 +974</option>
+    <option value="+965">🇰🇼 +965</option>
+  </select>
+  
+  <input
+    placeholder="Phone Number"
+    name="phone"
+    value={formData.phone}
+    onChange={handleInputChange}
+    className="w-full sm:flex-1 min-w-0 px-3 py-2 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+</div>
 
                 <div>
                   <textarea
