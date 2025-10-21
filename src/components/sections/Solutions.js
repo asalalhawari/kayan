@@ -32,7 +32,7 @@ const Solutions = () => {
   const solutions = [
     {
       id: "PETRA",
-      name: " PETRA",
+      name: "PETRA",
       mainColor: OLIVE_GREEN,
       icon: <PetraIcon color="white" />,
       subtitle: "Automate, Optimize, and Control the Entire Claim Lifecycle.",
@@ -76,30 +76,29 @@ const Solutions = () => {
 
   return (
     <section className="min-h-screen bg-gradient-to-r from-blue-50 via-white to-yellow-50 flex items-center justify-center p-4 sm:p-6 md:p-8 font-sans">
-      <div className="w-full max-w-6xl flex flex-wrap items-center justify-between gap-10">
-
+      <div className="w-full max-w-6xl flex items-center justify-between flex-wrap gap-10">
         {/* Text Section */}
         <div className="w-full lg:w-[45%] flex flex-col items-start justify-center text-gray-800 mt-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-blue-800 to-green-500 bg-clip-text text-transparent mb-2">
+          <h2 className="text-3xl lg:text-4xl font-extrabold bg-gradient-to-br from-blue-800 to-green-500 bg-clip-text text-transparent mb-2">
             Our Innovative Solutions
           </h2>
-          <h3 className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-1">
+          <h3 className="text-xl lg:text-2xl text-gray-600 mb-1">
             <span className="font-bold text-blue-600">AI-Powered Intelligence for Healthcare and Pharma </span> Operations
           </h3>
-          <p className="mt-3 text-sm sm:text-base md:text-lg text-gray-500 leading-relaxed">
+          <p className="mt-3 text-base sm:text-lg text-gray-500 leading-relaxed">
             In the complex world of healthcare operations, efficiency and accuracy are paramount. KAYAN delivers tailored, AI-driven solutions that transform critical processes—from claims management to compliance—reducing costs, accelerating revenue, and mitigating risk.
             We go beyond integration, offering multi-layered innovation that combines deep industry expertise with cutting-edge automation and analytics. Our mission is to empower providers and payers to achieve smarter operations, stronger compliance, and ultimately, better outcomes.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="w-full lg:w-[45%] flex flex-col gap-6 md:gap-8 justify-center items-center">
+        <div className="w-full lg:w-[45%] flex flex-col gap-8 justify-center">
           {solutions.map((s) => (
             <motion.div
               key={s.id}
               onClick={() => setSelectedSolution(s)}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-between gap-4 p-4 bg-white rounded-2xl shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:max-w-sm"
+              className="flex items-center justify-between gap-4 p-4 bg-white rounded-2xl shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl w-full max-w-md"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -119,6 +118,7 @@ const Solutions = () => {
         <AnimatePresence>
           {selectedSolution && (
             <>
+              {/* Backdrop */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -126,68 +126,77 @@ const Solutions = () => {
                 onClick={() => setSelectedSolution(null)}
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100]"
               />
+
+              {/* Modal Wrapper (Scrollable on mobile) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="fixed inset-0 m-auto bg-white rounded-3xl shadow-2xl w-[95%] max-w-4xl md:max-w-6xl lg:max-w-7xl h-auto max-h-[90vh] overflow-hidden z-[101] flex flex-col md:flex-row"
+                className="fixed inset-0 z-[101] flex items-start md:items-center justify-center p-4 sm:p-6 overflow-y-auto"
               >
-                {/* Left Section */}
-                <div
-                  className="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between"
-                  style={{ background: `linear-gradient(135deg, ${selectedSolution.mainColor}15 0%, ${selectedSolution.mainColor}30 100%)` }}
-                >
-                  <div>
-                    <div
-                      className="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
-                      style={{ backgroundColor: selectedSolution.mainColor }}
-                    >
-                      {React.cloneElement(selectedSolution.icon, { className: 'w-14 h-14', color: 'white' })}
+                {/* Modal Container */}
+                <div className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl md:max-h-[90vh] md:overflow-hidden flex flex-col md:flex-row my-8 md:my-0">
+                  
+                  {/* Left Section */}
+                  <div
+                    className="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between"
+                    style={{ background: `linear-gradient(135deg, ${selectedSolution.mainColor}15 0%, ${selectedSolution.mainColor}30 100%)` }}
+                  >
+                    <div>
+                      <div
+                        className="w-24 h-24 rounded-2xl flex items-center justify-center mb-6 shadow-xl"
+                        style={{ backgroundColor: selectedSolution.mainColor }}
+                      >
+                        {React.cloneElement(selectedSolution.icon, { className: 'w-14 h-14', color: 'white' })}
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl font-black text-gray-800 mb-2">{selectedSolution.name}</h3>
+                      <p className="text-sm sm:text-base font-semibold mb-3" style={{ color: selectedSolution.mainColor }}>
+                        {selectedSolution.subtitle}
+                      </p>
+                      {/* Added whitespace-pre-wrap here */}
+                      <p className="text-sm sm:text-base text-gray-600 leading-relaxed whitespace-pre-wrap">{selectedSolution.description}</p>
                     </div>
-                    <h3 className="text-3xl font-black text-gray-800 mb-3">{selectedSolution.name}</h3>
-                    <p className="text-base font-semibold mb-4" style={{ color: selectedSolution.mainColor }}>
-                      {selectedSolution.subtitle}
-                    </p>
-                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{selectedSolution.description}</p>
                   </div>
-                </div>
 
-                {/* Right Section */}
-                <div className="w-full md:w-3/5 bg-white flex flex-col overflow-y-auto">
-                  <div className="flex justify-end items-center px-6 py-6 border-b border-gray-100">
-                    <button
-                      onClick={() => setSelectedSolution(null)}
-                      className="text-gray-400 hover:text-gray-700 hover:bg-gray-100 p-3 rounded-xl transition-all"
-                    >
-                      <X size={24} />
-                    </button>
-                  </div>
-                  <div className="flex-1 overflow-y-auto px-6 md:px-8 py-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-[-10px]">
-                      {selectedSolution.features.map((f, index) => (
-                        <motion.div
-                          key={f.number}
-                          initial={{ opacity: 0, y: 15 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.3 + index * 0.1 }}
-                          whileHover={{ scale: 1.05 }}
-                          className="flex gap-5 cursor-pointer"
-                        >
-                          <div
-                            className="w-14 h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md"
-                            style={{ backgroundColor: selectedSolution.mainColor }}
+                  {/* Right Section */}
+                  <div className="w-full md:w-3/5 bg-white flex flex-col">
+                    <div className="flex justify-end items-center px-6 py-4 border-b border-gray-100">
+                      <button
+                        onClick={() => setSelectedSolution(null)}
+                        className="text-gray-400 hover:text-gray-700 hover:bg-gray-100 p-2 sm:p-3 rounded-xl transition-all"
+                      >
+                        <X size={24} />
+                      </button>
+                    </div>
+                    {/* Features Container: Scrolls only on desktop */}
+                    <div className="md:flex-1 md:overflow-y-auto p-6 md:p-8">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {selectedSolution.features.map((f, index) => (
+                          <motion.div
+                            key={f.number}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 + index * 0.1 }}
+                            whileHover={{ scale: 1.03 }}
+                            className="flex gap-4 sm:gap-5 cursor-pointer"
                           >
-                            {f.number.toString().padStart(2, '0')}
-                          </div>
-                          <div className="flex-1 pt-1">
-                            <h5 className="font-bold text-gray-800 text-xs sm:text-sm uppercase tracking-wider">{f.title}</h5>
-                            <p className="text-gray-600 text-sm sm:text-base">{f.description}</p>
-                          </div>
-                        </motion.div>
-                      ))}
+                            <div
+                              className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md shrink-0"
+                              style={{ backgroundColor: selectedSolution.mainColor }}
+                            >
+                              {f.number.toString().padStart(2, '0')}
+                            </div>
+                            <div className="flex-1 pt-1">
+                              <h5 className="font-bold text-gray-800 text-sm uppercase tracking-wider">{f.title}</h5>
+                              <p className="text-gray-600 text-sm mt-1">{f.description}</p>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
+
                 </div>
               </motion.div>
             </>
