@@ -35,7 +35,7 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       sx={{
-        backgroundColor: "#1b2a4e",
+        backgroundColor: "linear-gradient(to right, #020817, #041E2F, #000000)",
         color: "#ffffff",
         py: { xs: 4, md: 6 }, // قلل padding عمودي لتصغير حجم الفوتر
         position: "relative",
@@ -57,18 +57,18 @@ const Footer = () => {
                 }}
               />
             </Box>
-            <Typography sx={{ color: "#d1d5db", fontSize: { xs: "0.9rem", md: "1rem" }, mb: 2 }}>
+            <p sx={{ color: "#d1d5db", fontSize: { xs: "0.9rem", md: "1rem" }, mb: 2 }}>
               Partner with Kayan Healthcare technologies to streamline operations, enhance compliance, and drive efficiency through AI powered automation.
-            </Typography>
+            </p>
           </Grid>
 
           {/* Quick Links */}
           {Object.keys(footerLinks).map((section, idx) => (
             section !== "contact" && (
               <Grid item xs={6} md={3} key={idx}>
-                <Typography sx={{ fontWeight: 700, mb: 1.5, color: "#ffffff", fontSize: { xs: "1rem", md: "1.05rem" } }}>
+                <p sx={{ fontWeight: 700, mb: 1.5, color: "#ffffff", fontSize: { xs: "1rem", md: "1.05rem" } }}>
                   {section.charAt(0).toUpperCase() + section.slice(1)}
-                </Typography>
+                </p>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
                   {footerLinks[section].map((link, i) => (
                     <Link
@@ -112,7 +112,7 @@ const Footer = () => {
               >
                 {link.icon && <link.icon sx={{ color: '#facc15', fontSize: '1.4rem' }} />}
               </Box>
-              <Typography sx={{ color: '#d1d5db', fontSize: '0.95rem' }}>{link.name}</Typography>
+              <p sx={{ color: '#d1d5db', fontSize: '0.95rem' }}>{link.name}</p>
             </Box>
           ))}
         </Box>

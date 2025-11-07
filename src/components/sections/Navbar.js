@@ -13,7 +13,7 @@ import { motion } from "framer-motion"
 import React from "react"
 import kayanlogo from "../../img/kayanlogo55.png"
 
-   const Navbar = () => {
+const Navbar = () => {
   const [activeSection, setActiveSection] = React.useState("home")
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [aboutAnchor, setAboutAnchor] = React.useState(null)
@@ -21,9 +21,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
   const theme = useTheme()
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      handleSectionChange()
-    }
+    const handleScroll = () => handleSectionChange()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -78,34 +76,22 @@ import kayanlogo from "../../img/kayanlogo55.png"
     { id: "our-presence", label: "Our Presence" },
   ]
 
- const aboutItems = [
-{ id: "our-story", label: "Mission & Vision" },
-  { id: "our-feeds", label: "Our Feeds" },
-  { id: "our-experts", label: "Our Team" },  // <-- صح
-]
+  const aboutItems = [
+    { id: "our-story", label: "Mission & Vision" },
+    { id: "our-feeds", label: "Our Feeds" },
+    { id: "our-experts", label: "Our Team" },
+  ]
 
-  
-
-  const handleAboutTextClick = () => {
-    scrollToSection("about")
-  }
-
-  const handleAboutArrowClick = (event) => {
-    setAboutAnchor(event.currentTarget)
-  }
-
-  const handleAboutClose = () => {
-    setAboutAnchor(null)
-  }
-
+  const handleAboutTextClick = () => scrollToSection("about")
+  const handleAboutArrowClick = (event) => setAboutAnchor(event.currentTarget)
+  const handleAboutClose = () => setAboutAnchor(null)
   const handleAboutSelect = (id) => {
     scrollToSection(id)
     handleAboutClose()
   }
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
-    setAboutAnchor(null) // Close dropdown when toggling drawer
+    setAboutAnchor(null)
   }
 
   const drawer = (
@@ -136,19 +122,11 @@ import kayanlogo from "../../img/kayanlogo55.png"
         {navItems.map((item) => (
           <ListItem
             key={item.id}
-            onClick={() => {
-              if (item.id === "about") {
-                scrollToSection("about")
-              } else {
-                scrollToSection(item.id)
-              }
-            }}
+            onClick={() => scrollToSection(item.id)}
             sx={{
               cursor: "pointer",
-              "&:hover": {
-                backgroundColor: "rgba(255,255,255,0.1)",
-              },
-              backgroundColor: activeSection === item.id ? "rgba(255,255,255,0.15)" : "transparent",
+              "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
+              backgroundColor: activeSection === item.id && item.id !== "about" ? "rgba(255,255,255,0.15)" : "transparent", // لا لون كحلي عن About
               borderRadius: "8px",
               mx: 1,
               mb: 1,
@@ -159,7 +137,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
               sx={{
                 "& .MuiListItemText-primary": {
                   fontWeight: activeSection === item.id ? 600 : 400,
-                  color: item.id === "about" && aboutAnchor ? "#3b82f6" : "white",
+                  color: "#ffffff",
                   fontSize: "1rem",
                 },
               }}
@@ -185,20 +163,6 @@ import kayanlogo from "../../img/kayanlogo55.png"
         ))}
         {aboutAnchor && (
           <>
-            <ListItem sx={{ px: 2, py: 1 }}>
-              <ListItemText
-                primary="About Sections"
-                sx={{
-                  "& .MuiListItemText-primary": {
-                    fontWeight: 600,
-                    color: "#3b82f6",
-                    fontSize: "0.9rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.5px",
-                  },
-                }}
-              />
-            </ListItem>
             {aboutItems.map((item) => (
               <ListItem
                 key={item.id}
@@ -206,9 +170,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
                 sx={{
                   cursor: "pointer",
                   pl: 4,
-                  "&:hover": {
-                    backgroundColor: "rgba(255,255,255,0.1)",
-                  },
+                  "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
                   backgroundColor: activeSection === item.id ? "rgba(255,255,255,0.15)" : "transparent",
                   borderRadius: "8px",
                   mx: 1,
@@ -241,13 +203,18 @@ import kayanlogo from "../../img/kayanlogo55.png"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         sx={{
-          width: "100%",
+          width: "auto",
+          borderRadius: "0px",
           boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
-          background: "rgba(255, 255, 255, 0.98)",
+          top: "0px",
+          left: "0px",
+          right: "0px",
           backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
           zIndex: 1200,
-          borderBottom: "1px solid rgba(0,0,0,0.05)",
-          borderRadius: "0",
+          borderBottom: "1px solid rgba(255,255,255,0.05)",
+          background: "rgba(255, 255, 255, 0.2)",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
         }}
       >
         <Container maxWidth={false} sx={{ px: { xs: 2, md: 4 } }}>
@@ -255,41 +222,34 @@ import kayanlogo from "../../img/kayanlogo55.png"
             sx={{
               justifyContent: "space-between",
               backgroundColor: "transparent",
-              py: 1,
-              minHeight: { xs: "70px", md: "80px" },
+              py: 0.5,
+              minHeight: { xs: "60px", md: "70px" },
             }}
           >
-            {/* Logo + Tagline */}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 1, pl: 0 }}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5, pl: 0, ml: { xs: "-10px", md: "-20px" } }}>
               <Box
                 component="img"
                 src={kayanlogo}
                 alt="Kayan Healthcare Logo"
                 sx={{
-                  height: { xs: "40px", sm: "48px" },
-                  width: "auto",
+                  width: { xs: "130px", md: "170px" },
+                  height: { xs: "35px", md: "60px" },
+                  objectFit: "contain",
                   cursor: "pointer",
                   transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
+                  "&:hover": { transform: "scale(1.05)" },
                   display: "block",
                 }}
                 onClick={() => scrollToSection("home")}
               />
-              <Box
-                sx={{
-                  display: { xs: "none", sm: "block" },
-                  ml: 1,
-                }}
-              >
+              <Box sx={{ display: { xs: "none", sm: "block" }, ml: 0.5 }}>
                 <span
                   style={{
-                    color: "#3b82f6",
+                    color: "#ffffff",
                     fontWeight: 700,
                     letterSpacing: 0.5,
-                    fontSize: "1.2rem",
-                    fontFamily: "Inter, sans-serif",
+                    fontSize: "1.1rem",
+                    fontFamily: "Poppins",
                     verticalAlign: "middle",
                   }}
                 >
@@ -298,56 +258,59 @@ import kayanlogo from "../../img/kayanlogo55.png"
               </Box>
             </Box>
 
-            {/* Desktop Navigation and Contact Button - Right Aligned */}
-            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.5 }}>
+            {/* Nav Items */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 2, pr: 1, ml: 3 }}>
               {navItems.map((item) => (
                 <Box
                   key={item.id}
                   sx={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 0.5,
-                    color: activeSection === item.id ? "#3b82f6" : "#4b5563",
-                    fontSize: "15px",
-                    fontWeight: activeSection === item.id ? 600 : 500,
+                    gap: 0.4,
+                    color: "#ffffff",
+                    fontSize: "14px",
+                    fontWeight: "bold",
                     cursor: "pointer",
-                    padding: "12px 20px",
-                    borderRadius: "12px",
+                    padding: "10px 16px",
+                    borderRadius: "10px",
                     transition: "all 0.3s ease",
                     fontFamily: "Inter, sans-serif",
                     position: "relative",
                     "&:hover": {
-                      color: "#3b82f6",
-                      backgroundColor: "rgba(59, 130, 246, 0.08)",
+                      color: "#ffffff",
+                      backgroundColor: "rgba(255,255,255,0.1)",
                       transform: "translateY(-1px)",
+                      textShadow: "0 0 8px rgba(255,255,255,0.6)",
                     },
                     "&::after": {
                       content: '""',
                       position: "absolute",
-                      bottom: "8px",
+                      bottom: "6px",
                       left: "50%",
                       transform: "translateX(-50%)",
-                      width: activeSection === item.id ? "60%" : "0%",
+                      width: activeSection === item.id && item.id !== "about" ? "50%" : "0%",
                       height: "2px",
-                      backgroundColor: "#3b82f6",
+                      backgroundColor: "#ffffff",
                       transition: "all 0.3s ease",
                       borderRadius: "1px",
                     },
                     "&:hover::after": {
-                      width: "60%",
+                      width: "50%",
                     },
                   }}
                 >
                   <Box
-                    onClick={() => item.id === "about" ? handleAboutTextClick() : scrollToSection(item.id)}
-                    sx={{ padding: "0 4px" }}
+                    onClick={() =>
+                      item.id === "about" ? handleAboutTextClick() : scrollToSection(item.id)
+                    }
+                    sx={{ padding: "0 3px" }}
                   >
                     {item.label}
                   </Box>
                   {item.id === "about" && (
                     <IconButton
                       onClick={handleAboutArrowClick}
-                      sx={{ padding: 0, color: activeSection === item.id ? "#3b82f6" : "#4b5563" }}
+                      sx={{ padding: 0, color: "#ffffff" }}
                     >
                       <ExpandMoreIcon
                         sx={{
@@ -361,20 +324,17 @@ import kayanlogo from "../../img/kayanlogo55.png"
                 </Box>
               ))}
 
-              {/* Spacer between nav items and Contact Us button */}
-              <Box sx={{ width: "24px" }} />
-
-              {/* Contact Button */}
               <Button
                 variant="contained"
                 startIcon={<PhoneIcon />}
                 sx={{
+                  ml: 1,
                   background: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
                   color: "#fff",
                   fontWeight: 600,
-                  borderRadius: "30px",
-                  px: 4,
-                  py: 1.5,
+                  borderRadius: "25px",
+                  px: 3,
+                  py: 1.2,
                   boxShadow: "0 4px 20px rgba(59, 130, 246, 0.3)",
                   fontFamily: "Inter, sans-serif",
                   "&:hover": {
@@ -390,7 +350,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
               </Button>
             </Box>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile menu */}
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <IconButton
                 color="inherit"
@@ -416,6 +376,7 @@ import kayanlogo from "../../img/kayanlogo55.png"
         </Container>
       </AppBar>
 
+      {/* About dropdown menu */}
       <Menu
         anchorEl={aboutAnchor}
         open={Boolean(aboutAnchor)}
@@ -468,16 +429,13 @@ import kayanlogo from "../../img/kayanlogo55.png"
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: 280,
-            background: `linear-gradient(135deg, #1f2937 0%, #374151 50%, #4b5563 100%)`,
+            background: "linear-gradient(135deg, #020817 0%, #041E2F 50%, #000000 100%)",
             border: "none",
           },
         }}
       >
         {drawer}
       </Drawer>
-
-      {/* Toolbar spacer */}
-      <Toolbar sx={{ minHeight: { xs: "70px", md: "80px" } }} />
     </>
   )
 }

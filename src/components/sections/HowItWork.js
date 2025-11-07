@@ -1,39 +1,19 @@
 "use client"
 
 import { useState } from "react"
-import { Container, Box } from "@mui/material"
+// **تم استبدال استيراد MUI بـ lucide-react و Box و Container (يجب التأكد من وجودهما أو استبدالهما)**
+import { Container, Box } from "@mui/material" 
 
-// الأيقونات
-const AccountTreeIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M22,11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3H22z M7,9H4V5h3V9z M17,15h3v4h-3V15z M17,5h3v4h-3V5z" />
-  </svg>
-)
-const DashboardIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M3,13H11V3H3V13M3,21H11V15H3V21M13,21H21V11H13V21M13,3V9H21V3H13Z" />
-  </svg>
-)
-const MedicalServicesIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M19,8H17V6A2,2 0 0,0 15,4H9A2,2 0 0,0 7,6V8H5A3,3 0 0,0 2,11V19A3,3 0 0,0 5,22H19A3,3 0 0,0 22,19V11A3,3 0 0,0 19,8M9,6H15V8H9V6M11,14H9V16H7V14H5V12H7V10H9V12H11V14M18,16H14V14H18V16M18,12H14V10H18V12Z" />
-  </svg>
-)
-const VerifiedIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z" />
-  </svg>
-)
-const MedicationIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M6,3H18V5H6V3M7,6H17A1,1 0 0,1 18,7V8H6V7A1,1 0 0,1 7,6M2,10V19A1,1 0 0,0 3,20H21A1,1 0 0,0 22,19V10H2M9,12H11V14H13V16H11V18H9V16H7V14H9V12Z" />
-  </svg>
-)
-const PsychologyIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-    <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z" />
-  </svg>
-)
+import {
+  GitBranch, // لـ AccountTreeIcon -> Post Office Claims Transaction
+  LayoutDashboard, // لـ DashboardIcon -> Tracking & Dashboard
+  Stethoscope, // لـ MedicalServicesIcon -> Medical & Coding Scrubber
+  ShieldCheck, // لـ VerifiedIcon -> Control Claim Validation
+  Pill, // لـ MedicationIcon -> Pharmaceutical Claims Management
+  Brain, // لـ PsychologyIcon -> AI Module
+} from "lucide-react" 
+
+// *** تم حذف تعريفات الأيقونات القديمة (AccountTreeIcon, DashboardIcon, إلخ) واستبدالها بالاستيراد أعلاه ***
 
 const steps = [
   {
@@ -41,21 +21,21 @@ const steps = [
     title: "Post Office Claims Transaction",
     description:
       "Seamless connectivity and structured data exchange between healthcare providers and insurers comply with regulator mandates.",
-    icon: AccountTreeIcon,
+    icon: GitBranch, // رمز يدل على التفرع والمسارات/المعاملات
     color: "#1976d2",
   },
   {
     id: 2,
     title: "Tracking & Dashboard",
     description: "Track, monitor, and visualize the entire claim lifecycle with real-time insights and analytics.",
-    icon: DashboardIcon,
+    icon: LayoutDashboard, // رمز لوحة تحكم
     color: "#42a5f5",
   },
   {
     id: 3,
     title: "Medical & Coding Scrubber",
     description: "Detect medical and coding denials swiftly for accurate claim validation and compliance.",
-    icon: MedicalServicesIcon,
+    icon: Stethoscope, // رمز سماعة الطبيب يدل على الجانب الطبي
     color: "#2196f3",
   },
   {
@@ -63,7 +43,7 @@ const steps = [
     title: "Control Claim Validation",
     description:
       "Configure relations and optimize your claim validation process to meet specific requirements while maintaining compliance.",
-    icon: VerifiedIcon,
+    icon: ShieldCheck, // رمز درع مع علامة صح يدل على التحقق والحماية
     color: "#4caf50",
   },
   {
@@ -71,7 +51,7 @@ const steps = [
     title: "Pharmaceutical Claims Management",
     description:
       "Leverage our Built-In Pharmaceutical Edits and Checks Suite to streamline your workflow and reduce denials in medication-related claims.",
-    icon: MedicationIcon,
+    icon: Pill, // رمز حبة دواء
     color: "#ff9800",
   },
   {
@@ -79,14 +59,14 @@ const steps = [
     title: "AI Module",
     description:
       "Better understand behaviours of all entities and improve data-driven decision-making with trend insights.",
-    icon: PsychologyIcon,
+    icon: Brain, // رمز الدماغ يدل على الذكاء الاصطناعي
     color: "#9c27b0",
   },
 ]
 
 const HowItWork = () => {
   return (
-    <div className="benefits-container">
+    <div className="benefits-container" data-aos="fade-up" data-aos-duration="1000" className="bg-gradient-to-r from-[#020817] via-[#041E2F] to-[#000000]">
       {/* خلفيات دوائر */}
       <div className="benefits-bg-elements">
         <div className="floating-circle circle-1"></div>
@@ -122,20 +102,21 @@ const HowItWork = () => {
                   <span className="icon-glow small" style={{ 
                     background: step.color,
                     borderRadius: "50%",
-                  position: "absolute",
-                  top: "0",
-                  left: "0",
-                  transform: "translate(-50%, -50%)",
-                     }}></span>
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    transform: "translate(-50%, -50%)",
+                       }}></span>
                   <span className="benefit-icon small with-circle" style={{ 
                     color: step.color,
                     position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  zIndex: "10",
-                     }}>
-                    <IconComponent />
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    zIndex: "10",
+                       }}>
+                    {/* استخدام أيقونات Lucide-React مباشرة */}
+                    <IconComponent size={20} /> 
                   </span>
                 </div>
 

@@ -5,10 +5,10 @@ import Navbar from './components/sections/Navbar';
 import Home from './components/sections/Home';
 import Benefits from './components/sections/Benefits';
 import HowItWork from './components/sections/HowItWork';
-import OurStory from './components/sections/ourStory';
+import OurStory from './components/sections/ourStory'   ;  
 import Solutions from './components/sections/Solutions';
 import AnalyticsDashboards from './components/sections/AnalyticsDashboards';
-
+import TechStack from './components/sections/TechStack';
 
 import ExpertsSection from './components/sections/ExpertsSection';
 import ContactUs from './components/sections/ContactUs';
@@ -29,10 +29,16 @@ import '@fontsource/inter/800.css';
 import OurFeeds from './components/sections/OurFeeds';
 import AboutUs from './components/sections/AboutUs';
 import AnimatedSection from './components/ui/AnimatedSection';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+
+
+
 
 const theme = createTheme({
   typography: {
-    fontFamily: 'Montserrat, Roboto, Josefin Sans, Inter, sans-serif',
+    fontFamily: 'Inter, sans-serif',
     h1: {
       fontWeight: 700,
       fontSize: '3.5rem',
@@ -63,6 +69,7 @@ const theme = createTheme({
     },
     body1: {
       fontSize: '1rem',
+      background:"linear-gradient(to right, #020817, #041E2F, #000000)",
       lineHeight: 1.6,
       '@media (max-width:600px)': {
         fontSize: '0.9rem',
@@ -158,6 +165,9 @@ const theme = createTheme({
 });
 
 const App = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -183,7 +193,7 @@ const App = () => {
               width: '100%',
               padding: 0,
               margin: 0,
-              overflowX: 'hidden',
+             
             }}
           >
             {/* 🔹 Home */}
@@ -204,6 +214,12 @@ const App = () => {
     <OurStory />
   </Box>
 </AnimatedSection>
+
+<AnimatedSection>
+  <Box component="section" id="tech-stack" sx={{ width: '100%' }}>
+    <TechStack />
+  </Box>
+</AnimatedSection>
   <AnimatedSection>
   <Box component="section" id="howItWork" sx={{ width: '100%' }}>
     <HowItWork />
@@ -216,6 +232,7 @@ const App = () => {
                 <Solutions />
               </Box>
             </AnimatedSection>
+
 
  {/* 🔹 Benefits */}
             <AnimatedSection>
