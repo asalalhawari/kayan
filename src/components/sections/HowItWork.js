@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 // **تم استبدال استيراد MUI بـ lucide-react و Box و Container (يجب التأكد من وجودهما أو استبدالهما)**
 import { Container, Box } from "@mui/material" 
 

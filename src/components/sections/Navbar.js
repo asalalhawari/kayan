@@ -18,7 +18,6 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [aboutAnchor, setAboutAnchor] = React.useState(null)
 
-  const theme = useTheme()
 
   React.useEffect(() => {
     const handleScroll = () => handleSectionChange()

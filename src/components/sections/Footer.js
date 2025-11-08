@@ -121,9 +121,9 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <Box sx={{ textAlign: "center" }}>
-          <Typography sx={{ color: "#d1d5db", fontSize: { xs: "0.85rem", md: "0.95rem" } }}>
+          <p sx={{ color: "#d1d5db", fontSize: { xs: "0.85rem", md: "0.95rem" } }}>
             © 2025 Kayan Healthcare. All Rights Reserved
-          </Typography>
+          </p>
         </Box>
       </Container>
     </Box>
