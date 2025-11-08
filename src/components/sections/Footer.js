@@ -1,8 +1,8 @@
 "use client"
 
-import { LocationOn } from "@mui/icons-material"
-import { Box, Container, Divider, Grid, Link, Typography } from "@mui/material"
+import { Box, Container, Divider, Grid, Link,} from "@mui/material"
 import { motion } from "framer-motion"
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import kayanlogo from "../../img/kayanlogo55.png"
 
 const Footer = () => {
@@ -24,8 +24,9 @@ const Footer = () => {
     services: [{ name: "E-Claim Solutions", action: () => scrollToSection("solution") }],
     resources: [{ name: "Support Center", action: () => scrollToSection("contactUs") }],
     contact: [
-      { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE", icon: LocationOn, action: () => {} },
-    ],
+  { name: "Realogics Star Estate YZ Building, 3rd Floor, Algouz 3, Dubai, UAE", icon: LocationOnIcon, action: () => {} },
+],
+
   }
 
   return (

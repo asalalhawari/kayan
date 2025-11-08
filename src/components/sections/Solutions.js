@@ -151,13 +151,14 @@ const Solutions = () => {
 
           {/* النص اليمين */}
           <div className="space-y-6 text-right sticky top-8">
-            <motion.h2
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent leading-tight"
-            >
-              Our Innovative Solutions
-            </motion.h2>
+          <motion.h2
+  initial={{ opacity: 0, x: 50 }}
+  animate={{ opacity: 1, x: 0 }}
+  className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight"
+>
+  Our Innovative Solutions
+</motion.h2>
+
             <p className="text-lg md:text-xl font-semibold bg-gradient-to-r from-blue-600 via-cyan-600 to-purple-600 bg-clip-text text-transparent">
               AI-Powered Intelligence for Healthcare and Pharma Operations
             </p>

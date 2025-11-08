@@ -65,7 +65,11 @@ const steps = [
 
 const HowItWork = () => {
   return (
-    <div className="benefits-container" data-aos="fade-up" data-aos-duration="1000" className="bg-gradient-to-r from-[#020817] via-[#041E2F] to-[#000000]">
+<div
+  className="benefits-container bg-gradient-to-r from-[#020817] via-[#041E2F] to-[#000000]"
+  data-aos="fade-up"
+  data-aos-duration="1000"
+>
       {/* خلفيات دوائر */}
       <div className="benefits-bg-elements">
         <div className="floating-circle circle-1"></div>
